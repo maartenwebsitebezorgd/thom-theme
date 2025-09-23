@@ -1,0 +1,9 @@
+node_modules/
+vendor/
+public/build/
+public/hot
+.env
+.env.local
+.DS_Store
+Thumbs.db
+*.log
