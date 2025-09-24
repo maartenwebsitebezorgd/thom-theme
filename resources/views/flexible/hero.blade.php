@@ -20,7 +20,7 @@
     <div class="text-center text-{{ $textColor }}">
       
       @if($title)
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+        <h1 class="h1 mb-6">
           {!! $title !!}
         </h1>
       @endif

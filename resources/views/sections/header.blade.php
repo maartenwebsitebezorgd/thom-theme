@@ -4,7 +4,7 @@
   use App\View\Composers\MobileWalker;
 @endphp
 
-<header class="relative isolate z-10 bg-white dark:bg-gray-900">
+<header class="navigation relative isolate z-10 bg-white dark:bg-gray-900">
   <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
     
     {{-- Logo Section --}}
@@ -27,7 +27,7 @@
       <button 
         type="button" 
         id="mobile-menu-button"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+        class="mobile-menu-button -m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -77,7 +77,7 @@
   {{-- Mobile Menu --}}
   <div class="lg:hidden hidden" id="mobile-menu">
     <div class="fixed inset-0 z-50">
-      <div class="fixed inset-y-0 right-0 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
+      <div class="mobile-panel fixed inset-y-0 right-0 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
         
         {{-- Mobile Header --}}
         <div class="flex items-center justify-between">
@@ -95,7 +95,7 @@
           <button 
             type="button" 
             id="mobile-menu-close"
-            class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+            class="mobile-menu-button -m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
           >
             <span class="sr-only">Close menu</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" aria-hidden="true">
@@ -136,119 +136,3 @@
     </div>
   </div>
 </header>
-
-{{-- JavaScript for Dropdowns and Mobile Menu --}}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu functionality
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenuClose = document.getElementById('mobile-menu-close');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  function toggleMobileMenu() {
-    mobileMenu.classList.toggle('hidden');
-    const isOpen = !mobileMenu.classList.contains('hidden');
-    mobileMenuButton.setAttribute('aria-expanded', isOpen);
-  }
-  
-  if (mobileMenuButton) {
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-  }
-  
-  if (mobileMenuClose) {
-    mobileMenuClose.addEventListener('click', toggleMobileMenu);
-  }
-  
-  // Desktop dropdown functionality
-  let dropdownTimeout;
-  
-  window.showDropdown = function(dropdownId) {
-    clearTimeout(dropdownTimeout);
-    const dropdown = document.getElementById(dropdownId);
-    if (dropdown) {
-      dropdown.classList.remove('hidden');
-    }
-  };
-  
-  window.hideDropdown = function(dropdownId) {
-    dropdownTimeout = setTimeout(() => {
-      const dropdown = document.getElementById(dropdownId);
-      if (dropdown) {
-        dropdown.classList.add('hidden');
-      }
-    }, 150);
-  };
-  
-  window.toggleDropdown = function(dropdownId) {
-    const dropdown = document.getElementById(dropdownId);
-    if (dropdown) {
-      dropdown.classList.toggle('hidden');
-    }
-  };
-  
-  // Mobile accordion functionality
-  window.toggleMobileAccordion = function(accordionId) {
-    const accordion = document.getElementById(accordionId);
-    const icon = document.getElementById(accordionId + '-icon');
-    
-    if (accordion && icon) {
-      const isHidden = accordion.classList.contains('hidden');
-      accordion.classList.toggle('hidden');
-      icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
-  };
-  
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', function(event) {
-    const dropdowns = document.querySelectorAll('.dropdown-menu');
-    dropdowns.forEach(dropdown => {
-      if (!dropdown.contains(event.target) && !event.target.closest('button')) {
-        dropdown.classList.add('hidden');
-      }
-    });
-    
-    // Close mobile menu when clicking outside
-    if (!mobileMenu.classList.contains('hidden')) {
-      if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      }
-    }
-  });
-  
-  // Close on escape key
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      // Close all dropdowns
-      const dropdowns = document.querySelectorAll('.dropdown-menu');
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.add('hidden');
-      });
-      
-      // Close mobile menu
-      if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      }
-    }
-  });
-  
-  // Add hover events for dropdown menus
-  const dropdownContainers = document.querySelectorAll('.relative');
-  dropdownContainers.forEach(container => {
-    const dropdown = container.querySelector('.dropdown-menu');
-    if (dropdown) {
-      container.addEventListener('mouseenter', () => {
-        clearTimeout(dropdownTimeout);
-        dropdown.classList.remove('hidden');
-      });
-      
-      container.addEventListener('mouseleave', () => {
-        dropdownTimeout = setTimeout(() => {
-          dropdown.classList.add('hidden');
-        }, 150);
-      });
-    }
-  });
-});
-</script>

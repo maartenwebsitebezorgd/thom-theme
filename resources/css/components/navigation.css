@@ -1,0 +1,84 @@
+/* Add this to your resources/css/app.css or create a new file */
+
+/* Enhanced dropdown animations */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+  pointer-events: none;
+}
+
+.dropdown-menu:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Smooth hover transitions for dropdown buttons */
+nav button[data-dropdown] {
+  position: relative;
+}
+
+nav button[data-dropdown]:hover svg,
+nav button[data-dropdown]:focus svg {
+  transform: rotate(180deg);
+  transition: transform 200ms ease-out;
+}
+
+/* Ensure dropdown stays visible when hovering */
+.dropdown-menu:hover {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Add a small invisible bridge between button and dropdown */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: transparent;
+}
+
+/* Mobile menu smooth transitions */
+#mobile-menu {
+  transition: opacity 300ms ease-out, visibility 300ms ease-out;
+}
+
+#mobile-menu.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#mobile-menu:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile accordion icons */
+[id$='-icon'] {
+  transition: transform 200ms ease-out;
+}
+
+/* Focus states for accessibility */
+nav button:focus-visible,
+nav a:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Dropdown backdrop blur effect (optional) */
+@supports (backdrop-filter: blur(8px)) {
+  .dropdown-menu > div {
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .dark .dropdown-menu > div {
+    background: rgba(31, 41, 55, 0.95);
+  }
+}

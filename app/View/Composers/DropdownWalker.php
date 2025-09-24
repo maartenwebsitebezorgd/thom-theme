@@ -38,7 +38,7 @@ class DropdownWalker extends Walker_Nav_Menu
                              ($current ? 'text-indigo-600 dark:text-indigo-400' : 'text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400');
                 
                 $output .= '<div class="relative">';
-                $output .= '<button type="button" class="' . $class_names . '" onclick="toggleDropdown(\'dropdown-' . ($this->dropdown_id + 1) . '\')" onmouseenter="showDropdown(\'dropdown-' . ($this->dropdown_id + 1) . '\')" onmouseleave="hideDropdown(\'dropdown-' . ($this->dropdown_id + 1) . '\')">';
+                $output .= '<button type="button" class="' . $class_names . '" data-dropdown="dropdown-' . ($this->dropdown_id + 1) . '">';
                 $output .= esc_html($item->title);
                 $output .= '<svg class="h-5 w-5 flex-none text-gray-400 group-hover:text-gray-500 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">';
                 $output .= '<path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />';
