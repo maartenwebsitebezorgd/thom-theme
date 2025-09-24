@@ -1,0 +1,21 @@
+@layer utilities {
+  .u-section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: stretch;
+    position: relative;
+    color: var(--theme-text);
+    background-color: var(--theme-bg);
+  }
+
+  .u-container {
+    z-index: 1;
+    max-width: var(--max-width--main);
+    width: calc(100% - var(--site--margin) * 2);
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+    container: threshold-large / inline-size;
+  }
+}

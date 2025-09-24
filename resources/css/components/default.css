@@ -2,3 +2,82 @@
    Custom Default Utilities
    ============================================================================= */
 
+@theme {
+  /* Site variables */
+  --site--viewport-max: 90rem;
+  --site--viewport-min: 20rem;
+  --site--margin: clamp(
+    1 * 1rem,
+    (
+      (
+          1 -
+            (
+              (3 - 1) / (var(--site--viewport-max) - var(--site--viewport-min)) *
+                var(--site--viewport-min)
+            )
+        ) * 1rem +
+        ((3 - 1) / (var(--site--viewport-max) - var(--site--viewport-min))) *
+        100vw
+    ),
+    3 * 1rem
+  );
+  --site--gutter: 1rem;
+  --site--column-count: 12;
+  --site--column-width: calc(
+    (
+        min(var(--max-width--main), 100% - var(--site--margin) * 2) -
+          (var(--site--gutter) * (var(--site--column-count) - 1))
+      ) / var(--site--column-count)
+  );
+
+  /* Responsive width variables */
+  --max-width--small: 50rem;
+  --max-width--main: calc(var(--site--viewport-max) * 1rem);
+  --max-width--full: 100%;
+
+  /* Radius variables */
+  --radius--tiny: 0.25rem;
+  --radius--small: 0.5rem;
+  --radius--main: 1rem;
+  --radius--medium: 1.5rem;
+  --radius--large: 2rem;
+
+  /* Border width variables */
+  --border--tiny: 0.08rem;
+  --border--main: 0.094rem;
+  --border--medium: 0.188rem;
+  --border--large: 0.376rem;
+
+  /* Focus variables */
+  --focus--width: 0.125rem;
+  --focus--offset-inner: calc(var(--focus--width) * -1);
+  --focus--offset-outer: 0.1875rem;
+
+  /* Swatch variables */
+  /* Gray Scale */
+  --swatch--transparent: transparent;
+  --swatch--gray-100: #f4f4f4;
+  --swatch--light-100: #ffffff;
+  --swatch--light-100-o20: color-mix(in srgb, #ffffff 20%, transparent);
+  --swatch--light-200: #e9e9e9; /* Corrected from invalid hex #3f0e9 */
+
+  /* Dark Scale */
+  --swatch--dark-800: #2f2b2d;
+  --swatch--dark-900: #1f1d1e;
+  --swatch--dark-900-o20: color-mix(in srgb, #1f1d1e 20%, transparent);
+
+  /* Brand Colors - Green Scale */
+  --swatch--brand-100: color-mix(in srgb, #c6fb50 10%, #ffffff);
+  --swatch--brand-200: color-mix(in srgb, #c6fb50 20%, #ffffff);
+  --swatch--brand-300: color-mix(in srgb, #c6fb50 40%, #ffffff);
+  --swatch--brand-400: color-mix(in srgb, #c6fb50 60%, #ffffff);
+  --swatch--brand-500: #c6fb50;
+  --swatch--brand-600: color-mix(in srgb, #c6fb50 80%, #000000);
+  --swatch--brand-700: color-mix(in srgb, #c6fb50 60%, #000000);
+  --swatch--brand-800: color-mix(in srgb, #c6fb50 40%, #000000);
+  --swatch--brand-900: color-mix(in srgb, #c6fb50 20%, #000000);
+
+  /* Brand Text Colors */
+  --swatch--brand-text: #1f1d1e; /* dark-900 */
+  --swatch--brand-text-o20: color-mix(in srgb, #1f1d1e 20%, transparent);
+}

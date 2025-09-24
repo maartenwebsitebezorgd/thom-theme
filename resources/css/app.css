@@ -2,11 +2,23 @@
 @source "../views/";
 @source "../../app/";
 
+:root {
+  /* Viewport variables for fluid typography */
+  --site--viewport-max: 90rem;
+  --site--viewport-min: 20rem;
+}
+
 /* Import your default */
-@import 'components/default.css';
+@import './components/default.css';
+
+/* Import your theme */
+@import './components/theme.css';
 
 /* Import your typography */
-@import 'components/typography.css';
+@import './components/typography.css';
 
 /* Import component styles */
-@import 'components/navigation.css';
+@import './components/navigation.css';
+
+/* Import your utilities */
+@import './components/utilities.css';
