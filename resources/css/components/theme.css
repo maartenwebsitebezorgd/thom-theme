@@ -24,8 +24,8 @@
     --button-primary-border-hover: var(--swatch--brand-600);
 
     /* Button Secondary Theme */
-    --button-secondary-bg: var(--swatch--dark-900);
-    --button-secondary-text: var(--swatch--light-100);
+    --button-secondary-bg: var(--swatch--transparent);
+    --button-secondary-text: var(--swatch--dark-900);
     --button-secondary-border: var(--swatch--dark-900);
     --button-secondary-bg-hover: var(--swatch--dark-800);
     --button-secondary-text-hover: var(--swatch--light-100);

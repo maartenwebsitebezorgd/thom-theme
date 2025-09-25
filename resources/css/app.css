@@ -7,29 +7,12 @@
     /* Site variables */
     --site--viewport-max: 90rem;
     --site--viewport-min: 20rem;
-    --site--margin: clamp(
-      1 * 1rem,
-      (
-        (
-            1 -
-              (
-                (3 - 1) /
-                  (var(--site--viewport-max) - var(--site--viewport-min)) *
-                  var(--site--viewport-min)
-              )
-          ) * 1rem +
-          ((3 - 1) / (var(--site--viewport-max) - var(--site--viewport-min))) *
-          100vw
-      ),
-      3 * 1rem
-    );
+    --site--margin: clamp(1rem, calc(1rem + 2vw), 3rem);
     --site--gutter: 1rem;
     --site--column-count: 12;
     --site--column-width: calc(
-      (
-          min(var(--max-width--main), 100% - var(--site--margin) * 2) -
-            (var(--site--gutter) * (var(--site--column-count) - 1))
-        ) / var(--site--column-count)
+      (100% - var(--site--gutter) * (var(--site--column-count) - 1)) /
+        var(--site--column-count)
     );
   }
 }

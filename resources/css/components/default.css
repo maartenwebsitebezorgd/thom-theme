@@ -16,6 +16,10 @@
     text-decoration: underline;
   }
 
+  a:where(:not(.wp-element-button)) {
+    text-decoration: unset;
+  }
+
   svg {
     max-width: 100%;
   }
@@ -28,7 +32,7 @@
 @theme {
   /* Responsive width variables */
   --max-width--small: 50rem;
-  --max-width--main: calc(var(--site--viewport-max) * 1rem);
+  --max-width--main: var(--site--viewport-max);
   --max-width--full: 100%;
 
   /* Radius variables */
@@ -39,10 +43,10 @@
   --radius--large: 2rem;
 
   /* Border width variables */
-  --border--tiny: 0.08rem;
-  --border--main: 0.094rem;
-  --border--medium: 0.188rem;
-  --border--large: 0.376rem;
+  --border-tiny: 0.08rem;
+  --border-main: 0.094rem;
+  --border-medium: 0.188rem;
+  --border-large: 0.376rem;
 
   /* Focus variables */
   --focus--width: 0.125rem;

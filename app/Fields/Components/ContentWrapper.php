@@ -45,8 +45,7 @@ class ContentWrapper
                             'label' => 'Style',
                             'choices' => [
                                 'primary' => 'Primary',
-                                'secondary' => 'Secondary',
-                                'link' => 'Link Style',
+                                'secondary' => 'Secondary'
                             ],
                             'default_value' => 'primary',
                         ])
