@@ -2,6 +2,7 @@
 
 namespace App\Fields;
 
+use App\Fields\Components\ContentWrapper;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class PageBuilder
@@ -55,20 +56,11 @@ class PageBuilder
                         'default_value' => 'min-h-screen'
                     ])
 
-                ->addLayout('content_section', [
-                    'label' => 'Content Section',
+                ->addLayout('split_content', [
+                    'label' => 'Split Content Section',
                     'display' => 'block'
                 ])
-                    ->addText('heading', [
-                        'label' => 'Section Heading',
-                        'instructions' => 'Optional heading for this section'
-                    ])
-                    ->addWysiwyg('content', [
-                        'label' => 'Content',
-                        'instructions' => 'Rich text content for this section',
-                        'media_upload' => 1,
-                        'toolbar' => 'full'
-                    ])
+                    ->addFields(ContentWrapper::create('content_block'))
                     ->addSelect('layout', [
                         'label' => 'Content Layout',
                         'choices' => [

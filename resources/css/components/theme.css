@@ -36,18 +36,21 @@
     background-color: var(--selection-bg);
     color: var(--selection-text);
   }
+  html {
+    background-color: var(--theme-bg);
+  }
 
   body {
     background-color: var(--theme-bg);
     color: var(--theme-text);
-    font-family: var(--);
-    color: var(--_theme---text);
-    font-size: var(--_text-style---font-size);
-    line-height: var(--_text-style---line-height);
-    font-weight: var(--_text-style---font-weight);
-    letter-spacing: var(--_text-style---letter-spacing);
-    --_column-count---value: 12;
-    text-transform: var(--_text-style---text-transform, none);
+    font-family: var(--font-body);
+    font-size: var(--text-main);
+    line-height: var(--line-height--main);
+    font-weight: var(--text-weight--regular);
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* ===========================================================================

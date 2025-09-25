@@ -1,0 +1,117 @@
+@layer components {
+  /* Base Button Styles */
+  .button {
+    @apply inline-flex items-center justify-center;
+    @apply px-6 py-3;
+    @apply font-medium text-base leading-none;
+    @apply border border-transparent rounded-lg;
+    @apply transition-all duration-200 ease-in-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply cursor-pointer;
+
+    /* Override default link styling */
+    text-decoration: none !important;
+
+    /* Prevent button text from wrapping */
+    white-space: nowrap;
+  }
+
+  /* Override WordPress default link styling for buttons */
+  a.button:where(:not(.wp-element-button)) {
+    text-decoration: none !important;
+  }
+
+  /* Primary Button */
+  .button--primary {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border-color: var(--button-primary-border);
+
+    &:hover,
+    &:focus {
+      background-color: var(--button-primary-bg-hover);
+      color: var(--button-primary-text-hover);
+      border-color: var(--button-primary-border-hover);
+    }
+
+    &:focus {
+      --tw-ring-color: var(--button-primary-bg);
+    }
+  }
+
+  /* Secondary Button */
+  .button--secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border-color: var(--button-secondary-border);
+
+    &:hover,
+    &:focus {
+      background-color: var(--button-secondary-bg-hover);
+      color: var(--button-secondary-text-hover);
+      border-color: var(--button-secondary-border-hover);
+    }
+
+    &:focus {
+      --tw-ring-color: var(--button-secondary-bg);
+    }
+  }
+
+  /* Outline Button */
+  .button--outline {
+    background-color: transparent;
+    color: var(--button-primary-bg);
+    border-color: var(--button-primary-border);
+
+    &:hover,
+    &:focus {
+      background-color: var(--button-primary-bg);
+      color: var(--button-primary-text);
+      border-color: var(--button-primary-border);
+    }
+
+    &:focus {
+      --tw-ring-color: var(--button-primary-bg);
+    }
+  }
+
+  /* Ghost Button */
+  .button--ghost {
+    background-color: transparent;
+    color: var(--theme-text);
+    border-color: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: var(--theme-bg-2);
+      color: var(--theme-text);
+    }
+
+    &:focus {
+      --tw-ring-color: var(--theme-border);
+    }
+  }
+
+  /* Button Sizes */
+  .button--small {
+    @apply px-4 py-2 text-sm;
+  }
+
+  .button--large {
+    @apply px-8 py-4 text-lg;
+  }
+
+  /* Button States */
+  .button:disabled,
+  .button--disabled {
+    @apply opacity-50 cursor-not-allowed;
+
+    &:hover,
+    &:focus {
+      /* Prevent hover states on disabled buttons */
+      background-color: inherit;
+      color: inherit;
+      border-color: inherit;
+    }
+  }
+}

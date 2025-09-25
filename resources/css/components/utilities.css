@@ -18,4 +18,42 @@
     margin-right: auto;
     container: threshold-large / inline-size;
   }
+
+  .u-margin-top-text {
+    margin-top: var(--text-style--margin-top);
+  }
+
+  .u-margin-bottom-text {
+    margin-bottom: var(--text-style--margin-bottom);
+  }
+
+  /* Margin Trim */
+  :is(.u-margin-trim, .u-rich-text, .prose)
+    > :not(
+      :not(.u-cover-absolute, .u-ignore-trim)
+        ~ :not(.u-cover-absolute, .u-ignore-trim)
+    ),
+  :is(.u-margin-trim, .u-rich-text, .prose)
+    > :not(
+      :not(.u-cover-absolute, .u-ignore-trim)
+        ~ :not(.u-cover-absolute, .u-ignore-trim)
+    ).u-display-contents
+    > :first-child {
+    margin-top: 0;
+  }
+
+  :is(.u-margin-trim, .u-rich-text, .prose)
+    > :not(:has(~ :not(.u-cover-absolute, .u-ignore-trim))),
+  :is(.u-margin-trim, .u-rich-text, .prose)
+    > :not(:has(~ :not(.u-cover-absolute, .u-ignore-trim))).u-display-contents
+    > :last-child {
+    margin-bottom: 0;
+  }
+
+  .u-child-contain > * {
+    width: 100%;
+    max-width: inherit !important;
+    margin-inline: 0 !important;
+    margin-top: 0 !important;
+  }
 }

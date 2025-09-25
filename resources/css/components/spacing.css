@@ -1,0 +1,21 @@
+@theme {
+  /* Spacing Main*/
+  --space-1: clamp(0.375rem, calc(0.375rem + 0.125vw), 0.5rem);
+  --space-2: clamp(0.75rem, calc(0.75rem + 0.25vw), 1rem);
+  --space-3: clamp(0.875rem, calc(0.875rem + 0.125vw), 1rem);
+  --space-4: clamp(1.25rem, calc(1.25rem + 0.25vw), 1.5rem);
+  --space-5: clamp(1.75rem, calc(1.75rem + 0.25vw), 2rem);
+  --space-6: clamp(2rem, calc(2rem + 0.5vw), 2.5rem);
+  --space-7: clamp(2.25rem, calc(2.25rem + 0.75vw), 3rem);
+  --space-8: clamp(2.5rem, calc(2.5rem + 1.5vw), 4rem);
+  --space-9: clamp(3rem, calc(3rem + 1.5vw), 4.5rem);
+  --space-10: clamp(3.5rem, calc(3.5rem + 2vw), 5.5rem);
+  --space-11: clamp(4rem, calc(4rem + 2.5vw), 6.5rem);
+  --space-12: clamp(4.5rem, calc(4.5rem + 3vw), 7.5rem);
+
+  /* Section Spacing */
+  --section-space-small: clamp(3rem, calc(3rem + 2vw), 5rem);
+  --section-space-main: clamp(4rem, calc(4rem + 3vw), 7rem);
+  --section-space-large: clamp(5.5rem, calc(5.5rem + 4.5vw), 10rem);
+  --section-space-page-top: clamp(10rem, calc(10rem + 4vw), 14rem);
+}

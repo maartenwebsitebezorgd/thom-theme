@@ -1,7 +1,104 @@
 /* =============================================================================
    Custom Typography Utilities
    ============================================================================= */
+
+/* Font Family */
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue-Thin.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue-Regular.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue-SemiBold.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue-Bold.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue-ExtraBold.woff2') format('woff2'),
+    url('../fonts/HelveticaNeue-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :is(h1, h2, h3, h4, h5, h6, p):not(
+      .u-text-trim-off,
+      :has([class*='u-text-style-'])
+    )::before,
+  [class*='u-text-style-']:not(
+      .u-text-trim-off,
+      :has(h1, h2, h3, h4, h5, h6, p)
+    )::before {
+    content: '';
+    display: table;
+    margin-bottom: calc(-0.5lh + var(--text-trim-top));
+  }
+  :is(h1, h2, h3, h4, h5, h6, p):not(
+      .u-text-trim-off,
+      :has([class*='u-text-style-'])
+    )::after,
+  [class*='u-text-style-']:not(
+      .u-text-trim-off,
+      :has(h1, h2, h3, h4, h5, h6, p)
+    )::after {
+    content: '';
+    display: table;
+    margin-bottom: calc(-0.5lh + var(--text-trim-top));
+  }
+}
+
 @theme {
+  /* Font Family */
+  --font-primary: 'HelveticaNeue', sans-serif;
+  --font-secondary: 'HelveticaNeue', sans-serif;
+
+  /* Semantic Font Assignment */
+  --font-body: var(--font-primary);
+  --font-heading: var(--font-secondary);
+
+  /* Font Trim */
+  --primary-trim-top: 0.33em;
+  --primary-trim-bottom: 0.38em;
+  --text-trim-top: var(--primary-trim-top);
+  --text-trim-bottom: var(--primary-trim-bottom);
+
   /* Line Height */
   --line-height--tiny: 1;
   --line-height--small: 1.1;
@@ -15,47 +112,187 @@
   --letter-spacing--main: 0em;
   --letter-spacing--huge: 0;
 
+  /* Text Weight */
+  --text-weight--thin: 100;
+  --text-weight--regular: 400;
+  --text-weight--medium: 500;
+  --text-weight--semibold: 600;
+  --text-weight--bold: 700;
+  --text-weight--extrabold: 800;
+
   /* Text Transform */
   --text-transform--none: none;
   --text-transform--uppercase: uppercase;
   --text-transform--lowercase: lowercase;
   --text-transform--capitalize: capitalize;
+
+  /* Text Wrap */
+  --text-wrap--none: nowrap;
+  --text-wrap--balance: balance;
+  --text-wrap--pretty: pretty;
+  --text-wrap--wrap: wrap;
+  --text-wrap--break-word: break-word;
+
+  /* Text Size */
+  --text-tiny: clamp(0.75rem, 1vw, 0.875rem);
+  --text-small: clamp(0.875rem, 1.5vw, 1rem);
+  --text-main: clamp(1rem, 2vw, 1.125rem);
+  --text-medium: clamp(1.125rem, 2vw, 1.25rem);
+  --text-large: clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-display: clamp(3.5rem, 6vw, 6rem);
+  --text-h1: clamp(3rem, 6vw, 5rem);
+  --text-h2: clamp(2.5rem, 5vw, 4rem);
+  --text-h3: clamp(2rem, 4vw, 3rem);
+  --text-h4: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h5: clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-h6: clamp(1.125rem, 2vw, 1.5rem);
 }
 
 @layer utilities {
-  .h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
+  .display {
+    font-size: var(--text-display);
+    font-weight: var(--text-weight--bold);
+    font-family: var(--font-heading);
+    line-height: var(--line-height--tiny);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-6);
+  }
+  .u-text-style-h1 {
+    font-size: var(--text-h1);
+    font-weight: var(--text-weight--bold);
+    font-family: var(--font-heading);
     line-height: var(--line-height--small);
-    font-weight: var(--line-height--small);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-5);
   }
 
-  .h2 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.2;
-    font-weight: 600;
+  .u-text-style-h2 {
+    font-size: var(--text-h2);
+    line-height: var(--line-height--small);
+    font-family: var(--font-heading);
+    font-weight: var(--text-weight--bold);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-5);
   }
 
-  .h3 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.3;
-    font-weight: 600;
+  .u-text-style-h3 {
+    font-size: var(--text-h3);
+    line-height: var(--line-height--small);
+    font-family: var(--font-heading);
+    font-weight: var(--text-weight--bold);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-5);
   }
 
-  .h4 {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    line-height: 1.4;
-    font-weight: 500;
+  .u-text-style-h4 {
+    font-size: var(--text-h4);
+    line-height: var(--line-height--medium);
+    font-family: var(--font-heading);
+    font-weight: var(--text-weight--bold);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-4);
   }
 
-  .h5 {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    line-height: 1.5;
-    font-weight: 500;
+  .u-text-style-h5 {
+    font-size: var(--text-h5);
+    line-height: var(--line-height--medium);
+    font-family: var(--font-heading);
+    font-weight: var(--text-weight--bold);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-4);
   }
 
-  .h6 {
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    line-height: 1.5;
-    font-weight: 500;
+  .u-text-style-h6 {
+    font-size: var(--text-h6);
+    line-height: var(--line-height--main);
+    font-family: var(--font-heading);
+    font-weight: var(--text-weight--bold);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--balance);
+    --text-style--margin-top: var(--space-7);
+    --text-style--margin-bottom: var(--space-4);
+  }
+
+  .u-text-style-tiny {
+    font-size: var(--text-tiny);
+    line-height: var(--line-height--main);
+    font-weight: var(--text-weight--regular);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--pretty);
+    --text-style--margin-top: var(--space-4);
+    --text-style--margin-bottom: var(--space-4);
+  }
+
+  .u-text-style-small {
+    font-size: var(--text-small);
+    line-height: var(--line-height--main);
+    font-weight: var(--text-weight--regular);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--pretty);
+    --text-style--margin-top: var(--space-4);
+    --text-style--margin-bottom: var(--space-4);
+  }
+
+  .u-text-style-main {
+    font-size: var(--text-main);
+    line-height: var(--line-height--main);
+    font-weight: var(--text-weight--regular);
+    text-wrap: var(--text-wrap--pretty);
+    --text-style--margin-top: var(--space-4);
+    --text-style--margin-bottom: var(--space-4);
+  }
+
+  .u-text-style-medium {
+    font-size: var(--text-medium);
+    line-height: var(--line-height--main);
+    font-weight: var(--text-weight--regular);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--pretty);
+    --text-style--margin-top: var(--space-4);
+    --text-style--margin-bottom: var(--space-4);
+  }
+
+  .u-text-style-large {
+    font-size: var(--text-large);
+    line-height: var(--line-height--main);
+    font-weight: var(--text-weight--regular);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--pretty);
+    --text-style--margin-top: var(--space-4);
+    --text-style--margin-bottom: var(--space-4);
+  }
+
+  .u-text-style-tagline {
+    font-size: var(--text-main);
+    line-height: var(--line-height--tiny);
+    font-weight: var(--text-weight--regular);
+    letter-spacing: var(--letter-spacing--main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap--pretty);
+    --text-style--margin-top: var(--space-4);
+    --text-style--margin-bottom: var(--space-4);
   }
 }
