@@ -36,6 +36,7 @@
     background-color: var(--selection-bg);
     color: var(--selection-text);
   }
+
   html {
     background-color: var(--theme-bg);
   }
@@ -47,16 +48,54 @@
     font-size: var(--text-main);
     line-height: var(--line-height--main);
     font-weight: var(--text-weight--regular);
-    font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   /* ===========================================================================
+     Light Theme Overrides
+    =========================================================================== */
+  .u-theme-light,
+  [data-theme='light'] {
+    /* Generic Theme */
+    --theme-bg: var(--swatch--light-100);
+    --theme-text: var(--swatch--dark-900);
+    --theme-bg-2: var(--swatch--gray-100);
+    --theme-border: var(--swatch--gray-100);
+    --theme-heading: var(--swatch--dark-900);
+    --theme-accent: var(--swatch--brand-500);
+
+    /* Selection Theme */
+    --selection-bg: var(--swatch--brand-500);
+    --selection-text: var(--swatch--brand-text);
+
+    /* Button Primary Theme */
+    --button-primary-bg: var(--swatch--brand-500);
+    --button-primary-text: var(--swatch--brand-text);
+    --button-primary-border: var(--swatch--brand-500);
+    --button-primary-bg-hover: var(--swatch--brand-600);
+    --button-primary-text-hover: var(--swatch--brand-text);
+    --button-primary-border-hover: var(--swatch--brand-600);
+
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--swatch--transparent);
+    --button-secondary-text: var(--swatch--dark-900);
+    --button-secondary-border: var(--swatch--dark-900);
+    --button-secondary-bg-hover: var(--swatch--dark-800);
+    --button-secondary-text-hover: var(--swatch--light-100);
+    --button-secondary-border-hover: var(--swatch--dark-800);
+  }
+
+  .u-theme-light::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  /* ===========================================================================
      Dark Theme Overrides
     =========================================================================== */
-  .dark,
+  .u-theme-dark,
   [data-theme='dark'] {
     --theme-bg: var(--swatch--dark-900);
     --theme-text: var(--swatch--light-100);
@@ -86,7 +125,7 @@
     --button-secondary-border-hover: var(--swatch--light-100);
   }
 
-  .dark::selection,
+  .u-theme-dark::selection,
   [data-theme='dark']::selection {
     background-color: var(--selection-bg);
     color: var(--selection-text);
@@ -95,7 +134,7 @@
   /* ===========================================================================
      Brand Theme Overrides (applied to a specific section)
     =========================================================================== */
-  .theme-brand,
+  .u-theme-brand,
   [data-theme='brand'] {
     --theme-bg: var(--swatch--brand-500);
     --theme-text: var(--swatch--brand-text);
@@ -125,7 +164,7 @@
     --button-secondary-border-hover: var(--swatch--brand-900);
   }
 
-  .theme-brand::selection,
+  .u-theme-brand::selection,
   [data-theme='brand']::selection {
     background-color: var(--selection-bg);
     color: var(--selection-text);

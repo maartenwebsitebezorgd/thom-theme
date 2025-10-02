@@ -21,7 +21,7 @@
   <div class="content-wrapper {{ $alignment }}">
     
     @if ($eyebrow)
-      <p class="u-text-style-tagline u-margin-bottom-text text-indigo-600">
+      <p class="u-text-style-tagline u-margin-bottom-text">
         {!! $eyebrow !!}
       </p>
     @endif
@@ -39,7 +39,7 @@
     @endif
 
     @if (!empty($buttonGroup))
-      <div class="mt-6 flex flex-wrap gap-4 @if($alignment === 'text-center') justify-center @elseif($alignment === 'text-right') justify-end @else justify-start @endif">
+      <div class="mt-u-6 flex flex-wrap gap-4 @if($alignment === 'text-center') justify-center @elseif($alignment === 'text-right') justify-end @else justify-start @endif">
         @foreach ($buttonGroup as $item)
           @php
             $button = $item['button'];

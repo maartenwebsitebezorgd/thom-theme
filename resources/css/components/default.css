@@ -1,5 +1,5 @@
 /* =============================================================================
-   Custom Default Utilities
+   Deafult Base Styling
    ============================================================================= */
 @layer base {
   ::before,
@@ -27,8 +27,36 @@
   img::selection {
     background: transparent;
   }
+
+  :is(h1, h2, h3, h4, h5, h6, p):not(
+      .u-text-trim-off,
+      :has([class*='u-text-style-'])
+    )::before,
+  [class*='u-text-style-']:not(
+      .u-text-trim-off,
+      :has(h1, h2, h3, h4, h5, h6, p)
+    )::before {
+    content: '';
+    display: table;
+    margin-bottom: calc(-0.5lh + var(--text-trim-top));
+  }
+  :is(h1, h2, h3, h4, h5, h6, p):not(
+      .u-text-trim-off,
+      :has([class*='u-text-style-'])
+    )::after,
+  [class*='u-text-style-']:not(
+      .u-text-trim-off,
+      :has(h1, h2, h3, h4, h5, h6, p)
+    )::after {
+    content: '';
+    display: table;
+    margin-bottom: calc(-0.5lh + var(--text-trim-top));
+  }
 }
 
+/* =============================================================================
+   Deafult Theme Variables
+   ============================================================================= */
 @theme {
   /* Responsive width variables */
   --max-width--small: 50rem;

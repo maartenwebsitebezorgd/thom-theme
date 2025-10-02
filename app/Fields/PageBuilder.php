@@ -2,7 +2,9 @@
 
 namespace App\Fields;
 
-use App\Fields\Components\ContentWrapper;
+use App\Fields\Sections\Hero;
+use App\Fields\Sections\ImageGallery;
+use App\Fields\Sections\SplitContent;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class PageBuilder
@@ -16,102 +18,19 @@ class PageBuilder
     {
         $pageBuilder = new FieldsBuilder('page_builder');
         
-        $pageBuilder
+        $flexibleContent = $pageBuilder
             ->addFlexibleContent('content_blocks', [
                 'label' => 'Page Content',
                 'instructions' => 'Build your page by adding content blocks below.',
                 'button_label' => 'Add Content Block'
-            ])
-                ->addLayout('hero', [
-                    'label' => 'Hero Section',
-                    'display' => 'block'
-                ])
-                    ->addText('title', [
-                        'label' => 'Hero Title',
-                        'instructions' => 'Main heading for the hero section'
-                    ])
-                    ->addTextarea('subtitle', [
-                        'label' => 'Hero Subtitle',
-                        'instructions' => 'Supporting text below the title'
-                    ])
-                    ->addImage('background_image', [
-                        'label' => 'Background Image',
-                        'return_format' => 'array'
-                    ])
-                    ->addSelect('text_color', [
-                        'label' => 'Text Color',
-                        'choices' => [
-                            'white' => 'White',
-                            'black' => 'Black'
-                        ],
-                        'default_value' => 'white'
-                    ])
-                    ->addSelect('height', [
-                        'label' => 'Section Height',
-                        'choices' => [
-                            'min-h-screen' => 'Full Screen',
-                            'min-h-[70vh]' => 'Large',
-                            'min-h-[50vh]' => 'Medium'
-                        ],
-                        'default_value' => 'min-h-screen'
-                    ])
+            ]);
 
-                ->addLayout('split_content', [
-                    'label' => 'Split Content Section',
-                    'display' => 'block'
-                ])
-                    ->addFields(ContentWrapper::create('content_block'))
-                    ->addSelect('layout', [
-                        'label' => 'Content Layout',
-                        'choices' => [
-                            'center' => 'Centered',
-                            'left' => 'Left Aligned',
-                            'wide' => 'Full Width'
-                        ],
-                        'default_value' => 'center'
-                    ])
-                    ->addSelect('background_color', [
-                        'label' => 'Background Color',
-                        'choices' => [
-                            'bg-white' => 'White',
-                            'bg-gray-50' => 'Light Gray',
-                            'bg-gray-100' => 'Gray'
-                        ],
-                        'default_value' => 'bg-white'
-                    ])
+        // Add sections to flexible content
+        $flexibleContent = Hero::addToFlexibleContent($flexibleContent);
+        $flexibleContent = SplitContent::addToFlexibleContent($flexibleContent);
+        $flexibleContent = ImageGallery::addToFlexibleContent($flexibleContent);
 
-                ->addLayout('image_gallery', [
-                    'label' => 'Image Gallery',
-                    'display' => 'block'
-                ])
-                    ->addText('heading', [
-                        'label' => 'Gallery Heading'
-                    ])
-                    ->addGallery('images', [
-                        'label' => 'Gallery Images',
-                        'return_format' => 'array',
-                        'preview_size' => 'medium',
-                        'library' => 'all'
-                    ])
-                    ->addSelect('columns', [
-                        'label' => 'Columns',
-                        'choices' => [
-                            '2' => '2 Columns',
-                            '3' => '3 Columns',
-                            '4' => '4 Columns'
-                        ],
-                        'default_value' => '3'
-                    ])
-                    ->addSelect('aspect_ratio', [
-                        'label' => 'Image Aspect Ratio',
-                        'choices' => [
-                            'aspect-square' => 'Square',
-                            'aspect-[4/3]' => '4:3',
-                            'aspect-[16/9]' => '16:9'
-                        ],
-                        'default_value' => 'aspect-square'
-                    ])
-
+        $flexibleContent
                 ->addLayout('call_to_action', [
                     'label' => 'Call to Action',
                     'display' => 'block'

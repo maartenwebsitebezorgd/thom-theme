@@ -17,6 +17,9 @@
   }
 }
 
+/* Import your fonts */
+@import './components/fonts.css';
+
 /* Import your default */
 @import './components/default.css';
 

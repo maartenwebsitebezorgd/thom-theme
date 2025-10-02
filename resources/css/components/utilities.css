@@ -27,6 +27,14 @@
     margin-bottom: var(--text-style--margin-bottom);
   }
 
+  .u-background-1 {
+    background-color: var(--theme-bg);
+  }
+
+  .u-background-2 {
+    background-color: var(--theme-bg-2);
+  }
+
   /* Margin Trim */
   :is(.u-margin-trim, .u-rich-text, .prose)
     > :not(
