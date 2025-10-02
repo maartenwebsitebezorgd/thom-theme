@@ -2,6 +2,10 @@
 
 namespace App\Fields\Sections;
 
+use App\Fields\Components\Background;
+use App\Fields\Components\ContentWrapper;
+use App\Fields\Components\StyleSettings;
+use App\Fields\Components\Visual;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Hero
@@ -18,34 +22,54 @@ class Hero
                 'label' => 'Hero Section',
                 'display' => 'block'
             ])
-                ->addText('title', [
-                    'label' => 'Hero Title',
-                    'instructions' => 'Main heading for the hero section'
-                ])
-                ->addTextarea('subtitle', [
-                    'label' => 'Hero Subtitle',
-                    'instructions' => 'Supporting text below the title'
-                ])
-                ->addImage('background_image', [
-                    'label' => 'Background Image',
-                    'return_format' => 'array'
-                ])
-                ->addSelect('text_color', [
-                    'label' => 'Text Color',
-                    'choices' => [
-                        'white' => 'White',
-                        'black' => 'Black'
-                    ],
-                    'default_value' => 'white'
-                ])
-                ->addSelect('height', [
-                    'label' => 'Section Height',
-                    'choices' => [
-                        'min-h-screen' => 'Full Screen',
-                        'min-h-[70vh]' => 'Large',
-                        'min-h-[50vh]' => 'Medium'
-                    ],
-                    'default_value' => 'min-h-screen'
-                ]);
+            ->addFields(Background::create('background_block'))
+            ->addFields(Visual::create('visual_block'))
+            ->addFields(ContentWrapper::create('content_block', [
+                'heading_tag' => 'h1',
+                'heading_text_style' => 'u-text-style-h1',
+                'paragraph_text_style' => 'u-text-style-medium',
+            ]))
+            ->addFields(StyleSettings::create('style_settings'))
+            ->addSelect('content_position', [
+                'label' => 'Content Position',
+                'choices' => [
+                    'center' => 'Center',
+                    'left' => 'Left',
+                    'right' => 'Right',
+                ],
+                'default_value' => 'center',
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('vertical_position', [
+                'label' => 'Vertical Position',
+                'choices' => [
+                    'top' => 'Top',
+                    'center' => 'Center',
+                    'bottom' => 'Bottom',
+                ],
+                'default_value' => 'center',
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('gap_size', [
+                'label' => 'Gap Between Columns',
+                'choices' => [
+                    'gap-u-4' => 'Small',
+                    'gap-u-6' => 'Medium',
+                    'gap-u-8' => 'Large',
+                    'gap-u-12' => 'Extra Large',
+                ],
+                'default_value' => 'gap-u-8'
+            ])
+            ->addSelect('height', [
+                'label' => 'Section Height',
+                'choices' => [
+                    'min-h-screen' => 'Full Screen (100vh)',
+                    'min-h-[80vh]' => 'Large (80vh)',
+                    'min-h-[60vh]' => 'Medium (60vh)',
+                    'min-h-[40vh]' => 'Small (40vh)',
+                ],
+                'default_value' => 'min-h-screen',
+                'wrapper' => ['width' => '33'],
+            ]);
     }
 }

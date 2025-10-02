@@ -9,10 +9,19 @@ class ContentWrapper
     /**
      * Creates a 'content_wrapper' group field.
      * @param string $name The name of the group field.
+     * @param array $defaults Override default values for specific contexts
      * @return FieldsBuilder
      */
-    public static function create($name = 'content_wrapper')
+    public static function create($name = 'content_wrapper', $defaults = [])
     {
+        // Merge with default values
+        $defaults = array_merge([
+            'alignment' => 'text-left',
+            'heading_tag' => 'h2',
+            'heading_text_style' => 'u-text-style-h2',
+            'paragraph_text_style' => 'u-text-style-main',
+        ], $defaults);
+
         $contentWrapper = new FieldsBuilder($name);
 
         $contentWrapper
@@ -59,7 +68,7 @@ class ContentWrapper
                             'text-center' => 'Center',
                             'text-right' => 'Right',
                         ],
-                        'default_value' => 'text-left',
+                        'default_value' => $defaults['alignment'],
                         'wrapper' => ['width' => '33'],
                     ])
                     ->addSelect('heading_tag', [
@@ -72,7 +81,7 @@ class ContentWrapper
                             'p' => 'p',
                             'div' => 'div',
                         ],
-                        'default_value' => 'h2',
+                        'default_value' => $defaults['heading_tag'],
                         'wrapper' => ['width' => '33'],
                     ])
                     ->addSelect('heading_text_style', [
@@ -87,7 +96,7 @@ class ContentWrapper
                             'u-text-style-h5' => 'H5 Style',
                             'u-text-style-h6' => 'H6 Style',
                         ],
-                        'default_value' => 'u-text-style-h2',
+                        'default_value' => $defaults['heading_text_style'],
                         'wrapper' => ['width' => '33'],
                     ])
                     ->addSelect('paragraph_text_style', [
@@ -99,7 +108,7 @@ class ContentWrapper
                             'u-text-style-medium' => 'Medium Style',
                             'u-text-style-large' => 'Large Style',
                         ],
-                        'default_value' => 'u-text-style-main',
+                        'default_value' => $defaults['paragraph_text_style'],
                         'wrapper' => ['width' => '33'],
                     ])
             ->endGroup();

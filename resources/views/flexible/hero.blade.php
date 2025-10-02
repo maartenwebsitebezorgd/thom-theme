@@ -1,46 +1,66 @@
-{{-- resources/views/flexible/hero.blade.php --}}
 @php
-  $title = get_sub_field('title');
-  $subtitle = get_sub_field('subtitle');
-  $background = get_sub_field('background_image');
-  $textColor = get_sub_field('text_color') ?: 'white';
-  $height = get_sub_field('height') ?: 'min-h-screen';
+$backgroundBlock = get_sub_field('background_block');
+$visualBlock = get_sub_field('visual_block');
+$contentBlock = get_sub_field('content_block');
+$styleSettings = get_sub_field('style_settings');
+
+// Layout settings
+$contentPosition = get_sub_field('content_position') ?? 'center';
+$verticalPosition = get_sub_field('vertical_position') ?? 'center';
+$height = get_sub_field('height') ?? 'min-h-screen';
+$gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
+
+
+// Style settings
+$theme = $styleSettings['theme'] ?? 'inherit';
+$paddingTop = $styleSettings['padding_top'] ?? 'pt-0';
+$paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-0';
+$bgColor = $styleSettings['background_color'] ?? null;
+
+//image settings
+$visualFullWidth = $visualBlock['full_width'] ?? false;
+
+
+// Map positions to flexbox classes
+$horizontalAlign = match($contentPosition) {
+'left' => 'justify-start',
+'right' => 'justify-end',
+default => 'justify-center'
+};
+
+$verticalAlign = match($verticalPosition) {
+'top' => 'items-start',
+'bottom' => 'items-end',
+default => 'items-center'
+};
+
+// Check if visual should stretch with content
+$shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
+
+// Check if background has content
+$hasBackground = !empty($backgroundBlock['image']) || !empty($backgroundBlock['video_url']);
 @endphp
 
-<section class="hero relative {{ $height }} flex items-center justify-center overflow-hidden @if($background) bg-cover bg-center @else bg-gray-900 @endif"
-         @if($background) style="background-image: url('{{ $background['sizes']['large'] ?? $background['url'] }}')" @endif>
-  
-  {{-- Background overlay for better text readability --}}
-  @if($background)
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+<section data-theme="{{ $theme }}" class="hero u-section relative {{ $height }} {{ $paddingTop }} {{ $paddingBottom }} overflow-hidden @if ($bgColor) {{ $bgColor }} @endif">
+
+  {{-- Background Image/Video (only show if content exists) --}}
+  @if ($hasBackground)
+  <x-background :background="$backgroundBlock" />
   @endif
-  
-  {{-- Hero content --}}
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center text-{{ $textColor }}">
-      
-      @if($title)
-        <h1 class="h1 mb-6">
-          {!! $title !!}
-        </h1>
-      @endif
-      
-      @if($subtitle)
-        <div class="text-lg sm:text-xl md:text-2xl leading-relaxed max-w-4xl mx-auto opacity-90">
-          {!! nl2br(e($subtitle)) !!}
-        </div>
-      @endif
-      
+
+  {{-- Hero Content --}}
+  <div class="u-container relative z-10">
+    <div class="split-content_layout grid grid-cols-1 lg:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlign }}">
+      {{-- Content Column --}}
+      <div class="content-column flex {{ $verticalAlign }}">
+        <x-content-wrapper :content="$contentBlock" />
+      </div>
+
+      {{-- Visual Column --}}
+      <div class="visual-column {{ $shouldStretch ? 'flex' : '' }} @if($visualFullWidth) max-w-none lg:w-[50vw] w-[100vw] @endif">
+        <x-visual :visual="$visualBlock" class="{{ $shouldStretch ? 'flex-1' : '' }}" />
+      </div>
     </div>
   </div>
-  
-  {{-- Optional: Scroll indicator --}}
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-{{ $textColor }} opacity-60">
-    <div class="animate-bounce">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
-    </div>
-  </div>
-  
+
 </section>

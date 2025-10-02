@@ -61,10 +61,10 @@
   --text-medium: clamp(1.125rem, 2vw, 1.25rem);
   --text-large: clamp(1.25rem, 2.5vw, 1.5rem);
   --text-display: clamp(3.5rem, 6vw, 6rem);
-  --text-h1: clamp(3rem, 6vw, 5rem);
-  --text-h2: clamp(2.5rem, 5vw, 4rem);
-  --text-h3: clamp(2rem, 4vw, 3rem);
-  --text-h4: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h1: clamp(3rem, 4.5vw, 4.5rem);
+  --text-h2: clamp(2.5rem, 4vw, 3.5rem);
+  --text-h3: clamp(2rem, 3vw, 3rem);
+  --text-h4: clamp(1.5rem, 2vw, 2.25rem);
   --text-h5: clamp(1.25rem, 2.5vw, 1.75rem);
   --text-h6: clamp(1.125rem, 2vw, 1.5rem);
 }
@@ -126,7 +126,7 @@
     text-transform: var(--text-transform--none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
-    --text-style--margin-bottom: var(--spacing-u-4);
+    --text-style--margin-bottom: var(--spacing-u-5);
   }
 
   .u-text-style-h5 {
