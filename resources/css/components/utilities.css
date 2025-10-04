@@ -64,4 +64,32 @@
     margin-inline: 0 !important;
     margin-top: 0 !important;
   }
+
+  .u-max-width-12ch {
+    max-width: 12ch;
+  }
+  .u-max-width-15ch {
+    max-width: 15ch;
+  }
+  .u-max-width-20ch {
+    max-width: 20ch;
+  }
+  .u-max-width-30ch {
+    max-width: 30ch;
+  }
+  .u-max-width-40ch {
+    max-width: 40ch;
+  }
+  .u-max-width-50ch {
+    max-width: 50ch;
+  }
+  .u-max-width-60ch {
+    max-width: 60ch;
+  }
+  .u-max-width-70ch {
+    max-width: 70ch;
+  }
+  .u-max-width-80ch {
+    max-width: 80ch;
+  }
 }

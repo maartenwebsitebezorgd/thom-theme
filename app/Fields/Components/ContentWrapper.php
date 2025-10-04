@@ -111,6 +111,23 @@ class ContentWrapper
                         'default_value' => $defaults['paragraph_text_style'],
                         'wrapper' => ['width' => '33'],
                     ])
+                    ->addSelect('max_width', [
+                        'label' => 'Max Width',
+                        'choices' => [
+                            '' => 'None',
+                            'u-max-width-12ch' => '12ch (Very Narrow)',
+                            'u-max-width-15ch' => '15ch',
+                            'u-max-width-20ch' => '20ch',
+                            'u-max-width-30ch' => '30ch',
+                            'u-max-width-40ch' => '40ch',
+                            'u-max-width-50ch' => '50ch',
+                            'u-max-width-60ch' => '60ch',
+                            'u-max-width-70ch' => '70ch',
+                            'u-max-width-80ch' => '80ch (Very Wide)',
+                        ],
+                        'default_value' => '',
+                        'wrapper' => ['width' => '33'],
+                    ])
             ->endGroup();
 
         return $contentWrapper;

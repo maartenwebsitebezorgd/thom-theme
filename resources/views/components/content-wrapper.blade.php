@@ -14,11 +14,12 @@ $alignment = $content['alignment'] ?? 'text-left';
 $headingTag = $content['heading_tag'] ?? 'h2';
 $headingTextStyle = $content['heading_text_style'] ?? 'u-text-style-h2';
 $paragraphTextStyle = $content['paragraph_text_style'] ?? 'u-text-style-main';
+$maxWidth = $content['max_width'] ?? '';
 
 @endphp
 
 @if ($eyebrow || $heading || $paragraph || !empty($buttonGroup))
-<div class="content-wrapper {{ $alignment }}">
+<div class="content-wrapper {{ $alignment }} {{ $maxWidth }}">
 
   @if ($eyebrow)
   <p class="u-text-style-tagline u-margin-bottom-text">
