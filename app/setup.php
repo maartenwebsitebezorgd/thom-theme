@@ -8,11 +8,19 @@ namespace App;
 
 use App\Fields\PageBuilder;
 use App\Fields\ServicesOptions;
+use App\PostTypes\Cases;
+use App\PostTypes\Team;
+use App\PostTypes\Videos;
 use Illuminate\Support\Facades\Vite;
 
 // Initialize ACF Fields
 new PageBuilder();
 new ServicesOptions();
+
+// Initialize Post Types
+new Cases();
+new Team();
+new Videos();
 
 /**
  * Inject styles into the block editor.

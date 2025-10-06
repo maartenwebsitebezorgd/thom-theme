@@ -15,28 +15,26 @@ $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 $bgColor = $styleSettings['background_color'] ?? null;
 @endphp
 
-<section data-theme="{{ $theme }}" class="benefits-slider u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="benefits-slider overflow-clip  u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
   <div class="u-container">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
     @if ($contentBlock)
-    <div class="mb-u-8">
-      <x-content-wrapper :content="$contentBlock" />
-    </div>
+    <x-content-wrapper :content="$contentBlock" />
     @endif
 
     {{-- Swiper Slider --}}
     @if ($cards)
     <x-swiper :settings="$swiperSettings">
       @foreach ($cards as $cardItem)
-        <div class="swiper-slide">
-          <x-benefit-card
-            :card="$cardItem['benefit_card']"
-            :section-bg-color="$bgColor"
-            :section-theme="$theme"
-            :card-theme="$cardTheme"
-            :card-bg-color="$cardBgColor" />
-        </div>
+      <div class="swiper-slide">
+        <x-benefit-card
+          :card="$cardItem['benefit_card']"
+          :section-bg-color="$bgColor"
+          :section-theme="$theme"
+          :card-theme="$cardTheme"
+          :card-bg-color="$cardBgColor" />
+      </div>
       @endforeach
     </x-swiper>
     @endif

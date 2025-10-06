@@ -13,8 +13,8 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
 
 // Style settings
 $theme = $styleSettings['theme'] ?? 'inherit';
-$paddingTop = $styleSettings['padding_top'] ?? 'pt-0';
-$paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-0';
+$paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
+$paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 $bgColor = $styleSettings['background_color'] ?? null;
 
 //image settings

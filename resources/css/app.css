@@ -18,26 +18,25 @@
 }
 
 /* Import your fonts */
-@import './components/fonts.css';
+@import './theme/fonts.css';
 
 /* Import your default */
-@import './components/default.css';
+@import './theme/default.css';
 
 /* Import your theme */
-@import './components/theme.css';
+@import './theme/theme.css';
 
 /* Import your typography */
-@import './components/typography.css';
+@import './theme/typography.css';
 
 /* Import Spacing */
-@import './components/spacing.css';
+@import './theme/spacing.css';
 
 /* Import your utilities */
-@import './components/button.css';
+@import './theme/utilities.css';
 
 /* Import component styles */
 @import './components/navigation.css';
 @import './components/swiper.css';
-
-/* Import your utilities */
-@import './components/utilities.css';
+@import './components/logo-slider.css';
+@import './components/button.css';

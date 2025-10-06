@@ -1,0 +1,86 @@
+/* Logo Slider */
+.logo-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.logo-slider-wrapper.fade-edges {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    var(--theme-bg) 10%,
+    var(--theme-bg) 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    var(--theme-bg) 10%,
+    var(--theme-bg) 90%,
+    transparent
+  );
+}
+
+.logo-slider-track {
+  display: flex;
+  gap: var(--spacing-u-7);
+  width: fit-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.logo-slider-track.animate {
+  animation: scroll-left var(--scroll-duration, 30s) linear infinite;
+}
+
+.logo-slide {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  min-width: 9rem;
+  max-width: 12rem;
+}
+
+.logo-slide img {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Grayscale effect (optional) */
+.logo-slide.grayscale-effect img {
+  filter: grayscale(100%) opacity(0.6);
+  transition: filter 0.3s ease;
+}
+
+.logo-slide.grayscale-effect img:hover {
+  filter: grayscale(0%) opacity(1);
+}
+
+/* Pause animation on hover (optional) */
+.logo-slider-wrapper.pause-on-hover:hover .logo-slider-track {
+  animation-play-state: paused;
+}
+
+/* Seamless scroll animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc((-100% / 3) - (var(--spacing-u-7) / 3)));
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-slide {
+    height: 2.5rem;
+    max-width: 8rem;
+  }
+}

@@ -11,10 +11,11 @@ $buttonGroup = $content['button_group'] ?? [];
 
 // Process heading to add accent color to text between ==
 if ($heading) {
-    $heading = preg_replace('/==(.+?)==/', '<span class="u-text-accent">$1</span>', $heading);
+$heading = preg_replace('/==(.+?)==/', '<span class="u-text-accent">$1</span>', $heading);
 }
 
 // Settings
+$marginBottom = $content['margin_bottom'] ?? 'mb-u-8';
 $alignment = $content['alignment'] ?? 'text-left';
 $headingTag = $content['heading_tag'] ?? 'h2';
 $headingTextStyle = $content['heading_text_style'] ?? 'u-text-style-h2';
@@ -26,7 +27,7 @@ $alignment = 'mx-auto text-center';
 @endphp
 
 @if ($eyebrow || $heading || $paragraph || !empty($buttonGroup))
-<div class="content-wrapper {{ $alignment }} {{ $maxWidth }}">
+<div class="content-wrapper u-margin-trim {{ $alignment }} {{ $maxWidth }} {{ $marginBottom }}">
 
   @if ($eyebrow)
   <p class="u-text-style-tagline u-margin-bottom-text">

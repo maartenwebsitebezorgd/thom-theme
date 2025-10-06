@@ -2,9 +2,6 @@
    Custom Typography Utilities
    ============================================================================= */
 
-@layer base {
-}
-
 @theme {
   /* Font Family */
   --font-primary: 'HelveticaNeue', sans-serif;
@@ -81,6 +78,8 @@
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-6);
   }
+
+  h1,
   .u-text-style-h1 {
     font-size: var(--text-h1);
     font-weight: var(--text-weight--bold);
@@ -93,6 +92,7 @@
     --text-style--margin-bottom: var(--spacing-u-5);
   }
 
+  h2,
   .u-text-style-h2 {
     font-size: var(--text-h2);
     line-height: var(--line-height--small);
@@ -105,6 +105,7 @@
     --text-style--margin-bottom: var(--spacing-u-5);
   }
 
+  h3,
   .u-text-style-h3 {
     font-size: var(--text-h3);
     line-height: var(--line-height--small);
@@ -117,6 +118,7 @@
     --text-style--margin-bottom: var(--spacing-u-5);
   }
 
+  h4,
   .u-text-style-h4 {
     font-size: var(--text-h4);
     line-height: var(--line-height--medium);
@@ -129,6 +131,7 @@
     --text-style--margin-bottom: var(--spacing-u-5);
   }
 
+  h5,
   .u-text-style-h5 {
     font-size: var(--text-h5);
     line-height: var(--line-height--medium);
@@ -141,6 +144,7 @@
     --text-style--margin-bottom: var(--spacing-u-4);
   }
 
+  h6,
   .u-text-style-h6 {
     font-size: var(--text-h6);
     line-height: var(--line-height--main);
@@ -175,6 +179,7 @@
     --text-style--margin-bottom: var(--spacing-u-4);
   }
 
+  p,
   .u-text-style-main {
     font-size: var(--text-main);
     line-height: var(--line-height--main);

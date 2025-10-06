@@ -65,14 +65,14 @@
 .swiper-button-prev,
 .swiper-button-next {
   color: var(--theme-text);
-  background: color-mix(in srgb, var(--theme-text) 6%, #ffffff);
+  background: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
   width: var(--spacing-u-5);
   height: var(--spacing-u-5);
   border-radius: var(--radius--tiny);
   border-width: var(--border-main);
   border-style: solid;
   border-color: var(--theme-border);
-  transition: background 200ms ease-out;
+  transition: background-color 100ms ease-out;
   pointer-events: auto;
   cursor: pointer;
   display: flex;
@@ -87,7 +87,7 @@
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  background: color-mix(in srgb, var(--theme-text) 12%, #ffffff);
+  background: color-mix(in srgb, var(--theme-bg) 60%, var(--theme-text));
 }
 
 .swiper-button-prev svg,
@@ -104,6 +104,7 @@
 .swiper-pagination-bullet {
   background: var(--theme-text);
   opacity: 0.15;
+  transition: background-color 100ms ease-out;
 }
 
 .swiper-pagination-bullet-active {

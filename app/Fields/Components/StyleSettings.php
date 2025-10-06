@@ -9,10 +9,19 @@ class StyleSettings
     /**
      * Creates a 'style_settings' group field.
      * @param string $name The name of the group field.
+     * @param array $defaults Override default values for specific contexts
      * @return FieldsBuilder
      */
-    public static function create($name = 'style_settings')
+    public static function create($name = 'style_settings', $defaults = [])
     {
+        // Merge with default values
+        $defaults = array_merge([
+            'theme' => 'default',
+            'background_color' => '',
+            'padding_top' => 'pt-section-main',
+            'padding_bottom' => 'pb-section-main',
+        ], $defaults);
+
         $styleSettings = new FieldsBuilder($name);
 
         $styleSettings
@@ -29,7 +38,7 @@ class StyleSettings
                             'dark' => 'Dark',
                             'brand' => 'Brand',
                         ],
-                        'default_value' => 'default',
+                        'default_value' => $defaults['theme'],
                         'wrapper' => ['width' => '25'],
                     ])
                     ->addSelect('background_color', [
@@ -39,7 +48,7 @@ class StyleSettings
                             'u-background-1' => 'Background One',
                             'u-background-2' => 'Background Two',
                         ],
-                        'default_value' => '',
+                        'default_value' => $defaults['background_color'],
                         'wrapper' => ['width' => '25'],
                     ])
                     ->addSelect('padding_top', [
@@ -51,7 +60,7 @@ class StyleSettings
                             'pt-section-medium' => 'Medium',
                             'pt-section-large' => 'Large',
                         ],
-                        'default_value' => 'pt-section-main',
+                        'default_value' => $defaults['padding_top'],
                         'wrapper' => ['width' => '25'],
                     ])
                     ->addSelect('padding_bottom', [
@@ -63,7 +72,7 @@ class StyleSettings
                             'pb-section-medium' => 'Medium',
                             'pb-section-large' => 'Large',
                         ],
-                        'default_value' => 'pb-section-main',
+                        'default_value' => $defaults['padding_bottom'],
                         'wrapper' => ['width' => '25'],
                     ])
                     ->addTrueFalse('enable_clip_path', [
