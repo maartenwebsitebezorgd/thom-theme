@@ -127,7 +127,7 @@
 @endphp
 
 @if ($image || $isVideo)
-  <figure class="{{ implode(' ', array_filter($containerClasses)) }}"
+  <figure class="{{ implode(' ', array_filter($containerClasses)) }} !mb-0"
           {!! $styleAttribute !!}>
 
     {{-- Video Content --}}

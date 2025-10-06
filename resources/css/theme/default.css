@@ -82,6 +82,12 @@
   --focus--offset-outer: 0.1875rem;
 
   /* Swatch variables */
+
+  /* Swatch Blue */
+   --swatch--blue-500: #c6fb50;
+  
+  /* Swatch Blue */ 
+
   /* Gray Scale */
   --swatch--transparent: transparent;
   --swatch--gray-100: #f4f4f4;
