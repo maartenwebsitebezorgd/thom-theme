@@ -92,4 +92,8 @@
   .u-max-width-80ch {
     max-width: 80ch;
   }
+
+  .u-text-accent {
+    color: var(--theme-accent);
+  }
 }

@@ -3,8 +3,10 @@
 namespace App\Fields;
 
 use App\Fields\Sections\BenefitsGrid;
+use App\Fields\Sections\BenefitsSlider;
 use App\Fields\Sections\Hero;
 use App\Fields\Sections\ImageGallery;
+use App\Fields\Sections\ServicesGrid;
 use App\Fields\Sections\SplitContent;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -30,6 +32,8 @@ class PageBuilder
         $flexibleContent = Hero::addToFlexibleContent($flexibleContent);
         $flexibleContent = SplitContent::addToFlexibleContent($flexibleContent);
         $flexibleContent = BenefitsGrid::addToFlexibleContent($flexibleContent);
+        $flexibleContent = BenefitsSlider::addToFlexibleContent($flexibleContent);
+        $flexibleContent = ServicesGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = ImageGallery::addToFlexibleContent($flexibleContent);
 
         $flexibleContent

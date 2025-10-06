@@ -6,7 +6,13 @@
 
 namespace App;
 
+use App\Fields\PageBuilder;
+use App\Fields\ServicesOptions;
 use Illuminate\Support\Facades\Vite;
+
+// Initialize ACF Fields
+new PageBuilder();
+new ServicesOptions();
 
 /**
  * Inject styles into the block editor.

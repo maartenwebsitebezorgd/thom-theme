@@ -53,6 +53,11 @@
     text-rendering: optimizeLegibility;
   }
 
+  [data-theme] {
+    color: var(--theme-text);
+    background-color: var(--theme-bg);
+  }
+
   /* ===========================================================================
      Light Theme Overrides
     =========================================================================== */

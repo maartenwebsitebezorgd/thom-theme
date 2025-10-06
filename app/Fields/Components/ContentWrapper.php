@@ -29,105 +29,105 @@ class ContentWrapper
                 'label' => 'Content Block',
                 'layout' => 'block',
             ])
-                ->addTab('Content', ['placement' => 'left'])
-                    ->addText('eyebrow', [
-                        'label' => 'Eyebrow Text',
-                    ])
-                    ->addText('heading', [
-                        'label' => 'Heading',
-                    ])
-                    ->addWysiwyg('paragraph', [
-                        'label' => 'Paragraph',
-                        'toolbar' => 'basic',
-                        'media_upload' => 0,
-                    ])
-                    ->addRepeater('button_group', [
-                        'label' => 'Button Group',
-                        'layout' => 'table',
-                        'button_label' => 'Add Button',
-                        'min' => 0,
-                    ])
-                        ->addLink('button', [
-                            'label' => 'Button',
-                        ])
-                        ->addSelect('style', [
-                            'label' => 'Style',
-                            'choices' => [
-                                'primary' => 'Primary',
-                                'secondary' => 'Secondary'
-                            ],
-                            'default_value' => 'primary',
-                        ])
-                    ->endRepeater()
+            ->addTab('Content', ['placement' => 'left'])
+            ->addText('eyebrow', [
+                'label' => 'Eyebrow Text',
+            ])
+            ->addText('heading', [
+                'label' => 'Heading',
+            ])
+            ->addWysiwyg('paragraph', [
+                'label' => 'Paragraph',
+                'toolbar' => 'basic',
+                'media_upload' => 0,
+            ])
+            ->addRepeater('button_group', [
+                'label' => 'Button Group',
+                'layout' => 'table',
+                'button_label' => 'Add Button',
+                'min' => 0,
+            ])
+            ->addLink('button', [
+                'label' => 'Button',
+            ])
+            ->addSelect('style', [
+                'label' => 'Style',
+                'choices' => [
+                    'primary' => 'Primary',
+                    'secondary' => 'Secondary'
+                ],
+                'default_value' => 'primary',
+            ])
+            ->endRepeater()
 
-                ->addTab('Settings', ['placement' => 'left'])
-                    ->addSelect('alignment', [
-                        'label' => 'Text Alignment',
-                        'choices' => [
-                            'text-left' => 'Left',
-                            'text-center' => 'Center',
-                            'text-right' => 'Right',
-                        ],
-                        'default_value' => $defaults['alignment'],
-                        'wrapper' => ['width' => '33'],
-                    ])
-                    ->addSelect('heading_tag', [
-                        'label' => 'Heading Tag',
-                        'choices' => [
-                            'h1' => 'H1',
-                            'h2' => 'H2',
-                            'h3' => 'H3',
-                            'h4' => 'H4',
-                            'p' => 'p',
-                            'div' => 'div',
-                        ],
-                        'default_value' => $defaults['heading_tag'],
-                        'wrapper' => ['width' => '33'],
-                    ])
-                    ->addSelect('heading_text_style', [
-                        'label' => 'Heading Text Style',
-                        'instructions' => 'e.g., h1, h2, large',
-                        'choices' => [
-                            'display' => 'Display',
-                            'u-text-style-h1' => 'H1 Style',
-                            'u-text-style-h2' => 'H2 Style',
-                            'u-text-style-h3' => 'H3 Style',
-                            'u-text-style-h4' => 'H4 Style',
-                            'u-text-style-h5' => 'H5 Style',
-                            'u-text-style-h6' => 'H6 Style',
-                        ],
-                        'default_value' => $defaults['heading_text_style'],
-                        'wrapper' => ['width' => '33'],
-                    ])
-                    ->addSelect('paragraph_text_style', [
-                        'label' => 'Paragraph Text Style',
-                        'instructions' => 'e.g., small, large',
-                        'choices' => [
-                            'u-text-style-small' => 'Small Style',
-                            'u-text-style-main' => 'Main Style',
-                            'u-text-style-medium' => 'Medium Style',
-                            'u-text-style-large' => 'Large Style',
-                        ],
-                        'default_value' => $defaults['paragraph_text_style'],
-                        'wrapper' => ['width' => '33'],
-                    ])
-                    ->addSelect('max_width', [
-                        'label' => 'Max Width',
-                        'choices' => [
-                            '' => 'None',
-                            'u-max-width-12ch' => '12ch (Very Narrow)',
-                            'u-max-width-15ch' => '15ch',
-                            'u-max-width-20ch' => '20ch',
-                            'u-max-width-30ch' => '30ch',
-                            'u-max-width-40ch' => '40ch',
-                            'u-max-width-50ch' => '50ch',
-                            'u-max-width-60ch' => '60ch',
-                            'u-max-width-70ch' => '70ch',
-                            'u-max-width-80ch' => '80ch (Very Wide)',
-                        ],
-                        'default_value' => '',
-                        'wrapper' => ['width' => '33'],
-                    ])
+            ->addTab('Settings', ['placement' => 'left'])
+            ->addSelect('alignment', [
+                'label' => 'Text Alignment',
+                'choices' => [
+                    'text-left' => 'Left',
+                    'text-center' => 'Center',
+                    'text-right' => 'Right',
+                ],
+                'default_value' => $defaults['alignment'],
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('heading_tag', [
+                'label' => 'Heading Tag',
+                'choices' => [
+                    'h1' => 'H1',
+                    'h2' => 'H2',
+                    'h3' => 'H3',
+                    'h4' => 'H4',
+                    'p' => 'p',
+                    'div' => 'div',
+                ],
+                'default_value' => $defaults['heading_tag'],
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('heading_text_style', [
+                'label' => 'Heading Text Style',
+                'instructions' => 'e.g., h1, h2, large',
+                'choices' => [
+                    'display' => 'Display',
+                    'u-text-style-h1' => 'H1 Style',
+                    'u-text-style-h2' => 'H2 Style',
+                    'u-text-style-h3' => 'H3 Style',
+                    'u-text-style-h4' => 'H4 Style',
+                    'u-text-style-h5' => 'H5 Style',
+                    'u-text-style-h6' => 'H6 Style',
+                ],
+                'default_value' => $defaults['heading_text_style'],
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('paragraph_text_style', [
+                'label' => 'Paragraph Text Style',
+                'instructions' => 'e.g., small, large',
+                'choices' => [
+                    'u-text-style-small' => 'Small Style',
+                    'u-text-style-main' => 'Main Style',
+                    'u-text-style-medium' => 'Medium Style',
+                    'u-text-style-large' => 'Large Style',
+                ],
+                'default_value' => $defaults['paragraph_text_style'],
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('max_width', [
+                'label' => 'Max Width',
+                'choices' => [
+                    '' => 'None',
+                    'u-max-width-12ch' => '12ch (Very Narrow)',
+                    'u-max-width-15ch' => '15ch',
+                    'u-max-width-20ch' => '20ch',
+                    'u-max-width-30ch' => '30ch',
+                    'u-max-width-40ch' => '40ch',
+                    'u-max-width-50ch' => '50ch',
+                    'u-max-width-60ch' => '60ch',
+                    'u-max-width-70ch' => '70ch',
+                    'u-max-width-80ch' => '80ch (Very Wide)',
+                ],
+                'default_value' => 'u-max-width-70ch',
+                'wrapper' => ['width' => '33'],
+            ])
             ->endGroup();
 
         return $contentWrapper;

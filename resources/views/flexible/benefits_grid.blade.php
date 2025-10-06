@@ -5,7 +5,7 @@ $styleSettings = get_sub_field('style_settings');
 
 // Grid settings
 $gridColumnsDesktop = get_sub_field('grid_columns_desktop') ?? 'grid-cols-4';
-$gridColumnsTablet = get_sub_field('grid_columns_tablet') ?? 'md:grid-cols-2';
+$gridColumnsTablet = get_sub_field('grid_columns_tablet') ?? 'grid-cols-2';
 $gridColumnsMobile = get_sub_field('grid_columns_mobile') ?? 'grid-cols-1';
 $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 
@@ -28,9 +28,9 @@ $bgColor = $styleSettings['background_color'] ?? null;
 
     {{-- Cards Grid --}}
     @if ($cards)
-    <div class="cards-grid grid {{ $gridColumnsMobile }} {{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
+    <div class="cards-grid grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
       @foreach ($cards as $cardItem)
-      <x-benefit-card :card="$cardItem['benefit_card']" />
+      <x-benefit-card :card="$cardItem['benefit_card']" :section-bg-color="$bgColor" :section-theme="$theme" />
       @endforeach
     </div>
     @endif

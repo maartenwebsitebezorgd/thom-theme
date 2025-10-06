@@ -34,6 +34,29 @@ class BenefitCard
                 'label' => 'Text',
                 'rows' => 4,
             ])
+            ->addSelect('theme', [
+                'label' => 'Theme',
+                'choices' => [
+                    'auto' => 'Auto (Opposite of Section)',
+                    'inherit' => 'Inherit',
+                    'light' => 'Light',
+                    'dark' => 'Dark',
+                    'brand' => 'Brand',
+                ],
+                'default_value' => 'inherit',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('background_color', [
+                'label' => 'Background Color',
+                'choices' => [
+                    'auto' => 'Auto (Opposite of Section)',
+                    '' => 'None',
+                    'u-background-1' => 'Background One',
+                    'u-background-2' => 'Background Two',
+                ],
+                'default_value' => 'auto',
+                'wrapper' => ['width' => '50'],
+            ])
             ->endGroup();
 
         return $benefitCard;

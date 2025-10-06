@@ -9,13 +9,20 @@ $heading = $content['heading'] ?? null;
 $paragraph = $content['paragraph'] ?? null;
 $buttonGroup = $content['button_group'] ?? [];
 
+// Process heading to add accent color to text between ==
+if ($heading) {
+    $heading = preg_replace('/==(.+?)==/', '<span class="u-text-accent">$1</span>', $heading);
+}
+
 // Settings
 $alignment = $content['alignment'] ?? 'text-left';
 $headingTag = $content['heading_tag'] ?? 'h2';
 $headingTextStyle = $content['heading_text_style'] ?? 'u-text-style-h2';
 $paragraphTextStyle = $content['paragraph_text_style'] ?? 'u-text-style-main';
-$maxWidth = $content['max_width'] ?? '';
-
+$maxWidth = $content['max_width'] ?? 'u-max-width-70ch';
+if ($alignment === 'text-center') {
+$alignment = 'mx-auto text-center';
+}
 @endphp
 
 @if ($eyebrow || $heading || $paragraph || !empty($buttonGroup))

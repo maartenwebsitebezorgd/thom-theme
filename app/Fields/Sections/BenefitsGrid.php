@@ -29,7 +29,7 @@ class BenefitsGrid
                 'layout' => 'block',
                 'button_label' => 'Add Benefit Card',
             ])
-                ->addFields(BenefitCard::create('benefit_card'))
+            ->addFields(BenefitCard::create('benefit_card'))
             ->endRepeater()
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',
@@ -44,9 +44,9 @@ class BenefitsGrid
             ->addSelect('grid_columns_tablet', [
                 'label' => 'Grid Columns (Tablet)',
                 'choices' => [
-                    'md:grid-cols-1' => '1 Column',
-                    'md:grid-cols-2' => '2 Columns',
-                    'md:grid-cols-3' => '3 Columns',
+                    'grid-cols-1' => '1 Column',
+                    'grid-cols-2' => '2 Columns',
+                    'grid-cols-3' => '3 Columns',
                 ],
                 'default_value' => 'md:grid-cols-2',
                 'wrapper' => ['width' => '33'],
@@ -63,12 +63,12 @@ class BenefitsGrid
             ->addSelect('gap_size', [
                 'label' => 'Gap Size',
                 'choices' => [
-                    'gap-u-4' => 'Small',
-                    'gap-u-6' => 'Medium',
-                    'gap-u-8' => 'Large',
-                    'gap-u-12' => 'Extra Large',
+                    'gap-u-3' => 'Small',
+                    'gap-u-4' => 'Medium',
+                    'gap-u-6' => 'Large',
+                    'gap-u-8' => 'Extra Large',
                 ],
-                'default_value' => 'gap-u-6'
+                'default_value' => 'gap-u-4'
             ])
             ->addFields(StyleSettings::create('style_settings'));
     }

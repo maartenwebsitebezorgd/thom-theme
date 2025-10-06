@@ -37,6 +37,7 @@
 
 /* Import component styles */
 @import './components/navigation.css';
+@import './components/swiper.css';
 
 /* Import your utilities */
 @import './components/utilities.css';
