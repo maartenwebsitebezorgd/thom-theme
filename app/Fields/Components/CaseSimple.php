@@ -4,35 +4,39 @@ namespace App\Fields\Components;
 
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class ServiceCard
+class CaseSimple
 {
     /**
-     * Creates a 'service_card' group field for grid layouts.
+     * Creates a 'case_simple' group field.
      * @param string $name The name of the group field.
      * @return FieldsBuilder
      */
-    public static function create($name = 'service_card')
+    public static function create($name = 'case_simple')
     {
-        $serviceCard = new FieldsBuilder($name);
+        $caseSimple = new FieldsBuilder($name);
 
-        $serviceCard
+        $caseSimple
             ->addGroup($name, [
-                'label' => 'Service Card',
+                'label' => 'Case',
                 'layout' => 'block',
             ])
-            ->addImage('icon', [
-                'label' => 'Icon',
-                'instructions' => 'Upload an icon or image for this card',
+            ->addImage('image', [
+                'label' => 'Image',
                 'return_format' => 'array',
-                'preview_size' => 'thumbnail',
-            ])
-            ->addText('heading', [
-                'label' => 'Heading',
+                'preview_size' => 'medium',
                 'required' => 1,
             ])
-            ->addTextarea('text', [
-                'label' => 'Text',
-                'rows' => 4,
+            ->addText('client_name', [
+                'label' => 'Client Name',
+                'placeholder' => 'e.g., Boels',
+            ])
+            ->addText('title', [
+                'label' => 'Title',
+                'required' => 1,
+            ])
+            ->addTextarea('excerpt', [
+                'label' => 'Excerpt',
+                'rows' => 3,
             ])
             ->addLink('link', [
                 'label' => 'Link',
@@ -46,6 +50,6 @@ class ServiceCard
             ])
             ->endGroup();
 
-        return $serviceCard;
+        return $caseSimple;
     }
 }

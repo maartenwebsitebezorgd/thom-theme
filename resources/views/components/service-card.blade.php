@@ -10,40 +10,93 @@
 $icon = $card['icon'] ?? null;
 $heading = $card['heading'] ?? '';
 $text = $card['text'] ?? '';
+$link = $card['link'] ?? null;
+$makeCardClickable = $card['make_card_clickable'] ?? true;
 
 // Auto theme: Use opposite of section theme (light <-> dark)
-if ($cardTheme === 'auto') {
-    $cardTheme = match($sectionTheme) {
-        'light' => 'dark',
-        'dark' => 'light',
-        default => 'inherit',
-    };
-}
+  if ($cardTheme === 'auto') {
+  $cardTheme = match($sectionTheme) {
+  'light' => 'dark',
+  'dark' => 'light',
+  default => 'inherit',
+  };
+  }
 
-// Auto background: Use opposite of section background
-if ($cardBgColor === 'auto') {
-    $cardBgColor = match($sectionBgColor) {
-        'u-background-1' => 'u-background-2',
-        'u-background-2' => 'u-background-1',
-        default => 'u-background-1',
-    };
-}
-@endphp
+  // Auto background: Use opposite of section background
+  if ($cardBgColor === 'auto') {
+  $cardBgColor = match($sectionBgColor) {
+  'u-background-1' => 'u-background-2',
+  'u-background-2' => 'u-background-1',
+  default => 'u-background-1',
+  };
+  }
 
-<div class="card p-u-6 {{ $cardBgColor }}" data-theme="{{ $cardTheme }}">
-    <div class="card_content-top content-wrapper">
-      @if ($icon)
-      <div class="card-icon mb-u-5">
-        <img src="{{ $icon['url'] }}" alt="{{ $icon['alt'] ?: $heading }}" class="w-8 h-8 object-contain" loading="lazy">
-      </div>
-      @endif
+  $linkUrl = $link['url'] ?? null;
+  $linkTarget = $link['target'] ?? '_self';
+  $linkTitle = $link['title'] ?? 'Learn more';
 
-      @if ($heading)
-      <h3 class="card-heading u-text-style-h5 u-margin-bottom-text ">{{ $heading }}</h3>
-      @endif
+  // Generate unique ID for aria-labelledby
+  $uniqueId = uniqid('service-');
+  @endphp
 
-      @if ($text)
-      <p class="card-text u-text-style-small u-margin-bottom-text">{{ $text }}</p>
-      @endif
-    </div>
+  @if($makeCardClickable && $linkUrl)
+  <div
+    data-theme="{{ $cardTheme }}"
+    class="service-card-wrap w-full h-full flex flex-col overflow-hidden {{ $cardBgColor }} group">
+    <a
+      href="{{ $linkUrl }}"
+      target="{{ $linkTarget }}"
+      @if($linkTarget==='_blank' ) rel="noopener noreferrer" @endif
+      class="service-link-wrapper flex flex-col h-full no-underline"
+      aria-label="{{ $heading }}: {{ $linkTitle }}">
+      @else
+      <div
+        data-theme="{{ $cardTheme }}"
+        class="service-card-wrap h-full flex flex-col overflow-hidden {{ $cardBgColor }}">
+        @endif
+        <div class="service-card-content-wrap flex flex-col grow">
+          <div class="service-card-content-top flex-1 px-u-4 pt-u-5 pb-u-5 u-margin-trim">
+            <div class="flex flex-row gap-u-2 mb-u-5">
+              @if ($icon)
+              <div class="service-card-icon size-u-3 shrink-0">
+                <img src="{{ $icon['url'] }}" alt="{{ $icon['alt'] ?: $heading }}" class="w-full h-full object-contain" loading="lazy">
+              </div>
+              @endif
+
+              @if ($heading)
+              <h3 id="{{ $uniqueId }}-title" class="service-card-heading u-text-style-main !font-bold">
+                <span class="service-card-heading-text">{{ $heading }}</span>
+              </h3>
+              @endif
+            </div>
+
+            @if ($text)
+            <p class="service-card-text u-text-style-small u-margin-bottom-text">{{ $text }}</p>
+            @endif
+          </div>
+
+          <div class="service-card-content-bottom px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border)]">
+
+            <span class="u-text-style-small text-[var(--theme-text)]/90">ik wil impact maken</span>
+
+
+            @if($link && !$makeCardClickable)
+            <a
+              href="{{ $linkUrl }}"
+              target="{{ $linkTarget }}"
+              @if($linkTarget==='_blank' ) rel="noopener noreferrer" @endif
+              class="underline-offset-2 u-text-style-small underline ml-auto">
+              {{ $linkTitle }}
+            </a>
+            @elseif($link && $makeCardClickable)
+            <span class="underline-offset-2 u-text-style-small underline ml-auto" aria-hidden="true">{{ $linkTitle }}</span>
+            @endif
+          </div>
+        </div>
+
+        @if($makeCardClickable && $linkUrl)
+    </a>
   </div>
+  @else
+  </div>
+  @endif

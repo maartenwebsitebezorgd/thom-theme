@@ -2,44 +2,55 @@
 
 namespace App\Fields\Sections;
 
-use App\Fields\Components\ArticleSimple;
 use App\Fields\Components\ContentWrapper;
 use App\Fields\Components\StyleSettings;
 use App\Fields\Components\SwiperSettings;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class BlogsSlider
+class MultiSlider
 {
     /**
-     * Creates a 'blogs_slider' layout for flexible content.
+     * Creates a 'multi_slider' layout for flexible content.
      * @param string $name The name of the layout.
      * @return FieldsBuilder
      */
-    public static function addToFlexibleContent($flexibleContent, $name = 'blogs_slider')
+    public static function addToFlexibleContent($flexibleContent, $name = 'multi_slider')
     {
         return $flexibleContent
             ->addLayout($name, [
-                'label' => 'Blogs Slider Section',
+                'label' => 'Multi Slider Section',
                 'display' => 'block'
             ])
             ->addFields(ContentWrapper::create('content_block'))
-            ->addTrueFalse('use_latest_posts', [
+            ->addSelect('post_type', [
+                'label' => 'Post Type',
+                'instructions' => 'Select which post type to display',
+                'choices' => [
+                    'post' => 'Blog Posts',
+                    'case' => 'Cases',
+                    'video' => 'Videos',
+                    'team' => 'Team Members',
+                ],
+                'default_value' => 'post',
+                'required' => 1,
+            ])
+            ->addTrueFalse('use_latest', [
                 'label' => 'Use Latest Posts',
-                'instructions' => 'Show latest blog posts automatically',
+                'instructions' => 'Show latest posts automatically',
                 'default_value' => 1,
                 'ui' => 1,
             ])
             ->addPostObject('selected_posts', [
                 'label' => 'Select Posts',
                 'instructions' => 'Choose specific posts to display',
-                'post_type' => ['post'],
+                'post_type' => ['post', 'case', 'video', 'team'],
                 'multiple' => 1,
                 'return_format' => 'id',
                 'ui' => 1,
                 'conditional_logic' => [
                     [
                         [
-                            'field' => 'use_latest_posts',
+                            'field' => 'use_latest',
                             'operator' => '!=',
                             'value' => '1',
                         ],
@@ -55,7 +66,7 @@ class BlogsSlider
                 'conditional_logic' => [
                     [
                         [
-                            'field' => 'use_latest_posts',
+                            'field' => 'use_latest',
                             'operator' => '==',
                             'value' => '1',
                         ],
@@ -71,7 +82,7 @@ class BlogsSlider
                     'aspect-[16/9]' => '16:9 (Wide)',
                     'aspect-[21/9]' => '21:9 (Ultra Wide)',
                 ],
-                'default_value' => '3/2',
+                'default_value' => 'aspect-[3/2]',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('card_theme', [

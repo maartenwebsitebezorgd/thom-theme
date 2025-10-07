@@ -1,0 +1,26 @@
+/* Case Simple Component */
+
+/* Image zoom effect on hover */
+.case-simple-image-zoom {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.group:hover .case-simple-image-zoom {
+  transform: scale(1.05);
+}
+
+/* Title underline effect - left to right */
+.case-simple-title-text {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover .case-simple-title-text {
+  background-size: 100% 2px;
+}

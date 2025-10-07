@@ -4,32 +4,32 @@
 @layer base {
   :root {
     /* Generic Theme */
-    --theme-bg: var(--swatch--light-100);
-    --theme-text: var(--swatch--dark-900);
-    --theme-bg-2: var(--swatch--gray-100);
-    --theme-border: var(--swatch--gray-100);
-    --theme-heading: var(--swatch--dark-900);
-    --theme-accent: var(--swatch--brand-500);
+    --theme-bg: var(--swatch--light-main);
+    --theme-text: var(--swatch--dark-main);
+    --theme-bg-2: var(--swatch--gray--main);
+    --theme-border: var(--swatch--gray-main);
+    --theme-heading: var(--swatch--accent-main);
+    --theme-accent: var(--swatch--accent-main);
 
     /* Selection Theme */
-    --selection-bg: var(--swatch--brand-500);
-    --selection-text: var(--swatch--brand-text);
+    --selection-bg: var(--swatch--accent-main);
+    --selection-text: var(--swatch--light-main);
 
     /* Button Primary Theme */
-    --button-primary-bg: var(--swatch--brand-500);
-    --button-primary-text: var(--swatch--brand-text);
-    --button-primary-border: var(--swatch--brand-500);
-    --button-primary-bg-hover: var(--swatch--brand-600);
-    --button-primary-text-hover: var(--swatch--brand-text);
-    --button-primary-border-hover: var(--swatch--brand-600);
+    --button-primary-bg: var(--swatch--accent-main);
+    --button-primary-text: var(--swatch--light-main);
+    --button-primary-border: var(--swatch--gray-main);
+    --button-primary-bg-hover: var(--swatch--dark-main);
+    --button-primary-text-hover: var(--swatch--light-main);
+    --button-primary-border-hover: var(--swatch--dark-main);
 
     /* Button Secondary Theme */
     --button-secondary-bg: var(--swatch--transparent);
-    --button-secondary-text: var(--swatch--dark-900);
-    --button-secondary-border: var(--swatch--dark-900);
-    --button-secondary-bg-hover: var(--swatch--dark-800);
-    --button-secondary-text-hover: var(--swatch--light-100);
-    --button-secondary-border-hover: var(--swatch--dark-800);
+    --button-secondary-text: var(--swatch--dark-main);
+    --button-secondary-border: var(--swatch--dark-main);
+    --button-secondary-bg-hover: var(--swatch--dark-main);
+    --button-secondary-text-hover: var(--swatch--light-main);
+    --button-secondary-border-hover: var(--swatch--dark-main);
   }
 
   ::selection {
@@ -64,32 +64,32 @@
   .u-theme-light,
   [data-theme='light'] {
     /* Generic Theme */
-    --theme-bg: var(--swatch--light-100);
-    --theme-text: var(--swatch--dark-900);
-    --theme-bg-2: var(--swatch--gray-100);
-    --theme-border: var(--swatch--gray-100);
-    --theme-heading: var(--swatch--dark-900);
-    --theme-accent: var(--swatch--brand-500);
+    --theme-bg: var(--swatch--light-main);
+    --theme-text: var(--swatch--dark-main);
+    --theme-bg-2: var(--swatch--gray-main);
+    --theme-border: var(--swatch--gray-main);
+    --theme-heading: var(--swatch--dark-main);
+    --theme-accent: var(--swatch--accent-main);
 
     /* Selection Theme */
-    --selection-bg: var(--swatch--brand-500);
-    --selection-text: var(--swatch--brand-text);
+    --selection-bg: var(--swatch--accent-main);
+    --selection-text: var(--swatch--light-main);
 
     /* Button Primary Theme */
-    --button-primary-bg: var(--swatch--brand-500);
-    --button-primary-text: var(--swatch--brand-text);
-    --button-primary-border: var(--swatch--brand-500);
-    --button-primary-bg-hover: var(--swatch--brand-600);
-    --button-primary-text-hover: var(--swatch--brand-text);
-    --button-primary-border-hover: var(--swatch--brand-600);
+    --button-primary-bg: var(--swatch--accent-main);
+    --button-primary-text: var(--swatch--light-main);
+    --button-primary-border: var(--swatch--gray-main);
+    --button-primary-bg-hover: var(--swatch--dark-main);
+    --button-primary-text-hover: var(--swatch--light-main);
+    --button-primary-border-hover: var(--swatch--dark-main);
 
     /* Button Secondary Theme */
     --button-secondary-bg: var(--swatch--transparent);
-    --button-secondary-text: var(--swatch--dark-900);
-    --button-secondary-border: var(--swatch--dark-900);
-    --button-secondary-bg-hover: var(--swatch--dark-800);
-    --button-secondary-text-hover: var(--swatch--light-100);
-    --button-secondary-border-hover: var(--swatch--dark-800);
+    --button-secondary-text: var(--swatch--dark-main);
+    --button-secondary-border: var(--swatch--dark-main);
+    --button-secondary-bg-hover: var(--swatch--dark-main);
+    --button-secondary-text-hover: var(--swatch--light-main);
+    --button-secondary-border-hover: var(--swatch--dark-main);
   }
 
   .u-theme-light::selection {
@@ -102,32 +102,32 @@
     =========================================================================== */
   .u-theme-dark,
   [data-theme='dark'] {
-    --theme-bg: var(--swatch--dark-900);
-    --theme-text: var(--swatch--light-100);
-    --theme-bg-2: var(--swatch--dark-800);
+    --theme-bg: var(--swatch--dark-main);
+    --theme-text: var(--swatch--light-main);
+    --theme-bg-2: var(--swatch--dark-600);
     --theme-border: var(--swatch--dark-800);
-    --theme-heading: var(--swatch--light-100);
-    --theme-accent: var(--swatch--brand-500);
+    --theme-heading: var(--swatch--light-main);
+    --theme-accent: var(--swatch--accent-main);
 
     /* Selection Dark Theme */
-    --selection-bg: var(--swatch--brand-500);
-    --selection-text: var(--swatch--brand-text);
+    --selection-bg: var(--swatch--accent-main);
+    --selection-text: var(--swatch--light-main);
 
-    /* Button Primary Dark Theme */
-    --button-primary-bg: var(--swatch--brand-500);
-    --button-primary-text: var(--swatch--brand-text);
-    --button-primary-border: var(--swatch--brand-500);
-    --button-primary-bg-hover: var(--swatch--brand-600);
-    --button-primary-text-hover: var(--swatch--brand-text);
-    --button-primary-border-hover: var(--swatch--brand-600);
+    /* Button Primary Theme */
+    --button-primary-bg: var(--swatch--accent-main);
+    --button-primary-text: var(--swatch--light-main);
+    --button-primary-border: var(--swatch--accent-main);
+    --button-primary-bg-hover: var(--swatch--accent-600);
+    --button-primary-text-hover: var(--swatch--light-main);
+    --button-primary-border-hover: var(--swatch--dark-main);
 
-    /* Button Secondary Dark Theme */
-    --button-secondary-bg: var(--swatch--light-200);
-    --button-secondary-text: var(--swatch--dark-900);
-    --button-secondary-border: var(--swatch--light-200);
-    --button-secondary-bg-hover: var(--swatch--light-100);
-    --button-secondary-text-hover: var(--swatch--dark-900);
-    --button-secondary-border-hover: var(--swatch--light-100);
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--swatch--transparent);
+    --button-secondary-text: var(--swatch--light-main);
+    --button-secondary-border: var(--swatch--light-main);
+    --button-secondary-bg-hover: var(--swatch--accent-main);
+    --button-secondary-text-hover: var(--swatch--light-main);
+    --button-secondary-border-hover: var(--swatch--accent-main);
   }
 
   .u-theme-dark::selection,
@@ -141,32 +141,32 @@
     =========================================================================== */
   .u-theme-brand,
   [data-theme='brand'] {
-    --theme-bg: var(--swatch--brand-500);
-    --theme-text: var(--swatch--brand-text);
-    --theme-bg-2: var(--swatch--brand-400);
-    --theme-border: var(--swatch--brand-600);
-    --theme-heading: var(--swatch--brand-text);
+    --theme-bg: var(--swatch--accent-main);
+    --theme-text: var(--swatch--light-main);
+    --theme-bg-2: var(--swatch--dark-main);
+    --theme-border: var(--swatch--accent-light);
+    --theme-heading: var(--swatch--dark-main);
     --theme-accent: var(--swatch--light-100);
 
     /* Selection Brand Theme */
-    --selection-bg: var(--swatch--light-100);
-    --selection-text: var(--swatch--dark-900);
+    --selection-bg: var(--swatch--dark-main);
+    --selection-text: var(--swatch--light-main);
 
-    /* Button Primary Brand Theme */
-    --button-primary-bg: var(--swatch--light-100);
-    --button-primary-text: var(--swatch--dark-900);
-    --button-primary-border: var(--swatch--light-100);
-    --button-primary-bg-hover: var(--swatch--light-200);
-    --button-primary-text-hover: var(--swatch--dark-900);
-    --button-primary-border-hover: var(--swatch--light-200);
+    /* Button Primary Theme */
+    --button-primary-bg: var(--swatch--light-main);
+    --button-primary-text: var(--swatch--dark-main);
+    --button-primary-border: var(--swatch--light-main);
+    --button-primary-bg-hover: var(--swatch--light-main);
+    --button-primary-text-hover: var(--swatch--dark-main);
+    --button-primary-border-hover: var(--swatch--light-main);
 
-    /* Button Secondary Brand Theme */
-    --button-secondary-bg: var(--swatch--brand-text);
-    --button-secondary-text: var(--swatch--brand-500);
-    --button-secondary-border: var(--swatch--brand-text);
-    --button-secondary-bg-hover: var(--swatch--brand-900);
-    --button-secondary-text-hover: var(--swatch--brand-500);
-    --button-secondary-border-hover: var(--swatch--brand-900);
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--swatch--transparent);
+    --button-secondary-text: var(--swatch--light-main);
+    --button-secondary-border: var(--swatch--light-main);
+    --button-secondary-bg-hover: var(--swatch--light-main);
+    --button-secondary-text-hover: var(--swatch--dark-main);
+    --button-secondary-border-hover: var(--swatch--light-main);
   }
 
   .u-theme-brand::selection,
