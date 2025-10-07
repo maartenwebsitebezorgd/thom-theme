@@ -56,20 +56,25 @@ class ServicesOptions
                 'layout' => 'block',
                 'button_label' => 'Add Service',
             ])
-                ->addImage('icon', [
-                    'label' => 'Icon',
-                    'instructions' => 'Upload an icon or image for this service',
-                    'return_format' => 'array',
-                    'preview_size' => 'thumbnail',
-                ])
-                ->addText('heading', [
-                    'label' => 'Heading',
-                    'required' => 1,
-                ])
-                ->addTextarea('text', [
-                    'label' => 'Text',
-                    'rows' => 4,
-                ])
+            ->addImage('icon', [
+                'label' => 'Icon',
+                'instructions' => 'Upload an icon or image for this service',
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ])
+            ->addText('heading', [
+                'label' => 'Heading',
+                'required' => 1,
+            ])
+            ->addTextarea('text', [
+                'label' => 'Text',
+                'rows' => 4,
+            ])
+            ->addLink('link', [
+                'label' => 'link',
+                'instructions' => 'Link to service page',
+                'rows' => 1,
+            ])
             ->endRepeater();
 
         acf_add_local_field_group($servicesOptions->build());

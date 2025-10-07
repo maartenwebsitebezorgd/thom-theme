@@ -67,7 +67,7 @@
     --theme-bg: var(--swatch--light-main);
     --theme-text: var(--swatch--dark-main);
     --theme-bg-2: var(--swatch--gray-main);
-    --theme-border: var(--swatch--gray-main);
+    --theme-border: var(--swatch--dark-100);
     --theme-heading: var(--swatch--dark-main);
     --theme-accent: var(--swatch--accent-main);
 

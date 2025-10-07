@@ -7,6 +7,7 @@
 namespace App;
 
 use App\Fields\PageBuilder;
+use App\Fields\PostFields;
 use App\Fields\ServicesOptions;
 use App\PostTypes\Cases;
 use App\PostTypes\Team;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Vite;
 
 // Initialize ACF Fields
 new PageBuilder();
+new PostFields();
 new ServicesOptions();
 
 // Initialize Post Types

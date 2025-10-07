@@ -2,6 +2,7 @@
 
 namespace App\Fields;
 
+use App\Fields\Sections\ArticlesGrid;
 use App\Fields\Sections\BenefitsGrid;
 use App\Fields\Sections\BlogsSlider;
 use App\Fields\Sections\Hero;
@@ -33,6 +34,7 @@ class PageBuilder
         // Add sections to flexible content
         $flexibleContent = Hero::addToFlexibleContent($flexibleContent);
         $flexibleContent = SplitContent::addToFlexibleContent($flexibleContent);
+        $flexibleContent = ArticlesGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = BenefitsGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = BlogsSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = MultiSlider::addToFlexibleContent($flexibleContent);

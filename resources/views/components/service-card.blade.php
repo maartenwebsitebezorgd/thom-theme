@@ -75,9 +75,9 @@ $makeCardClickable = $card['make_card_clickable'] ?? true;
             @endif
           </div>
 
-          <div class="service-card-content-bottom px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border)]">
+          <div class="service-card-content-bottom flex flex-row gap-u-2 items-center justify-between px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border)]">
 
-            <span class="u-text-style-small text-[var(--theme-text)]/90">ik wil impact maken</span>
+            <span class="u-text-style-small text-[var(--theme-text)]/60">ik wil impact maken</span>
 
 
             @if($link && !$makeCardClickable)

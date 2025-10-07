@@ -39,7 +39,7 @@ $cardBgColor = $card['background_color'] ?? 'auto';
       @endif
 
       @if ($heading)
-      <h3 class="card-heading u-text-style-h5 u-margin-bottom-text ">{{ $heading }}</h3>
+      <h3 class="card-heading u-text-style-h6 u-margin-bottom-text ">{{ $heading }}</h3>
       @endif
 
       @if ($text)

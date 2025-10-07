@@ -88,10 +88,10 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
             @endif
           </div>
 
-          <div class="article-simple-content-bottom flex flex-nowrap items-center justify-between px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border-color)]">
+          <div class="article-simple-content-bottom flex flex-nowrap items-center justify-between px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border)]">
             @if($category)
             <div class="category-wrapper flex flex-row flex-wrap gap-u-2 items-center">
-              <span class="u-text-style-small text-[var(--theme-text)]/90" aria-label="Category">{{ $category }}</span>
+              <span class="u-text-style-small text-[var(--theme-text)]/60" aria-label="Category">{{ $category }}</span>
             </div>
             @endif
 

@@ -43,6 +43,12 @@ class Team
 
         $team
             ->setLocation('post_type', '==', 'team')
+            ->addImage('headshot', [
+                'label' => 'Headshot',
+                'instructions' => 'Upload a headshot image for avatar/small profile picture',
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ])
             ->addText('job_title', [
                 'label' => 'Job Title',
                 'instructions' => 'e.g., CEO, Developer, Designer',

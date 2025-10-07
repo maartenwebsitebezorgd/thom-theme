@@ -10,18 +10,18 @@ $cardBgColor = get_sub_field('card_background_color') ?? 'auto';
 
 // Get cards based on mode
 if ($useGlobalServices) {
-    $globalServices = get_field('global_services', 'option');
-    $cards = [];
+$globalServices = get_field('global_services', 'option');
+$cards = [];
 
-    if ($globalServices && $selectedServices) {
-        foreach ($selectedServices as $index) {
-            if (isset($globalServices[$index])) {
-                $cards[] = ['service_card' => $globalServices[$index]];
-            }
-        }
-    }
+if ($globalServices && $selectedServices) {
+foreach ($selectedServices as $index) {
+if (isset($globalServices[$index])) {
+$cards[] = ['service_card' => $globalServices[$index]];
+}
+}
+}
 } else {
-    $cards = get_sub_field('cards');
+$cards = get_sub_field('cards');
 }
 
 // Grid settings
@@ -51,12 +51,12 @@ $bgColor = $styleSettings['background_color'] ?? null;
     @if ($cards)
     <div class="cards-grid grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
       @foreach ($cards as $cardItem)
-        <x-service-card
-          :card="$cardItem['service_card']"
-          :section-bg-color="$bgColor"
-          :section-theme="$theme"
-          :card-theme="$cardTheme"
-          :card-bg-color="$cardBgColor" />
+      <x-service-card
+        :card="$cardItem['service_card']"
+        :section-bg-color="$bgColor"
+        :section-theme="$theme"
+        :card-theme="$cardTheme"
+        :card-bg-color="$cardBgColor" />
       @endforeach
     </div>
     @endif
