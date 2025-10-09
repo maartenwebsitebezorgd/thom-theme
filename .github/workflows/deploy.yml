@@ -40,7 +40,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          server-dir: /public_html/wp-content/themes/thom-theme/
+          port: 21
+          server-dir: /annejans99.sg-host.com/public_html/wp-content/themes
           exclude: |
             **/.git*
             **/.git*/**
