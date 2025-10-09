@@ -1,0 +1,55 @@
+name: Build and Deploy to SiteGround
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+    
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+        cache: 'yarn'
+    
+    - name: 🐘 Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        tools: composer
+    
+    - name: 📦 Install Composer dependencies
+      run: composer install --no-dev --optimize-autoloader --no-interaction
+    
+    - name: 📦 Install Yarn dependencies
+      run: yarn install --frozen-lockfile
+    
+    - name: 🔨 Build production assets with Vite
+      run: yarn build
+    
+    - name: 🚀 Deploy to SiteGround
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftps
+        server-dir: /public_html/wp-content/themes/thom-theme/
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/vendor/**
+          **/.github/**
+          **/tests/**
+          **/.env*
+          **/.DS_Store
+          **/Thumbs.db
+          **/*.log
+          **/public/hot
