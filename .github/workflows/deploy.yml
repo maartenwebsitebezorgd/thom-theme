@@ -41,17 +41,13 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          server-dir: /annejans99.sg-host.com/public_html/wp-content/themes/thom-theme/
           local-dir: ./
+          server-dir: /public_html/wp-content/themes/thom-theme/
           exclude: |
             **/.git*
-            **/.git*/**
             **/node_modules/**
-            **/vendor/**
             **/.github/**
-            **/tests/**
             **/.env*
             **/.DS_Store
             **/Thumbs.db
             **/*.log
-            **/public/hot
