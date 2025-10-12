@@ -8,10 +8,10 @@
     padding: 0.75rem 1.5rem;
     font-size: var(--text-main);
     font-weight: bold;
-    color: var(--swatch--brand-text);
+    color: var(--color-text-headingt);
     line-height: 1;
-    border: var(--border-main) solid transparent;
-    border-radius: var(--radius--small);
+    border: var(--border-width-main) solid transparent;
+    border-radius: var(--radius-small);
     transition: all 200ms ease-in-out;
     outline: 2px solid var(--tw-ring-color);
     outline-offset: 2px;

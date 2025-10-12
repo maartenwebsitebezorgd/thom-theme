@@ -16,15 +16,17 @@
     );
   }
 }
+/* Import your theme */
+@import './theme/theme.css';
+
+/* Import your color schema */
+@import './theme/colorschema.css';
 
 /* Import your fonts */
 @import './theme/fonts.css';
 
 /* Import your default */
 @import './theme/default.css';
-
-/* Import your theme */
-@import './theme/theme.css';
 
 /* Import your typography */
 @import './theme/typography.css';

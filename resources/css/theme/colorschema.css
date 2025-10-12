@@ -1,0 +1,179 @@
+/* =========================================================================
+       Semantic Theme Variables (Light/Default Theme)
+       ========================================================================= */
+@layer base {
+  :root {
+    /* Generic Theme */
+    --theme-bg: var(--color-light-main);
+    --theme-text: var(--color-text-body);
+    --theme-bg-2: var(--color-desert-main);
+    --theme-border: var(--color-desert-main);
+    --theme-heading: var(--color-text-heading);
+    --theme-accent: var(--color-accent-main);
+
+    /* Selection Theme */
+    --selection-bg: var(--color-accent-main);
+    --selection-text: var(--color-light-main);
+
+    /* Button Primary Theme */
+    --button-primary-bg: var(--color-accent-main);
+    --button-primary-text: var(--color-light-main);
+    --button-primary-border: var(--color-accent-main);
+    --button-primary-bg-hover: var(--color-accent-600);
+    --button-primary-text-hover: var(--color-light-main);
+    --button-primary-border-hover: var(--color-accent-600);
+
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--color-tranparent);
+    --button-secondary-text: var(--color-accent-main);
+    --button-secondary-border: var(--color-accent-main);
+    --button-secondary-bg-hover: var(--color-accent-600);
+    --button-secondary-text-hover: var(--color-accent-600);
+    --button-secondary-border-hover: var(--color-accent-600);
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  html {
+    background-color: var(--theme-bg);
+  }
+
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    font-family: var(--font-body);
+    font-size: var(--text-main);
+    line-height: var(--leading-main);
+    font-weight: var(--font-weight-regular);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  [data-theme] {
+    color: var(--theme-text);
+    background-color: var(--theme-bg);
+  }
+
+  /* ===========================================================================
+     Light Theme Overrides
+    =========================================================================== */
+  .u-theme-light,
+  [data-theme='light'] {
+    /* Generic Theme */
+    --theme-bg: var(--color-light-main);
+    --theme-text: var(--color-text-body);
+    --theme-bg-2: var(--color-desert-main);
+    --theme-border: var(--color-desert-main);
+    --theme-heading: var(--color-text-heading);
+    --theme-accent: var(--color-accent-main);
+
+    /* Selection Theme */
+    --selection-bg: var(--color-accent-main);
+    --selection-text: var(--color-light-main);
+
+    /* Button Primary Theme */
+    --button-primary-bg: var(--color-accent-main);
+    --button-primary-text: var(--color-light-main);
+    --button-primary-border: var(--color-accent-main);
+    --button-primary-bg-hover: var(--color-accent-600);
+    --button-primary-text-hover: var(--color-light-main);
+    --button-primary-border-hover: var(--color-accent-600);
+
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--color-tranparent);
+    --button-secondary-text: var(--color-accent-main);
+    --button-secondary-border: var(--color-accent-main);
+    --button-secondary-bg-hover: var(--color-accent-600);
+    --button-secondary-text-hover: var(--color-accent-600);
+    --button-secondary-border-hover: var(--color-accent-600);
+  }
+
+  .u-theme-light::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  /* ===========================================================================
+     Dark Theme Overrides
+    =========================================================================== */
+  .u-theme-dark,
+  [data-theme='dark'] {
+    /* Generic Theme */
+    --theme-bg: var(--color-blue-main);
+    --theme-text: var(--color-text-body-light);
+    --theme-bg-2: var(--color-accent-main);
+    --theme-border: var(--color-blue-800);
+    --theme-heading: var(--color-text-heading-light);
+    --theme-accent: var(--color-accent-main);
+
+    /* Selection Theme */
+    --selection-bg: var(--color-accent-light);
+    --selection-text: var(--color-text-heading);
+
+    /* Button Primary Theme */
+    --button-primary-bg: var(--color-light-main);
+    --button-primary-text: var(--color-text-body);
+    --button-primary-border: var(--color-light-main);
+    --button-primary-bg-hover: var(--color-desert-main);
+    --button-primary-text-hover: var(--color-text-body);
+    --button-primary-border-hover: var(--color-desert-main);
+
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--color-tranparent);
+    --button-secondary-text: var(--color-text-body-light);
+    --button-secondary-border: var(--color-light-main);
+    --button-secondary-bg-hover: var(--color-desert-main);
+    --button-secondary-text-hover: var(--color-text-body);
+    --button-secondary-border-hover: var(--color-desert-main);
+  }
+
+  .u-theme-dark::selection,
+  [data-theme='dark']::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  /* ===========================================================================
+     Brand Theme Overrides (applied to a specific section)
+    =========================================================================== */
+  .u-theme-brand,
+  [data-theme='brand'] {
+    /* Generic Theme */
+    --theme-bg: var(--color-light-main);
+    --theme-text: var(--color-text-body);
+    --theme-bg-2: var(--color-desert-main);
+    --theme-border: var(--color-desert-main);
+    --theme-heading: var(--color-text-heading);
+    --theme-accent: var(--color-accent-main);
+
+    /* Selection Theme */
+    --selection-bg: var(--color-accent-main);
+    --selection-text: var(--color-light-main);
+
+    /* Button Primary Theme */
+    --button-primary-bg: var(--color-accent-main);
+    --button-primary-text: var(--color-light-main);
+    --button-primary-border: var(--color-accent-main);
+    --button-primary-bg-hover: var(--color-aacent-600);
+    --button-primary-text-hover: var(--color-light-main);
+    --button-primary-border-hover: var(--color-accent-600);
+
+    /* Button Secondary Theme */
+    --button-secondary-bg: var(--color-tranparent);
+    --button-secondary-text: var(--color-accent-main);
+    --button-secondary-border: var(--color-accent-main);
+    --button-secondary-bg-hover: var(--color-aacent-600);
+    --button-secondary-text-hover: var(--color-aacent-600);
+    --button-secondary-border-hover: var(--color-aacent-600);
+  }
+
+  .u-theme-brand::selection,
+  [data-theme='brand']::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+}

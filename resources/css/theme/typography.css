@@ -1,92 +1,27 @@
 /* =============================================================================
    Custom Typography Utilities
    ============================================================================= */
-
-@theme {
-  /* Font Family */
-  --font-primary: 'HelveticaNeue', sans-serif;
-  --font-secondary: 'HelveticaNeue', sans-serif;
-
-  /* Semantic Font Assignment */
-  --font-body: var(--font-primary);
-  --font-heading: var(--font-secondary);
-
-  /* Font Trim */
-  --primary-trim-top: 0.33em;
-  --primary-trim-bottom: 0.38em;
-  --text-trim-top: var(--primary-trim-top);
-  --text-trim-bottom: var(--primary-trim-bottom);
-
-  /* Line Height */
-  --line-height--tiny: 1;
-  --line-height--small: 1.1;
-  --line-height--medium: 1.2;
-  --line-height--main: 1.5;
-  --line-height--huge: 1.6;
-
-  /* Letter Spacing */
-  --letter-spacing--tiny: 0;
-  --letter-spacing--small: -0.03em;
-  --letter-spacing--main: 0em;
-  --letter-spacing--huge: 0;
-
-  /* Text Weight */
-  --text-weight--thin: 100;
-  --text-weight--regular: 400;
-  --text-weight--medium: 500;
-  --text-weight--semibold: 600;
-  --text-weight--bold: 700;
-  --text-weight--extrabold: 800;
-
-  /* Text Transform */
-  --text-transform--none: none;
-  --text-transform--uppercase: uppercase;
-  --text-transform--lowercase: lowercase;
-  --text-transform--capitalize: capitalize;
-
-  /* Text Wrap */
-  --text-wrap--none: nowrap;
-  --text-wrap--balance: balance;
-  --text-wrap--pretty: pretty;
-  --text-wrap--wrap: wrap;
-  --text-wrap--break-word: break-word;
-
-  /* Text Size */
-  --text-tiny: clamp(0.75rem, 1vw, 0.875rem);
-  --text-small: clamp(0.875rem, 1.5vw, 1rem);
-  --text-main: clamp(1rem, 2vw, 1.125rem);
-  --text-medium: clamp(1.125rem, 2vw, 1.25rem);
-  --text-large: clamp(1.25rem, 2.5vw, 1.5rem);
-  --text-display: clamp(3.5rem, 6vw, 6rem);
-  --text-h1: clamp(3rem, 4.5vw, 4rem);
-  --text-h2: clamp(2.5rem, 3.5vw, 3.25rem);
-  --text-h3: clamp(2rem, 3vw, 2.75rem);
-  --text-h4: clamp(1.5rem, 1.75vw, 2rem);
-  --text-h5: clamp(1.25rem, 1.75vw, 1.5rem);
-  --text-h6: clamp(1.125rem, 1.75vw, 1.25rem);
-}
-
 @layer utilities {
   .display {
-    font-size: var(--text-display);
-    font-weight: var(--text-weight--bold);
     font-family: var(--font-heading);
-    line-height: var(--line-height--tiny);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
-    text-wrap: var(--text-wrap--balance);
+    font-size: var(--text-display);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tiny);
+    letter-spacing: var(--tracking-small);
+    text-transform: var(--text-transform-none);
+    text-wrap: var(--text-wrap-balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-6);
   }
 
   h1,
   .u-text-style-h1 {
-    font-size: var(--text-h1);
-    font-weight: var(--text-weight--bold);
     font-family: var(--font-heading);
-    line-height: var(--line-height--small);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
+    font-size: var(--text-h1);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tiny);
+    letter-spacing: var(--tracking-small);
+    text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-5);
@@ -94,12 +29,12 @@
 
   h2,
   .u-text-style-h2 {
-    font-size: var(--text-h2);
-    line-height: var(--line-height--tiny);
     font-family: var(--font-heading);
-    font-weight: var(--text-weight--bold);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
+    font-size: var(--text-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-small);
+    letter-spacing: var(--tracking-small);
+    text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-5);
@@ -107,12 +42,12 @@
 
   h3,
   .u-text-style-h3 {
-    font-size: var(--text-h3);
-    line-height: var(--line-height--small);
     font-family: var(--font-heading);
-    font-weight: var(--text-weight--bold);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tiny);
+    letter-spacing: var(--tracking-small);
+    text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-5);
@@ -120,12 +55,12 @@
 
   h4,
   .u-text-style-h4 {
-    font-size: var(--text-h4);
-    line-height: var(--line-height--small);
     font-family: var(--font-heading);
-    font-weight: var(--text-weight--bold);
+    font-size: var(--text-h4);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tiny);
     letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
+    text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-5);
@@ -133,12 +68,12 @@
 
   h5,
   .u-text-style-h5 {
-    font-size: var(--text-h5);
-    line-height: var(--line-height--small);
     font-family: var(--font-heading);
-    font-weight: var(--text-weight--bold);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
+    font-size: var(--text-h5);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-medium);
+    letter-spacing: var(--tracking-main);
+    text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-4);
@@ -146,54 +81,60 @@
 
   h6,
   .u-text-style-h6 {
-    font-size: var(--text-h6);
-    line-height: var(--line-height--small);
     font-family: var(--font-heading);
-    font-weight: var(--text-weight--bold);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
+    font-size: var(--text-h6);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-medium);
+    letter-spacing: var(--tracking-main);
+    text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
     --text-style--margin-bottom: var(--spacing-u-4);
   }
 
   .u-text-style-tiny {
+    font-family: var(--font-body);
     font-size: var(--text-tiny);
-    line-height: var(--line-height--main);
-    font-weight: var(--text-weight--regular);
-    letter-spacing: var(--letter-spacing--main);
-    text-transform: var(--text-transform--none);
-    text-wrap: var(--text-wrap--pretty);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height--small);
+    letter-spacing: var(--tracking-main);
+    text-transform: var(--text-transform-none);
+    text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-4);
     --text-style--margin-bottom: var(--spacing-u-4);
   }
 
   .u-text-style-small {
+    font-family: var(--font-body);
     font-size: var(--text-small);
-    line-height: var(--line-height--main);
-    font-weight: var(--text-weight--regular);
-    letter-spacing: var(--letter-spacing--main);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-main);
+    letter-spacing: var(--tracking-main);
     text-transform: var(--text-transform--none);
-    text-wrap: var(--text-wrap--pretty);
+    text-wrap: var(--text-wrap-pretty);
     --text-style--margin-top: var(--spacing-u-4);
     --text-style--margin-bottom: var(--spacing-u-4);
   }
 
   p,
   .u-text-style-main {
+    font-family: var(--font-body);
     font-size: var(--text-main);
-    line-height: var(--line-height--main);
-    font-weight: var(--text-weight--regular);
-    text-wrap: var(--text-wrap--pretty);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-main);
+    letter-spacing: var(--tracking-main);
+    text-transform: var(--text-transform--none);
+    text-wrap: var(--text-wrap-pretty);
     --text-style--margin-top: var(--spacing-u-4);
     --text-style--margin-bottom: var(--spacing-u-4);
   }
 
   .u-text-style-medium {
+    font-family: var(--font-body);
     font-size: var(--text-medium);
-    line-height: var(--line-height--main);
-    font-weight: var(--text-weight--regular);
-    letter-spacing: var(--letter-spacing--main);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-main);
+    letter-spacing: var(--tracking-main);
     text-transform: var(--text-transform--none);
     text-wrap: var(--text-wrap--pretty);
     --text-style--margin-top: var(--spacing-u-4);
@@ -201,10 +142,11 @@
   }
 
   .u-text-style-large {
+    font-family: var(--font-body);
     font-size: var(--text-large);
-    line-height: var(--line-height--main);
-    font-weight: var(--text-weight--regular);
-    letter-spacing: var(--letter-spacing--main);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-main);
+    letter-spacing: var(--tracking-main);
     text-transform: var(--text-transform--none);
     text-wrap: var(--text-wrap--pretty);
     --text-style--margin-top: var(--spacing-u-4);
@@ -212,10 +154,11 @@
   }
 
   .u-text-style-tagline {
+    font-family: var(--font-body);
     font-size: var(--text-main);
-    line-height: var(--line-height--tiny);
-    font-weight: var(--text-weight--regular);
-    letter-spacing: var(--letter-spacing--main);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--leading-main);
+    letter-spacing: var(--tracking-main);
     text-transform: var(--text-transform--none);
     text-wrap: var(--text-wrap--pretty);
     --text-style--margin-top: var(--spacing-u-4);

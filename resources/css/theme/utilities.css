@@ -11,7 +11,7 @@
 
   .u-container {
     z-index: 1;
-    max-width: var(--max-width--main);
+    max-width: var(--max-width-main);
     width: calc(100% - var(--site--margin) * 2);
     flex: 1;
     margin-left: auto;
@@ -66,33 +66,32 @@
   }
 
   .u-max-width-12ch {
-    max-width: 12ch;
+    max-width: var(--max-width-12ch);
   }
   .u-max-width-15ch {
-    max-width: 15ch;
+    max-width: var(--max-width-15ch);
   }
   .u-max-width-20ch {
-    max-width: 20ch;
+    max-width: var(--max-width-20ch);
   }
   .u-max-width-30ch {
-    max-width: 30ch;
+    max-width: var(--max-width-30ch);
   }
   .u-max-width-40ch {
-    max-width: 40ch;
+    max-width: var(--max-width-40ch);
   }
   .u-max-width-50ch {
-    max-width: 50ch;
+    max-width: var(--max-width-50ch);
   }
   .u-max-width-60ch {
-    max-width: 60ch;
+    max-width: var(--max-width-60ch);
   }
   .u-max-width-70ch {
-    max-width: 70ch;
+    max-width: var(--max-width-70ch);
   }
   .u-max-width-80ch {
-    max-width: 80ch;
+    max-width: var(--max-width-80ch);
   }
-
   .u-text-accent {
     color: var(--theme-accent);
   }

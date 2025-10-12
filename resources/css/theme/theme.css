@@ -1,177 +1,166 @@
-/* =========================================================================
-       Semantic Theme Variables (Light/Default Theme)
-       ========================================================================= */
-@layer base {
-  :root {
-    /* Generic Theme */
-    --theme-bg: var(--swatch--light-main);
-    --theme-text: var(--swatch--dark-main);
-    --theme-bg-2: var(--swatch--gray--main);
-    --theme-border: var(--swatch--gray-main);
-    --theme-heading: var(--swatch--accent-main);
-    --theme-accent: var(--swatch--accent-main);
+/* =============================================================================
+   Theme Variables
+   ============================================================================= */
 
-    /* Selection Theme */
-    --selection-bg: var(--swatch--accent-main);
-    --selection-text: var(--swatch--light-main);
+@theme {
+  --color-tranparent: transparent;
+  --color-blue-main: #212a4c;
+  --color-accent-main: #4aa3c1;
+  --color-accent-light: #b3e0eb;
+  --color-yellow-main: #f2dd4a;
+  --color-desert-main: #f7f6f5;
+  --color-light-main: #ffffff;
 
-    /* Button Primary Theme */
-    --button-primary-bg: var(--swatch--accent-main);
-    --button-primary-text: var(--swatch--light-main);
-    --button-primary-border: var(--swatch--gray-main);
-    --button-primary-bg-hover: var(--swatch--dark-main);
-    --button-primary-text-hover: var(--swatch--light-main);
-    --button-primary-border-hover: var(--swatch--dark-main);
+  /* Text colors */
+  --color-text-heading: #212a4c;
+  --color-text-body: #212a4c;
+  --color-text-heading-light: #ffffff;
+  --color-text-body-light: #ffffff;
 
-    /* Button Secondary Theme */
-    --button-secondary-bg: var(--swatch--transparent);
-    --button-secondary-text: var(--swatch--dark-main);
-    --button-secondary-border: var(--swatch--dark-main);
-    --button-secondary-bg-hover: var(--swatch--dark-main);
-    --button-secondary-text-hover: var(--swatch--light-main);
-    --button-secondary-border-hover: var(--swatch--dark-main);
-  }
+  --color-blue-50: #f1f6fd;
+  --color-blue-100: #e0eaf9;
+  --color-blue-200: #c9dbf4;
+  --color-blue-300: #a3c5ed;
+  --color-blue-400: #78a5e2;
+  --color-blue-500: #5886d9;
+  --color-blue-600: #436bcd;
+  --color-blue-700: #3a59bb;
+  --color-blue-800: #344a99;
+  --color-blue-900: #2f4179;
+  --color-blue-950: #212a4c; /*main*/
 
-  ::selection {
-    background-color: var(--selection-bg);
-    color: var(--selection-text);
-  }
+  --color-accent-50: #f0f9fb;
+  --color-accent-100: #d9eff4;
+  --color-accent-200: #b8dee9;
+  --color-accent-300: #86c6da;
+  --color-accent-400: #4aa3c1; /*main*/
+  --color-accent-500: #3289a8;
+  --color-accent-600: #2c6f8e;
+  --color-accent-700: #2a5b74;
+  --color-accent-800: #2a4d60;
+  --color-accent-900: #274152;
+  --color-accent-950: #152937;
 
-  html {
-    background-color: var(--theme-bg);
-  }
+  --color-desert-50: #f7f6f5; /*main*/
+  --color-desert-100: #eceae8;
+  --color-desert-200: #d9d3cf;
+  --color-desert-300: #c0b8b1;
+  --color-desert-400: #a69991;
+  --color-desert-500: #94847b;
+  --color-desert-600: #87766f;
+  --color-desert-700: #71625d;
+  --color-desert-800: #5e514e;
+  --color-desert-900: #4d4341;
+  --color-desert-950: #282322;
 
-  body {
-    background-color: var(--theme-bg);
-    color: var(--theme-text);
-    font-family: var(--font-body);
-    font-size: var(--text-main);
-    line-height: var(--line-height--main);
-    font-weight: var(--text-weight--regular);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
+  /* Font Family */
+  --font-primary: 'HelveticaNeue', sans-serif;
+  --font-secondary: 'HelveticaNeue', sans-serif;
 
-  [data-theme] {
-    color: var(--theme-text);
-    background-color: var(--theme-bg);
-  }
+  /* Semantic Font Assignment */
+  --font-body: var(--font-primary);
+  --font-heading: var(--font-secondary);
 
-  /* ===========================================================================
-     Light Theme Overrides
-    =========================================================================== */
-  .u-theme-light,
-  [data-theme='light'] {
-    /* Generic Theme */
-    --theme-bg: var(--swatch--light-main);
-    --theme-text: var(--swatch--dark-main);
-    --theme-bg-2: var(--swatch--gray-main);
-    --theme-border: var(--swatch--dark-100);
-    --theme-heading: var(--swatch--dark-main);
-    --theme-accent: var(--swatch--accent-main);
+  /* Text Size */
+  --text-display: clamp(2.986rem, 2.0618rem + 4.1077vw, 5.2452rem);
+  --text-h1: clamp(2.4883rem, 1.7897rem + 3.1052vw, 4.1962rem);
+  --text-h2: clamp(2.0736rem, 1.5486rem + 2.3333vw, 3.3569rem);
+  --text-h3: clamp(1.728rem, 1.3363rem + 1.741vw, 2.6855rem);
+  --text-h4: clamp(1.44rem, 1.1502rem + 1.2881vw, 2.1484rem);
+  --text-h5: clamp(1.2rem, 0.9878rem + 0.9432vw, 1.7188rem);
+  --text-h6: clamp(1rem, 0.8466rem + 0.6818vw, 1.375rem);
+  --text-tiny: clamp(0.75rem, 1vw, 0.875rem);
+  --text-small: clamp(0.875rem, 1.5vw, 1rem);
+  --text-main: clamp(1rem, 2vw, 1.125rem);
+  --text-medium: clamp(1.125rem, 2vw, 1.25rem);
+  --text-large: clamp(1.25rem, 2.5vw, 1.5rem);
 
-    /* Selection Theme */
-    --selection-bg: var(--swatch--accent-main);
-    --selection-text: var(--swatch--light-main);
+  /* Font Weight */
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 200;
 
-    /* Button Primary Theme */
-    --button-primary-bg: var(--swatch--accent-main);
-    --button-primary-text: var(--swatch--light-main);
-    --button-primary-border: var(--swatch--gray-main);
-    --button-primary-bg-hover: var(--swatch--dark-main);
-    --button-primary-text-hover: var(--swatch--light-main);
-    --button-primary-border-hover: var(--swatch--dark-main);
+  /* Letter Spacing */
+  --tracking-tiny: 0;
+  --tracking-small: -0.03em;
+  --tracking-main: 0em;
+  --tracking-huge: 0;
 
-    /* Button Secondary Theme */
-    --button-secondary-bg: var(--swatch--transparent);
-    --button-secondary-text: var(--swatch--dark-main);
-    --button-secondary-border: var(--swatch--dark-main);
-    --button-secondary-bg-hover: var(--swatch--dark-main);
-    --button-secondary-text-hover: var(--swatch--light-main);
-    --button-secondary-border-hover: var(--swatch--dark-main);
-  }
+  /* Line Height */
+  --leading-tiny: 1;
+  --leading-small: 1.1;
+  --leading-medium: 1.2;
+  --leading-main: 1.5;
+  --leading-huge: 1.6;
 
-  .u-theme-light::selection {
-    background-color: var(--selection-bg);
-    color: var(--selection-text);
-  }
+  /* Text Transform */
+  --text-transform-none: none;
+  --text-transform-uppercase: uppercase;
+  --text-transform-lowercase: lowercase;
+  --text-transform-capitalize: capitalize;
 
-  /* ===========================================================================
-     Dark Theme Overrides
-    =========================================================================== */
-  .u-theme-dark,
-  [data-theme='dark'] {
-    --theme-bg: var(--swatch--dark-main);
-    --theme-text: var(--swatch--light-main);
-    --theme-bg-2: var(--swatch--dark-600);
-    --theme-border: var(--swatch--dark-800);
-    --theme-heading: var(--swatch--light-main);
-    --theme-accent: var(--swatch--accent-main);
+  /* Font Trim */
+  --primary-trim-top: 0.33em;
+  --primary-trim-bottom: 0.38em;
+  --text-trim-top: var(--primary-trim-top);
+  --text-trim-bottom: var(--primary-trim-bottom);
 
-    /* Selection Dark Theme */
-    --selection-bg: var(--swatch--accent-main);
-    --selection-text: var(--swatch--light-main);
+  /* Text Wrap */
+  --text-wrap-none: nowrap;
+  --text-wrap-balance: balance;
+  --text-wrap-pretty: pretty;
+  --text-wrap-wrap: wrap;
+  --text-wrap-break-word: break-word;
 
-    /* Button Primary Theme */
-    --button-primary-bg: var(--swatch--accent-main);
-    --button-primary-text: var(--swatch--light-main);
-    --button-primary-border: var(--swatch--accent-main);
-    --button-primary-bg-hover: var(--swatch--accent-600);
-    --button-primary-text-hover: var(--swatch--light-main);
-    --button-primary-border-hover: var(--swatch--dark-main);
+  /* Radius variables */
+  --radius-tiny: 0.25rem;
+  --radius-small: 0.5rem;
+  --radius-main: 1rem;
+  --radius-medium: 1.5rem;
+  --radius-large: 2rem;
 
-    /* Button Secondary Theme */
-    --button-secondary-bg: var(--swatch--transparent);
-    --button-secondary-text: var(--swatch--light-main);
-    --button-secondary-border: var(--swatch--light-main);
-    --button-secondary-bg-hover: var(--swatch--accent-main);
-    --button-secondary-text-hover: var(--swatch--light-main);
-    --button-secondary-border-hover: var(--swatch--accent-main);
-  }
+  /* Border width variables */
+  --border-width-tiny: 0.08rem;
+  --border-width-main: 0.094rem;
+  --border-widt-medium: 0.188rem;
+  --border-width-large: 0.376rem;
 
-  .u-theme-dark::selection,
-  [data-theme='dark']::selection {
-    background-color: var(--selection-bg);
-    color: var(--selection-text);
-  }
+  /* Focus variables */
+  --focus-width: 0.125rem;
+  --focus-offset-inner: calc(var(--focus--width) * -1);
+  --focus-offset-outer: 0.1875rem;
 
-  /* ===========================================================================
-     Brand Theme Overrides (applied to a specific section)
-    =========================================================================== */
-  .u-theme-brand,
-  [data-theme='brand'] {
-    --theme-bg: var(--swatch--accent-main);
-    --theme-text: var(--swatch--light-main);
-    --theme-bg-2: var(--swatch--dark-main);
-    --theme-border: var(--swatch--accent-light);
-    --theme-heading: var(--swatch--dark-main);
-    --theme-accent: var(--swatch--light-100);
+  /* Responsive width variables */
+  --max-width-small: 50rem;
+  --max-width-main: var(--site--viewport-max);
+  --max-width-full: 100%;
+  --max-width-12ch: 12ch;
+  --max-width-15ch: 15ch;
+  --max-width-20ch: 20ch;
+  --max-width-30ch: 30ch;
+  --max-width-40ch: 40ch;
+  --max-width-50ch: 50ch;
+  --max-width-60ch: 60ch;
+  --max-width-70ch: 70ch;
+  --max-width-80ch: 80ch;
 
-    /* Selection Brand Theme */
-    --selection-bg: var(--swatch--dark-main);
-    --selection-text: var(--swatch--light-main);
+  /* Spacing Main*/
+  --spacing-u-1: clamp(0.25rem, 0.1989rem + 0.2273vw, 0.375rem);
+  --spacing-u-2: clamp(0.5rem, 0.4233rem + 0.3409vw, 0.6875rem);
+  --spacing-u-3: clamp(0.75rem, 0.6222rem + 0.5682vw, 1.0625rem);
+  --spacing-u-4: clamp(1rem, 0.8466rem + 0.6818vw, 1.375rem);
+  --spacing-u-5: clamp(1.5rem, 1.2699rem + 1.0227vw, 2.0625rem);
+  --spacing-u-6: clamp(2rem, 1.6932rem + 1.3636vw, 2.75rem);
+  --spacing-u-7: clamp(3rem, 2.5398rem + 2.0455vw, 4.125rem);
+  --spacing-u-8: clamp(4rem, 3.3864rem + 2.7273vw, 5.5rem);
+  --spacing-u-9: clamp(6rem, 5.0795rem + 4.0909vw, 8.25rem);
 
-    /* Button Primary Theme */
-    --button-primary-bg: var(--swatch--light-main);
-    --button-primary-text: var(--swatch--dark-main);
-    --button-primary-border: var(--swatch--light-main);
-    --button-primary-bg-hover: var(--swatch--light-main);
-    --button-primary-text-hover: var(--swatch--dark-main);
-    --button-primary-border-hover: var(--swatch--light-main);
-
-    /* Button Secondary Theme */
-    --button-secondary-bg: var(--swatch--transparent);
-    --button-secondary-text: var(--swatch--light-main);
-    --button-secondary-border: var(--swatch--light-main);
-    --button-secondary-bg-hover: var(--swatch--light-main);
-    --button-secondary-text-hover: var(--swatch--dark-main);
-    --button-secondary-border-hover: var(--swatch--light-main);
-  }
-
-  .u-theme-brand::selection,
-  [data-theme='brand']::selection {
-    background-color: var(--selection-bg);
-    color: var(--selection-text);
-  }
+  /* Section Spacing */
+  --spacing-section-small: clamp(2rem, 1.6932rem + 1.3636vw, 2.75rem);
+  --spacing-section-main: clamp(3rem, 2.5398rem + 2.0455vw, 4.125rem);
+  --spacing-section-large: clamp(4rem, 3.3864rem + 2.7273vw, 5.5rem);
+  --spacing-section-page-top: clamp(6rem, 5.0795rem + 4.0909vw, 8.25rem);
 }

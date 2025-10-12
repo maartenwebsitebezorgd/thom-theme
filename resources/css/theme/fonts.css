@@ -2,7 +2,7 @@
   /* Font Family */
   @font-face {
     font-family: 'HelveticaNeue';
-    src: url('../fonts/HelveticaNeueThin.otf') format('opentype');
+    src: url('/public/build/assets/HelveticaNeueThin.otf') format('opentype');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -10,7 +10,7 @@
 
   @font-face {
     font-family: 'HelveticaNeue';
-    src: url('../fonts/HelveticaNeueRoman.otf') format('opentype');
+    src: url('/public/build/assets/HelveticaNeueRoman.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -18,7 +18,7 @@
 
   @font-face {
     font-family: 'HelveticaNeue';
-    src: url('../fonts/HelveticaNeueMedium.otf') format('opentype');
+    src: url('/public/build/assets/HelveticaNeueMedium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -26,7 +26,7 @@
 
   @font-face {
     font-family: 'HelveticaNeue';
-    src: url('../fonts/HelveticaNeueHeavy.otf') format('opentype');
+    src: url('/public/build/assets/HelveticaNeueHeavy.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -34,7 +34,7 @@
 
   @font-face {
     font-family: 'HelveticaNeue';
-    src: url('../fonts/HelveticaNeueBold.otf') format('opentype');
+    src: url('/public/build/assets/HelveticaNeueBold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
