@@ -3,6 +3,7 @@
    ============================================================================= */
 
 @theme {
+  /* Main Brand Colors */
   --color-tranparent: transparent;
   --color-blue-main: #212a4c;
   --color-accent-main: #4aa3c1;
@@ -11,7 +12,7 @@
   --color-desert-main: #f7f6f5;
   --color-light-main: #ffffff;
 
-  /* Text colors */
+  /* Text Colors */
   --color-text-heading: #212a4c;
   --color-text-body: #212a4c;
   --color-text-heading-light: #ffffff;

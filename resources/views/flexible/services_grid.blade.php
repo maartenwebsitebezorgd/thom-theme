@@ -55,8 +55,7 @@ $bgColor = $styleSettings['background_color'] ?? null;
         :card="$cardItem['service_card']"
         :section-bg-color="$bgColor"
         :section-theme="$theme"
-        :card-theme="$cardTheme"
-        :card-bg-color="$cardBgColor" />
+        :card-theme="$cardTheme" />
       @endforeach
     </div>
     @endif

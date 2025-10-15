@@ -13,7 +13,9 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
-$bgColor = $styleSettings['background_color'] ?? null;
+// Card styling (section level)
+$cardTheme = get_sub_field('card_theme') ?? 'inherit';
+
 @endphp
 
 <section data-theme="{{ $theme }}" class="benefits-grid u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
@@ -30,7 +32,7 @@ $bgColor = $styleSettings['background_color'] ?? null;
     @if ($cards)
     <div class="cards-grid grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
       @foreach ($cards as $cardItem)
-      <x-benefit-card :card="$cardItem['benefit_card']" :section-bg-color="$bgColor" :section-theme="$theme" />
+      <x-benefit-card :card="$cardItem['benefit_card']" :section-theme="$theme" :card-theme="$cardTheme" />
       @endforeach
     </div>
     @endif

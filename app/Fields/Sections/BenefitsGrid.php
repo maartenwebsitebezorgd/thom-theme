@@ -31,6 +31,20 @@ class BenefitsGrid
             ])
             ->addFields(BenefitCard::create('benefit_card'))
             ->endRepeater()
+            ->addSelect('card_theme', [
+                'label' => 'Card Theme',
+                'choices' => [
+                    'auto' => 'Auto (Opposite of Section)',
+                    'inherit' => 'Inherit',
+                    'light' => 'Light',
+                    'grey' => 'Grey',
+                    'accent-light' => 'Accent Light',
+                    'accent' => 'Accent',
+                    'dark' => 'Blue',
+                ],
+                'default_value' => 'auto',
+                'wrapper' => ['width' => '100'],
+            ])
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',
                 'choices' => [

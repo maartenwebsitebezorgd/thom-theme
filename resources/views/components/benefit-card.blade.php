@@ -1,36 +1,25 @@
 @props([
 'card' => [],
-'sectionBgColor' => null,
 'sectionTheme' => 'inherit',
+'cardTheme' => 'auto',
 ])
 
 @php
 $icon = $card['icon'] ?? null;
 $heading = $card['heading'] ?? '';
 $text = $card['text'] ?? '';
-$cardTheme = $card['theme'] ?? 'inherit';
-$cardBgColor = $card['background_color'] ?? 'auto';
 
 // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
   $cardTheme = match($sectionTheme) {
-  'light' => 'dark',
-  'dark' => 'light',
+  'light' => 'grey',
+  'dark' => 'accent-light',
   default => 'inherit',
-  };
-  }
-
-  // Auto background: Use opposite of section background
-  if ($cardBgColor === 'auto') {
-  $cardBgColor = match($sectionBgColor) {
-  'u-background-1' => 'u-background-2',
-  'u-background-2' => 'u-background-1',
-  default => 'u-background-1',
   };
   }
   @endphp
 
-  <div class="card w-full p-u-6 {{ $cardBgColor }}" data-theme="{{ $cardTheme }}">
+  <div class="card w-full p-u-6" data-theme="{{ $cardTheme }}">
     <div class="card_content-top content-wrapper">
       @if ($icon)
       <div class="card-icon mb-u-5">

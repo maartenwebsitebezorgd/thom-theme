@@ -63,25 +63,15 @@ class ServicesGrid
             ->addSelect('card_theme', [
                 'label' => 'Card Theme',
                 'choices' => [
-                    'auto' => 'Auto (Opposite of Section)',
                     'inherit' => 'Inherit',
                     'light' => 'Light',
-                    'dark' => 'Dark',
-                    'brand' => 'Brand',
+                    'grey' => 'Grey',
+                    'accent-light' => 'Accent Light',
+                    'accent' => 'Accent',
+                    'dark' => 'Blue',
                 ],
                 'default_value' => 'auto',
-                'wrapper' => ['width' => '50'],
-            ])
-            ->addSelect('card_background_color', [
-                'label' => 'Card Background Color',
-                'choices' => [
-                    'auto' => 'Auto (Opposite of Section)',
-                    '' => 'None',
-                    'u-background-1' => 'Background One',
-                    'u-background-2' => 'Background Two',
-                ],
-                'default_value' => 'auto',
-                'wrapper' => ['width' => '50'],
+                'wrapper' => ['width' => '100'],
             ])
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',

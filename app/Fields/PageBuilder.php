@@ -10,6 +10,7 @@ use App\Fields\Sections\ImageGallery;
 use App\Fields\Sections\LogoSlider;
 use App\Fields\Sections\MultiSlider;
 use App\Fields\Sections\ServicesGrid;
+use App\Fields\Sections\ServicesLine;
 use App\Fields\Sections\SplitContent;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -39,6 +40,7 @@ class PageBuilder
         $flexibleContent = BlogsSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = MultiSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = ServicesGrid::addToFlexibleContent($flexibleContent);
+        $flexibleContent = ServicesLine::addToFlexibleContent($flexibleContent);
         $flexibleContent = LogoSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = ImageGallery::addToFlexibleContent($flexibleContent);
 
