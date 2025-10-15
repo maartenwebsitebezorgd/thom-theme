@@ -80,16 +80,14 @@ foreach ($posts as $post) {
 // Image and card styling (section level)
 $imageAspectRatio = get_sub_field('image_aspect_ratio') ?? '3/2';
 $cardTheme = get_sub_field('card_theme') ?? 'auto';
-$cardBgColor = get_sub_field('card_background_color') ?? 'auto';
 
 // Style settings
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
-$bgColor = $styleSettings['background_color'] ?? null;
 @endphp
 
-<section data-theme="{{ $theme }}" class="multi-slider overflow-clip u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="multi-slider overflow-clip u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
@@ -106,18 +104,14 @@ $bgColor = $styleSettings['background_color'] ?? null;
           <x-case-simple
             :case="$item['data']"
             :image-aspect-ratio="$imageAspectRatio"
-            :section-bg-color="$bgColor"
             :section-theme="$theme"
-            :card-theme="$cardTheme"
-            :card-bg-color="$cardBgColor" />
+            :card-theme="$cardTheme" />
         @else
           <x-article-simple
             :article="$item['data']"
             :image-aspect-ratio="$imageAspectRatio"
-            :section-bg-color="$bgColor"
             :section-theme="$theme"
-            :card-theme="$cardTheme"
-            :card-bg-color="$cardBgColor" />
+            :card-theme="$cardTheme" />
         @endif
       </div>
       @endforeach

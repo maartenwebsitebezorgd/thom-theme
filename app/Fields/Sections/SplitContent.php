@@ -5,6 +5,7 @@ namespace App\Fields\Sections;
 use App\Fields\Components\ContentWrapper;
 use App\Fields\Components\StyleSettings;
 use App\Fields\Components\Visual;
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class SplitContent
@@ -43,12 +44,7 @@ class SplitContent
                 ])
                 ->addSelect('gap_size', [
                     'label' => 'Gap Between Columns',
-                    'choices' => [
-                        'gap-u-4' => 'Small',
-                        'gap-u-6' => 'Medium',
-                        'gap-u-8' => 'Large',
-                        'gap-u-12' => 'Extra Large',
-                    ],
+                    'choices' => Choices::spacing(),
                     'default_value' => 'gap-u-8'
                 ]);
     }

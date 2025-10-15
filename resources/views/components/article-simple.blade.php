@@ -1,10 +1,8 @@
 @props([
 'article' => [],
 'imageAspectRatio' => '3/2',
-'sectionBgColor' => '',
 'sectionTheme' => 'inherit',
-'cardTheme' => 'inherit',
-'cardBgColor' => 'auto',
+'cardTheme' => 'auto',
 ])
 
 @php
@@ -18,18 +16,9 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
 // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
   $cardTheme = match($sectionTheme) {
-  'light' => 'dark',
-  'dark' => 'light',
+  'light' => 'grey',
+  'dark' => 'accent-light',
   default => 'inherit',
-  };
-  }
-
-  // Auto background: Use opposite of section background
-  if ($cardBgColor === 'auto') {
-  $cardBgColor = match($sectionBgColor) {
-  'u-background-1' => 'u-background-2',
-  'u-background-2' => 'u-background-1',
-  default => 'u-background-2',
   };
   }
 
@@ -51,7 +40,7 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
   @if($makeCardClickable && $linkUrl)
   <article
     data-theme="{{ $cardTheme }}"
-    class="article-simple-wrap w-full h-full flex flex-col overflow-hidden {{ $cardBgColor }} group"
+    class="article-simple-wrap w-full h-full flex flex-col overflow-hidden group"
     role="article"
     aria-labelledby="{{ $uniqueId }}-title">
     <a
@@ -63,7 +52,7 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
       @else
       <article
         data-theme="{{ $cardTheme }}"
-        class="article-simple-wrap h-full flex flex-col overflow-hidden {{ $cardBgColor }}"
+        class="article-simple-wrap h-full flex flex-col overflow-hidden"
         role="article"
         aria-labelledby="{{ $uniqueId }}-title">
         @endif
@@ -101,7 +90,7 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
               target="{{ $linkTarget }}"
               @if($linkTarget==='_blank' ) rel="noopener noreferrer" @endif
               class="underline-offset-2 u-text-style-small underline">
-             {{ $linkTitle }}
+              {{ $linkTitle }}
             </a>
             @elseif($link && $makeCardClickable)
             <span class="underline-offset-2 u-text-style-small underline" aria-hidden="true">{{ $linkTitle }}</span>

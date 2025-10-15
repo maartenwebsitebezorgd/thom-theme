@@ -6,7 +6,6 @@ $styleSettings = get_sub_field('style_settings');
 
 // Card styling (section level)
 $cardTheme = get_sub_field('card_theme') ?? 'auto';
-$cardBgColor = get_sub_field('card_background_color') ?? 'auto';
 
 // Get cards based on mode
 if ($useGlobalServices) {
@@ -34,10 +33,9 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
-$bgColor = $styleSettings['background_color'] ?? null;
 @endphp
 
-<section data-theme="{{ $theme }}" class="services-grid u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="services-grid u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
@@ -53,7 +51,6 @@ $bgColor = $styleSettings['background_color'] ?? null;
       @foreach ($cards as $cardItem)
       <x-service-card
         :card="$cardItem['service_card']"
-        :section-bg-color="$bgColor"
         :section-theme="$theme"
         :card-theme="$cardTheme" />
       @endforeach

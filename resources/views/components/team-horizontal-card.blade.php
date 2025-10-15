@@ -1,9 +1,7 @@
 @props([
 'card' => [],
-'sectionBgColor' => null,
 'sectionTheme' => 'inherit',
-'cardTheme' => 'light',
-'cardBgColor' => 'auto',
+'cardTheme' => 'auto',
 ])
 
 @php
@@ -14,20 +12,12 @@ $button = $card['button'] ?? null;
 // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
   $cardTheme = match($sectionTheme) {
-  'light' => 'dark',
-  'dark' => 'light',
+  'light' => 'grey',
+  'dark' => 'accent-light',
   default => 'inherit',
   };
   }
 
-  // Auto background: Use opposite of section background
-  if ($cardBgColor === 'auto') {
-  $cardBgColor = match($sectionBgColor) {
-  'u-background-1' => 'u-background-2',
-  'u-background-2' => 'u-background-1',
-  default => 'u-background-1',
-  };
-  }
 
   // Get team member data
   $teamMember = null;
@@ -55,7 +45,7 @@ $button = $card['button'] ?? null;
   @endphp
 
   @if($teamMember)
-  <div class="team-horizontal-card {{ $cardBgColor }} px-u-6 py-u-6 lg:px-u-8 lg:py-u-8" data-theme="{{ $cardTheme }}">
+  <div class="team-horizontal-card px-u-6 py-u-6 lg:px-u-8 lg:py-u-8" data-theme="{{ $cardTheme }}">
     <div class="team-horizontal-card-inner flex flex-col lg:flex-row gap-u-6 lg:gap-u-8 items-start">
 
       {{-- Left side: Heading and button --}}

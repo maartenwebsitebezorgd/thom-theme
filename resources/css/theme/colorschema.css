@@ -92,7 +92,7 @@
     --button-secondary-text: var(--color-accent-main);
     --button-secondary-border: var(--color-accent-main);
     --button-secondary-bg-hover: var(--color-accent-600);
-    --button-secondary-text-hover: var(--color-accent-600);
+    --button-secondary-text-hover: var(--color-text-body-light);
     --button-secondary-border-hover: var(--color-accent-600);
 
     &::selection {

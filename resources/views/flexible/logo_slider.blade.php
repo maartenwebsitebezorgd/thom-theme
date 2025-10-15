@@ -43,12 +43,11 @@ foreach ($cases as $case) {
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
-$bgColor = $styleSettings['background_color'] ?? null;
 
 $uniqueId = uniqid('logo-slider-');
 @endphp
 
-<section data-theme="{{ $theme }}" class="logo-slider u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="logo-slider u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}

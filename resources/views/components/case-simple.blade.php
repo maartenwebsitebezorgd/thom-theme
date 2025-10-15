@@ -1,10 +1,8 @@
 @props([
 'case' => [],
 'imageAspectRatio' => '3/2',
-'sectionBgColor' => '',
 'sectionTheme' => 'inherit',
 'cardTheme' => 'auto',
-'cardBgColor' => 'auto',
 ])
 
 @php
@@ -19,20 +17,12 @@ $makeCardClickable = $case['make_card_clickable'] ?? true;
 // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
   $cardTheme = match($sectionTheme) {
-  'light' => 'dark',
-  'dark' => 'light',
+  'light' => 'grey',
+  'dark' => 'accent-light',
   default => 'inherit',
   };
   }
 
-  // Auto background: Use opposite of section background
-  if ($cardBgColor === 'auto') {
-  $cardBgColor = match($sectionBgColor) {
-  'u-background-1' => 'u-background-2',
-  'u-background-2' => 'u-background-1',
-  default => 'u-background-2',
-  };
-  }
 
   $linkUrl = $link['url'] ?? null;
   $linkTarget = $link['target'] ?? '_self';
@@ -52,7 +42,7 @@ $makeCardClickable = $case['make_card_clickable'] ?? true;
   @if($makeCardClickable && $linkUrl)
   <article
     data-theme="{{ $cardTheme }}"
-    class="case-simple-wrap w-full h-full flex flex-col overflow-hidden {{ $cardBgColor }} group"
+    class="case-simple-wrap w-full h-full flex flex-col overflow-hidden group"
     role="article"
     aria-labelledby="{{ $uniqueId }}-title">
     <a
@@ -64,7 +54,7 @@ $makeCardClickable = $case['make_card_clickable'] ?? true;
       @else
       <article
         data-theme="{{ $cardTheme }}"
-        class="case-simple-wrap h-full flex flex-col overflow-hidden {{ $cardBgColor }}"
+        class="case-simple-wrap h-full flex flex-col overflow-hidden"
         role="article"
         aria-labelledby="{{ $uniqueId }}-title">
         @endif

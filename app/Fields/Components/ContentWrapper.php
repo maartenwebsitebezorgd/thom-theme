@@ -2,6 +2,7 @@
 
 namespace App\Fields\Components;
 
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class ContentWrapper
@@ -52,10 +53,7 @@ class ContentWrapper
             ])
             ->addSelect('style', [
                 'label' => 'Style',
-                'choices' => [
-                    'primary' => 'Primary',
-                    'secondary' => 'Secondary'
-                ],
+                'choices' => Choices::buttonStyle(),
                 'default_value' => 'primary',
             ])
             ->endRepeater()

@@ -5,6 +5,7 @@ namespace App\Fields\Sections;
 use App\Fields\Components\ServiceCard;
 use App\Fields\Components\ContentWrapper;
 use App\Fields\Components\StyleSettings;
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class ServicesGrid
@@ -62,54 +63,31 @@ class ServicesGrid
             ->endRepeater()
             ->addSelect('card_theme', [
                 'label' => 'Card Theme',
-                'choices' => [
-                    'inherit' => 'Inherit',
-                    'light' => 'Light',
-                    'grey' => 'Grey',
-                    'accent-light' => 'Accent Light',
-                    'accent' => 'Accent',
-                    'dark' => 'Blue',
-                ],
+                'choices' => Choices::cardTheme(),
                 'default_value' => 'auto',
                 'wrapper' => ['width' => '100'],
             ])
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',
-                'choices' => [
-                    'grid-cols-2' => '2 Columns',
-                    'grid-cols-3' => '3 Columns',
-                    'grid-cols-4' => '4 Columns',
-                ],
+                'choices' => Choices::gridColumnsDesktop(),
                 'default_value' => 'grid-cols-4',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('grid_columns_tablet', [
                 'label' => 'Grid Columns (Tablet)',
-                'choices' => [
-                    'md:grid-cols-1' => '1 Column',
-                    'md:grid-cols-2' => '2 Columns',
-                    'md:grid-cols-3' => '3 Columns',
-                ],
+                'choices' => Choices::gridColumnsTablet(),
                 'default_value' => 'md:grid-cols-2',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('grid_columns_mobile', [
                 'label' => 'Grid Columns (Mobile)',
-                'choices' => [
-                    'grid-cols-1' => '1 Column',
-                    'grid-cols-2' => '2 Columns',
-                ],
+                'choices' => Choices::gridColumnsMobile(),
                 'default_value' => 'grid-cols-1',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('gap_size', [
                 'label' => 'Gap Size',
-                'choices' => [
-                    'gap-u-3' => 'Small',
-                    'gap-u-4' => 'Medium',
-                    'gap-u-6' => 'Large',
-                    'gap-u-8' => 'Extra Large',
-                ],
+                'choices' => Choices::gapSize(),
                 'default_value' => 'gap-u-4'
             ])
             ->addFields(StyleSettings::create('style_settings'));

@@ -4,6 +4,7 @@ namespace App\Fields\Sections;
 
 use App\Fields\Components\ServiceLineCard;
 use App\Fields\Components\StyleSettings;
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class ServicesLine
@@ -55,14 +56,7 @@ class ServicesLine
             ->addSelect('card_theme', [
                 'label' => 'Card Theme',
                 'instructions' => 'Choose the theme for all cards in this section',
-                'choices' => [
-                    'inherit' => 'Inherit from section',
-                    'light' => 'Light',
-                    'grey' => 'Grey',
-                    'accent-light' => 'Accent Light',
-                    'accent' => 'Accent',
-                    'dark' => 'Blue',
-                ],
+                'choices' => Choices::cardTheme(),
                 'default_value' => 'inherit',
             ])
             ->addFields(StyleSettings::create('style_settings'));

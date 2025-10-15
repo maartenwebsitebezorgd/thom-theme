@@ -2,6 +2,7 @@
 
 namespace App\Fields\Sections;
 
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class ImageGallery
@@ -38,11 +39,7 @@ class ImageGallery
                 ])
                 ->addSelect('aspect_ratio', [
                     'label' => 'Image Aspect Ratio',
-                    'choices' => [
-                        'aspect-square' => 'Square',
-                        'aspect-[4/3]' => '4:3',
-                        'aspect-[16/9]' => '16:9'
-                    ],
+                    'choices' => Choices::aspectRatio(),
                     'default_value' => 'aspect-square'
                 ]);
     }

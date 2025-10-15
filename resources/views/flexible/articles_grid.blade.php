@@ -17,7 +17,6 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
-$bgColor = $styleSettings['background_color'] ?? null;
 
 // Get posts
 if ($useLatestPosts) {
@@ -94,7 +93,7 @@ $customHeading = $teamCard['custom_heading'] ?? null;
 $button = $teamCard['button'] ?? null;
 @endphp
 
-<section data-theme="{{ $theme }}" class="articles-grid u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="articles-grid u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
@@ -113,7 +112,6 @@ $button = $teamCard['button'] ?? null;
           <x-article-simple
             :article="$article"
             :image-aspect-ratio="$imageAspectRatio"
-            :section-bg-color="$bgColor"
             :section-theme="$theme" />
         </div>
         @endforeach
@@ -132,7 +130,6 @@ $button = $teamCard['button'] ?? null;
               'custom_heading' => $customHeading,
               'button' => $button,
             ]"
-            :section-bg-color="$bgColor"
             :section-theme="$theme" />
         </div>
         @endforeach

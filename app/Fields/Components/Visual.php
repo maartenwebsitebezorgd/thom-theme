@@ -2,6 +2,7 @@
 
 namespace App\Fields\Components;
 
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Visual
@@ -43,15 +44,13 @@ class Visual
             ->addTab('Layout', ['placement' => 'left'])
             ->addSelect('aspect_ratio', [
                 'label' => 'Aspect Ratio',
-                'choices' => [
-                    'aspect-square' => '1:1 (Square)',
-                    'aspect-[4/3]' => '4:3 (Standard)',
-                    'aspect-[3/2]' => '3:2 (Photography)',
-                    'aspect-[16/9]' => '16:9 (Widescreen)',
-                    'aspect-[21/9]' => '21:9 (Ultra-wide)',
-                    'aspect-[2/1]' => '2:1 (Banner)',
-                    'aspect-auto' => 'Auto (Original)',
-                ],
+                'choices' => array_merge(
+                    Choices::aspectRatio(),
+                    [
+                        'aspect-[2/1]' => '2:1 (Banner)',
+                        'aspect-auto' => 'Auto (Original)',
+                    ]
+                ),
                 'default_value' => 'aspect-[16/9]',
                 'wrapper' => ['width' => '50'],
             ])

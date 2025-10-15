@@ -5,6 +5,7 @@ namespace App\Fields\Sections;
 use App\Fields\Components\ContentWrapper;
 use App\Fields\Components\StyleSettings;
 use App\Fields\Components\TeamHorizontalCard;
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class ArticlesGrid
@@ -65,52 +66,30 @@ class ArticlesGrid
             ])
             ->addSelect('image_aspect_ratio', [
                 'label' => 'Image Aspect Ratio',
-                'choices' => [
-                    'aspect-square' => '1:1 (Square)',
-                    'aspect-[3/2]' => '3:2 (Standard)',
-                    'aspect-[4/3]' => '4:3',
-                    'aspect-[16/9]' => '16:9 (Wide)',
-                    'aspect-[21/9]' => '21:9 (Ultra Wide)',
-                ],
-                'default_value' => '3/2',
+                'choices' => Choices::aspectRatio(),
+                'default_value' => 'aspect-[3/2]',
             ])
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',
-                'choices' => [
-                    'grid-cols-2' => '2 Columns',
-                    'grid-cols-3' => '3 Columns',
-                    'grid-cols-4' => '4 Columns',
-                ],
+                'choices' => Choices::gridColumnsDesktop(),
                 'default_value' => 'grid-cols-3',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('grid_columns_tablet', [
                 'label' => 'Grid Columns (Tablet)',
-                'choices' => [
-                    'grid-cols-1' => '1 Column',
-                    'grid-cols-2' => '2 Columns',
-                    'grid-cols-3' => '3 Columns',
-                ],
+                'choices' => Choices::gridColumnsTablet(),
                 'default_value' => 'md:grid-cols-2',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('grid_columns_mobile', [
                 'label' => 'Grid Columns (Mobile)',
-                'choices' => [
-                    'grid-cols-1' => '1 Column',
-                    'grid-cols-2' => '2 Columns',
-                ],
+                'choices' => Choices::gridColumnsMobile(),
                 'default_value' => 'grid-cols-1',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('gap_size', [
                 'label' => 'Gap Size',
-                'choices' => [
-                    'gap-u-3' => 'Small',
-                    'gap-u-4' => 'Medium',
-                    'gap-u-6' => 'Large',
-                    'gap-u-8' => 'Extra Large',
-                ],
+                'choices' => Choices::gapSize(),
                 'default_value' => 'gap-u-6'
             ])
             ->addGroup('team_card', [

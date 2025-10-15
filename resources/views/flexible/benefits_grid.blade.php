@@ -18,7 +18,7 @@ $cardTheme = get_sub_field('card_theme') ?? 'inherit';
 
 @endphp
 
-<section data-theme="{{ $theme }}" class="benefits-grid u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="benefits-grid u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}

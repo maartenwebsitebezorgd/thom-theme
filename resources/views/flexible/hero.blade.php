@@ -15,7 +15,6 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
-$bgColor = $styleSettings['background_color'] ?? null;
 
 //image settings
 $visualFullWidth = $visualBlock['full_width'] ?? false;
@@ -41,7 +40,7 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 $hasBackground = !empty($backgroundBlock['image']) || !empty($backgroundBlock['video_url']);
 @endphp
 
-<section data-theme="{{ $theme }}" class="hero u-section relative {{ $height }} {{ $paddingTop }} {{ $paddingBottom }} overflow-hidden @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="hero u-section relative {{ $height }} {{ $paddingTop }} {{ $paddingBottom }} overflow-hidden">
 
   {{-- Background Image/Video (only show if content exists) --}}
   @if ($hasBackground)

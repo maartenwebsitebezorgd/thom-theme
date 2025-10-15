@@ -2,6 +2,7 @@
 
 namespace App\Fields\Components;
 
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class StyleSettings
@@ -32,38 +33,19 @@ class StyleSettings
             ->addTab('Style', ['placement' => 'left'])
             ->addSelect('theme', [
                 'label' => 'Theme',
-                'choices' => [
-                    'inherit' => 'Inherit',
-                    'light' => 'Light',
-                    'grey' => 'Grey',
-                    'accent-light' => 'Accent Light',
-                    'accent' => 'Accent',
-                    'dark' => 'Blue',
-                ],
+                'choices' => Choices::theme(),
                 'default_value' => $defaults['theme'],
                 'wrapper' => ['width' => '100'],
             ])
             ->addSelect('padding_top', [
                 'label' => 'Padding Top',
-                'choices' => [
-                    'pt-section-none' => 'None',
-                    'pt-section-small' => 'Small',
-                    'pt-section-main' => 'Main',
-                    'pt-section-medium' => 'Medium',
-                    'pt-section-large' => 'Large',
-                ],
+                'choices' => Choices::paddingTop(),
                 'default_value' => $defaults['padding_top'],
                 'wrapper' => ['width' => '50'],
             ])
             ->addSelect('padding_bottom', [
                 'label' => 'Padding Bottom',
-                'choices' => [
-                    'pb-section-none' => 'None',
-                    'pb-section-small' => 'Small',
-                    'pb-section-main' => 'Main',
-                    'pb-section-medium' => 'Medium',
-                    'pb-section-large' => 'Large',
-                ],
+                'choices' => Choices::paddingBottom(),
                 'default_value' => $defaults['padding_bottom'],
                 'wrapper' => ['width' => '50'],
             ])

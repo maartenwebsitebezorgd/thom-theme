@@ -40,7 +40,7 @@ if (!empty($linkText) && !empty($link['url']) && str_contains($headingText, $lin
 
 @endphp
 
-<section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }} @if ($bgColor) {{ $bgColor }} @endif">
+<section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
     <div class="u-container">
         <div class="service-line_layout">
             <div class="service-line_main-wrap flex flex-row gap-u-4 items-center justify-between flex-wrap">

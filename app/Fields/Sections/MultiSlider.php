@@ -5,6 +5,7 @@ namespace App\Fields\Sections;
 use App\Fields\Components\ContentWrapper;
 use App\Fields\Components\StyleSettings;
 use App\Fields\Components\SwiperSettings;
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class MultiSlider
@@ -75,37 +76,14 @@ class MultiSlider
             ])
             ->addSelect('image_aspect_ratio', [
                 'label' => 'Image Aspect Ratio',
-                'choices' => [
-                    'aspect-square' => '1:1 (Square)',
-                    'aspect-[3/2]' => '3:2 (Standard)',
-                    'aspect-[4/3]' => '4:3',
-                    'aspect-[16/9]' => '16:9 (Wide)',
-                    'aspect-[21/9]' => '21:9 (Ultra Wide)',
-                ],
+                'choices' => Choices::aspectRatio(),
                 'default_value' => 'aspect-[3/2]',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('card_theme', [
                 'label' => 'Card Theme',
-                'choices' => [
-                    'auto' => 'Auto (Opposite of Section)',
-                    'inherit' => 'Inherit',
-                    'light' => 'Light',
-                    'dark' => 'Dark',
-                    'brand' => 'Brand',
-                ],
+                'choices' => Choices::cardTheme(),
                 'default_value' => 'inherit',
-                'wrapper' => ['width' => '33'],
-            ])
-            ->addSelect('card_background_color', [
-                'label' => 'Card Background Color',
-                'choices' => [
-                    'auto' => 'Auto (Opposite of Section)',
-                    '' => 'None',
-                    'u-background-1' => 'Background One',
-                    'u-background-2' => 'Background Two',
-                ],
-                'default_value' => 'auto',
                 'wrapper' => ['width' => '33'],
             ])
             ->addFields(SwiperSettings::create('swiper_settings'))

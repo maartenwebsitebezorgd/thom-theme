@@ -1,9 +1,7 @@
 @props([
 'card' => [],
-'sectionBgColor' => null,
 'sectionTheme' => 'inherit',
 'cardTheme' => 'auto',
-'cardBgColor' => 'auto',
 ])
 
 @php
@@ -16,20 +14,12 @@ $makeCardClickable = $card['make_card_clickable'] ?? true;
 // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
   $cardTheme = match($sectionTheme) {
-  'light' => 'dark',
-  'dark' => 'light',
+  'light' => 'grey',
+  'dark' => 'accent-light',
   default => 'inherit',
   };
   }
 
-  // Auto background: Use opposite of section background
-  if ($cardBgColor === 'auto') {
-  $cardBgColor = match($sectionBgColor) {
-  'u-background-1' => 'u-background-2',
-  'u-background-2' => 'u-background-1',
-  default => 'u-background-1',
-  };
-  }
 
   $linkUrl = $link['url'] ?? null;
   $linkTarget = $link['target'] ?? '_self';
@@ -42,7 +32,7 @@ $makeCardClickable = $card['make_card_clickable'] ?? true;
   @if($makeCardClickable && $linkUrl)
   <div
     data-theme="{{ $cardTheme }}"
-    class="service-card-wrap w-full h-full flex flex-col overflow-hidden {{ $cardBgColor }} group">
+    class="service-card-wrap w-full h-full flex flex-col overflow-hidden group">
     <a
       href="{{ $linkUrl }}"
       target="{{ $linkTarget }}"
@@ -52,7 +42,7 @@ $makeCardClickable = $card['make_card_clickable'] ?? true;
       @else
       <div
         data-theme="{{ $cardTheme }}"
-        class="service-card-wrap h-full flex flex-col overflow-hidden {{ $cardBgColor }}">
+        class="service-card-wrap h-full flex flex-col overflow-hidden">
         @endif
         <div class="service-card-content-wrap flex flex-col grow">
           <div class="service-card-content-top flex-1 px-u-4 pt-u-5 pb-u-5 u-margin-trim">
