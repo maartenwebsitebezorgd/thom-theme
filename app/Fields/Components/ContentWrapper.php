@@ -21,6 +21,7 @@ class ContentWrapper
             'heading_tag' => 'h2',
             'heading_text_style' => 'u-text-style-h2',
             'paragraph_text_style' => 'u-text-style-main',
+            'margin_bottom' => 'mb-u-6',
         ], $defaults);
 
         $contentWrapper = new FieldsBuilder($name);
@@ -84,46 +85,26 @@ class ContentWrapper
             ])
             ->addSelect('heading_text_style', [
                 'label' => 'Heading Text Style',
-                'instructions' => 'e.g., h1, h2, large',
-                'choices' => [
-                    'display' => 'Display',
-                    'u-text-style-h1' => 'H1 Style',
-                    'u-text-style-h2' => 'H2 Style',
-                    'u-text-style-h3' => 'H3 Style',
-                    'u-text-style-h4' => 'H4 Style',
-                    'u-text-style-h5' => 'H5 Style',
-                    'u-text-style-h6' => 'H6 Style',
-                ],
+                'choices' => Choices::headingTextStyle(),
                 'default_value' => $defaults['heading_text_style'],
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('paragraph_text_style', [
                 'label' => 'Paragraph Text Style',
-                'instructions' => 'e.g., small, large',
-                'choices' => [
-                    'u-text-style-small' => 'Small Style',
-                    'u-text-style-main' => 'Main Style',
-                    'u-text-style-medium' => 'Medium Style',
-                    'u-text-style-large' => 'Large Style',
-                ],
+                'choices' => Choices::paragraphTextStyle(),
                 'default_value' => $defaults['paragraph_text_style'],
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('max_width', [
                 'label' => 'Max Width',
-                'choices' => [
-                    '' => 'None',
-                    'u-max-width-12ch' => '12ch (Very Narrow)',
-                    'u-max-width-15ch' => '15ch',
-                    'u-max-width-20ch' => '20ch',
-                    'u-max-width-30ch' => '30ch',
-                    'u-max-width-40ch' => '40ch',
-                    'u-max-width-50ch' => '50ch',
-                    'u-max-width-60ch' => '60ch',
-                    'u-max-width-70ch' => '70ch',
-                    'u-max-width-80ch' => '80ch (Very Wide)',
-                ],
+                'choices' => Choices::maxWidth(),
                 'default_value' => 'u-max-width-70ch',
+                'wrapper' => ['width' => '33'],
+            ])
+            ->addSelect('margin_bottom', [
+                'label' => 'Margin Bottom',
+                'choices' => Choices::marginBottom(),
+                'default_value' => $defaults['margin_bottom'],
                 'wrapper' => ['width' => '33'],
             ])
             ->endGroup();

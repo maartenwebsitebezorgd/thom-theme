@@ -100,19 +100,75 @@ class Choices
     public static function gapSize()
     {
         return [
+            'gap-u-2' => 'Tiny',
             'gap-u-3' => 'Small',
             'gap-u-4' => 'Medium',
-            'gap-u-6' => 'Large',
+            'gap-u-6' => 'Main',
+            'gap-u-7' => 'Large',
             'gap-u-8' => 'Extra Large',
         ];
     }
     public static function spacing()
     {
         return [
+            'gap-u-2' => 'Tiny',
             'gap-u-3' => 'Small',
             'gap-u-4' => 'Medium',
-            'gap-u-6' => 'Large',
+            'gap-u-6' => 'Main',
+            'gap-u-7' => 'Large',
             'gap-u-8' => 'Extra Large',
+        ];
+    }
+
+    public static function headingTextStyle()
+    {
+        return [
+            'display' => 'Display',
+            'u-text-style-h1' => 'H1 Style',
+            'u-text-style-h2' => 'H2 Style',
+            'u-text-style-h3' => 'H3 Style',
+            'u-text-style-h4' => 'H4 Style',
+            'u-text-style-h5' => 'H5 Style',
+            'u-text-style-h6' => 'H6 Style',
+        ];
+    }
+
+    public static function paragraphTextStyle()
+    {
+        return [
+            'u-text-style-small' => 'Small Style',
+            'u-text-style-main' => 'Main Style',
+            'u-text-style-medium' => 'Medium Style',
+            'u-text-style-large' => 'Large Style',
+        ];
+    }
+
+    public static function maxWidth()
+    {
+        return [
+            '' => 'None',
+            'u-max-width-12ch' => '12ch (Very Narrow)',
+            'u-max-width-15ch' => '15ch',
+            'u-max-width-20ch' => '20ch',
+            'u-max-width-30ch' => '30ch',
+            'u-max-width-40ch' => '40ch',
+            'u-max-width-50ch' => '50ch',
+            'u-max-width-60ch' => '60ch',
+            'u-max-width-70ch' => '70ch',
+            'u-max-width-80ch' => '80ch (Very Wide)',
+        ];
+    }
+
+    public static function marginBottom()
+    {
+        return [
+            'mb-0' => 'None',
+            'mb-u-2' => 'Tiny',
+            'mb-u-3' => 'Small',
+            'mb-u-4' => 'Medium',
+            'mb-u-6' => 'Main',
+            'mb-u-7' => 'Large',
+            'mb-u-8' => 'Extra Large',
         ];
     }
 }

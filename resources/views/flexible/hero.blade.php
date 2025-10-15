@@ -7,9 +7,7 @@ $styleSettings = get_sub_field('style_settings');
 // Layout settings
 $contentPosition = get_sub_field('content_position') ?? 'center';
 $verticalPosition = get_sub_field('vertical_position') ?? 'center';
-$height = get_sub_field('height') ?? 'min-h-screen';
-$gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
-
+$gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 
 // Style settings
 $theme = $styleSettings['theme'] ?? 'inherit';
@@ -40,7 +38,7 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 $hasBackground = !empty($backgroundBlock['image']) || !empty($backgroundBlock['video_url']);
 @endphp
 
-<section data-theme="{{ $theme }}" class="hero u-section relative {{ $height }} {{ $paddingTop }} {{ $paddingBottom }} overflow-hidden">
+<section data-theme="{{ $theme }}" class="hero u-section relative {{ $paddingTop }} {{ $paddingBottom }} overflow-hidden">
 
   {{-- Background Image/Video (only show if content exists) --}}
   @if ($hasBackground)

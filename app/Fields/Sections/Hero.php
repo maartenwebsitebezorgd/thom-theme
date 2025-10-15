@@ -29,6 +29,7 @@ class Hero
                 'heading_tag' => 'h1',
                 'heading_text_style' => 'u-text-style-h1',
                 'paragraph_text_style' => 'u-text-style-medium',
+                'margin_bottom' => 'mb-0',
             ]))
             ->addFields(StyleSettings::create('style_settings'))
             ->addSelect('content_position', [
@@ -54,18 +55,7 @@ class Hero
             ->addSelect('gap_size', [
                 'label' => 'Gap Between Columns',
                 'choices' => Choices::spacing(),
-                'default_value' => 'gap-u-8'
-            ])
-            ->addSelect('height', [
-                'label' => 'Section Height',
-                'choices' => [
-                    'min-h-screen' => 'Full Screen (100vh)',
-                    'min-h-[80vh]' => 'Large (80vh)',
-                    'min-h-[60vh]' => 'Medium (60vh)',
-                    'min-h-[40vh]' => 'Small (40vh)',
-                ],
-                'default_value' => 'min-h-screen',
-                'wrapper' => ['width' => '33'],
+                'default_value' => 'gap-u-6'
             ]);
     }
 }
