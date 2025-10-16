@@ -9,6 +9,7 @@ namespace App;
 use App\Fields\PageBuilder;
 use App\Fields\PostFields;
 use App\Fields\ServicesOptions;
+use App\Fields\TaxonomyFields;
 use App\PostTypes\Cases;
 use App\PostTypes\Team;
 use App\PostTypes\Videos;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Vite;
 new PageBuilder();
 new PostFields();
 new ServicesOptions();
+new TaxonomyFields();
 
 // Initialize Post Types
 new Cases();
@@ -144,6 +146,13 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Enable excerpt support for pages.
+     *
+     * @link https://developer.wordpress.org/reference/functions/add_post_type_support/
+     */
+    add_post_type_support('page', 'excerpt');
 }, 20);
 
 /**

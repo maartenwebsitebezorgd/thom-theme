@@ -54,6 +54,9 @@
   --color-desert-900: #4d4341;
   --color-desert-950: #282322;
 
+  /* Border Color */
+  --border-color-main: --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
+
   /* Font Family */
   --font-primary: 'HelveticaNeue', sans-serif;
   --font-secondary: 'HelveticaNeue', sans-serif;

@@ -7,7 +7,7 @@
     --theme-bg: var(--color-light-main);
     --theme-text: var(--color-text-body);
     --theme-bg-2: var(--color-desert-main);
-    --theme-border: var(--color-desert-main);
+    --theme-border: color-mix(in srgb, var(var(--theme-text)) 20%, transparent);
     --theme-heading: var(--color-text-heading);
     --theme-accent: var(--color-accent-main);
 
@@ -71,7 +71,7 @@
     --theme-bg: var(--color-light-main);
     --theme-text: var(--color-text-body);
     --theme-bg-2: var(--color-desert-main);
-    --theme-border: var(--color-desert-main);
+    --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
     --theme-heading: var(--color-text-heading);
     --theme-accent: var(--color-accent-main);
 
@@ -103,11 +103,21 @@
     .u-theme-grey,
     &[data-theme='grey'] {
       --theme-bg: var(--color-desert-main);
+      --theme-border: color-mix(
+        in srgb,
+        var(--theme-bg) 90%,
+        var(--theme-text)
+      );
     }
 
     &.u-theme-accent-light,
     &[data-theme='accent-light'] {
       --theme-bg: var(--color-accent-light);
+      --theme-border: color-mix(
+        in srgb,
+        var(--theme-bg) 90%,
+        var(--theme-text)
+      );
     }
   }
 
@@ -120,7 +130,7 @@
     --theme-bg: var(--color-blue-main);
     --theme-text: var(--color-text-body-light);
     --theme-bg-2: var(--color-accent-main);
-    --theme-border: var(--color-blue-800);
+    --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
     --theme-heading: var(--color-text-heading-light);
     --theme-accent: var(--color-accent-main);
 
@@ -159,7 +169,7 @@
     /* Generic Theme */
     --theme-bg: var(--color-accent-main);
     --theme-text: var(--color-text-body-light);
-    --theme-border: var(--color-accent-200);
+    --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
     --theme-heading: var(--color-text-heading-light);
     --theme-accent: var(--color-blue-main);
 
