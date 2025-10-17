@@ -1,6 +1,7 @@
 @import 'tailwindcss' theme(static);
 @source "../views/";
 @source "../../app/";
+@plugin "@tailwindcss/typography";
 
 @layer base {
   :root {

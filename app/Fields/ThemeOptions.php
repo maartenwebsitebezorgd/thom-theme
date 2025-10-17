@@ -477,6 +477,162 @@ class ThemeOptions
                 'ui' => 1,
                 'wrapper' => ['width' => '33'],
             ])
+            ->addTab('single_post_settings', ['label' => 'Single Post Settings'])
+            ->addSelect('single_header_theme', [
+                'label' => 'Header Theme',
+                'instructions' => 'Background theme for single post header',
+                'choices' => Choices::theme(),
+                'default_value' => 'grey',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('single_header_alignment', [
+                'label' => 'Header Content Alignment',
+                'choices' => [
+                    'text-left' => 'Left',
+                    'text-center' => 'Center',
+                ],
+                'default_value' => 'text-center',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('single_header_layout', [
+                'label' => 'Header Layout',
+                'instructions' => 'Choose header layout style',
+                'choices' => [
+                    'full-width' => 'Full Width (Image Below Content)',
+                    'split' => 'Split Layout (Content Left, Image Right)',
+                    'split-reverse' => 'Split Layout (Image Left, Content Right)',
+                ],
+                'default_value' => 'full-width',
+            ])
+            ->addSelect('single_header_max_width', [
+                'label' => 'Header Content Max Width',
+                'instructions' => 'Maximum width for header content text',
+                'choices' => [
+                    'max-w-[50ch]' => 'Narrow (50ch)',
+                    'max-w-[60ch]' => 'Medium Narrow (60ch)',
+                    'max-w-[70ch]' => 'Medium (70ch)',
+                    'max-w-[80ch]' => 'Medium Wide (80ch)',
+                    'max-w-none' => 'Full Width',
+                ],
+                'default_value' => 'max-w-[70ch]',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('single_image_aspect_ratio', [
+                'label' => 'Header Image Aspect Ratio',
+                'choices' => array_merge(
+                    Choices::aspectRatio(),
+                    [
+                        'aspect-[2/1]' => '2:1 (Banner)',
+                        'aspect-auto' => 'Auto (Original)',
+                    ]
+                ),
+                'default_value' => 'aspect-[16/9]',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('single_content_theme', [
+                'label' => 'Content Section Theme',
+                'instructions' => 'Background theme for main content area',
+                'choices' => Choices::theme(),
+                'default_value' => 'light',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('single_content_max_width', [
+                'label' => 'Content Max Width',
+                'instructions' => 'Maximum width for post content',
+                'choices' => [
+                    'max-w-[60ch]' => 'Narrow (60ch)',
+                    'max-w-[70ch]' => 'Medium (70ch)',
+                    'max-w-[80ch]' => 'Wide (80ch)',
+                    'max-w-4xl' => 'Extra Wide',
+                    'max-w-none' => 'Full Width',
+                ],
+                'default_value' => 'max-w-[70ch]',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addMessage('visibility_settings_label', '<h3>Show/Hide Elements</h3>')
+            ->addTrueFalse('show_breadcrumbs', [
+                'label' => 'Show Breadcrumbs',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_categories', [
+                'label' => 'Show Categories',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_author', [
+                'label' => 'Show Author',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_date', [
+                'label' => 'Show Date',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_read_time', [
+                'label' => 'Show Read Time',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_featured_image', [
+                'label' => 'Show Featured Image in Header',
+                'instructions' => 'Display featured image in the header (if no custom main image is set)',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_related_posts', [
+                'label' => 'Show Related Posts',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addTrueFalse('show_post_navigation', [
+                'label' => 'Show Post Navigation (Prev/Next)',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '25'],
+            ])
+            ->addSelect('related_posts_theme', [
+                'label' => 'Related Posts Section Theme',
+                'choices' => Choices::theme(),
+                'default_value' => 'grey',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_related_posts',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addSelect('related_posts_columns', [
+                'label' => 'Related Posts Grid Columns',
+                'choices' => [
+                    'grid-cols-1 md:grid-cols-2' => '2 Columns',
+                    'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' => '3 Columns',
+                    'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' => '4 Columns',
+                ],
+                'default_value' => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_related_posts',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->setLocation('options_page', '==', 'acf-options-archive-blog');
 
         // Register all field groups
