@@ -10,6 +10,7 @@ use App\Fields\PageBuilder;
 use App\Fields\PostFields;
 use App\Fields\ServicesOptions;
 use App\Fields\TaxonomyFields;
+use App\Filters\ArchiveSearch;
 use App\PostTypes\Cases;
 use App\PostTypes\Team;
 use App\PostTypes\Videos;
@@ -25,6 +26,9 @@ new TaxonomyFields();
 new Cases();
 new Team();
 new Videos();
+
+// Initialize Filters
+new ArchiveSearch();
 
 /**
  * Inject styles into the block editor.
@@ -177,4 +181,43 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer',
     ] + $config);
+});
+
+/**
+ * Remove archive title prefix (e.g., "Category:", "Archive:", "Tag:")
+ *
+ * @return string
+ */
+add_filter('get_the_archive_title_prefix', function () {
+    return '';
+});
+
+/**
+ * Enqueue scripts and localize data for filters
+ *
+ * @return void
+ */
+add_action('wp_enqueue_scripts', function () {
+    // Only enqueue on archive pages
+    if (!is_archive() && !is_home() && !is_post_type_archive()) {
+        return;
+    }
+
+    // Enqueue the filters script
+    $filtersAsset = Vite::asset('resources/js/filters.js');
+
+    wp_enqueue_script(
+        'sage/filters',
+        $filtersAsset,
+        [],
+        null,
+        true
+    );
+
+    // Localize script with AJAX URL and nonce
+    wp_localize_script('sage/filters', 'sageData', [
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('sage_filters_nonce'),
+        'homeUrl' => home_url('/'),
+    ]);
 });

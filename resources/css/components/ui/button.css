@@ -8,7 +8,7 @@
     padding: 0.75rem 1.5rem;
     font-size: var(--text-main);
     font-weight: bold;
-    color: var(--color-text-headingt);
+    color: var(--color-text-heading);
     line-height: 1;
     border: var(--border-width-main) solid transparent;
     border-radius: var(--radius-small);

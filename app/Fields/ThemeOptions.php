@@ -369,6 +369,49 @@ class ThemeOptions
                     ],
                 ],
             ])
+            ->addTab('filter_settings', ['label' => 'Filter Settings'])
+            ->addTrueFalse('enable_filters', [
+                'label' => 'Enable Filters',
+                'instructions' => 'Show filter options above the posts grid',
+                'default_value' => 1,
+                'ui' => 1,
+            ])
+            ->addCheckbox('active_filters', [
+                'label' => 'Active Filter Types',
+                'instructions' => 'Select which filter types to display',
+                'choices' => [
+                    'category-badges' => 'Category Badges',
+                    'search-field' => 'Search Field',
+                    'dropdown-filter' => 'Dropdown Filter',
+                ],
+                'default_value' => ['category-badges'],
+                'layout' => 'vertical',
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'enable_filters',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addSelect('filter_theme', [
+                'label' => 'Filter Section Theme',
+                'instructions' => 'Background theme for the filter section',
+                'choices' => Choices::theme(),
+                'default_value' => 'light',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'enable_filters',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->addTab('section_settings', ['label' => 'Section Settings'])
             ->addSelect('section_theme', [
                 'label' => 'Section Theme',

@@ -53,8 +53,7 @@ $pageTitle = __('Blog', 'sage');
 $postsPageId = get_option('page_for_posts');
 $pageDescription = $postsPageId ? get_the_excerpt($postsPageId) : null;
 } elseif (is_archive()) {
-// Remove prefixes like "Category:", "Tag:", "Archive:", "Author:" from archive titles
-$pageTitle = trim(str_replace(['Category:', 'Tag:', 'Archive:', 'Author:'], '', get_the_archive_title()));
+$pageTitle = get_the_archive_title();
 $pageDescription = get_the_archive_description();
 } elseif (is_search()) {
 $pageTitle = sprintf(__('Search Results for "%s"', 'sage'), get_search_query());

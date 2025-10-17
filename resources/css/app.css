@@ -41,6 +41,9 @@
 @import './components/navigation.css';
 @import './components/swiper.css';
 @import './components/logo-slider.css';
-@import './components/button.css';
 @import './components/article-simple.css';
 @import './components/case-simple.css';
+
+/* Import ui styles */
+@import './components/ui/button.css';
+@import './components/ui/badge.css';

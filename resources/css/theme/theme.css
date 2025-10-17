@@ -125,6 +125,7 @@
   --radius-main: 1rem;
   --radius-medium: 1.5rem;
   --radius-large: 2rem;
+  --radius-round: 9999px;
 
   /* Border width variables */
   --border-width-tiny: 0.08rem;
