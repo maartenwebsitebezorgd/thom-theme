@@ -614,6 +614,23 @@ class ThemeOptions
                     ],
                 ],
             ])
+            ->addNumber('related_posts_count', [
+                'label' => 'Number of Related Posts',
+                'instructions' => 'How many related posts to display',
+                'min' => 2,
+                'max' => 6,
+                'default_value' => 3,
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_related_posts',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->addSelect('related_posts_columns', [
                 'label' => 'Related Posts Grid Columns',
                 'choices' => [

@@ -25,6 +25,7 @@ $showFeaturedImage = get_field('show_featured_image', 'option') ?? true;
 $showRelatedPosts = get_field('show_related_posts', 'option') ?? true;
 $showPostNavigation = get_field('show_post_navigation', 'option') ?? true;
 $relatedPostsTheme = get_field('related_posts_theme', 'option') ?: 'grey';
+$relatedPostsCount = get_field('related_posts_count', 'option') ?: 3;
 $relatedPostsColumns = get_field('related_posts_columns', 'option') ?: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
 // Title and image
@@ -143,7 +144,7 @@ $isReverse = $headerLayout === 'split-reverse';
       <h2 class="u-text-style-h3 mb-u-8 text-center">Related Posts</h2>
 
       <div class="grid {{ $relatedPostsColumns }} gap-u-6">
-        @foreach($relatedPosts as $relatedPost)
+        @foreach(array_slice($relatedPosts, 0, $relatedPostsCount) as $relatedPost)
         @php
         global $post;
         $post = $relatedPost;

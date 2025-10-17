@@ -26,7 +26,7 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
 
 {{-- Filters --}}
 @if($enableFilters && !empty($activeFilters))
-  <x-filters.filter-container :filters="$activeFilters" :theme="$filterTheme" />
+<x-filters.filter-container :filters="$activeFilters" :theme="$filterTheme" />
 @endif
 
 {{-- Posts Grid --}}
@@ -48,22 +48,22 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
         @endwhile
       </div>
 
-    {{-- Pagination --}}
-    @if (function_exists('wp_pagenavi'))
-    <div class="mt-section-main">
-      {!! wp_pagenavi() !!}
-    </div>
-    @else
-    <div class="mt-section-main flex justify-between gap-u-4">
-      <div>
-        {!! get_previous_posts_link(__('&larr; Newer Posts', 'sage')) !!}
+      {{-- Pagination --}}
+      @if (function_exists('wp_pagenavi'))
+      <div class="mt-section-main">
+        {!! wp_pagenavi() !!}
       </div>
-      <div>
-        {!! get_next_posts_link(__('Older Posts &rarr;', 'sage')) !!}
+      @else
+      <div class="mt-section-main flex justify-between gap-u-4">
+        <div>
+          {!! get_previous_posts_link(__('&larr; Newer Posts', 'sage')) !!}
+        </div>
+        <div>
+          {!! get_next_posts_link(__('Older Posts &rarr;', 'sage')) !!}
+        </div>
       </div>
+      @endif
+      @endif
     </div>
-    @endif
-    @endif
-  </div>
 </section>
 @endsection
