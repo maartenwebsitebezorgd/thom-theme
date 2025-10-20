@@ -30,7 +30,7 @@ $alignment = 'mx-auto text-center';
 <div class="content-wrapper u-margin-trim {{ $alignment }} {{ $maxWidth }} {{ $marginBottom }}">
 
   @if ($eyebrow)
-  <p class="u-text-style-tagline u-margin-bottom-text">
+  <p class="u-text-style-tagline mb-u-5">
     {!! $eyebrow !!}
   </p>
   @endif

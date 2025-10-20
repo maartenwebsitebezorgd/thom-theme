@@ -11,6 +11,7 @@ use App\Fields\PostFields;
 use App\Fields\ServicesOptions;
 use App\Fields\TaxonomyFields;
 use App\Filters\ArchiveSearch;
+use App\Helpers\MenuItemFields;
 use App\PostTypes\Cases;
 use App\PostTypes\Team;
 use App\PostTypes\Videos;
@@ -29,6 +30,9 @@ new Videos();
 
 // Initialize Filters
 new ArchiveSearch();
+
+// Initialize Menu Helpers
+new MenuItemFields();
 
 /**
  * Inject styles into the block editor.

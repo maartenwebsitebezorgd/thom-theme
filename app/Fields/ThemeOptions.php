@@ -100,6 +100,123 @@ class ThemeOptions
                 ],
                 'default_value' => 'simple'
             ])
+            ->addTab('action_buttons', ['label' => 'Action Buttons'])
+            ->addTrueFalse('show_desktop_cta', [
+                'label' => 'Show Desktop CTA Button',
+                'instructions' => 'Display call-to-action button on desktop in header right',
+                'default_value' => 1,
+                'ui' => 1,
+            ])
+            ->addText('desktop_cta_text', [
+                'label' => 'Desktop CTA Text',
+                'default_value' => 'Get Started',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_desktop_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addUrl('desktop_cta_url', [
+                'label' => 'Desktop CTA URL',
+                'default_value' => '/contact',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_desktop_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addSelect('desktop_cta_style', [
+                'label' => 'Desktop CTA Style',
+                'choices' => [
+                    'primary' => 'Primary Button (Filled)',
+                    'secondary' => 'Secondary Button (Outline)',
+                    'link' => 'Link with Arrow',
+                ],
+                'default_value' => 'primary',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_desktop_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addTrueFalse('desktop_cta_new_tab', [
+                'label' => 'Open in New Tab',
+                'default_value' => 0,
+                'ui' => 1,
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_desktop_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addTrueFalse('show_mobile_cta', [
+                'label' => 'Show Mobile CTA Button',
+                'instructions' => 'Display call-to-action button in mobile menu',
+                'default_value' => 1,
+                'ui' => 1,
+            ])
+            ->addText('mobile_cta_text', [
+                'label' => 'Mobile CTA Text',
+                'default_value' => 'Get Started',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_mobile_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addUrl('mobile_cta_url', [
+                'label' => 'Mobile CTA URL',
+                'default_value' => '/contact',
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_mobile_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
+            ->addTrueFalse('mobile_cta_new_tab', [
+                'label' => 'Open in New Tab',
+                'default_value' => 0,
+                'ui' => 1,
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_mobile_cta',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->addTab('contact', ['label' => 'Contact Info'])
             ->addText('phone', [
                 'label' => 'Phone Number'
@@ -529,6 +646,13 @@ class ThemeOptions
                 'default_value' => 'aspect-[16/9]',
                 'wrapper' => ['width' => '50'],
             ])
+            ->addTrueFalse('single_stretch_to_content', [
+                'label' => 'Stretch Image to Content',
+                'instructions' => 'Maintain aspect ratio as minimum, but stretch taller if content is longer (split layout only)',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => ['width' => '50'],
+            ])
             ->addSelect('single_content_theme', [
                 'label' => 'Content Section Theme',
                 'instructions' => 'Background theme for main content area',
@@ -595,7 +719,7 @@ class ThemeOptions
             ])
             ->addTrueFalse('show_post_navigation', [
                 'label' => 'Show Post Navigation (Prev/Next)',
-                'default_value' => 1,
+                'default_value' => 0,
                 'ui' => 1,
                 'wrapper' => ['width' => '25'],
             ])

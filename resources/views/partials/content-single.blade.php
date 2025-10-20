@@ -12,6 +12,7 @@ $headerAlignment = get_field('single_header_alignment', 'option') ?: 'text-cente
 $headerLayout = get_field('single_header_layout', 'option') ?: 'full-width';
 $headerMaxWidth = get_field('single_header_max_width', 'option') ?: 'max-w-[70ch]';
 $imageAspectRatio = get_field('single_image_aspect_ratio', 'option') ?: 'aspect-[16/9]';
+$stretchToContent = get_field('single_stretch_to_content', 'option') ?? true;
 $contentTheme = get_field('single_content_theme', 'option') ?: 'light';
 $contentMaxWidth = get_field('single_content_max_width', 'option') ?: 'max-w-[70ch]';
 
@@ -33,25 +34,25 @@ $title = $detailHeading ?: get_the_title();
 
 $headerImage = null;
 if ($showFeaturedImage) {
-  $headerImage = $mainImage;
-  if (!$headerImage && has_post_thumbnail()) {
-    $thumbnailId = get_post_thumbnail_id();
-    $headerImage = [
-      'ID' => $thumbnailId,
-      'id' => $thumbnailId,
-      'url' => wp_get_attachment_image_url($thumbnailId, 'full'),
-      'alt' => get_post_meta($thumbnailId, '_wp_attachment_image_alt', true),
-    ];
-  }
+$headerImage = $mainImage;
+if (!$headerImage && has_post_thumbnail()) {
+$thumbnailId = get_post_thumbnail_id();
+$headerImage = [
+'ID' => $thumbnailId,
+'id' => $thumbnailId,
+'url' => wp_get_attachment_image_url($thumbnailId, 'full'),
+'alt' => get_post_meta($thumbnailId, '_wp_attachment_image_alt', true),
+];
+}
 }
 
 $categories = get_the_category();
 
 // Auto-calculate read time if not set
 if (!$readTime) {
-  $content = get_post_field('post_content', get_the_ID());
-  $wordCount = str_word_count(strip_tags($content));
-  $readTime = max(1, ceil($wordCount / 200));
+$content = get_post_field('post_content', get_the_ID());
+$wordCount = str_word_count(strip_tags($content));
+$readTime = max(1, ceil($wordCount / 200));
 }
 
 $blogUrl = get_option('page_for_posts') ? get_permalink(get_option('page_for_posts')) : home_url('/blog');
@@ -66,7 +67,7 @@ $isReverse = $headerLayout === 'split-reverse';
   @if($showBreadcrumbs)
   <nav data-theme="dark" class="u-section pt-section-small pb-u-3 pt-u-3" aria-label="Breadcrumb">
     <div class="u-container">
-      <ol class="breadcrumb flex flex-row gap-u-2 items-center u-text-style-small" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <ol class="breadcrumb flex flex-row gap-u-2 items-center u-text-style-small u-text-trim-off" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="{{ home_url('/') }}" itemprop="item" class="hover:underline">
             <span itemprop="name">Home</span>
@@ -93,37 +94,38 @@ $isReverse = $headerLayout === 'split-reverse';
   <header data-theme="{{ $headerTheme }}" class="u-section pt-section-main pb-section-main">
     <div class="u-container">
       @if($isSplitLayout && $headerImage)
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-u-8 items-center {{ $isReverse ? 'lg:flex-row-reverse' : '' }}">
-          <div class="{{ $isReverse ? 'lg:order-2' : 'lg:order-1' }}">
-            <div class="post-header_content u-margin-trim {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerMaxWidth }}">
-              @include('partials.content-single-header-content')
-            </div>
-          </div>
-
-          <div class="{{ $isReverse ? 'lg:order-1' : 'lg:order-2' }}">
-            <x-visual :visual="[
-              'media_type' => 'image',
-              'image' => $headerImage,
-              'aspect_ratio' => $imageAspectRatio,
-            ]" />
-          </div>
-        </div>
-      @else
-        <div class="post-header_content-wrapper">
-          <div class="post-header_content u-margin-trim {{ $headerMaxWidth }} {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerAlignment }}">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-u-8 items-center {{ $isReverse ? 'lg:flex-row-reverse' : '' }}">
+        <div class="{{ $isReverse ? 'lg:order-2' : 'lg:order-1' }}">
+          <div class="post-header_content u-margin-trim {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerMaxWidth }}">
             @include('partials.content-single-header-content')
           </div>
         </div>
 
-        @if($headerImage)
-        <div class="post-header_visual-wrap mt-u-8">
+        <div class="{{ $isReverse ? 'lg:order-1' : 'lg:order-2' }}">
           <x-visual :visual="[
+              'media_type' => 'image',
+              'image' => $headerImage,
+              'aspect_ratio' => $imageAspectRatio,
+              'stretch_to_content' => $stretchToContent,
+            ]" />
+        </div>
+      </div>
+      @else
+      <div class="post-header_content-wrapper">
+        <div class="post-header_content u-margin-trim {{ $headerMaxWidth }} {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerAlignment }}">
+          @include('partials.content-single-header-content')
+        </div>
+      </div>
+
+      @if($headerImage)
+      <div class="post-header_visual-wrap mt-u-8">
+        <x-visual :visual="[
             'media_type' => 'image',
             'image' => $headerImage,
             'aspect_ratio' => $imageAspectRatio,
           ]" />
-        </div>
-        @endif
+      </div>
+      @endif
       @endif
     </div>
   </header>
