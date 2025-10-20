@@ -25,7 +25,7 @@ $cards = get_sub_field('cards');
 
 // Grid settings
 $gridColumnsDesktop = get_sub_field('grid_columns_desktop') ?? 'grid-cols-4';
-$gridColumnsTablet = get_sub_field('grid_columns_tablet') ?? 'md:grid-cols-2';
+$gridColumnsTablet = get_sub_field('grid_columns_tablet') ?? 'grid-cols-2';
 $gridColumnsMobile = get_sub_field('grid_columns_mobile') ?? 'grid-cols-1';
 $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 

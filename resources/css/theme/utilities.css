@@ -95,4 +95,39 @@
   .u-text-accent {
     color: var(--theme-accent);
   }
+
+  .theme-bg {
+    background-color: var(--theme-bg);
+  }
+
+  .theme-text {
+    color: var(--theme-text);
+  }
+
+  .theme-heading {
+    color: var(--theme-heading);
+  }
+
+  .theme-border {
+    border-color: var(--theme-border);
+  }
+
+  .theme-accent {
+    background-color: var(--theme-accent);
+  }
+
+  .prose {
+    --tw-prose-body: var(--theme-text);
+    --tw-prose-headings: var(--theme-heading);
+    --tw-prose-links: var(--theme-link);
+    --tw-prose-bold: var(--theme-heading);
+    --tw-prose-code: var(--theme-text);
+    --tw-prose-pre-bg: var(--theme-code-bg);
+    --tw-prose-pre-code: var(--theme-text);
+    --tw-prose-th-borders: var(--theme-border);
+    --tw-prose-td-borders: var(--theme-border);
+    --tw-prose-hr: var(--theme-border);
+    --tw-prose-quotes: var(--theme-text);
+    --tw-prose-quote-borders: var(--theme-border);
+  }
 }

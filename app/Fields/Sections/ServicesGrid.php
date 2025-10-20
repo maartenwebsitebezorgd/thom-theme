@@ -76,7 +76,7 @@ class ServicesGrid
             ->addSelect('grid_columns_tablet', [
                 'label' => 'Grid Columns (Tablet)',
                 'choices' => Choices::gridColumnsTablet(),
-                'default_value' => 'md:grid-cols-2',
+                'default_value' => 'grid-cols-2',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('grid_columns_mobile', [

@@ -4,7 +4,6 @@ namespace App\Fields\Sections;
 
 use App\Fields\Components\ContentWrapper;
 use App\Fields\Components\StyleSettings;
-use App\Fields\Components\TeamHorizontalCard;
 use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -78,7 +77,7 @@ class ArticlesGrid
             ->addSelect('grid_columns_tablet', [
                 'label' => 'Grid Columns (Tablet)',
                 'choices' => Choices::gridColumnsTablet(),
-                'default_value' => 'md:grid-cols-2',
+                'default_value' => 'grid-cols-2',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('grid_columns_mobile', [
@@ -90,15 +89,8 @@ class ArticlesGrid
             ->addSelect('gap_size', [
                 'label' => 'Gap Size',
                 'choices' => Choices::gapSize(),
-                'default_value' => 'gap-u-6'
+                'default_value' => 'gap-u-4'
             ])
-            ->addGroup('team_card', [
-                'label' => 'Team Card',
-                'instructions' => 'Optional team member card displayed below the articles',
-                'layout' => 'block',
-            ])
-                ->addFields(TeamHorizontalCard::create('team_horizontal_card'))
-            ->endGroup()
             ->addFields(StyleSettings::create('style_settings'));
     }
 }

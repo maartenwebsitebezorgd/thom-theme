@@ -17,13 +17,13 @@ $mobileCtaNewTab = get_field('mobile_cta_new_tab', 'option');
 
 // Build CTA classes based on style
 $desktopCtaClasses = match($desktopCtaStyle) {
-  'secondary' => 'rounded-md border-2 border-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-900/20 transition-colors duration-200',
-  'link' => 'text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200',
-  default => 'rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors duration-200',
+'secondary' => 'button button--secondary button--small',
+'link' => 'button button--link button--small',
+default => 'button button--primary button--small',
 };
 @endphp
 
-<header data-theme="dark" class="navigation relative isolate z-10">
+<header data-theme="dark" class="navigation fixed w-full isolate z-10 top-0 ">
   <nav aria-label="Global" class="mx-auto flex u-container items-center gap-u-6 justify-between py-u-3 min-h-[2.75rem]">
 
     {{-- Logo Section --}}
@@ -34,7 +34,7 @@ $desktopCtaClasses = match($desktopCtaStyle) {
         @if(has_custom_logo())
         {!! get_custom_logo() !!}
         @else
-        <span class="text-xl font-bold text-gray-900 dark:text-white">
+        <span class="u-text-style-h6">
           {{ get_bloginfo('name') }}
         </span>
         @endif
@@ -47,7 +47,7 @@ $desktopCtaClasses = match($desktopCtaStyle) {
         type="button"
         command="show-modal"
         commandfor="mobile-menu"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800">
+        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5">
         <span class="sr-only">Open main menu</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" aria-hidden="true">
           <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -67,16 +67,16 @@ $desktopCtaClasses = match($desktopCtaStyle) {
       ]) !!}
       @else
       {{-- Simple fallback without dropdowns for now --}}
-      <a href="{{ home_url('/') }}" class="text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+      <a href="{{ home_url('/') }}" class="text-sm/6 font-semibold text-[var(--theme-text)] hover:text-[var(--color-primary)] transition-colors duration-200">
         Home
       </a>
-      <a href="{{ home_url('/about') }}" class="text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+      <a href="{{ home_url('/about') }}" class="text-sm/6 font-semibold text-[var(--theme-text)] hover:text-[var(--color-primary)] transition-colors duration-200">
         About
       </a>
-      <a href="{{ home_url('/services') }}" class="text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+      <a href="{{ home_url('/services') }}" class="text-sm/6 font-semibold text-[var(--theme-text)] hover:text-[var(--color-primary)] transition-colors duration-200">
         Services
       </a>
-      <a href="{{ home_url('/contact') }}" class="text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
+      <a href="{{ home_url('/contact') }}" class="text-sm/6 font-semibold text-[var(--theme-text)] hover:text-[var(--color-primary)] transition-colors duration-200">
         Contact
       </a>
       @endif
@@ -101,7 +101,7 @@ $desktopCtaClasses = match($desktopCtaStyle) {
   <el-dialog>
     <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
       <div tabindex="0" class="fixed inset-0 focus:outline-none">
-        <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
+        <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[var(--theme-bg)] p-6 sm:max-w-sm sm:ring-1 sm:ring-[var(--theme-border)]">
 
           {{-- Mobile Header --}}
           <div class="flex items-center justify-between">
@@ -110,7 +110,7 @@ $desktopCtaClasses = match($desktopCtaStyle) {
               @if(has_custom_logo())
               {!! get_custom_logo() !!}
               @else
-              <span class="text-xl font-bold text-gray-900 dark:text-white">
+              <span class="text-xl font-bold text-[var(--theme-text)]">
                 {{ get_bloginfo('name') }}
               </span>
               @endif
@@ -120,7 +120,7 @@ $desktopCtaClasses = match($desktopCtaStyle) {
               type="button"
               command="close"
               commandfor="mobile-menu"
-              class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800">
+              class="-m-2.5 rounded-md p-2.5 text-[var(--theme-text)]/60 hover:bg-[var(--theme-bg-hover)]">
               <span class="sr-only">Close menu</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-6" aria-hidden="true">
                 <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
@@ -141,19 +141,19 @@ $desktopCtaClasses = match($desktopCtaStyle) {
                 'walker' => new MobileWalker()
                 ]) !!}
                 @else
-                <a href="{{ home_url('/') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Home</a>
-                <a href="{{ home_url('/about') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">About</a>
-                <a href="{{ home_url('/services') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Services</a>
-                <a href="{{ home_url('/contact') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Contact</a>
+                <a href="{{ home_url('/') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--theme-text)] hover:bg-[var(--theme-bg-hover)]">Home</a>
+                <a href="{{ home_url('/about') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--theme-text)] hover:bg-[var(--theme-bg-hover)]">About</a>
+                <a href="{{ home_url('/services') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--theme-text)] hover:bg-[var(--theme-bg-hover)]">Services</a>
+                <a href="{{ home_url('/contact') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--theme-text)] hover:bg-[var(--theme-bg-hover)]">Contact</a>
                 @endif
               </div>
 
               @if($showMobileCta)
               <div class="py-6">
                 <a href="{{ $mobileCtaUrl }}"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-indigo-600 hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-900/20"
+                  class="button button--primary button--small"
                   @if($mobileCtaNewTab) target="_blank" rel="noopener noreferrer" @endif>
-                  {{ $mobileCtaText }} <span aria-hidden="true">&rarr;</span>
+                  {{ $mobileCtaText }}
                 </a>
               </div>
               @endif

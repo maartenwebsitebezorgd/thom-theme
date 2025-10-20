@@ -102,9 +102,9 @@ class Choices
         return [
             'gap-u-2' => 'Tiny',
             'gap-u-3' => 'Small',
-            'gap-u-4' => 'Medium',
-            'gap-u-6' => 'Main',
-            'gap-u-7' => 'Large',
+            'gap-u-4' => 'Main',
+            'gap-u-5' => 'Medium',
+            'gap-u-6' => 'Large',
             'gap-u-8' => 'Extra Large',
         ];
     }
@@ -112,11 +112,12 @@ class Choices
     {
         return [
             'gap-u-2' => 'Tiny',
-            'gap-u-3' => 'Small',
-            'gap-u-4' => 'Medium',
+            'gap-u-3' => 'Extra Small',
+            'gap-u-4' => 'Small',
             'gap-u-6' => 'Main',
-            'gap-u-7' => 'Large',
-            'gap-u-8' => 'Extra Large',
+            'gap-u-7' => 'Medium',
+            'gap-u-8' => 'Large',
+            'gap-u-9' => 'Extra Large',
         ];
     }
 

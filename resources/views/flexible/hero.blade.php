@@ -46,7 +46,7 @@ $hasBackground = !empty($backgroundBlock['image']) || !empty($backgroundBlock['v
   @endif
 
   {{-- Hero Content --}}
-  <div class="u-container relative z-10">
+  <div class="u-container relative z-10 theme-bg">
     <div class="split-content_layout grid grid-cols-1 lg:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlign }}">
       {{-- Content Column --}}
       <div class="content-column flex {{ $verticalAlign }}">

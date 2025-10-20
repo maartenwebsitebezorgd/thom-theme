@@ -30,6 +30,14 @@
     --button-secondary-bg-hover: var(--color-accent-600);
     --button-secondary-text-hover: var(--color-accent-600);
     --button-secondary-border-hover: var(--color-accent-600);
+
+    /* Prose customization */
+    --tw-prose-body: var(--theme-text);
+    --tw-prose-headings: var(--theme-heading);
+    --tw-prose-links: var(--theme-accent);
+    --tw-prose-bold: var(--theme-heading);
+    --tw-prose-code: var(--theme-text);
+    --tw-prose-pre-bg: var(--theme-bg);
   }
 
   ::selection {

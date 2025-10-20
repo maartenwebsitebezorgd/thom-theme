@@ -22,30 +22,32 @@ class SplitContent
                 'label' => 'Split Content Section',
                 'display' => 'block'
             ])
-                ->addFields(Visual::create('visual_block'))
-                ->addFields(ContentWrapper::create('content_block'))
-                ->addFields(StyleSettings::create('style_settings'))
-                ->addSelect('content_layout', [
-                    'label' => 'Content Layout',
-                    'choices' => [
-                        'visual-left' => 'Visual Left, Content Right',
-                        'visual-right' => 'Visual Right, Content Left',
-                    ],
-                    'default_value' => 'visual-left'
-                ])
-                ->addSelect('vertical_alignment', [
-                    'label' => 'Vertical Alignment',
-                    'choices' => [
-                        'items-start' => 'Top',
-                        'items-center' => 'Center',
-                        'items-end' => 'Bottom',
-                    ],
-                    'default_value' => 'items-center'
-                ])
-                ->addSelect('gap_size', [
-                    'label' => 'Gap Between Columns',
-                    'choices' => Choices::spacing(),
-                    'default_value' => 'gap-u-8'
-                ]);
+            ->addFields(Visual::create('visual_block'))
+            ->addFields(ContentWrapper::create('content_block', [
+                'margin_bottom' => 'mb-0',
+            ]))
+            ->addFields(StyleSettings::create('style_settings'))
+            ->addSelect('content_layout', [
+                'label' => 'Content Layout',
+                'choices' => [
+                    'visual-left' => 'Visual Left, Content Right',
+                    'visual-right' => 'Visual Right, Content Left',
+                ],
+                'default_value' => 'visual-left'
+            ])
+            ->addSelect('vertical_alignment', [
+                'label' => 'Vertical Alignment',
+                'choices' => [
+                    'items-start' => 'Top',
+                    'items-center' => 'Center',
+                    'items-end' => 'Bottom',
+                ],
+                'default_value' => 'items-center'
+            ])
+            ->addSelect('gap_size', [
+                'label' => 'Gap Between Columns',
+                'choices' => Choices::spacing(),
+                'default_value' => 'gap-u-8'
+            ]);
     }
 }
