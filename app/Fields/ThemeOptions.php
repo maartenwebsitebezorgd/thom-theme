@@ -12,21 +12,29 @@ class ThemeOptions
     {
         add_action('acf/init', [$this, 'addOptionsPage']);
         add_action('acf/init', [$this, 'addOptionsFields']);
+        add_action('admin_notices', [$this, 'renderOverviewPage']);
     }
 
     public function addOptionsPage()
     {
         if (function_exists('acf_add_options_page')) {
             acf_add_options_page([
-                'page_title' => 'Theme Settings',
+                'page_title' => 'Theme Options',
                 'menu_title' => 'Theme Options',
                 'menu_slug' => 'theme-settings',
                 'capability' => 'edit_posts',
                 'icon_url' => 'dashicons-admin-customizer',
                 'position' => 30,
+                'redirect' => false, // Show overview page
             ]);
 
             // Add sub-pages for organization
+            acf_add_options_sub_page([
+                'page_title' => 'General Settings',
+                'menu_title' => 'General',
+                'parent_slug' => 'theme-settings',
+            ]);
+
             acf_add_options_sub_page([
                 'page_title' => 'Header Settings',
                 'menu_title' => 'Header',
@@ -55,13 +63,18 @@ class ThemeOptions
 
     public function addOptionsFields()
     {
-        // Main Theme Settings
-        $themeSettings = new FieldsBuilder('theme_settings');
-        $themeSettings
-            ->addTab('general', ['label' => 'General Settings'])
-            ->addImage('site_logo', [
-                'label' => 'Site Logo',
-                'instructions' => 'Upload your site logo',
+        // General Settings (First sub-page)
+        $generalSettings = new FieldsBuilder('general_settings');
+        $generalSettings
+            ->addTab('brand', ['label' => 'Brand'])
+            ->addImage('logo_light', [
+                'label' => 'Logo for Light Background',
+                'instructions' => 'Upload logo for use on light/white backgrounds (typically dark colored logo)',
+                'return_format' => 'array'
+            ])
+            ->addImage('logo_dark', [
+                'label' => 'Logo for Dark Background',
+                'instructions' => 'Upload logo for use on dark backgrounds (typically white/light colored logo)',
                 'return_format' => 'array'
             ])
             ->addImage('site_favicon', [
@@ -69,15 +82,36 @@ class ThemeOptions
                 'instructions' => 'Upload a favicon (32x32px recommended)',
                 'return_format' => 'array'
             ])
+            ->addTab('contact', ['label' => 'Contact Info'])
+            ->addText('phone', [
+                'label' => 'Phone Number',
+                'instructions' => 'Main contact phone number'
+            ])
+            ->addEmail('email', [
+                'label' => 'Contact Email',
+                'instructions' => 'Main contact email address'
+            ])
+            ->addTextarea('address', [
+                'label' => 'Address',
+                'instructions' => 'Physical address or mailing address',
+                'rows' => 3
+            ])
+            ->addUrl('maps_url', [
+                'label' => 'Google Maps URL',
+                'instructions' => 'Link to your location on Google Maps (optional)'
+            ])
+            ->addTab('brand_colors', ['label' => 'Brand Colors'])
             ->addColorPicker('primary_color', [
                 'label' => 'Primary Brand Color',
+                'instructions' => 'Main brand color used throughout the site',
                 'default_value' => '#3b82f6'
             ])
             ->addColorPicker('secondary_color', [
                 'label' => 'Secondary Brand Color',
+                'instructions' => 'Secondary accent color',
                 'default_value' => '#10b981'
             ])
-            ->setLocation('options_page', '==', 'theme-settings');
+            ->setLocation('options_page', '==', 'acf-options-general');
 
         // Header Settings
         $headerSettings = new FieldsBuilder('header_settings');
@@ -217,17 +251,6 @@ class ThemeOptions
                     ],
                 ],
             ])
-            ->addTab('contact', ['label' => 'Contact Info'])
-            ->addText('phone', [
-                'label' => 'Phone Number'
-            ])
-            ->addEmail('email', [
-                'label' => 'Contact Email'
-            ])
-            ->addTextarea('address', [
-                'label' => 'Address',
-                'rows' => 3
-            ])
             ->setLocation('options_page', '==', 'acf-options-header');
 
         // Footer Settings
@@ -241,7 +264,8 @@ class ThemeOptions
             ])
             ->addText('copyright_text', [
                 'label' => 'Copyright Text',
-                'default_value' => '© ' . date('Y') . ' All rights reserved.'
+                'instructions' => 'Use {{year}} as a placeholder for the current year. Example: © {{year}} Your Company. All rights reserved.',
+                'default_value' => '© {{year}} All rights reserved.'
             ])
             ->addTab('columns', ['label' => 'Footer Columns'])
             ->addRepeater('footer_columns', [
@@ -777,10 +801,102 @@ class ThemeOptions
             ->setLocation('options_page', '==', 'acf-options-archive-blog');
 
         // Register all field groups
-        acf_add_local_field_group($themeSettings->build());
+        acf_add_local_field_group($generalSettings->build());
         acf_add_local_field_group($headerSettings->build());
         acf_add_local_field_group($footerSettings->build());
         acf_add_local_field_group($socialSettings->build());
         acf_add_local_field_group($archiveSettings->build());
+    }
+
+    public function renderOverviewPage()
+    {
+        $screen = get_current_screen();
+
+        // Only show on the main theme options page
+        if ($screen && $screen->id === 'toplevel_page_theme-settings') {
+            ?>
+            <style>
+                .theme-options-overview {
+                    max-width: 1200px;
+                    margin: 2rem 0;
+                }
+                .theme-options-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 1.5rem;
+                    margin-top: 2rem;
+                }
+                .theme-option-card {
+                    background: #fff;
+                    border: 1px solid #dcdcde;
+                    border-radius: 8px;
+                    padding: 1.5rem;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+                }
+                .theme-option-card:hover {
+                    border-color: #2271b1;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                    transform: translateY(-2px);
+                }
+                .theme-option-card-icon {
+                    font-size: 2rem;
+                    line-height: 1;
+                }
+                .theme-option-card-title {
+                    font-size: 1.125rem;
+                    font-weight: 600;
+                    color: #1d2327;
+                    margin: 0;
+                }
+                .theme-option-card-description {
+                    font-size: 0.875rem;
+                    color: #646970;
+                    margin: 0;
+                    line-height: 1.5;
+                }
+            </style>
+
+            <div class="theme-options-overview">
+                <h1>Theme Options</h1>
+                <p style="font-size: 1rem; color: #646970; margin-bottom: 0.5rem;">Configure your theme settings using the options below.</p>
+
+                <div class="theme-options-grid">
+                    <a href="<?php echo admin_url('admin.php?page=acf-options-general'); ?>" class="theme-option-card">
+                        <div class="theme-option-card-icon">🎨</div>
+                        <h2 class="theme-option-card-title">General</h2>
+                        <p class="theme-option-card-description">Manage your brand logos, contact information, and brand colors.</p>
+                    </a>
+
+                    <a href="<?php echo admin_url('admin.php?page=acf-options-header'); ?>" class="theme-option-card">
+                        <div class="theme-option-card-icon">🧭</div>
+                        <h2 class="theme-option-card-title">Header</h2>
+                        <p class="theme-option-card-description">Configure navigation menus, header styles, and call-to-action buttons.</p>
+                    </a>
+
+                    <a href="<?php echo admin_url('admin.php?page=acf-options-footer'); ?>" class="theme-option-card">
+                        <div class="theme-option-card-icon">📄</div>
+                        <h2 class="theme-option-card-title">Footer</h2>
+                        <p class="theme-option-card-description">Customize footer content, columns, and copyright information.</p>
+                    </a>
+
+                    <a href="<?php echo admin_url('admin.php?page=acf-options-social'); ?>" class="theme-option-card">
+                        <div class="theme-option-card-icon">🔗</div>
+                        <h2 class="theme-option-card-title">Social</h2>
+                        <p class="theme-option-card-description">Add and manage social media links and display options.</p>
+                    </a>
+
+                    <a href="<?php echo admin_url('admin.php?page=acf-options-archive-blog'); ?>" class="theme-option-card">
+                        <div class="theme-option-card-icon">📰</div>
+                        <h2 class="theme-option-card-title">Archive & Blog</h2>
+                        <p class="theme-option-card-description">Configure archive layouts, blog settings, and single post templates.</p>
+                    </a>
+                </div>
+            </div>
+            <?php
+        }
     }
 }

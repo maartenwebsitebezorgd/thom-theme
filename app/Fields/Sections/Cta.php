@@ -8,25 +8,31 @@ use App\Fields\Components\Visual;
 use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class SplitContent
+class Cta
 {
     /**
-     * Creates a 'split_content' layout for flexible content.
+     * Creates a 'cta' layout for flexible content.
      * @param string $name The name of the layout.
      * @return FieldsBuilder
      */
-    public static function addToFlexibleContent($flexibleContent, $name = 'split_content')
+    public static function addToFlexibleContent($flexibleContent, $name = 'cta')
     {
         return $flexibleContent
             ->addLayout($name, [
-                'label' => 'Split Content Section',
+                'label' => 'CTA Section',
                 'display' => 'block'
             ])
             ->addFields(Visual::create('visual_block'))
-            ->addFields(ContentWrapper::create('content_block', [
+            ->addFields(ContentWrapper::create('content_block', defaults: [
                 'margin_bottom' => 'mb-0',
+                'heading_text_style' => 'u-text-style-h3',
+                'heading_tag' => 'h3',
             ]))
-            ->addFields(StyleSettings::create('style_settings'))
+            ->addFields(StyleSettings::create('style_settings', defaults: [
+                'theme' => 'light-accent',
+                'padding_top' => 'pt-section-small',
+                'padding_bottom' => 'pb-section-small',
+            ]))
             ->addSelect('content_layout', [
                 'label' => 'Content Layout',
                 'choices' => [

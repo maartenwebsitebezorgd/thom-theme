@@ -7,7 +7,7 @@
     --theme-bg: var(--color-light-main);
     --theme-text: var(--color-text-body);
     --theme-bg-2: var(--color-desert-main);
-    --theme-border: color-mix(in srgb, var(var(--theme-text)) 20%, transparent);
+    --theme-border: var(--color-desert-main);
     --theme-heading: var(--color-text-heading);
     --theme-accent: var(--color-accent-main);
 
@@ -79,7 +79,7 @@
     --theme-bg: var(--color-light-main);
     --theme-text: var(--color-text-body);
     --theme-bg-2: var(--color-desert-main);
-    --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
+    --theme-border: var(--color-desert-main);
     --theme-heading: var(--color-text-heading);
     --theme-accent: var(--color-accent-main);
 
@@ -138,7 +138,7 @@
     --theme-bg: var(--color-blue-main);
     --theme-text: var(--color-text-body-light);
     --theme-bg-2: var(--color-accent-main);
-    --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
+    --theme-border: var(--color-blue-900);
     --theme-heading: var(--color-text-heading-light);
     --theme-accent: var(--color-accent-main);
 

@@ -23,7 +23,7 @@ default => 'button button--primary button--small',
 };
 @endphp
 
-<header data-theme="dark" class="navigation fixed w-full isolate z-10 top-0 ">
+<header data-theme="dark" class="navigation sticky top-0 z-50 w-full isolate">
   <nav aria-label="Global" class="mx-auto flex u-container items-center gap-u-6 justify-between py-u-3 min-h-[2.75rem]">
 
     {{-- Logo Section --}}
@@ -31,12 +31,32 @@ default => 'button button--primary button--small',
       <a href="{{ home_url('/') }}" class="-m-1.5 p-1.5">
         <span class="sr-only">{{ get_bloginfo('name') }}</span>
 
-        @if(has_custom_logo())
-        {!! get_custom_logo() !!}
+        @php
+        $logoLight = get_field('logo_light', 'option');
+        $logoDark = get_field('logo_dark', 'option');
+        @endphp
+
+        @if($logoLight || $logoDark)
+          {{-- Show theme-appropriate logo --}}
+          @if($logoDark)
+            <img
+              src="{{ $logoDark['url'] }}"
+              alt="{{ $logoDark['alt'] ?: get_bloginfo('name') }}"
+              class="h-8 w-auto"
+            />
+          @elseif($logoLight)
+            <img
+              src="{{ $logoLight['url'] }}"
+              alt="{{ $logoLight['alt'] ?: get_bloginfo('name') }}"
+              class="h-8 w-auto"
+            />
+          @endif
+        @elseif(has_custom_logo())
+          {!! get_custom_logo() !!}
         @else
-        <span class="u-text-style-h6">
-          {{ get_bloginfo('name') }}
-        </span>
+          <span class="u-text-style-h6">
+            {{ get_bloginfo('name') }}
+          </span>
         @endif
       </a>
     </div>
@@ -107,12 +127,28 @@ default => 'button button--primary button--small',
           <div class="flex items-center justify-between">
             <a href="{{ home_url('/') }}" class="-m-1.5 p-1.5">
               <span class="sr-only">{{ get_bloginfo('name') }}</span>
-              @if(has_custom_logo())
-              {!! get_custom_logo() !!}
+
+              @if($logoLight || $logoDark)
+                {{-- Show theme-appropriate logo --}}
+                @if($logoLight)
+                  <img
+                    src="{{ $logoLight['url'] }}"
+                    alt="{{ $logoLight['alt'] ?: get_bloginfo('name') }}"
+                    class="h-8 w-auto"
+                  />
+                @elseif($logoDark)
+                  <img
+                    src="{{ $logoDark['url'] }}"
+                    alt="{{ $logoDark['alt'] ?: get_bloginfo('name') }}"
+                    class="h-8 w-auto"
+                  />
+                @endif
+              @elseif(has_custom_logo())
+                {!! get_custom_logo() !!}
               @else
-              <span class="text-xl font-bold text-[var(--theme-text)]">
-                {{ get_bloginfo('name') }}
-              </span>
+                <span class="text-xl font-bold text-[var(--theme-text)]">
+                  {{ get_bloginfo('name') }}
+                </span>
               @endif
             </a>
 

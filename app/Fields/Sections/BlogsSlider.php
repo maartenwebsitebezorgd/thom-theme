@@ -23,7 +23,11 @@ class BlogsSlider
                 'label' => 'Blogs Slider Section',
                 'display' => 'block'
             ])
-            ->addFields(ContentWrapper::create('content_block'))
+            ->addFields(ContentWrapper::create('content_block', defaults: [
+                'margin_bottom' => 'mb-u-6',
+                'heading_text_style' => 'u-text-style-h3',
+                'heading_tag' => 'h2',
+            ]))
             ->addTrueFalse('use_latest_posts', [
                 'label' => 'Use Latest Posts',
                 'instructions' => 'Show latest blog posts automatically',

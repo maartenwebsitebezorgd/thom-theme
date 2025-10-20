@@ -22,7 +22,11 @@ class MultiSlider
                 'label' => 'Multi Slider Section',
                 'display' => 'block'
             ])
-            ->addFields(ContentWrapper::create('content_block'))
+            ->addFields(ContentWrapper::create('content_block', defaults: [
+                'margin_bottom' => 'mb-u-6',
+                'heading_text_style' => 'u-text-style-h3',
+                'heading_tag' => 'h2',
+            ]))
             ->addSelect('post_type', [
                 'label' => 'Post Type',
                 'instructions' => 'Select which post type to display',
