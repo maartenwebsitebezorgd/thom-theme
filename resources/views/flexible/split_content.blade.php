@@ -22,11 +22,11 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
-    <div class="split-content_layout grid grid-cols-[repeat(auto-fit,minmax(28rem,1fr))] {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
+    <div class="split-content_layout grid md:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
 
       @if ($visualFirst)
       {{-- Visual Left Layout --}}
-      <div class="visual-column {{ $shouldStretch ? 'flex' : '' }}">
+      <div class="visual-column order-first {{ $shouldStretch ? 'flex' : '' }}">
         <x-visual :visual="$visualBlock" class="{{ $shouldStretch ? 'flex-1' : '' }}" />
       </div>
       <div class="content-column flex {{ $verticalAlignment }}">
@@ -34,10 +34,10 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
       </div>
       @else
       {{-- Visual Right Layout --}}
-      <div class="content-column flex {{ $verticalAlignment }}">
+      <div class="content-column  flex {{ $verticalAlignment }}">
         <x-content-wrapper :content="$contentBlock" />
       </div>
-      <div class="visual-column {{ $shouldStretch ? 'flex' : '' }}">
+      <div class="visual-column order-first md:order-last  {{ $shouldStretch ? 'flex' : '' }}">
         <x-visual :visual="$visualBlock" class="{{ $shouldStretch ? 'flex-1' : '' }}" />
       </div>
       @endif

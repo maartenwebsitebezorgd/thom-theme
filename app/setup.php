@@ -103,6 +103,10 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
+        'footer_1' => __('Footer Column 1', 'sage'),
+        'footer_2' => __('Footer Column 2', 'sage'),
+        'footer_3' => __('Footer Column 3', 'sage'),
+        'footer_4' => __('Footer Column 4', 'sage'),
     ]);
 
     /**

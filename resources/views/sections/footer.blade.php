@@ -1,7 +1,10 @@
 @php
+use App\View\Composers\FooterWalker;
+
 $logoLight = get_field('logo_light', 'option');
 $logoDark = get_field('logo_dark', 'option');
 $copyrightText = get_field('copyright_text', 'option');
+$descriptionText = get_field('footer_text', 'option');
 @endphp
 
 <footer data-theme="grey" class="u-section pt-section-main pb-section-small">
@@ -32,80 +35,53 @@ $copyrightText = get_field('copyright_text', 'option');
           </span>
           @endif
         </a>
-        <p class="text-sm/6 text-balance text-gray-600">Making the world a better place through constructing elegant hierarchies.</p>
+        <div class="text-style-small text-balance prose text-[var(--theme-text)]/70">{!!$descriptionText !!}</div>
         @include('components.socials-list', ['location' => 'footer'])
       </div>
-      <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-        <div class="md:grid md:grid-cols-2 md:gap-8">
-          <div>
-            <h3 class="text-sm/6 font-semibold text-gray-900">Solutions</h3>
-            <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Marketing</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Analytics</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Automation</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Commerce</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Insights</a>
-              </li>
-            </ul>
-          </div>
-          <div class="mt-10 md:mt-0">
-            <h3 class="text-sm/6 font-semibold text-gray-900">Support</h3>
-            <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Submit ticket</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Documentation</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Guides</a>
-              </li>
-            </ul>
-          </div>
+      @php
+      // Get footer menu locations
+      $footerMenus = [
+      'footer_1',
+      'footer_2',
+      'footer_3',
+      'footer_4',
+      ];
+
+      // Check which columns have menus assigned
+      $activeColumns = [];
+      foreach ($footerMenus as $location) {
+      if (has_nav_menu($location)) {
+      $activeColumns[] = $location;
+      }
+      }
+      @endphp
+
+      @if(!empty($activeColumns))
+      <div class="group/footer-menu mt-16 grid grid-cols-2 lg:grid-cols-4 gap-u-6 xl:col-span-2 xl:mt-0">
+        @foreach($activeColumns as $location)
+        <div class="">
+          @php
+          $menu = wp_get_nav_menu_object(get_nav_menu_locations()[$location]);
+          $menuName = $menu ? $menu->name : '';
+          @endphp
+
+          @if($menuName)
+          <h3 class="text-sm/6 font-semibold text-[var(--theme-text)]">{{ $menuName }}</h3>
+          @endif
+
+          <ul role="list" class="mt-6 space-y-4">
+            {!! wp_nav_menu([
+            'theme_location' => $location,
+            'container' => false,
+            'items_wrap' => '%3$s',
+            'fallback_cb' => false,
+            'walker' => new FooterWalker(),
+            ]) !!}
+          </ul>
         </div>
-        <div class="md:grid md:grid-cols-2 md:gap-8">
-          <div>
-            <h3 class="text-sm/6 font-semibold text-gray-900">Company</h3>
-            <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">About</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Blog</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Jobs</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Press</a>
-              </li>
-            </ul>
-          </div>
-          <div class="mt-10 md:mt-0">
-            <h3 class="text-sm/6 font-semibold text-gray-900">Legal</h3>
-            <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Terms of service</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">Privacy policy</a>
-              </li>
-              <li>
-                <a href="#" class="text-sm/6 text-gray-600 hover:text-gray-900">License</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        @endforeach
       </div>
+      @endif
     </div>
     <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
       @php

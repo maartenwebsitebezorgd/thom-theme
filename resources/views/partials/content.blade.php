@@ -12,6 +12,7 @@
   $showExcerpt = $showExcerpt ?? true;
   $showCategory = $showCategory ?? true;
   $makeCardClickable = $makeCardClickable ?? true;
+  $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
 
   // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
@@ -42,7 +43,7 @@
 @endphp
 
 <article
-  @php(post_class('article-simple-wrap w-full h-full flex flex-col overflow-hidden group'))
+  @php(post_class('article-simple-wrap w-full h-full flex flex-col overflow-hidden group ' . $partialClasses))
   data-theme="{{ $cardTheme }}"
   role="article"
   aria-labelledby="{{ $uniqueId }}-title">

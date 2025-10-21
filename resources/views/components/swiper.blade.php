@@ -1,6 +1,7 @@
 @props([
 'settings' => [],
 'slides' => [],
+'classes' => '',
 ])
 
 @php
@@ -59,7 +60,7 @@ $config['autoplay'] = [
 $configJson = json_encode($config);
 @endphp
 
-<div class="swiper-container swiper-nav-{{ $navigationPosition }}" data-swiper-id="{{ $uniqueId }}">
+<div class="swiper-container swiper-nav-{{ $navigationPosition }} {{ $classes }}" data-swiper-id="{{ $uniqueId }}">
   @if ($navigation && $navigationPosition === 'top-right')
   <div class="swiper-navigation-top">
     <div class="swiper-button-prev swiper-button-prev-{{ $uniqueId }}"></div>

@@ -30,9 +30,9 @@ $cardTheme = get_sub_field('card_theme') ?? 'inherit';
 
     {{-- Cards Grid --}}
     @if ($cards)
-    <div class="cards-grid grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
+    <div class="cards-grid group/benefits grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
       @foreach ($cards as $cardItem)
-      <x-benefit-card :card="$cardItem['benefit_card']" :section-theme="$theme" :card-theme="$cardTheme" />
+      <x-benefit-card classes="opacity-100 group-hover/benefits:opacity-60 hover:!opacity-100 transition-opacity ease-in-out duration-200" :card="$cardItem['benefit_card']" :section-theme="$theme" :card-theme="$cardTheme" />
       @endforeach
     </div>
     @endif

@@ -267,22 +267,6 @@ class ThemeOptions
                 'instructions' => 'Use {{year}} as a placeholder for the current year. Example: © {{year}} Your Company. All rights reserved.',
                 'default_value' => '© {{year}} All rights reserved.'
             ])
-            ->addTab('columns', ['label' => 'Footer Columns'])
-            ->addRepeater('footer_columns', [
-                'label' => 'Footer Columns',
-                'min' => 0,
-                'max' => 4,
-                'layout' => 'block',
-                'button_label' => 'Add Column'
-            ])
-            ->addText('title', [
-                'label' => 'Column Title'
-            ])
-            ->addWysiwyg('content', [
-                'label' => 'Column Content',
-                'toolbar' => 'basic'
-            ])
-            ->endRepeater()
             ->setLocation('options_page', '==', 'acf-options-footer');
 
         // Social Media Settings

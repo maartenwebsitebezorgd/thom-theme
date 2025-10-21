@@ -2,6 +2,7 @@
 'card' => [],
 'sectionTheme' => 'inherit',
 'cardTheme' => 'auto',
+'classes ' => '',
 ])
 
 @php
@@ -32,7 +33,7 @@ $makeCardClickable = $card['make_card_clickable'] ?? true;
   @if($makeCardClickable && $linkUrl)
   <div
     data-theme="{{ $cardTheme }}"
-    class="service-card-wrap w-full h-full flex flex-col overflow-hidden group">
+    class="service-card-wrap w-full h-full flex flex-col overflow-hidden group {{ $classes }}">
     <a
       href="{{ $linkUrl }}"
       target="{{ $linkTarget }}"
@@ -42,7 +43,7 @@ $makeCardClickable = $card['make_card_clickable'] ?? true;
       @else
       <div
         data-theme="{{ $cardTheme }}"
-        class="service-card-wrap h-full flex flex-col overflow-hidden">
+        class="service-card-wrap h-full flex flex-col overflow-hidden {{ $classes }}">
         @endif
         <div class="service-card-content-wrap flex flex-col grow">
           <div class="service-card-content-top flex-1 px-u-4 pt-u-5 pb-u-5 u-margin-trim">

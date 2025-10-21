@@ -18,14 +18,14 @@ $youtubeUrl = get_field('youtube_url', 'option');
 $customSocialLinks = get_field('custom_social_links', 'option');
 
 // Link styling
-$linkClasses = 'text-[var(--theme-text)]/70 hover:text-[var(--theme-text)] transition-colors duration-200';
+$linkClasses = 'text-[var(--theme-text)] opacity-80 group-hover/socials:opacity-50 hover:!opacity-100 transition-opacity ease-in-out duration-200';
 
 // Check if any social links exist
 $hasSocialLinks = $facebookUrl || $twitterUrl || $instagramUrl || $linkedinUrl || $youtubeUrl || !empty($customSocialLinks);
 @endphp
 
 @if($shouldDisplay && $hasSocialLinks)
-<div class="flex gap-x-6">
+<div class="flex gap-x-6 group/socials">
     @if($facebookUrl)
     <a href="{{ $facebookUrl }}" target="_blank" rel="noopener noreferrer" class="{{ $linkClasses }}">
         <span class="sr-only">Facebook</span>

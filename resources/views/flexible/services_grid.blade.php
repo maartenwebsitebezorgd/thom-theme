@@ -47,12 +47,13 @@ $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 
     {{-- Cards Grid --}}
     @if ($cards)
-    <div class="cards-grid grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
+    <div class="cards-grid grid group/services {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
       @foreach ($cards as $cardItem)
       <x-service-card
         :card="$cardItem['service_card']"
         :section-theme="$theme"
-        :card-theme="$cardTheme" />
+        :card-theme="$cardTheme"
+        classes="opacity-100 group-hover/services:opacity-60 hover:!opacity-100 transition-opacity ease-in-out duration-200" />
       @endforeach
     </div>
     @endif

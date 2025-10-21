@@ -3,6 +3,7 @@
 'imageAspectRatio' => '3/2',
 'sectionTheme' => 'inherit',
 'cardTheme' => 'auto',
+'classes' => '',
 ])
 
 @php
@@ -40,7 +41,7 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
   @if($makeCardClickable && $linkUrl)
   <article
     data-theme="{{ $cardTheme }}"
-    class="article-simple-wrap w-full h-full flex flex-col overflow-hidden group"
+    class="article-simple-wrap w-full h-full flex flex-col overflow-hidden group {{ $classes }}"
     role="article"
     aria-labelledby="{{ $uniqueId }}-title">
     <a
@@ -52,7 +53,7 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
       @else
       <article
         data-theme="{{ $cardTheme }}"
-        class="article-simple-wrap h-full flex flex-col overflow-hidden"
+        class="article-simple-wrap h-full flex flex-col overflow-hidden {{ $classes }}"
         role="article"
         aria-labelledby="{{ $uniqueId }}-title">
         @endif
