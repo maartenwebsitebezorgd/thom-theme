@@ -110,7 +110,7 @@
 
   /* Font Trim */
   --primary-trim-top: 0.33em;
-  --primary-trim-bottom: 0.38em;
+  --primary-trim-bottom: 0.33em;
   --text-trim-top: var(--primary-trim-top);
   --text-trim-bottom: var(--primary-trim-bottom);
 

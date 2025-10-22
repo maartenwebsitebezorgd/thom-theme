@@ -22,8 +22,10 @@ class SplitContent
                 'label' => 'Split Content Section',
                 'display' => 'block'
             ])
-            ->addFields(Visual::create('visual_block'))
-            ->addFields(ContentWrapper::create('content_block', [
+            ->addFields(Visual::create('visual_block', defaults: [
+                'stretch_to_content' => 1,
+            ]))
+            ->addFields(ContentWrapper::create('content_block', defaults: [
                 'margin_bottom' => 'mb-0',
             ]))
             ->addFields(StyleSettings::create('style_settings'))

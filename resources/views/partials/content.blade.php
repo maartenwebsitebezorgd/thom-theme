@@ -1,49 +1,49 @@
 @php
-  $post_id = get_the_ID();
-  $thumbnail = get_post_thumbnail_id($post_id);
-  $image = $thumbnail ? wp_get_attachment_image_src($thumbnail, 'large') : null;
-  $categories = get_the_category($post_id);
-  $category = !empty($categories) ? $categories[0]->name : null;
+$post_id = get_the_ID();
+$thumbnail = get_post_thumbnail_id($post_id);
+$image = $thumbnail ? wp_get_attachment_image_src($thumbnail, 'large') : null;
+$categories = get_the_category($post_id);
+$category = !empty($categories) ? $categories[0]->name : null;
 
-  // Get settings from parent scope or use defaults
-  $sectionTheme = $sectionTheme ?? 'light';
-  $cardTheme = $cardTheme ?? 'auto';
-  $imageAspectRatio = $imageAspectRatio ?? 'aspect-[3/2]';
-  $showExcerpt = $showExcerpt ?? true;
-  $showCategory = $showCategory ?? true;
-  $makeCardClickable = $makeCardClickable ?? true;
-  $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
+// Get settings from parent scope or use defaults
+$sectionTheme = $sectionTheme ?? 'light';
+$cardTheme = $cardTheme ?? 'auto';
+$imageAspectRatio = $imageAspectRatio ?? 'aspect-[3/2]';
+$showExcerpt = $showExcerpt ?? true;
+$showCategory = $showCategory ?? true;
+$makeCardClickable = $makeCardClickable ?? true;
+$partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
 
-  // Auto theme: Use opposite of section theme (light <-> dark)
+// Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
-    $cardTheme = match($sectionTheme) {
-      'light' => 'grey',
-      'grey' => 'light',
-      'dark' => 'accent-light',
-      'accent' => 'light',
-      'accent-light' => 'accent',
-      default => 'inherit',
-    };
+  $cardTheme = match($sectionTheme) {
+  'light' => 'grey',
+  'grey' => 'light',
+  'dark' => 'accent-light',
+  'accent' => 'light',
+  'accent-light' => 'accent',
+  default => 'inherit',
+  };
   }
 
   // Build visual block for Visual component
   $visualBlock = $image ? [
-    'media_type' => 'image',
-    'image' => [
-      'url' => $image[0],
-      'alt' => get_post_meta($thumbnail, '_wp_attachment_image_alt', true),
-      'width' => $image[1] ?? null,
-      'height' => $image[2] ?? null,
-    ],
-    'aspect_ratio' => $imageAspectRatio,
+  'media_type' => 'image',
+  'image' => [
+  'url' => $image[0],
+  'alt' => get_post_meta($thumbnail, '_wp_attachment_image_alt', true),
+  'width' => $image[1] ?? null,
+  'height' => $image[2] ?? null,
+  ],
+  'aspect_ratio' => $imageAspectRatio,
   ] : null;
 
   // Generate unique ID for aria-labelledby
   $uniqueId = uniqid('article-');
-@endphp
+  @endphp
 
-<article
-  @php(post_class('article-simple-wrap w-full h-full flex flex-col overflow-hidden group ' . $partialClasses))
+  <article
+    @php(post_class('article-simple-wrap w-full h-full flex flex-col overflow-hidden group ' . $partialClasses))
   data-theme="{{ $cardTheme }}"
   role="article"
   aria-labelledby="{{ $uniqueId }}-title">
@@ -52,7 +52,7 @@
     <a
       href="{{ get_permalink() }}"
       class="article-link-wrapper flex flex-col h-full no-underline"
-      aria-label="{{ get_the_title() }}: Read more">
+      aria-label="{{ get_the_title() }}: Lees meer">
   @else
     <div class="article-link-wrapper flex flex-col h-full">
   @endif
@@ -89,13 +89,13 @@
 
         @if($makeCardClickable)
           <span class="underline-offset-2 u-text-style-small underline" aria-hidden="true">
-            Read more
+            Lees meer
           </span>
         @else
           <a
             href="{{ get_permalink() }}"
             class="underline-offset-2 u-text-style-small underline">
-            Read more
+            Lees meer
           </a>
         @endif
       </div>

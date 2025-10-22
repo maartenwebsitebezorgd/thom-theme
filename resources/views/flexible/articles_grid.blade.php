@@ -58,7 +58,7 @@ $articles[] = [
 'excerpt' => get_the_excerpt($post),
 'link' => [
 'url' => get_permalink($post->ID),
-'title' => 'Read more',
+'title' => 'Lees meer',
 'target' => '_self',
 ],
 'make_card_clickable' => true,

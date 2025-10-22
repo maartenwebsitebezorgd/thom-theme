@@ -25,7 +25,7 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
 
   $linkUrl = $link['url'] ?? null;
   $linkTarget = $link['target'] ?? '_self';
-  $linkTitle = $link['title'] ?? 'Read more';
+  $linkTitle = $link['title'] ?? 'Lees meer';
 
   // Build visual block for Visual component
   $visualBlock = $image ? [

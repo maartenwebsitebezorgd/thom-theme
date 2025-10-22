@@ -54,7 +54,7 @@
     <a
       href="{{ get_permalink() }}"
       class="case-link-wrapper flex flex-col h-full no-underline"
-      aria-label="{{ get_the_title() }}: Read more">
+      aria-label="{{ get_the_title() }}: Lees meer">
   @else
     <div class="case-link-wrapper flex flex-col h-full">
   @endif

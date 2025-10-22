@@ -1,6 +1,15 @@
 @props([
     'visual' => [],
     'class' => '',
+    'aspectRatio' => null,
+    'objectFit' => null,
+    'stretchToContent' => null,
+    'fullWidth' => null,
+    'borderRadius' => null,
+    'lazyLoading' => null,
+    'priorityLoading' => null,
+    'hoverEffect' => null,
+    'clipPath' => null,
 ])
 
 @php
@@ -10,22 +19,22 @@
   $videoUrl = $visual['video_url'] ?? null;
   $caption = $visual['caption'] ?? null;
 
-  // Layout settings
-  $aspectRatio = $visual['aspect_ratio'] ?? 'aspect-[16/9]';
-  $objectFit = $visual['object_fit'] ?? 'object-cover';
-  $stretchToContent = $visual['stretch_to_content'] ?? false;
-  $fullWidth = $visual['full_width'] ?? false;
-  $borderRadius = $visual['border_radius'] ?? '';
+  // Layout settings - props override visual array
+  $aspectRatio = $aspectRatio ?? $visual['aspect_ratio'] ?? 'aspect-[16/9]';
+  $objectFit = $objectFit ?? $visual['object_fit'] ?? 'object-cover';
+  $stretchToContent = $stretchToContent ?? $visual['stretch_to_content'] ?? false;
+  $fullWidth = $fullWidth ?? $visual['full_width'] ?? false;
+  $borderRadius = $borderRadius ?? $visual['border_radius'] ?? '';
 
-  // Performance settings
-  $lazyLoading = $visual['lazy_loading'] ?? true;
-  $priorityLoading = $visual['priority_loading'] ?? false;
+  // Performance settings - props override visual array
+  $lazyLoading = $lazyLoading ?? $visual['lazy_loading'] ?? true;
+  $priorityLoading = $priorityLoading ?? $visual['priority_loading'] ?? false;
   $imageSizes = $visual['image_sizes'] ?? 'auto';
 
-  // Effects
-  $hoverEffect = $visual['hover_effect'] ?? '';
+  // Effects - props override visual array
+  $hoverEffect = $hoverEffect ?? $visual['hover_effect'] ?? '';
   $opacity = $visual['opacity'] ?? 100;
-  $clipPath = $visual['clip_path'] ?? '';
+  $clipPath = $clipPath ?? $visual['clip_path'] ?? '';
   $customClipPath = $visual['custom_clip_path'] ?? '';
 
   // Build classes

@@ -566,7 +566,7 @@ class ThemeOptions
                 'label' => 'Gap Between Cards',
                 'instructions' => 'Space between grid items',
                 'choices' => Choices::gapSize(),
-                'default_value' => 'gap-u-6',
+                'default_value' => 'gap-u-4',
             ])
             ->addTab('card_settings', ['label' => 'Card Settings'])
             ->addSelect('card_theme', [

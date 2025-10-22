@@ -1,0 +1,99 @@
+{
+  "editor.deps.json": {
+    "file": "assets/editor.deps-DxpY22xl.json",
+    "src": "editor.deps.json"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-zSP-FL1e.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/editor.css": {
+    "file": "assets/editor-l0sNRNKZ.js",
+    "name": "editor",
+    "src": "resources/css/editor.css",
+    "isEntry": true
+  },
+  "resources/fonts/HelveticaNeueBlack.otf": {
+    "file": "assets/HelveticaNeueBlack-9FyT5aCw.otf",
+    "src": "resources/fonts/HelveticaNeueBlack.otf"
+  },
+  "resources/fonts/HelveticaNeueBlackItalic.otf": {
+    "file": "assets/HelveticaNeueBlackItalic-C7gr1okM.otf",
+    "src": "resources/fonts/HelveticaNeueBlackItalic.otf"
+  },
+  "resources/fonts/HelveticaNeueBold.otf": {
+    "file": "assets/HelveticaNeueBold-CvSAbIAR.otf",
+    "src": "resources/fonts/HelveticaNeueBold.otf"
+  },
+  "resources/fonts/HelveticaNeueBoldItalic.otf": {
+    "file": "assets/HelveticaNeueBoldItalic-By_AmzKB.otf",
+    "src": "resources/fonts/HelveticaNeueBoldItalic.otf"
+  },
+  "resources/fonts/HelveticaNeueHeavy.otf": {
+    "file": "assets/HelveticaNeueHeavy-DAwEujmT.otf",
+    "src": "resources/fonts/HelveticaNeueHeavy.otf"
+  },
+  "resources/fonts/HelveticaNeueHeavyItalic.otf": {
+    "file": "assets/HelveticaNeueHeavyItalic-DCWHU2wy.otf",
+    "src": "resources/fonts/HelveticaNeueHeavyItalic.otf"
+  },
+  "resources/fonts/HelveticaNeueItalic.ttf": {
+    "file": "assets/HelveticaNeueItalic-DKx4JyHi.ttf",
+    "src": "resources/fonts/HelveticaNeueItalic.ttf"
+  },
+  "resources/fonts/HelveticaNeueLight.otf": {
+    "file": "assets/HelveticaNeueLight-Ct5-NwMS.otf",
+    "src": "resources/fonts/HelveticaNeueLight.otf"
+  },
+  "resources/fonts/HelveticaNeueLightItalic.otf": {
+    "file": "assets/HelveticaNeueLightItalic-DThesBRY.otf",
+    "src": "resources/fonts/HelveticaNeueLightItalic.otf"
+  },
+  "resources/fonts/HelveticaNeueMedium.otf": {
+    "file": "assets/HelveticaNeueMedium-BlACjMrQ.otf",
+    "src": "resources/fonts/HelveticaNeueMedium.otf"
+  },
+  "resources/fonts/HelveticaNeueMediumItalic.otf": {
+    "file": "assets/HelveticaNeueMediumItalic-DUC78TNQ.otf",
+    "src": "resources/fonts/HelveticaNeueMediumItalic.otf"
+  },
+  "resources/fonts/HelveticaNeueRoman.otf": {
+    "file": "assets/HelveticaNeueRoman-CSpBGpqm.otf",
+    "src": "resources/fonts/HelveticaNeueRoman.otf"
+  },
+  "resources/fonts/HelveticaNeueThin.otf": {
+    "file": "assets/HelveticaNeueThin-5D5bnMyF.otf",
+    "src": "resources/fonts/HelveticaNeueThin.otf"
+  },
+  "resources/fonts/HelveticaNeueThinItalic.otf": {
+    "file": "assets/HelveticaNeueThinItalic-DoFceZUZ.otf",
+    "src": "resources/fonts/HelveticaNeueThinItalic.otf"
+  },
+  "resources/fonts/HelveticaNeueUltraLight.otf": {
+    "file": "assets/HelveticaNeueUltraLight-DLTCIc2Q.otf",
+    "src": "resources/fonts/HelveticaNeueUltraLight.otf"
+  },
+  "resources/fonts/HelveticaNeueUltraLightItalic.otf": {
+    "file": "assets/HelveticaNeueUltraLightItalic-Cw7AZkO9.otf",
+    "src": "resources/fonts/HelveticaNeueUltraLightItalic.otf"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-2wE_nJE5.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/editor.js": {
+    "file": "assets/editor-CfU4GbSP.js",
+    "name": "editor",
+    "src": "resources/js/editor.js",
+    "isEntry": true
+  },
+  "resources/js/filters.js": {
+    "file": "assets/filters-Dtg4EdrI.js",
+    "name": "filters",
+    "src": "resources/js/filters.js",
+    "isEntry": true
+  }
+}

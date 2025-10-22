@@ -10,9 +10,10 @@ class Visual
     /**
      * Creates a 'visual' group field optimized for performance.
      * @param string $name The name of the group field.
+     * @param array $defaults Override default values for any field.
      * @return FieldsBuilder
      */
-    public static function create($name = 'visual')
+    public static function create($name = 'visual', array $defaults = [])
     {
         $visual = new FieldsBuilder($name);
 
@@ -51,7 +52,7 @@ class Visual
                         'aspect-auto' => 'Auto (Original)',
                     ]
                 ),
-                'default_value' => 'aspect-[16/9]',
+                'default_value' => $defaults['aspect_ratio'] ?? 'aspect-[16/9]',
                 'wrapper' => ['width' => '50'],
             ])
             ->addSelect('object_fit', [
@@ -63,19 +64,19 @@ class Visual
                     'object-none' => 'None (Original size)',
                     'object-scale-down' => 'Scale Down',
                 ],
-                'default_value' => 'object-cover',
+                'default_value' => $defaults['object_fit'] ?? 'object-cover',
                 'wrapper' => ['width' => '50'],
             ])
             ->addTrueFalse('stretch_to_content', [
                 'label' => 'Stretch to Content',
                 'instructions' => 'Maintain aspect ratio as minimum, but stretch taller if content is longer',
-                'default_value' => 0,
+                'default_value' => $defaults['stretch_to_content'] ?? 1,
                 'wrapper' => ['width' => '33'],
             ])
             ->addTrueFalse('full_width', [
                 'label' => 'Full Width',
                 'instructions' => 'Extend beyond container margins (full browser width)',
-                'default_value' => 0,
+                'default_value' => $defaults['full_width'] ?? 0,
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('border_radius', [
@@ -89,7 +90,7 @@ class Visual
                     'rounded-2xl' => '2X Large',
                     'rounded-full' => 'Full (Circle/Pill)',
                 ],
-                'default_value' => '',
+                'default_value' => $defaults['border_radius'] ?? '',
                 'wrapper' => ['width' => '33'],
             ])
 
@@ -97,13 +98,13 @@ class Visual
             ->addTrueFalse('lazy_loading', [
                 'label' => 'Lazy Loading',
                 'instructions' => 'Load image only when it comes into view (recommended: ON)',
-                'default_value' => 1,
+                'default_value' => $defaults['lazy_loading'] ?? 1,
                 'wrapper' => ['width' => '50'],
             ])
             ->addTrueFalse('priority_loading', [
                 'label' => 'Priority Loading',
                 'instructions' => 'Load this image immediately (use for above-the-fold images)',
-                'default_value' => 0,
+                'default_value' => $defaults['priority_loading'] ?? 0,
                 'wrapper' => ['width' => '50'],
             ])
             ->addSelect('image_sizes', [
@@ -116,7 +117,7 @@ class Visual
                     '100vw' => 'Full Width',
                     '(max-width: 640px) 100vw, 640px' => 'Content Width',
                 ],
-                'default_value' => 'auto',
+                'default_value' => $defaults['image_sizes'] ?? 'auto',
             ])
 
             ->addTab('Effects', ['placement' => 'left'])
@@ -131,7 +132,7 @@ class Visual
                     'hover:blur-sm' => 'Blur',
                     'hover:brightness-110' => 'Brighten',
                 ],
-                'default_value' => '',
+                'default_value' => $defaults['hover_effect'] ?? '',
                 'wrapper' => ['width' => '50'],
             ])
             ->addRange('opacity', [
@@ -139,7 +140,7 @@ class Visual
                 'min' => 0,
                 'max' => 100,
                 'step' => 5,
-                'default_value' => 100,
+                'default_value' => $defaults['opacity'] ?? 100,
                 'append' => '%',
                 'wrapper' => ['width' => '50'],
             ])
@@ -151,7 +152,7 @@ class Visual
                     'diagonal-right' => 'Diagonal Right',
                     'custom' => 'Custom',
                 ],
-                'default_value' => 'diagonal-left',
+                'default_value' => $defaults['clip_path'] ?? 'diagonal-left',
                 'wrapper' => ['width' => '50'],
             ])
             ->addText('custom_clip_path', [

@@ -25,33 +25,33 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
 
 @if($link && $makeCardClickable)
 {{-- Fully clickable card version --}}
-<div data-theme="{{ $cardTheme }}" class="service-line_component">
+<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1">
     <a
         href="{{ $linkUrl }}"
         target="{{ $linkTarget }}"
-        @if($linkTarget === '_blank') rel="noopener noreferrer" @endif
+        @if($linkTarget==='_blank' ) rel="noopener noreferrer" @endif
         class="service-line_inner-wrap service-line_clickable flex flex-row gap-u-2 items-start group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-current rounded transition-all hover:opacity-80"
         aria-labelledby="{{ $uniqueId }}-title"
-        @if($linkTarget === '_blank') aria-describedby="{{ $uniqueId }}-external" @endif
-    >
+        @if($linkTarget==='_blank' ) aria-describedby="{{ $uniqueId }}-external" @endif>
         <div class="service-line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
             <img
                 src="{{ $icon['url'] }}"
                 alt="{{ $isIconDecorative ? '' : ($iconAlt ?: $heading) }}"
                 class="w-full h-full object-contain"
                 loading="lazy"
-                @if($isIconDecorative) role="presentation" @endif
-            >
+                @if($isIconDecorative) role="presentation" @endif>
         </div>
-        <div class="service-line_text-wrap flex-1">
+        <div class="service-line_text-wrap flex-1 u-margin-trim">
             @if ($heading)
             <h3 id="{{ $uniqueId }}-title" class="service-card-heading u-text-style-small !font-bold mb-u-2">
                 <span class="service-card-heading-text">{{ $heading }}</span>
             </h3>
             @endif
+            @if ($linkTitle)
             <span class="underline-offset-2 u-text-style-small underline ml-auto group-hover:no-underline" aria-hidden="true">
                 {{ $linkTitle }}
             </span>
+            @endif
             @if($linkTarget === '_blank')
             <span id="{{ $uniqueId }}-external" class="sr-only">Opens in new tab</span>
             @endif
@@ -60,7 +60,7 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
 </div>
 @elseif($link && !$makeCardClickable)
 {{-- Non-clickable card with inline link --}}
-<div data-theme="{{ $cardTheme }}" class="service-line_component">
+<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1">
     <div class="service-line_inner-wrap flex flex-row gap-u-2 items-start">
         <div class="service-line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
             <img
@@ -68,10 +68,9 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
                 alt="{{ $isIconDecorative ? '' : ($iconAlt ?: $heading) }}"
                 class="w-full h-full object-contain"
                 loading="lazy"
-                @if($isIconDecorative) role="presentation" @endif
-            >
+                @if($isIconDecorative) role="presentation" @endif>
         </div>
-        <div class="service-line_text-wrap flex-1">
+        <div class="service-line_text-wrap flex-1 u-margin-trim">
             @if ($heading)
             <h3 class="service-card-heading u-text-style-small !font-bold mb-u-2">
                 <span class="service-card-heading-text">{{ $heading }}</span>
@@ -80,7 +79,7 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
             <a
                 href="{{ $linkUrl }}"
                 target="{{ $linkTarget }}"
-                @if($linkTarget === '_blank') rel="noopener noreferrer" aria-label="{{ $linkTitle }} (opens in new tab)" @endif
+                @if($linkTarget==='_blank' ) rel="noopener noreferrer" aria-label="{{ $linkTitle }} (opens in new tab)" @endif
                 class="underline-offset-2 u-text-style-small underline ml-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-current rounded transition-all hover:no-underline">
                 {{ $linkTitle }}
             </a>
@@ -90,19 +89,18 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
 @else
 {{-- No link version --}}
 <div data-theme="{{ $cardTheme }}" class="service-line_component">
-    <div class="service-line_inner-wrap flex flex-row gap-u-2 items-start">
+    <div class="service-line_inner-wrap flex flex-row gap-u-2 items-center">
         <div class="service-line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
             <img
                 src="{{ $icon['url'] }}"
                 alt="{{ $isIconDecorative ? '' : ($iconAlt ?: $heading) }}"
                 class="w-full h-full object-contain"
                 loading="lazy"
-                @if($isIconDecorative) role="presentation" @endif
-            >
+                @if($isIconDecorative) role="presentation" @endif>
         </div>
-        <div class="service-line_text-wrap flex-1">
+        <div class="service-line_text-wrap flex-1 u-margin-trim">
             @if ($heading)
-            <h3 class="service-card-heading u-text-style-small !font-bold mb-u-2">
+            <h3 class="service-card-heading u-text-style-small !font-bold">
                 <span class="service-card-heading-text">{{ $heading }}</span>
             </h3>
             @endif

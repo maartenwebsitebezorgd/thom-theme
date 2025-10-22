@@ -1,9 +1,18 @@
+# Dependencies
 node_modules/
 vendor/
-public/build/
+
+# Build (IMPORTANT: Uncommented so built assets are committed for production)
+# public/build/  # We need this in git for server deployment
 public/hot
+
+# Environment
 .env
 .env.local
+
+# OS files
 .DS_Store
 Thumbs.db
+
+# Logs
 *.log

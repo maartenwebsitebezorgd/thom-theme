@@ -13,6 +13,7 @@ export default defineConfig({
         'resources/js/app.js',
         'resources/css/editor.css',
         'resources/js/editor.js',
+        'resources/js/filters.js',
       ],
       refresh: true,
     }),
