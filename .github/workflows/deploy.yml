@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           local-dir: ./
-          server-dir: /public_html/wp-content/themes/thom/
+          server-dir: /annejans100.sg-host.com/public_html/wp-content/themes/thom/
           exclude: |
             **/.git*
             **/.git*/**
