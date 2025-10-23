@@ -78,9 +78,80 @@ class ThemeOptions
                 'return_format' => 'array'
             ])
             ->addImage('site_favicon', [
-                'label' => 'Site Favicon',
-                'instructions' => 'Upload a favicon (32x32px recommended)',
-                'return_format' => 'array'
+                'label' => 'Site Favicon (Deprecated)',
+                'instructions' => 'This field is deprecated. Use the new Favicons & SEO tab below.',
+                'return_format' => 'array',
+                'wrapper' => ['class' => 'acf-hidden']
+            ])
+            ->addTab('favicons_seo', ['label' => 'Favicons & SEO'])
+            ->addMessage('favicon_intro', '<h3>Favicon Settings</h3><p>Upload your favicon files here. <strong>Tip:</strong> Use <a href="https://realfavicongenerator.net/" target="_blank">RealFaviconGenerator</a> to generate all sizes at once.</p>')
+            ->addImage('favicon_ico', [
+                'label' => 'Favicon ICO',
+                'instructions' => 'Standard favicon (32x32 or 16x16). Usually favicon.ico',
+                'return_format' => 'array',
+                'mime_types' => 'ico,png',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addImage('favicon_16', [
+                'label' => 'Favicon 16x16',
+                'instructions' => '16x16 PNG favicon',
+                'return_format' => 'array',
+                'mime_types' => 'png',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addImage('favicon_32', [
+                'label' => 'Favicon 32x32',
+                'instructions' => '32x32 PNG favicon',
+                'return_format' => 'array',
+                'mime_types' => 'png',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addImage('apple_touch_icon', [
+                'label' => 'Apple Touch Icon',
+                'instructions' => '180x180 PNG - Used when adding to iOS home screen',
+                'return_format' => 'array',
+                'mime_types' => 'png',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addImage('android_chrome_192', [
+                'label' => 'Android Chrome Icon 192x192',
+                'instructions' => '192x192 PNG - Used for Android',
+                'return_format' => 'array',
+                'mime_types' => 'png',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addImage('android_chrome_512', [
+                'label' => 'Android Chrome Icon 512x512',
+                'instructions' => '512x512 PNG - Used for Android and PWA',
+                'return_format' => 'array',
+                'mime_types' => 'png',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addColorPicker('theme_color', [
+                'label' => 'Theme Color',
+                'instructions' => 'Browser theme color (shown in mobile browser UI)',
+                'default_value' => '#ffffff',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addMessage('seo_intro', '<h3>SEO Settings</h3><p>Optional: Only needed if you are NOT using an SEO plugin like Yoast, Rank Math, or All in One SEO.</p>')
+            ->addImage('default_share_image', [
+                'label' => 'Default Social Share Image',
+                'instructions' => 'Default image for social media sharing (1200x630px recommended). Used when no featured image is set.',
+                'return_format' => 'array',
+                'mime_types' => 'png,jpg,jpeg',
+            ])
+            ->addText('twitter_handle', [
+                'label' => 'Twitter Handle',
+                'instructions' => 'Your Twitter/X username (without @). Example: yourusername',
+                'placeholder' => 'yourusername',
+                'wrapper' => ['width' => '50']
+            ])
+            ->addTextarea('default_meta_description', [
+                'label' => 'Default Meta Description',
+                'instructions' => 'Default description for pages without custom meta descriptions (155 characters max)',
+                'maxlength' => 160,
+                'rows' => 3,
+                'wrapper' => ['width' => '50']
             ])
             ->addTab('contact', ['label' => 'Contact Info'])
             ->addText('phone', [

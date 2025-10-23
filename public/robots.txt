@@ -1,0 +1,9 @@
+# robots.txt for production
+# This file should be in your WordPress root, not in the theme folder
+
+User-agent: *
+Allow: /
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Sitemap: https://yourdomain.com/sitemap_index.xml
