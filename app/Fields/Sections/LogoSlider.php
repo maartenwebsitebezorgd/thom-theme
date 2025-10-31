@@ -22,7 +22,7 @@ class LogoSlider
             ])
             ->addFields(ContentWrapper::create('content_block', [
                 'alignment' => 'text-center',
-                'heading_text_style' => 'u-text-style-h5',
+                'heading_text_style' => 'u-text-style-h6',
             ]))
             ->addTrueFalse('use_latest_cases', [
                 'label' => 'Use Latest Cases',
@@ -75,7 +75,7 @@ class LogoSlider
             ->addTrueFalse('fade_edges', [
                 'label' => 'Fade Edges',
                 'instructions' => 'Add gradient fade effect on left/right edges',
-                'default_value' => 0,
+                'default_value' => 1,
                 'ui' => 1,
                 'wrapper' => ['width' => '33'],
             ])

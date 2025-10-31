@@ -168,6 +168,7 @@
   /* Section Spacing */
   --spacing-section-small: clamp(2rem, 1.6932rem + 1.3636vw, 2.75rem);
   --spacing-section-main: clamp(3rem, 2.5398rem + 2.0455vw, 4.125rem);
+  --spacing-section-medium: clamp(3.35rem, 2.5398rem + 2.0455vw, 5rem);
   --spacing-section-large: clamp(4rem, 3.3864rem + 2.7273vw, 5.5rem);
   --spacing-section-page-top: clamp(6rem, 5.0795rem + 4.0909vw, 8.25rem);
 }

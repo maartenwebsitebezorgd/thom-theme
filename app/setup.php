@@ -165,6 +165,53 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_post_type_support/
      */
     add_post_type_support('page', 'excerpt');
+
+    /**
+     * Add support for custom logo.
+     *
+     * @link https://developer.wordpress.org/themes/functionality/custom-logo/
+     */
+    add_theme_support('custom-logo', [
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+    ]);
+
+    /**
+     * Add theme support for editor styles.
+     *
+     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#editor-styles
+     */
+    add_theme_support('editor-styles');
+
+    /**
+     * Add support for wide and full alignments.
+     *
+     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#wide-alignment
+     */
+    add_theme_support('align-wide');
+
+    /**
+     * Add support for automatic feed links.
+     *
+     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#feed-links
+     */
+    add_theme_support('automatic-feed-links');
+
+    /**
+     * Add custom image sizes.
+     */
+    add_image_size('thumbnail-large', 800, 600, true);
+    add_image_size('hero', 1920, 1080, true);
+    add_image_size('card', 600, 400, true);
+
+    /**
+     * Set content width for better media handling.
+     */
+    if (!isset($content_width)) {
+        $content_width = 1200;
+    }
 }, 20);
 
 /**
@@ -228,4 +275,83 @@ add_action('wp_enqueue_scripts', function () {
         'nonce' => wp_create_nonce('sage_filters_nonce'),
         'homeUrl' => home_url('/'),
     ]);
+});
+
+/**
+ * Remove WordPress version from header for security.
+ */
+remove_action('wp_head', 'wp_generator');
+
+/**
+ * Remove unnecessary WordPress emoji scripts.
+ */
+add_action('init', function () {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+});
+
+/**
+ * Disable XML-RPC for security.
+ */
+add_filter('xmlrpc_enabled', '__return_false');
+
+/**
+ * Remove WordPress version from RSS feeds.
+ */
+add_filter('the_generator', '__return_empty_string');
+
+/**
+ * Add security headers.
+ */
+add_action('send_headers', function () {
+    if (!is_admin()) {
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: SAMEORIGIN');
+        header('X-XSS-Protection: 1; mode=block');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+    }
+});
+
+/**
+ * Clean up WordPress <head>
+ */
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'wp_shortlink_wp_head');
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
+
+/**
+ * Add preconnect hints for performance.
+ */
+add_action('wp_head', function () {
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}, 1);
+
+/**
+ * Optimize WordPress oEmbed.
+ */
+add_action('init', function () {
+    // Remove oEmbed discovery links
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
+    // Remove oEmbed REST API route
+    remove_action('rest_api_init', 'wp_oembed_register_route');
+    // Disable oEmbed auto-discovery
+    add_filter('embed_oembed_discover', '__return_false');
+});
+
+/**
+ * Add custom excerpt length.
+ */
+add_filter('excerpt_length', function () {
+    return 30;
+});
+
+/**
+ * Change excerpt more string.
+ */
+add_filter('excerpt_more', function () {
+    return '&hellip;';
 });
