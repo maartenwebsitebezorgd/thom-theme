@@ -1317,62 +1317,62 @@
         {
           "name": "display",
           "slug": "display",
-          "size": "clamp(2.986rem,2.0618rem + 4.1077vw,5.2452rem)"
+          "size": "clamp(2.441rem,1.8523rem + 2.6182vw,3.815rem)"
         },
         {
           "name": "h1",
           "slug": "h1",
-          "size": "clamp(2.4883rem,1.7897rem + 3.1052vw,4.1962rem)"
+          "size": "clamp(1.953rem,1.5209rem + 1.9205vw,3.052rem)"
         },
         {
           "name": "h2",
           "slug": "h2",
-          "size": "clamp(2.0736rem,1.5486rem + 2.3333vw,3.3569rem)"
+          "size": "clamp(1.563rem,1.2454rem + 1.4114vw,2.441rem)"
         },
         {
           "name": "h3",
           "slug": "h3",
-          "size": "clamp(1.728rem,1.3363rem + 1.741vw,2.6855rem)"
+          "size": "clamp(1.25rem,1.0227rem + 1.0114vw,1.953rem)"
         },
         {
           "name": "h4",
           "slug": "h4",
-          "size": "clamp(1.44rem,1.1502rem + 1.2881vw,2.1484rem)"
+          "size": "clamp(1.125rem,.9659rem + .7074vw,1.563rem)"
         },
         {
           "name": "h5",
           "slug": "h5",
-          "size": "clamp(1.2rem,.9878rem + .9432vw,1.7188rem)"
+          "size": "clamp(1rem,.8636rem + .6068vw,1.25rem)"
         },
         {
           "name": "h6",
           "slug": "h6",
-          "size": "clamp(1rem,.8466rem + .6818vw,1.375rem)"
+          "size": "clamp(.9rem,.7841rem + .5153vw,1.125rem)"
         },
         {
           "name": "tiny",
           "slug": "tiny",
-          "size": "clamp(.75rem,1vw,.875rem)"
+          "size": "clamp(.64rem,.5891rem + .2266vw,.75rem)"
         },
         {
           "name": "small",
           "slug": "small",
-          "size": "clamp(.875rem,1.5vw,1rem)"
+          "size": "clamp(.8rem,.7386rem + .2732vw,.938rem)"
         },
         {
           "name": "main",
           "slug": "main",
-          "size": "clamp(1rem,2vw,1.125rem)"
+          "size": "clamp(1rem,.9318rem + .3032vw,1.172rem)"
         },
         {
           "name": "medium",
           "slug": "medium",
-          "size": "clamp(1.125rem,2vw,1.25rem)"
+          "size": "clamp(1.125rem,1.0511rem + .3288vw,1.318rem)"
         },
         {
           "name": "large",
           "slug": "large",
-          "size": "clamp(1.25rem,2.5vw,1.5rem)"
+          "size": "clamp(1.25rem,1.1648rem + .3789vw,1.465rem)"
         },
         {
           "name": "transform-none",
