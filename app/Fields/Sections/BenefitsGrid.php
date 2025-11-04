@@ -22,7 +22,12 @@ class BenefitsGrid
                 'label' => 'Benefits Grid Section',
                 'display' => 'block'
             ])
-            ->addFields(ContentWrapper::create('content_block'))
+            ->addFields(ContentWrapper::create('content_block', [
+                'heading_tag' => 'h2',
+                'heading_text_style' => 'u-text-style-h3',
+                'paragraph_text_style' => 'u-text-style-main',
+                'margin_bottom' => 'mb-u-6',
+            ]))
             ->addRepeater('cards', [
                 'label' => 'Benefit Cards',
                 'min' => 2,

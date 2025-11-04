@@ -15,7 +15,7 @@ $heading = preg_replace('/==(.+?)==/', '<span class="u-text-accent">$1</span>', 
 }
 
 // Settings
-$marginBottom = $content['margin_bottom'] ?? 'mb-u-8';
+$marginBottom = $content['margin_bottom'] ?? 'mb-u-6';
 $alignment = $content['alignment'] ?? 'text-left';
 $headingTag = $content['heading_tag'] ?? 'h2';
 $headingTextStyle = $content['heading_text_style'] ?? 'u-text-style-h2';
