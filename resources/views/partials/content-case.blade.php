@@ -13,7 +13,7 @@
   // Get settings from parent scope or use defaults
   $sectionTheme = $sectionTheme ?? 'light';
   $cardTheme = $cardTheme ?? 'auto';
-  $imageAspectRatio = $imageAspectRatio ?? 'aspect-[3/2]';
+  $imageAspectRatio = $imageAspectRatio ?? 'aspect-[16/9]';
   $showExcerpt = $showExcerpt ?? true;
   $showCategory = $showCategory ?? true;
   $makeCardClickable = $makeCardClickable ?? true;

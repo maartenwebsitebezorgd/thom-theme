@@ -20,7 +20,7 @@ $text = $card['text'] ?? '';
   }
   @endphp
 
-  <div class="card w-full p-u-6 {{ $classes }}" data-theme="{{ $cardTheme }}">
+  <div class="card w-full p-u-5 {{ $classes }}" data-theme="{{ $cardTheme }}">
     <div class="card_content-top content-wrapper">
       @if ($icon)
       <div class="card-icon mb-u-5">

@@ -32,7 +32,7 @@ default => 'content-' . $postType,
 };
 
 // Image and card styling (section level)
-$imageAspectRatio = get_sub_field('image_aspect_ratio') ?? '3/2';
+$imageAspectRatio = get_sub_field('image_aspect_ratio') ?? '16/9';
 $cardTheme = get_sub_field('card_theme') ?? 'auto';
 
 // Style settings

@@ -81,7 +81,7 @@ class MultiSlider
             ->addSelect('image_aspect_ratio', [
                 'label' => 'Image Aspect Ratio',
                 'choices' => Choices::aspectRatio(),
-                'default_value' => 'aspect-[3/2]',
+                'default_value' => 'aspect-[16/9]',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('card_theme', [
