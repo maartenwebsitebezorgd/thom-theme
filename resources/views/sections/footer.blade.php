@@ -66,7 +66,7 @@ $descriptionText = get_field('footer_text', 'option');
           @endphp
 
           @if($menuName)
-          <h3 class="text-sm/6 font-semibold text-[var(--theme-text)]">{{ $menuName }}</h3>
+          <h3 class="u-text-style-small text-balance !font-bold text-[var(--theme-text)]">{{ $menuName }}</h3>
           @endif
 
           <ul role="list" class="mt-6 space-y-4">

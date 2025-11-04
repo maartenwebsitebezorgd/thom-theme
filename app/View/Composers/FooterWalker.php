@@ -19,7 +19,7 @@ class FooterWalker extends \Walker_Nav_Menu
         $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
         $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
         $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
-        $attributes .= ' class="text-sm/6"';
+        $attributes .= ' class="u-text-style-small"';
 
         $item_output = '<a' . $attributes . '>';
         $item_output .= apply_filters('the_title', $item->title, $item->ID);
