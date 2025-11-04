@@ -66,8 +66,8 @@
 .swiper-button-next {
   color: var(--theme-text);
   background: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
-  width: var(--spacing-u-5);
-  height: var(--spacing-u-5);
+  width: var(--spacing-u-6);
+  height: var(--spacing-u-6);
   border-radius: var(--radius--tiny);
   border-width: var(--border-main);
   border-style: solid;

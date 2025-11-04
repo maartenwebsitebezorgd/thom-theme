@@ -71,7 +71,7 @@ $articles[] = [
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
     @if ($contentBlock)
-    <div class="mb-u-8">
+    <div class="">
       <x-content-wrapper :content="$contentBlock" />
     </div>
     @endif

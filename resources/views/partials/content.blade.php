@@ -67,12 +67,12 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
 
     <div class="article-simple-content-wrap flex flex-col grow">
       <div class="article-simple-content-top flex-1 px-u-4 pt-u-5 pb-u-5 u-margin-trim">
-        <h2 id="{{ $uniqueId }}-title" class="article-simple-title u-text-style-h5 mb-u-4">
+        <h2 id="{{ $uniqueId }}-title" class="article-simple-title u-text-style-h5 u-margin-bottom-text">
           <span class="article-simple-title-text">{!! get_the_title() !!}</span>
         </h2>
 
         @if($showExcerpt && (has_excerpt() || get_the_content()))
-          <p class="u-text-style-small u-margin-bottom-text">
+          <p class="u-text-style-main u-margin-bottom-text">
             {{ wp_trim_words(get_the_excerpt(), 20) }}
           </p>
         @endif

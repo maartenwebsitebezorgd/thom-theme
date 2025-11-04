@@ -4,7 +4,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-ySbfTA3W.css",
+    "file": "assets/app-BXlwmvpE.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -79,7 +79,7 @@
     "src": "resources/fonts/HelveticaNeueUltraLightItalic.otf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-2wE_nJE5.js",
+    "file": "assets/app-Cg-RyPGQ.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

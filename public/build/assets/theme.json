@@ -1385,6 +1385,11 @@
           "size": "var(--primary-trim-top)"
         },
         {
+          "name": "trim-bottom",
+          "slug": "trim-bottom",
+          "size": "var(--primary-trim-bottom)"
+        },
+        {
           "name": "wrap-balance",
           "slug": "wrap-balance",
           "size": "balance"

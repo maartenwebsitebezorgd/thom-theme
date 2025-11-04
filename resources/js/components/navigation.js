@@ -1,15 +1,11 @@
 /**
- * Navigation functionality for dropdown menus and mobile menu
- * Place this file in resources/js/navigation.js
+ * Navigation functionality for dropdown menus using Popover API
  */
 
 class Navigation {
   constructor() {
     this.dropdownTimeouts = {};
-    this.openDropdown = null;
-    this.mobileMenu = null;
-    this.mobileMenuButton = null;
-    this.mobileMenuClose = null;
+    this.hoverDelay = 150; // ms delay before opening/closing
 
     this.init();
   }
@@ -24,198 +20,122 @@ class Navigation {
   }
 
   setup() {
-    this.initializeMobileMenu();
     this.setupDropdownHovers();
     this.bindEvents();
   }
 
-  initializeMobileMenu() {
-    this.mobileMenuButton = document.getElementById('mobile-menu-button');
-    this.mobileMenuClose = document.getElementById('mobile-menu-close');
-    this.mobileMenu = document.getElementById('mobile-menu');
-
-    if (this.mobileMenuButton) {
-      this.mobileMenuButton.addEventListener('click', () =>
-        this.toggleMobileMenu()
-      );
+  showPopover(popoverId) {
+    // Clear any pending hide timeout for this popover
+    if (this.dropdownTimeouts[popoverId]) {
+      clearTimeout(this.dropdownTimeouts[popoverId]);
+      delete this.dropdownTimeouts[popoverId];
     }
 
-    if (this.mobileMenuClose) {
-      this.mobileMenuClose.addEventListener('click', () =>
-        this.toggleMobileMenu()
-      );
+    const popover = document.getElementById(popoverId);
+    if (popover && !popover.matches(':popover-open')) {
+      popover.showPopover();
     }
   }
 
-  toggleMobileMenu() {
-    if (!this.mobileMenu) return;
+  hidePopover(popoverId, immediate = false) {
+    const delay = immediate ? 0 : this.hoverDelay;
 
-    this.mobileMenu.classList.toggle('hidden');
-    const isOpen = !this.mobileMenu.classList.contains('hidden');
-    this.mobileMenuButton.setAttribute('aria-expanded', isOpen);
-  }
-
-  showDropdown(dropdownId) {
-    // Clear any pending hide timeout for this dropdown
-    if (this.dropdownTimeouts[dropdownId]) {
-      clearTimeout(this.dropdownTimeouts[dropdownId]);
-      delete this.dropdownTimeouts[dropdownId];
+    // Clear any existing timeout
+    if (this.dropdownTimeouts[popoverId]) {
+      clearTimeout(this.dropdownTimeouts[popoverId]);
     }
 
-    // Hide any other open dropdown
-    if (this.openDropdown && this.openDropdown !== dropdownId) {
-      const otherDropdown = document.getElementById(this.openDropdown);
-      if (otherDropdown) {
-        otherDropdown.classList.add('hidden');
+    this.dropdownTimeouts[popoverId] = setTimeout(() => {
+      const popover = document.getElementById(popoverId);
+      if (popover && popover.matches(':popover-open')) {
+        popover.hidePopover();
       }
-    }
-
-    const dropdown = document.getElementById(dropdownId);
-    if (dropdown) {
-      dropdown.classList.remove('hidden');
-      this.openDropdown = dropdownId;
-    }
-  }
-
-  hideDropdown(dropdownId) {
-    this.dropdownTimeouts[dropdownId] = setTimeout(() => {
-      const dropdown = document.getElementById(dropdownId);
-      if (dropdown) {
-        dropdown.classList.add('hidden');
-        if (this.openDropdown === dropdownId) {
-          this.openDropdown = null;
-        }
-      }
-      delete this.dropdownTimeouts[dropdownId];
-    }, 300);
-  }
-
-  toggleDropdown(dropdownId) {
-    const dropdown = document.getElementById(dropdownId);
-    if (!dropdown) return;
-
-    if (dropdown.classList.contains('hidden')) {
-      this.showDropdown(dropdownId);
-    } else {
-      this.hideDropdown(dropdownId);
-    }
-  }
-
-  toggleMobileAccordion(accordionId) {
-    const accordion = document.getElementById(accordionId);
-    const icon = document.getElementById(accordionId + '-icon');
-
-    if (accordion && icon) {
-      const isHidden = accordion.classList.contains('hidden');
-      accordion.classList.toggle('hidden');
-      icon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
+      delete this.dropdownTimeouts[popoverId];
+    }, delay);
   }
 
   setupDropdownHovers() {
-    const dropdownContainers = document.querySelectorAll('nav .relative');
+    // Find all dropdown trigger containers
+    const dropdownTriggers = document.querySelectorAll('[data-dropdown-trigger]');
 
-    dropdownContainers.forEach((container) => {
-      const button = container.querySelector('button[data-dropdown]');
-      const dropdown = container.querySelector('.dropdown-menu');
+    dropdownTriggers.forEach((trigger) => {
+      const popoverId = trigger.getAttribute('data-dropdown-trigger');
+      const button = trigger.querySelector(`[data-popover-button="${popoverId}"]`);
+      const popover = document.getElementById(popoverId);
 
-      if (button && dropdown) {
-        const dropdownId = dropdown.id;
+      if (!button || !popover) return;
 
-        // Mouse enter on container
-        container.addEventListener('mouseenter', () => {
-          this.showDropdown(dropdownId);
-        });
+      // Prevent default click behavior to avoid conflicts
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+      });
 
-        // Mouse leave on container
-        container.addEventListener('mouseleave', () => {
-          this.hideDropdown(dropdownId);
-        });
+      // Mouse enter on trigger container
+      trigger.addEventListener('mouseenter', () => {
+        this.showPopover(popoverId);
+      });
 
-        // Keep dropdown open when hovering over it
-        dropdown.addEventListener('mouseenter', () => {
-          if (this.dropdownTimeouts[dropdownId]) {
-            clearTimeout(this.dropdownTimeouts[dropdownId]);
-            delete this.dropdownTimeouts[dropdownId];
-          }
-        });
+      // Mouse leave on trigger container
+      trigger.addEventListener('mouseleave', () => {
+        this.hidePopover(popoverId);
+      });
 
-        dropdown.addEventListener('mouseleave', () => {
-          this.hideDropdown(dropdownId);
-        });
+      // Keep popover open when hovering over it
+      popover.addEventListener('mouseenter', () => {
+        if (this.dropdownTimeouts[popoverId]) {
+          clearTimeout(this.dropdownTimeouts[popoverId]);
+          delete this.dropdownTimeouts[popoverId];
+        }
+      });
 
-        // Click to toggle (for touch devices)
-        button.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.toggleDropdown(dropdownId);
-        });
-      }
+      // Close popover when mouse leaves it
+      popover.addEventListener('mouseleave', () => {
+        this.hidePopover(popoverId);
+      });
     });
   }
 
-  closeAllDropdowns() {
-    const dropdowns = document.querySelectorAll('.dropdown-menu');
-    dropdowns.forEach((dropdown) => {
-      dropdown.classList.add('hidden');
-    });
-    this.openDropdown = null;
-
+  closeAllPopovers() {
     // Clear all timeouts
     Object.keys(this.dropdownTimeouts).forEach((key) => {
       clearTimeout(this.dropdownTimeouts[key]);
       delete this.dropdownTimeouts[key];
     });
+
+    // Close all open popovers
+    const openPopovers = document.querySelectorAll('[popover]:popover-open');
+    openPopovers.forEach((popover) => {
+      if (popover.id.startsWith('desktop-menu-')) {
+        popover.hidePopover();
+      }
+    });
   }
 
   bindEvents() {
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('nav .relative')) {
-        this.closeAllDropdowns();
-      }
-
-      // Close mobile menu when clicking outside
-      if (this.mobileMenu && !this.mobileMenu.classList.contains('hidden')) {
-        if (
-          !this.mobileMenu.contains(event.target) &&
-          !this.mobileMenuButton.contains(event.target)
-        ) {
-          this.mobileMenu.classList.add('hidden');
-          this.mobileMenuButton.setAttribute('aria-expanded', 'false');
-        }
+    // Close dropdowns on escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        this.closeAllPopovers();
       }
     });
 
-    // Close on escape key
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        this.closeAllDropdowns();
+    // Optional: Close dropdowns when clicking outside
+    document.addEventListener('click', (event) => {
+      const isInsideDropdown = event.target.closest('[data-dropdown-trigger]') ||
+                               event.target.closest('[popover]');
 
-        // Close mobile menu
-        if (this.mobileMenu && !this.mobileMenu.classList.contains('hidden')) {
-          this.mobileMenu.classList.add('hidden');
-          this.mobileMenuButton.setAttribute('aria-expanded', 'false');
-        }
+      if (!isInsideDropdown) {
+        this.closeAllPopovers();
       }
     });
   }
 }
 
-// Make functions available globally for inline handlers (if needed)
+// Initialize navigation
 let navigationInstance;
 
 document.addEventListener('DOMContentLoaded', () => {
   navigationInstance = new Navigation();
-
-  // Expose methods globally for backward compatibility
-  window.showDropdown = (dropdownId) =>
-    navigationInstance.showDropdown(dropdownId);
-  window.hideDropdown = (dropdownId) =>
-    navigationInstance.hideDropdown(dropdownId);
-  window.toggleDropdown = (dropdownId) =>
-    navigationInstance.toggleDropdown(dropdownId);
-  window.toggleMobileAccordion = (accordionId) =>
-    navigationInstance.toggleMobileAccordion(accordionId);
 });
 
 // Export for module usage

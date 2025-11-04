@@ -50,6 +50,6 @@
     )::after {
     content: '';
     display: table;
-    margin-bottom: calc(-0.5lh + var(--text-trim-top));
+    margin-bottom: calc(-0.5lh + var(--text-trim-bottom));
   }
 }

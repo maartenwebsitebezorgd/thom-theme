@@ -76,7 +76,7 @@
     text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
-    --text-style--margin-bottom: var(--spacing-u-4);
+    --text-style--margin-bottom: var(--spacing-u-5);
   }
 
   h6,
@@ -89,7 +89,7 @@
     text-transform: var(--text-transform-none);
     text-wrap: var(--text-wrap--balance);
     --text-style--margin-top: var(--spacing-u-7);
-    --text-style--margin-bottom: var(--spacing-u-4);
+    --text-style--margin-bottom: var(--spacing-u-5);
   }
 
   .u-text-style-tiny {

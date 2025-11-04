@@ -77,7 +77,7 @@ $makeCardClickable = $case['make_card_clickable'] ?? true;
 
             @if($category)
             <div class="category-wrapper flex flex-row flex-wrap gap-u-2 items-center mb-u-4">
-              <span class="u-text-style-small py-u-1 px-u-1 bg-[var(--swatch--accent-main)]" aria-label="Category">{{ $category }}</span>
+              <span class="u-text-style-small font-bold py-u-1 px-u-1 bg-[var(--color-accent-main)]" aria-label="Category">{{ $category }}</span>
             </div>
             @endif
 

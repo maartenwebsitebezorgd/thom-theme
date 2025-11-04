@@ -69,7 +69,7 @@ $configJson = json_encode($config);
   @endif
 
   <div class="swiper {{ $uniqueId }}" data-swiper-config="{{ $configJson }}">
-    <div class="swiper-wrapper">
+    <div class="swiper-wrapper group/multi-slider">
       {{ $slot }}
     </div>
   </div>

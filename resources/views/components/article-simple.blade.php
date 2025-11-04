@@ -68,13 +68,13 @@ $makeCardClickable = $article['make_card_clickable'] ?? true;
         <div class="article-simple-content-wrap flex flex-col grow">
           <div class="article-simple-content-top flex-1 px-u-4 pt-u-5 pb-u-5 u-margin-trim">
             @if($title)
-            <h3 id="{{ $uniqueId }}-title" class="article-simple-title u-text-style-h5 mb-u-4">
+            <h3 id="{{ $uniqueId }}-title" class="article-simple-title u-text-style-h5 u-margin-bottom-text">
               <span class="article-simple-title-text">{{ $title }}</span>
             </h3>
             @endif
 
             @if($excerpt)
-            <p class="u-text-style-small u-margin-bottom-text">{{ $excerpt }}</p>
+            <p class="u-text-style-main u-margin-bottom-text">{{ $excerpt }}</p>
             @endif
           </div>
 

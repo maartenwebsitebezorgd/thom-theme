@@ -30,7 +30,7 @@ $alignment = 'mx-auto text-center';
 <div class="content-wrapper u-margin-trim {{ $alignment }} {{ $maxWidth }} {{ $marginBottom }}">
 
   @if ($eyebrow)
-  <p class="u-text-style-tagline mb-u-4">
+  <p class="u-text-style-tagline mb-u-5">
     {!! $eyebrow !!}
   </p>
   @endif
@@ -42,13 +42,13 @@ $alignment = 'mx-auto text-center';
   @endif
 
   @if ($paragraph)
-  <div class="prose {{ $paragraphTextStyle }} u-margin-bottom-text">
+  <div class="prose {{ $alignment }} {{ $paragraphTextStyle }} u-margin-bottom-text">
     {!! $paragraph !!}
   </div>
   @endif
 
   @if (!empty($buttonGroup))
-  <div class="mt-u-5 flex flex-wrap gap-4 @if($alignment === 'text-center') justify-center @elseif($alignment === 'text-right') justify-end @else justify-start @endif">
+  <div class="mt-u-6 flex flex-wrap gap-4 @if($alignment === 'text-center') justify-center @elseif($alignment === 'text-right') justify-end @else justify-start @endif">
     @foreach ($buttonGroup as $item)
     @php
     $button = $item['button'];

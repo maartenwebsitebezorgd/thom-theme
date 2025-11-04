@@ -51,7 +51,7 @@ $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 
         {{-- Swiper Slider --}}
         @if (!empty($posts))
-        <x-swiper :settings="$swiperSettings" classes="group/multi-slider">
+        <x-swiper :settings="$swiperSettings" classes="">
             @foreach ($posts as $postItem)
             @php
             // Setup global post data for WordPress functions

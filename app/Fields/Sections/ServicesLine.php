@@ -25,29 +25,29 @@ class ServicesLine
                 'label' => 'Heading Content',
                 'layout' => 'block',
             ])
-                ->addText('heading_text', [
-                    'label' => 'Heading Text',
-                    'instructions' => 'Enter the full heading text (e.g., "Direct benieuwd naar onze diensten?")',
-                    'default_value' => 'Direct benieuwd naar onze diensten?',
-                    'required' => 1,
-                ])
-                ->addText('link_text', [
-                    'label' => 'Link Text (Optional)',
-                    'instructions' => 'Enter the part of the heading that should be a link (e.g., "onze diensten"). Must be an exact match from the heading text.',
-                    'placeholder' => 'onze diensten',
-                ])
-                ->addLink('link', [
-                    'label' => 'Link URL',
-                    'instructions' => 'Choose where the link should go',
-                    'return_format' => 'array',
-                ])
-                ->conditional('link_text', '!=', '')
+            ->addText('heading_text', [
+                'label' => 'Heading Text',
+                'instructions' => 'Enter the full heading text (e.g., "Direct benieuwd naar onze diensten?")',
+                'default_value' => 'Direct benieuwd naar onze diensten?',
+                'required' => 1,
+            ])
+            ->addText('link_text', [
+                'label' => 'Link Text (Optional)',
+                'instructions' => 'Enter the part of the heading that should be a link (e.g., "onze diensten"). Must be an exact match from the heading text.',
+                'placeholder' => 'onze diensten',
+            ])
+            ->addLink('link', [
+                'label' => 'Link URL',
+                'instructions' => 'Choose where the link should go',
+                'return_format' => 'array',
+            ])
+            ->conditional('link_text', '!=', '')
             ->endGroup()
             ->addRepeater('cards', [
                 'label' => 'Service Cards',
-                'instructions' => 'Add up to 3 service line cards',
+                'instructions' => 'Add up to 4 service line cards',
                 'min' => 1,
-                'max' => 3,
+                'max' => 4,
                 'layout' => 'block',
                 'button_label' => 'Add Service Card',
             ])

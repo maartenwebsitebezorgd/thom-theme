@@ -37,8 +37,8 @@ class DropdownWalker extends Walker_Nav_Menu
             if ($has_children) {
                 $popover_id = 'desktop-menu-' . ($this->dropdown_id + 1);
 
-                $output .= '<div class="relative">';
-                $output .= '<button popovertarget="' . $popover_id . '" class="flex items-center gap-x-1 text-sm/6 font-semibold text-[var(--theme-text)] hover:text-[var(--theme-text)] transition-colors duration-200">';
+                $output .= '<div class="relative" data-dropdown-trigger="' . $popover_id . '">';
+                $output .= '<button popovertarget="' . $popover_id . '" data-popover-button="' . $popover_id . '" class="flex items-center gap-x-1 text-sm/6 font-semibold text-[var(--theme-text)] hover:text-[var(--theme-text)] transition-colors duration-200">';
                 $output .= esc_html($item->title);
                 $output .= '<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 flex-none text-[var(--theme-text)]/60">';
                 $output .= '<path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />';
@@ -80,7 +80,7 @@ class DropdownWalker extends Walker_Nav_Menu
             // Use subtitle if available, fallback to description
             $subtitle_text = !empty($item->subtitle) ? $item->subtitle : $item->description;
             if ($subtitle_text) {
-                $output .= '<p class="mt-1 u-text-style-tiny text-[var(--theme-text)]/70">' . esc_html($subtitle_text) . '</p>';
+                $output .= '<p class="mt-1 u-text-style-small text-[var(--theme-text)]/70">' . esc_html($subtitle_text) . '</p>';
             }
 
             $output .= '</div>';

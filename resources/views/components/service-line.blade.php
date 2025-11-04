@@ -25,7 +25,7 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
 
 @if($link && $makeCardClickable)
 {{-- Fully clickable card version --}}
-<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1">
+<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1 md:shrink-0 md:flex-none">
     <a
         href="{{ $linkUrl }}"
         target="{{ $linkTarget }}"
@@ -33,7 +33,7 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
         class="service-line_inner-wrap service-line_clickable flex flex-row gap-u-2 items-start group focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-current rounded transition-all hover:opacity-80"
         aria-labelledby="{{ $uniqueId }}-title"
         @if($linkTarget==='_blank' ) aria-describedby="{{ $uniqueId }}-external" @endif>
-        <div class="service-line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
+        <div class="service-line_icon-wrap mt-[-0.25em] size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
             <img
                 src="{{ $icon['url'] }}"
                 alt="{{ $isIconDecorative ? '' : ($iconAlt ?: $heading) }}"
@@ -60,9 +60,9 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
 </div>
 @elseif($link && !$makeCardClickable)
 {{-- Non-clickable card with inline link --}}
-<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1">
+<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1 md:shrink-0 md:flex-none">
     <div class="service-line_inner-wrap flex flex-row gap-u-2 items-start">
-        <div class="service-line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
+        <div class="service-line_icon-wrap mt-[-0.25em] size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
             <img
                 src="{{ $icon['url'] }}"
                 alt="{{ $isIconDecorative ? '' : ($iconAlt ?: $heading) }}"
@@ -88,9 +88,9 @@ $isIconDecorative = empty($iconAlt) && !empty($heading);
 </div>
 @else
 {{-- No link version --}}
-<div data-theme="{{ $cardTheme }}" class="service-line_component">
+<div data-theme="{{ $cardTheme }}" class="service-line_component flex-1 md:shrink-0 md:flex-none">
     <div class="service-line_inner-wrap flex flex-row gap-u-2 items-center">
-        <div class="service-line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
+        <div class="service-line_icon-wrap mt-[-0.25em] size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
             <img
                 src="{{ $icon['url'] }}"
                 alt="{{ $isIconDecorative ? '' : ($iconAlt ?: $heading) }}"
