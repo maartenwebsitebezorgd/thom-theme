@@ -179,6 +179,8 @@
   --spacing-u-9: clamp(6.408rem, 5.6795rem + 3.2374vw, 8.008rem);
 
   /* Section Spacing - Independent scale */
+  --spacing-section-even: var(--site--margin);
+  --spacing-section-tiny: clamp(1rem, 1.5rem + 1vw, 1.5rem);
   --spacing-section-small: clamp(2rem, 1.7273rem + 1.2121vw, 2.5rem);
   --spacing-section-main: clamp(3rem, 2.5909rem + 1.8182vw, 3.75rem);
   --spacing-section-medium: clamp(4.5rem, 3.8864rem + 2.7273vw, 5.625rem);

@@ -1,0 +1,42 @@
+/* =============================================================================
+   Team Card Component Styles
+   ============================================================================= */
+
+/* Image zoom effect on hover */
+.team-card-image-zoom {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card:hover .team-card-image-zoom {
+  transform: scale(1.05);
+}
+
+/* Title hover effect for standard layout */
+.team-card--standard .team-card-title {
+ 
+}
+
+.team-card--standard:hover .team-card-title {
+  
+}
+
+/* Overlay card specific styles */
+.team-card--overlay {
+  border-radius: var(--radius-none);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card--overlay:hover {
+  transform: translateY(-4px);
+}
+
+/* Standard card specific styles */
+.team-card--standard {
+  border-radius: var(--radius-none);
+  background-color: var(--theme-bg);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card--standard:hover {
+  transform: translateY(-4px);
+}

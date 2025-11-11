@@ -5,6 +5,7 @@ namespace App\Fields;
 use App\Fields\Sections\ArticlesGrid;
 use App\Fields\Sections\BenefitsGrid;
 use App\Fields\Sections\BlogsSlider;
+use App\Fields\Sections\Breadcrumb;
 use App\Fields\Sections\Cta;
 use App\Fields\Sections\Hero;
 use App\Fields\Sections\ImageGallery;
@@ -14,6 +15,7 @@ use App\Fields\Sections\ServicesGrid;
 use App\Fields\Sections\ServicesLine;
 use App\Fields\Sections\SplitContent;
 use App\Fields\Sections\SplitForm;
+use App\Fields\Sections\TeamGrid;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class PageBuilder
@@ -36,10 +38,12 @@ class PageBuilder
 
         // Add sections to flexible content
         $flexibleContent = Hero::addToFlexibleContent($flexibleContent);
+        $flexibleContent = Breadcrumb::addToFlexibleContent($flexibleContent);
         $flexibleContent = SplitContent::addToFlexibleContent($flexibleContent);
         $flexibleContent = SplitForm::addToFlexibleContent($flexibleContent);
         $flexibleContent = Cta::addToFlexibleContent($flexibleContent);
         $flexibleContent = ArticlesGrid::addToFlexibleContent($flexibleContent);
+        $flexibleContent = TeamGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = BenefitsGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = BlogsSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = MultiSlider::addToFlexibleContent($flexibleContent);
@@ -104,9 +108,12 @@ class PageBuilder
                     ])
 
             ->setLocation('post_type', '==', 'page')
-                ->and('page_template', '!=', 'page-templates/no-builder.blade.php') // Exclude certain templates if needed
-            ->setGroupConfig('hide_on_screen', ['the_content']);
+                ->and('page_template', '!=', 'page-templates/no-builder.blade.php'); // Exclude certain templates if needed
 
-        acf_add_local_field_group($pageBuilder->build());
+        // Build and modify the field group to hide the content editor
+        $fieldGroup = $pageBuilder->build();
+        $fieldGroup['hide_on_screen'] = ['the_content'];
+
+        acf_add_local_field_group($fieldGroup);
     }
 }

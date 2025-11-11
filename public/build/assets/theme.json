@@ -1229,6 +1229,21 @@
           "color": "#fff"
         },
         {
+          "name": "Error (Main)",
+          "slug": "error-main",
+          "color": "red"
+        },
+        {
+          "name": "Warning (Main)",
+          "slug": "warning-main",
+          "color": "#f2dd4a"
+        },
+        {
+          "name": "Succes (Main)",
+          "slug": "succes-main",
+          "color": "green"
+        },
+        {
           "name": "Text (Heading)",
           "slug": "text-heading",
           "color": "#212a4c"

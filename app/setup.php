@@ -355,3 +355,4 @@ add_filter('excerpt_length', function () {
 add_filter('excerpt_more', function () {
     return '&hellip;';
 });
+

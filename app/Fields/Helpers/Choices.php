@@ -33,6 +33,8 @@ class Choices
     {
         return [
             'pt-section-none' => 'None',
+            'pt-section-even' => 'Even',
+            'pt-section-tiny' => 'Tiny',
             'pt-section-small' => 'Small',
             'pt-section-main' => 'Main',
             'pt-section-medium' => 'Medium',
@@ -44,6 +46,8 @@ class Choices
     {
         return [
             'pb-section-none' => 'None',
+            'pb-section-even' => 'Even',
+            'pb-section-tiny' => 'Tiny',
             'pb-section-small' => 'Small',
             'pb-section-main' => 'Main',
             'pb-section-medium' => 'Medium',
@@ -65,7 +69,10 @@ class Choices
         return [
             'aspect-square' => '1:1 (Square)',
             'aspect-[3/2]' => '3:2 (Standard)',
-            'aspect-[4/3]' => '4:3',
+            'aspect-[4/5]' => '4:5 (Portrait)',
+            'aspect-[5/4]' => '5:4 (Wide)',
+            'aspect-[4/3]' => '4:3 (Wide)',
+            'aspect-[3/4]' => '3:4 (Portrait',
             'aspect-[16/9]' => '16:9 (Wide)',
             'aspect-[21/9]' => '21:9 (Ultra Wide)',
         ];
