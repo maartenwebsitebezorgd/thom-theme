@@ -11,6 +11,10 @@
   --color-yellow-main: #f2dd4a;
   --color-desert-main: #f7f6f5;
   --color-light-main: #ffffff;
+  --color-light-main: #ffffff;
+  --color-error-main: red;
+  --color-warning-main: #f2dd4a;
+  --color-succes-main: green;
 
   /* Text Colors */
   --color-text-heading: #212a4c;
@@ -19,7 +23,6 @@
   --color-text-body-light: #ffffff;
 
   /* Background Colors */
-
   --color-blue-50: #f1f6fd;
   --color-blue-100: #e0eaf9;
   --color-blue-200: #c9dbf4;

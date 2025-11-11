@@ -11,6 +11,11 @@
     --theme-heading: var(--color-text-heading);
     --theme-accent: var(--color-accent-main);
 
+    /* Status Theme */
+    --theme-error: var(--color-error-main);
+    --theme-warning: var(--color-warning-main);
+    --theme-success: var(--color-succes-main);
+
     /* Selection Theme */
     --selection-bg: var(--color-accent-main);
     --selection-text: var(--color-light-main);
@@ -82,6 +87,7 @@
     --theme-border: var(--color-desert-main);
     --theme-heading: var(--color-text-heading);
     --theme-accent: var(--color-accent-main);
+    --theme-error: var(--color-error-main);
 
     /* Selection Theme */
     --selection-bg: var(--color-accent-main);
@@ -141,6 +147,7 @@
     --theme-border: var(--color-blue-900);
     --theme-heading: var(--color-text-heading-light);
     --theme-accent: var(--color-accent-main);
+    --theme-error: var(--color-error-main);
 
     /* Selection Theme */
     --selection-bg: var(--color-accent-light);
@@ -180,6 +187,7 @@
     --theme-border: color-mix(in srgb, var(--theme-bg) 90%, var(--theme-text));
     --theme-heading: var(--color-text-heading-light);
     --theme-accent: var(--color-blue-main);
+    --theme-error: var(--color-error-main);
 
     /* Selection Theme */
     --selection-bg: var(--color-blue-main);

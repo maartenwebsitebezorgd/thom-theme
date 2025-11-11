@@ -45,6 +45,7 @@
 @import './components/logo-slider.css';
 @import './components/article-simple.css';
 @import './components/case-simple.css';
+@import './components/gravity-forms.css';
 
 /* Import ui styles */
 @import './components/ui/button.css';

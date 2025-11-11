@@ -13,6 +13,7 @@ use App\Fields\Sections\MultiSlider;
 use App\Fields\Sections\ServicesGrid;
 use App\Fields\Sections\ServicesLine;
 use App\Fields\Sections\SplitContent;
+use App\Fields\Sections\SplitForm;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class PageBuilder
@@ -25,7 +26,7 @@ class PageBuilder
     public function addFields()
     {
         $pageBuilder = new FieldsBuilder('page_builder');
-        
+
         $flexibleContent = $pageBuilder
             ->addFlexibleContent('content_blocks', [
                 'label' => 'Page Content',
@@ -36,6 +37,7 @@ class PageBuilder
         // Add sections to flexible content
         $flexibleContent = Hero::addToFlexibleContent($flexibleContent);
         $flexibleContent = SplitContent::addToFlexibleContent($flexibleContent);
+        $flexibleContent = SplitForm::addToFlexibleContent($flexibleContent);
         $flexibleContent = Cta::addToFlexibleContent($flexibleContent);
         $flexibleContent = ArticlesGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = BenefitsGrid::addToFlexibleContent($flexibleContent);
@@ -102,7 +104,8 @@ class PageBuilder
                     ])
 
             ->setLocation('post_type', '==', 'page')
-                ->and('page_template', '!=', 'page-templates/no-builder.blade.php'); // Exclude certain templates if needed
+                ->and('page_template', '!=', 'page-templates/no-builder.blade.php') // Exclude certain templates if needed
+            ->setGroupConfig('hide_on_screen', ['the_content']);
 
         acf_add_local_field_group($pageBuilder->build());
     }
