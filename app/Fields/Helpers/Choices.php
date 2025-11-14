@@ -151,6 +151,16 @@ class Choices
         ];
     }
 
+    public static function iconSize()
+    {
+        return [
+            'size-u-3' => 'Small',
+            'size-u-4' => 'Main',
+            'size-u-5' => 'Medium',
+            'size-u-6' => 'Large',
+        ];
+    }
+
     public static function maxWidth()
     {
         return [

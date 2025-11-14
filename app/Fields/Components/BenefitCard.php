@@ -34,6 +34,16 @@ class BenefitCard
                 'label' => 'Text',
                 'rows' => 4,
             ])
+            ->addLink('link', [
+                'label' => 'Link',
+                'return_format' => 'array',
+            ])
+            ->addTrueFalse('make_card_clickable', [
+                'label' => 'Make Whole Card Clickable',
+                'instructions' => 'When enabled, clicking anywhere on the card will navigate to the link',
+                'default_value' => 1,
+                'ui' => 1,
+            ])
             ->endGroup();
 
         return $benefitCard;

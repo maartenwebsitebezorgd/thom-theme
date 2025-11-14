@@ -67,6 +67,18 @@ class ServicesGrid
                 'default_value' => 'auto',
                 'wrapper' => ['width' => '100'],
             ])
+            ->addSelect('heading_text_style', [
+                'label' => 'Card Heading Text Style',
+                'choices' => Choices::headingTextStyle(),
+                'default_value' => 'u-text-style-h6',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('icon_size', [
+                'label' => 'Card Icon Size',
+                'choices' => Choices::iconSize(),
+                'default_value' => 'size-u-5',
+                'wrapper' => ['width' => '50'],
+            ])
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',
                 'choices' => Choices::gridColumnsDesktop(),

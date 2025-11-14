@@ -6,6 +6,8 @@ $styleSettings = get_sub_field('style_settings');
 
 // Card styling (section level)
 $cardTheme = get_sub_field('card_theme') ?? 'auto';
+$headingTextStyle = get_sub_field('heading_text_style') ?? 'u-text-style-h6';
+$iconSize = get_sub_field('icon_size') ?? 'size-u-4';
 
 // Get cards based on mode
 if ($useGlobalServices) {
@@ -40,9 +42,7 @@ $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
     @if ($contentBlock)
-    <div class="mb-u-8">
-      <x-content-wrapper :content="$contentBlock" />
-    </div>
+    <x-content-wrapper :content="$contentBlock" />
     @endif
 
     {{-- Cards Grid --}}
@@ -53,6 +53,8 @@ $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
         :card="$cardItem['service_card']"
         :section-theme="$theme"
         :card-theme="$cardTheme"
+        :heading-text-style="$headingTextStyle"
+        :icon-size="$iconSize"
         classes="opacity-100 group-hover/services:opacity-60 hover:!opacity-100 transition-opacity ease-in-out duration-200" />
       @endforeach
     </div>

@@ -38,6 +38,11 @@ class ServiceCard
                 'label' => 'Link',
                 'return_format' => 'array',
             ])
+            ->addText('label', [
+                'label' => 'Card Label',
+                'instructions' => 'Small text label shown in card footer (e.g., "ik wil impact maken")',
+                'default_value' => 'ik wil impact maken',
+            ])
             ->addTrueFalse('make_card_clickable', [
                 'label' => 'Make Whole Card Clickable',
                 'instructions' => 'When enabled, clicking anywhere on the card will navigate to the link',

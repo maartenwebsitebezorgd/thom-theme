@@ -37,7 +37,12 @@ class SplitForm
                 'default_value' => 0,
                 'ui' => 1,
             ])
-            ->addFields(StyleSettings::create('style_settings'))
+            ->addFields(StyleSettings::create(
+                'style_settings',
+                [
+                    'theme' => 'accent',
+                ]
+            ))
             ->addSelect('content_layout', [
                 'label' => 'Content Layout',
                 'choices' => [

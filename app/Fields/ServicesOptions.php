@@ -75,6 +75,11 @@ class ServicesOptions
                 'instructions' => 'Link to service page',
                 'rows' => 1,
             ])
+            ->addText('label', [
+                'label' => 'Card Label',
+                'instructions' => 'Small text label shown in card footer (e.g., "ik wil impact maken")',
+                'default_value' => 'ik wil impact maken',
+            ])
             ->endRepeater();
 
         acf_add_local_field_group($servicesOptions->build());
