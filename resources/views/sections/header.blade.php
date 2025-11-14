@@ -42,13 +42,13 @@ default => 'button button--primary button--small',
             <img
               src="{{ $logoDark['url'] }}"
               alt="{{ $logoDark['alt'] ?: get_bloginfo('name') }}"
-              class="h-8 w-auto"
+              class="h-10 w-auto"
             />
           @elseif($logoLight)
             <img
               src="{{ $logoLight['url'] }}"
               alt="{{ $logoLight['alt'] ?: get_bloginfo('name') }}"
-              class="h-8 w-auto"
+              class="h-10 w-auto"
             />
           @endif
         @elseif(has_custom_logo())

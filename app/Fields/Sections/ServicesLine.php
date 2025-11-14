@@ -43,6 +43,26 @@ class ServicesLine
             ])
             ->conditional('link_text', '!=', '')
             ->endGroup()
+            ->addTrueFalse('use_global_services', [
+                'label' => 'Use Global Services',
+                'instructions' => 'Select services from global settings',
+                'default_value' => 0,
+                'ui' => 1,
+            ])
+            ->addCheckbox('selected_services', [
+                'label' => 'Select Services to Display',
+                'instructions' => 'Choose which services to show. <a href="' . admin_url('admin.php?page=services-options') . '" target="_blank">Manage global services</a>',
+                'choices' => [], // Will be populated dynamically
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'use_global_services',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->addRepeater('cards', [
                 'label' => 'Service Cards',
                 'instructions' => 'Add up to 4 service line cards',
@@ -50,6 +70,15 @@ class ServicesLine
                 'max' => 4,
                 'layout' => 'block',
                 'button_label' => 'Add Service Card',
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'use_global_services',
+                            'operator' => '!=',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
             ])
             ->addFields(ServiceLineCard::create('service_card'))
             ->endRepeater()

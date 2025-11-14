@@ -1,5 +1,7 @@
 @php
 $styleSettings = get_sub_field('style_settings');
+$useGlobalServices = get_sub_field('use_global_services');
+$selectedServices = get_sub_field('selected_services');
 
 // Style Settings
 $theme = $styleSettings['theme'] ?? 'inherit';
@@ -8,8 +10,21 @@ $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 // Card styling (section level)
 $cardTheme = get_sub_field('card_theme') ?? 'inherit';
 
-// Get cards
-$cards = get_sub_field('cards');
+// Get cards based on mode
+if ($useGlobalServices) {
+    $globalServices = get_field('global_services', 'option');
+    $cards = [];
+
+    if ($globalServices && $selectedServices) {
+        foreach ($selectedServices as $index) {
+            if (isset($globalServices[$index])) {
+                $cards[] = ['service_card' => $globalServices[$index]];
+            }
+        }
+    }
+} else {
+    $cards = get_sub_field('cards');
+}
 
 // Heading content
 $headingContent = get_sub_field('heading_content');
