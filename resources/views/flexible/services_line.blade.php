@@ -16,9 +16,10 @@ if ($useGlobalServices) {
     $cards = [];
 
     if ($globalServices && $selectedServices) {
-        foreach ($selectedServices as $index) {
-            if (isset($globalServices[$index])) {
-                $cards[] = ['service_card' => $globalServices[$index]];
+        foreach ($selectedServices as $selectedItem) {
+            $serviceIndex = $selectedItem['service'] ?? null;
+            if ($serviceIndex !== null && isset($globalServices[$serviceIndex])) {
+                $cards[] = ['service_card' => $globalServices[$serviceIndex]];
             }
         }
     }

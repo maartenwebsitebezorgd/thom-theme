@@ -11,6 +11,7 @@ class ServicesOptions
         add_action('acf/init', [$this, 'addOptionsPage']);
         add_action('acf/init', [$this, 'addFields']);
         add_filter('acf/load_field/name=selected_services', [$this, 'loadServiceChoices']);
+        add_filter('acf/load_field/name=service', [$this, 'loadServiceChoices']);
     }
 
     public function loadServiceChoices($field)

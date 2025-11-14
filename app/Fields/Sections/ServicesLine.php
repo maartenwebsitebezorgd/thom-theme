@@ -49,10 +49,12 @@ class ServicesLine
                 'default_value' => 0,
                 'ui' => 1,
             ])
-            ->addCheckbox('selected_services', [
-                'label' => 'Select Services to Display',
-                'instructions' => 'Choose which services to show. <a href="' . admin_url('admin.php?page=services-options') . '" target="_blank">Manage global services</a>',
-                'choices' => [], // Will be populated dynamically
+            ->addRepeater('selected_services', [
+                'label' => 'Select & Order Services',
+                'instructions' => 'Choose services and drag to reorder. <a href="' . admin_url('admin.php?page=services-options') . '" target="_blank">Manage global services</a>',
+                'layout' => 'table',
+                'button_label' => 'Add Service',
+                'max' => 4,
                 'conditional_logic' => [
                     [
                         [
@@ -63,6 +65,12 @@ class ServicesLine
                     ],
                 ],
             ])
+            ->addSelect('service', [
+                'label' => 'Service',
+                'choices' => [], // Will be populated dynamically
+                'required' => 1,
+            ])
+            ->endRepeater()
             ->addRepeater('cards', [
                 'label' => 'Service Cards',
                 'instructions' => 'Add up to 4 service line cards',

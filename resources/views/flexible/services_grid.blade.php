@@ -11,18 +11,19 @@ $iconSize = get_sub_field('icon_size') ?? 'size-u-4';
 
 // Get cards based on mode
 if ($useGlobalServices) {
-$globalServices = get_field('global_services', 'option');
-$cards = [];
+    $globalServices = get_field('global_services', 'option');
+    $cards = [];
 
-if ($globalServices && $selectedServices) {
-foreach ($selectedServices as $index) {
-if (isset($globalServices[$index])) {
-$cards[] = ['service_card' => $globalServices[$index]];
-}
-}
-}
+    if ($globalServices && $selectedServices) {
+        foreach ($selectedServices as $selectedItem) {
+            $serviceIndex = $selectedItem['service'] ?? null;
+            if ($serviceIndex !== null && isset($globalServices[$serviceIndex])) {
+                $cards[] = ['service_card' => $globalServices[$serviceIndex]];
+            }
+        }
+    }
 } else {
-$cards = get_sub_field('cards');
+    $cards = get_sub_field('cards');
 }
 
 // Grid settings
