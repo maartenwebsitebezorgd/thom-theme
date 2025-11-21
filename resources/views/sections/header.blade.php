@@ -3,6 +3,9 @@
 use App\View\Composers\DropdownWalker;
 use App\View\Composers\MobileWalker;
 
+// Get Header Theme
+$headerTheme = get_field('header_theme', 'option') ?? 'solid-dark';
+
 // Get CTA settings from Theme Options
 $showDesktopCta = get_field('show_desktop_cta', 'option') ?? true;
 $desktopCtaText = get_field('desktop_cta_text', 'option') ?: 'Get Started';
@@ -23,7 +26,7 @@ default => 'button button--primary button--small',
 };
 @endphp
 
-<header data-theme="dark" class="navigation sticky top-0 z-50 w-full isolate">
+<header class="navigation navigation--{{ $headerTheme }} sticky top-0 z-50 w-full isolate">
   <nav aria-label="Global" class="mx-auto flex u-container items-center gap-u-6 justify-between py-u-3 min-h-[2.75rem]">
 
     {{-- Logo Section --}}
@@ -42,13 +45,13 @@ default => 'button button--primary button--small',
             <img
               src="{{ $logoDark['url'] }}"
               alt="{{ $logoDark['alt'] ?: get_bloginfo('name') }}"
-              class="h-10 w-auto"
+              class="h-12 w-auto"
             />
           @elseif($logoLight)
             <img
               src="{{ $logoLight['url'] }}"
               alt="{{ $logoLight['alt'] ?: get_bloginfo('name') }}"
-              class="h-10 w-auto"
+              class="h-12 w-auto"
             />
           @endif
         @elseif(has_custom_logo())

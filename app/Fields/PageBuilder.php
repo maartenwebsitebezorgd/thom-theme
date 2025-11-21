@@ -15,6 +15,7 @@ use App\Fields\Sections\ServicesGrid;
 use App\Fields\Sections\ServicesLine;
 use App\Fields\Sections\SplitContent;
 use App\Fields\Sections\SplitForm;
+use App\Fields\Sections\TeamContactCta;
 use App\Fields\Sections\TeamGrid;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
@@ -42,6 +43,7 @@ class PageBuilder
         $flexibleContent = SplitContent::addToFlexibleContent($flexibleContent);
         $flexibleContent = SplitForm::addToFlexibleContent($flexibleContent);
         $flexibleContent = Cta::addToFlexibleContent($flexibleContent);
+        $flexibleContent = TeamContactCta::addToFlexibleContent($flexibleContent);
         $flexibleContent = ArticlesGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = TeamGrid::addToFlexibleContent($flexibleContent);
         $flexibleContent = BenefitsGrid::addToFlexibleContent($flexibleContent);

@@ -188,6 +188,18 @@ class ThemeOptions
         $headerSettings = new FieldsBuilder('header_settings');
         $headerSettings
             ->addTab('navigation', ['label' => 'Navigation'])
+            ->addSelect('header_theme', [
+                'label' => 'Header Theme',
+                'instructions' => 'Visual style for the header/navigation',
+                'choices' => [
+                    'solid-dark' => 'Solid Dark (Default)',
+                    'solid-light' => 'Solid Light',
+                    'solid-accent' => 'Solid Accent',
+                    'blur-dark' => 'Blurred Dark (Translucent)',
+                    'blur-light' => 'Blurred Light (Translucent)',
+                ],
+                'default_value' => 'solid-dark',
+            ])
             ->addTrueFalse('show_search', [
                 'label' => 'Show Search in Header',
                 'default_value' => 0

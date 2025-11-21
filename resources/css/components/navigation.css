@@ -1,4 +1,54 @@
-/* Add this to your resources/css/app.css or create a new file */
+/* Navigation Header Theme Styles */
+
+/* Solid Dark Theme (Default) */
+.navigation--solid-dark {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Solid Light Theme */
+.navigation--solid-light {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Solid Accent Theme */
+.navigation--solid-accent {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Blurred Dark Theme (Translucent) */
+.navigation--blur-dark {
+  background-color: rgba(var(--color-dark-rgb, 15, 23, 42), 0.8);
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Blurred Light Theme (Translucent) */
+.navigation--blur-light {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-dark);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(12px)) {
+  .navigation--blur-dark {
+    background-color: rgba(var(--color-dark-rgb, 15, 23, 42), 0.95);
+  }
+
+  .navigation--blur-light {
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+}
 
 /* Enhanced dropdown animations */
 .dropdown-menu {

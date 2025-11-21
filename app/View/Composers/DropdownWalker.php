@@ -38,14 +38,14 @@ class DropdownWalker extends Walker_Nav_Menu
                 $popover_id = 'desktop-menu-' . ($this->dropdown_id + 1);
 
                 $output .= '<div class="relative" data-dropdown-trigger="' . $popover_id . '">';
-                $output .= '<button popovertarget="' . $popover_id . '" data-popover-button="' . $popover_id . '" class="flex items-center gap-x-1 text-main/6 font-semibold text-[var(--theme-text)] hover:text-[var(--theme-text)] transition-colors duration-200">';
+                $output .= '<button popovertarget="' . $popover_id . '" data-popover-button="' . $popover_id . '" class="flex items-center gap-x-1 text-main/6 font-medium text-[var(--theme-text)] hover:text-[var(--theme-text)] transition-colors duration-200">';
                 $output .= esc_html($item->title);
                 $output .= '<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 flex-none text-[var(--theme-text)]/60">';
                 $output .= '<path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />';
                 $output .= '</svg>';
                 $output .= '</button>';
             } else {
-                $class_names = 'text-main/6 !font-semibold transition-colors duration-200 ' .
+                $class_names = 'text-main/6 font-medium transition-colors duration-200 ' .
                     ($current ? 'text-[var(--theme-accent)]' : 'text-[var(--theme-text)] hover:text-[var(--theme-accent)]');
 
                 $output .= '<a href="' . esc_url($item->url) . '" class="' . $class_names . '">';
@@ -72,7 +72,7 @@ class DropdownWalker extends Walker_Nav_Menu
             $output .= '</div>';
 
             $output .= '<div class="flex-auto">';
-            $output .= '<a href="' . esc_url($item->url) . '" class="block font-semibold text-[var(--theme-text)]">';
+            $output .= '<a href="' . esc_url($item->url) . '" class="block font-medium text-[var(--theme-text)]">';
             $output .= esc_html($item->title);
             $output .= '<span class="absolute inset-0"></span>';
             $output .= '</a>';
@@ -129,7 +129,7 @@ class MobileWalker extends Walker_Nav_Menu
                 $disclosure_id = 'products-' . $this->mobile_accordion_id;
 
                 $output .= '<div class="-mx-3">';
-                $output .= '<button type="button" command="--toggle" commandfor="' . $disclosure_id . '" class="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5">';
+                $output .= '<button type="button" command="--toggle" commandfor="' . $disclosure_id . '" class="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-medium text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5">';
                 $output .= esc_html($item->title);
                 $output .= '<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="size-5 flex-none in-aria-expanded:rotate-180">';
                 $output .= '<path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />';
@@ -137,7 +137,7 @@ class MobileWalker extends Walker_Nav_Menu
                 $output .= '</button>';
                 $output .= '<el-disclosure id="' . $disclosure_id . '" hidden class="mt-2 block space-y-2">';
             } else {
-                $class_names = '-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold transition-colors duration-200 ' .
+                $class_names = '-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium transition-colors duration-200 ' .
                     ($current ? 'text-[var(--theme-accent)] bg-[var(--theme-bg)]/10' : 'text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5');
 
                 $output .= '<a href="' . esc_url($item->url) . '" class="' . $class_names . '">';
@@ -146,7 +146,7 @@ class MobileWalker extends Walker_Nav_Menu
             }
         } else {
             // Sub-menu items
-            $class_names = 'block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold transition-colors duration-200 ' .
+            $class_names = 'block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-medium transition-colors duration-200 ' .
                 ($current ? 'text-[var(--theme-accent)] hover:bg-[var(--theme-text)]/5' : 'text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5');
 
             $output .= '<a href="' . esc_url($item->url) . '" class="' . $class_names . '">';

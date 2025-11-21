@@ -70,7 +70,8 @@
     @apply p-u-1;
 
     &:hover,
-    &:focus {
+    &:focus,
+    .group:hover & {
       background-color: var(--button-secondary-bg-hover);
       color: var(--button-secondary-text-hover);
       border-color: var(--button-secondary-border-hover);

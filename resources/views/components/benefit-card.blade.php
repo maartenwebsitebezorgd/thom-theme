@@ -29,11 +29,11 @@ $text = $card['text'] ?? '';
       @endif
 
       @if ($heading)
-      <h3 class="card-heading u-text-style-h6 u-margin-bottom-text">{{ $heading }}</h3>
+      <h3 class="card-heading u-text-style-h5 u-margin-bottom-text">{{ $heading }}</h3>
       @endif
 
       @if ($text)
-      <p class="card-text u-text-style-main u-margin-bottom-text">{{ $text }}</p>
+      <p class="card-text u-text-style-small u-margin-bottom-text">{{ $text }}</p>
       @endif
     </div>
   </div>

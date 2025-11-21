@@ -171,7 +171,7 @@ $uniqueId = uniqid('team-card-');
     aria-labelledby="{{ $uniqueId }}-name">
     {{-- Image --}}
     @if(!empty($headshot))
-    <div class="relative overflow-hidden {{ $imageAspectRatio }} mb-u-4">
+    <div class="relative overflow-hidden {{ $imageAspectRatio }}">
         <img
             src="{{ $headshot['sizes']['card'] ?? $headshot['url'] }}"
             srcset="{{ $headshot['sizes']['card'] ?? $headshot['url'] }} 600w,
@@ -185,12 +185,12 @@ $uniqueId = uniqid('team-card-');
     @endif
 
     {{-- Content --}}
-    <div class="px-u-3 pb-u-3 u-margin-trim">
+    <div class="py-u-4 u-margin-trim">
         <h3 id="{{ $uniqueId }}-name" class="team-card-title u-text-style-h5 text-[var(--theme-heading)] mb-u-3">
             {{ $name }}
         </h3>
         @if($jobTitle)
-        <p class="u-text-style-main text-[var(--theme-text)] mb-u-3">
+        <p class="u-text-style-small text-[var(--theme-text)] mb-u-3">
             {{ $jobTitle }}
         </p>
         @endif
