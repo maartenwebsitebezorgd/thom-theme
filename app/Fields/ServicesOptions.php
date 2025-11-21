@@ -53,33 +53,36 @@ class ServicesOptions
             ->setLocation('options_page', '==', 'services-options')
             ->addRepeater('global_services', [
                 'label' => 'Global Services',
-                'instructions' => 'Define your default services that can be used across the site',
-                'layout' => 'block',
+                'instructions' => 'Define your default services that can be used across the site. Drag rows to reorder.',
+                'layout' => 'row',
                 'button_label' => 'Add Service',
+                'collapsed' => 'heading',
             ])
             ->addImage('icon', [
                 'label' => 'Icon',
-                'instructions' => 'Upload an icon or image for this service',
                 'return_format' => 'array',
                 'preview_size' => 'thumbnail',
+                'wrapper' => ['width' => '15'],
             ])
             ->addText('heading', [
                 'label' => 'Heading',
                 'required' => 1,
+                'wrapper' => ['width' => '25'],
             ])
             ->addTextarea('text', [
-                'label' => 'Text',
-                'rows' => 4,
+                'label' => 'Description',
+                'rows' => 2,
+                'wrapper' => ['width' => '35'],
             ])
             ->addLink('link', [
-                'label' => 'link',
-                'instructions' => 'Link to service page',
-                'rows' => 1,
+                'label' => 'Link',
+                'return_format' => 'array',
+                'wrapper' => ['width' => '15'],
             ])
             ->addText('label', [
-                'label' => 'Card Label',
-                'instructions' => 'Small text label shown in card footer (e.g., "ik wil impact maken")',
+                'label' => 'Footer Label',
                 'default_value' => 'ik wil impact maken',
+                'wrapper' => ['width' => '10'],
             ])
             ->endRepeater();
 

@@ -37,23 +37,25 @@ default => 'button button--primary button--small',
         @php
         $logoLight = get_field('logo_light', 'option');
         $logoDark = get_field('logo_dark', 'option');
+
+        // Determine which logo to show based on header theme
+        $isLightHeader = in_array($headerTheme, ['solid-light', 'blur-light']);
+        $selectedLogo = $isLightHeader ? $logoDark : $logoLight;
+
+        // Fallback to the other logo if selected one doesn't exist
+        if (!$selectedLogo && $isLightHeader && $logoLight) {
+            $selectedLogo = $logoLight;
+        } elseif (!$selectedLogo && !$isLightHeader && $logoDark) {
+            $selectedLogo = $logoDark;
+        }
         @endphp
 
-        @if($logoLight || $logoDark)
-          {{-- Show theme-appropriate logo --}}
-          @if($logoDark)
-            <img
-              src="{{ $logoDark['url'] }}"
-              alt="{{ $logoDark['alt'] ?: get_bloginfo('name') }}"
-              class="h-12 w-auto"
-            />
-          @elseif($logoLight)
-            <img
-              src="{{ $logoLight['url'] }}"
-              alt="{{ $logoLight['alt'] ?: get_bloginfo('name') }}"
-              class="h-12 w-auto"
-            />
-          @endif
+        @if($selectedLogo)
+          <img
+            src="{{ $selectedLogo['url'] }}"
+            alt="{{ $selectedLogo['alt'] ?: get_bloginfo('name') }}"
+            class="h-12 w-auto"
+          />
         @elseif(has_custom_logo())
           {!! get_custom_logo() !!}
         @else
