@@ -35,18 +35,21 @@ default => 'button button--primary button--small',
         <span class="sr-only">{{ get_bloginfo('name') }}</span>
 
         @php
-        $logoLight = get_field('logo_light', 'option');
-        $logoDark = get_field('logo_dark', 'option');
+        // Logo fields are named by WHERE they're used, not their color:
+        // - logo_light = Logo FOR light backgrounds (dark colored logo)
+        // - logo_dark = Logo FOR dark backgrounds (light colored logo)
+        $logoForLightBg = get_field('logo_light', 'option');
+        $logoForDarkBg = get_field('logo_dark', 'option');
 
         // Determine which logo to show based on header theme
         $isLightHeader = in_array($headerTheme, ['solid-light', 'blur-light']);
-        $selectedLogo = $isLightHeader ? $logoDark : $logoLight;
+        $selectedLogo = $isLightHeader ? $logoForLightBg : $logoForDarkBg;
 
         // Fallback to the other logo if selected one doesn't exist
-        if (!$selectedLogo && $isLightHeader && $logoLight) {
-            $selectedLogo = $logoLight;
-        } elseif (!$selectedLogo && !$isLightHeader && $logoDark) {
-            $selectedLogo = $logoDark;
+        if (!$selectedLogo && $isLightHeader && $logoForDarkBg) {
+            $selectedLogo = $logoForDarkBg;
+        } elseif (!$selectedLogo && !$isLightHeader && $logoForLightBg) {
+            $selectedLogo = $logoForLightBg;
         }
         @endphp
 
@@ -133,21 +136,12 @@ default => 'button button--primary button--small',
             <a href="{{ home_url('/') }}" class="-m-1.5 p-1.5">
               <span class="sr-only">{{ get_bloginfo('name') }}</span>
 
-              @if($logoLight || $logoDark)
-                {{-- Show theme-appropriate logo --}}
-                @if($logoLight)
-                  <img
-                    src="{{ $logoLight['url'] }}"
-                    alt="{{ $logoLight['alt'] ?: get_bloginfo('name') }}"
-                    class="h-8 w-auto"
-                  />
-                @elseif($logoDark)
-                  <img
-                    src="{{ $logoDark['url'] }}"
-                    alt="{{ $logoDark['alt'] ?: get_bloginfo('name') }}"
-                    class="h-8 w-auto"
-                  />
-                @endif
+              @if($selectedLogo)
+                <img
+                  src="{{ $selectedLogo['url'] }}"
+                  alt="{{ $selectedLogo['alt'] ?: get_bloginfo('name') }}"
+                  class="h-8 w-auto"
+                />
               @elseif(has_custom_logo())
                 {!! get_custom_logo() !!}
               @else
