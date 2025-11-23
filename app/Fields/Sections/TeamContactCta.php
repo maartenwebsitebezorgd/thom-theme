@@ -36,7 +36,7 @@ class TeamContactCta
                 'ui' => 1,
             ])
             ->addFields(StyleSettings::create('style_settings', defaults: [
-                'theme' => 'light-accent',
+                'theme' => 'accent-light',
                 'padding_top' => 'pt-section-small',
                 'padding_bottom' => 'pb-section-small',
             ]))
@@ -46,7 +46,7 @@ class TeamContactCta
                     'member-left' => 'Team Member Left, Content Right',
                     'member-right' => 'Team Member Right, Content Left',
                 ],
-                'default_value' => 'member-right'
+                'default_value' => 'member-left'
             ])
             ->addSelect('vertical_alignment', [
                 'label' => 'Vertical Alignment',
@@ -60,7 +60,7 @@ class TeamContactCta
             ->addSelect('gap_size', [
                 'label' => 'Gap Between Columns',
                 'choices' => Choices::spacing(),
-                'default_value' => 'gap-u-8'
+                'default_value' => 'gap-u-5'
             ])
             ->addSelect('member_name_text_style', [
                 'label' => 'Member Name Text Style',
@@ -76,6 +76,19 @@ class TeamContactCta
                 'label' => 'Content Wrapper Theme',
                 'choices' => Choices::theme(),
                 'default_value' => 'light',
+            ])
+            ->addSelect('wrapper_max_width', [
+                'label' => 'Wrapper Max Width',
+                'instructions' => 'Maximum width of the content wrapper',
+                'choices' => [
+                    'max-w-full' => 'Full Width',
+                    'max-w-7xl' => 'Extra Large (1280px)',
+                    'max-w-6xl' => 'Large (1152px)',
+                    'max-w-5xl' => 'Medium (1024px)',
+                    'max-w-4xl' => 'Small (896px)',
+                    'max-w-3xl' => 'Extra Small (768px)',
+                ],
+                'default_value' => 'max-w-full',
             ]);
     }
 }

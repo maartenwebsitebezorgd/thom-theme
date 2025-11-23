@@ -10,6 +10,7 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
 $memberNameTextStyle = get_sub_field('member_name_text_style') ?? 'u-text-style-h4';
 $imageAspectRatio = get_sub_field('image_aspect_ratio') ?? 'aspect-[5/4]';
 $contentWrapTheme = get_sub_field('content_wrap_theme') ?? 'light';
+$wrapperMaxWidth = get_sub_field('wrapper_max_width') ?? 'max-w-full';
 
 // Style settings
 $theme = $styleSettings['theme'] ?? 'inherit';
@@ -38,11 +39,11 @@ $phone = get_field('phone', $teamMemberId);
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container">
-    <div data-theme="{{ $contentWrapTheme }}" class="team-contact-cta_content-wrap p-u-5 border border-main overflow-hidden">
+    <div data-theme="{{ $contentWrapTheme }}" class="team-contact-cta_content-wrap {{ $wrapperMaxWidth }} mx-auto p-u-5 border border-main overflow-hidden">
       <div class="team-contact-cta_layout flex flex-wrap {{ $gapSize }} {{ $verticalAlignment }}">
 
         {{-- Image Column --}}
-        <div class="image-column flex {{ $verticalAlignment }} {{ $imageOrder }} flex-1 basis-[28rem]">
+        <div class="image-column flex {{ $verticalAlignment }} {{ $imageOrder }} flex-1 basis-[24rem]">
           @if ($headshot)
           <div class="team-member-headshot w-full {{ $imageAspectRatio }} overflow-hidden">
             <img
@@ -55,7 +56,7 @@ $phone = get_field('phone', $teamMemberId);
         </div>
 
         {{-- Content Column --}}
-        <div class="content-column flex flex-col {{ $verticalAlignment }} {{ $contentOrder }} flex-1 basis-[28rem]">
+        <div class="content-column flex flex-col {{ $verticalAlignment }} {{ $contentOrder }} flex-1 basis-[24rem]">
           <div class="content-wrapper">
             <x-content-wrapper :content="$contentBlock" />
 
