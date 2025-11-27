@@ -329,7 +329,7 @@
   font-weight: var(--font-weight-bold);
   line-height: 1;
   border: var(--border-width-main) solid transparent;
-  border-radius: var(--radius-none);
+  border-radius: 0 !important;
   transition: all 200ms ease-in-out;
   cursor: pointer;
   text-decoration: none;
