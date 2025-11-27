@@ -71,13 +71,13 @@ class ServicesGrid
             ->addSelect('card_theme', [
                 'label' => 'Card Theme',
                 'choices' => Choices::cardTheme(),
-                'default_value' => 'auto',
+                'default_value' => 'grey',
                 'wrapper' => ['width' => '100'],
             ])
             ->addSelect('heading_text_style', [
                 'label' => 'Card Heading Text Style',
                 'choices' => Choices::headingTextStyle(),
-                'default_value' => 'u-text-style-h6',
+                'default_value' => 'u-text-style-h4',
                 'wrapper' => ['width' => '50'],
             ])
             ->addSelect('icon_size', [

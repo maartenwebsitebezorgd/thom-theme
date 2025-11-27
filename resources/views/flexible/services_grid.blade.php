@@ -6,7 +6,7 @@ $styleSettings = get_sub_field('style_settings');
 
 // Card styling (section level)
 $cardTheme = get_sub_field('card_theme') ?? 'auto';
-$headingTextStyle = get_sub_field('heading_text_style') ?? 'u-text-style-h6';
+$headingTextStyle = get_sub_field('heading_text_style') ?? 'u-text-style-h4';
 $iconSize = get_sub_field('icon_size') ?? 'size-u-4';
 
 // Get cards based on mode

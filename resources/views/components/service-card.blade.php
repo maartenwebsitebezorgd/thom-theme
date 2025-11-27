@@ -2,7 +2,7 @@
 'card' => [],
 'sectionTheme' => 'inherit',
 'cardTheme' => 'auto',
-'headingTextStyle' => 'u-text-style-h6',
+'headingTextStyle' => 'u-text-style-h4',
 'paragraphTextStyle' => 'u-text-style-main',
 'iconSize' => 'size-u-5',
 'classes ' => '',
@@ -59,7 +59,7 @@ default => '-mt-[0.33rem]',
         class="service-card-wrap h-full flex flex-col overflow-hidden {{ $classes }}">
         @endif
         <div class="service-card-content-wrap flex flex-col grow">
-          <div class="service-card-content-top flex-1 px-u-4 pt-u-5 pb-u-5 u-margin-trim">
+          <div class="service-card-content-top flex-1 px-u-5 pt-u-5 pb-u-5 u-margin-trim">
             <div class="flex flex-row gap-u-3 mb-u-5">
               @if ($icon)
               <div class="service-card-icon {{ $iconSize }} {{ $iconMarginTop }} shrink-0">
@@ -79,7 +79,7 @@ default => '-mt-[0.33rem]',
             @endif
           </div>
 
-          <div class="service-card-content-bottom flex flex-row gap-u-2 items-center justify-between px-u-4 pt-u-3 pb-u-3 border-t border-[var(--theme-border)]">
+          <div class="service-card-content-bottom flex flex-row gap-u-2 items-center justify-between px-u-5 pt-u-3 pb-u-3 border-t border-[var(--theme-border)]">
 
             @if($label)
             <span class="u-text-style-small text-[var(--theme-text)]/60">{{ $label }}</span>

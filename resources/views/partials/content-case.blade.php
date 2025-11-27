@@ -72,7 +72,7 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
         
        @if($showCategory && $category)
           <div class="category-wrapper flex flex-row flex-wrap gap-u-2 items-center mb-u-4">
-            <span class="u-text-style-small !font-medium pb-u-2 pt-u-3 px-u-3 bg-[var(--color-accent-main)]" aria-label="Category">{{ $category }}</span>
+            <span class="u-text-style-small !font-medium pb-u-3 pt-u-3 px-u-3 bg-[var(--color-accent-main)]" aria-label="Category">{{ $category }}</span>
           </div>
         @endif
 
@@ -87,12 +87,12 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
         @endif
       </div>
 
-      <div class="case-simple-content-bottom flex flex-nowrap items-center justify-between px-u-4 pt-u-4 pb-u-4">
-        @if($clientName)
+      <div class="case-simple-content-bottom flex flex-nowrap items-center justify-end px-u-4 pt-u-4 pb-u-4">
+        <!-- @if($clientName)
           <div class="client-wrapper flex flex-row flex-wrap gap-u-2 items-center">
             <span class="u-text-style-small text-[var(--theme-text)]/90" aria-label="Client">{{ $clientName }}</span>
           </div>
-        @endif
+        @endif -->
 
         @if($makeCardClickable)
           <span class="button button--icon-only ml-auto" aria-hidden="true">
