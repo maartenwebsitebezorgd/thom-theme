@@ -24,7 +24,7 @@ $text = $card['text'] ?? '';
     <div class="card_content-top content-wrapper u-margin-trim">
       @if ($icon)
       <div class="card-icon mb-u-5">
-        <img src="{{ $icon['url'] }}" alt="{{ $icon['alt'] ?: $heading }}" class="w-8 h-8 object-contain" loading="lazy">
+        <img src="{{ $icon['url'] }}" alt="{{ $icon['alt'] ?: $heading }}" class="w-u-6 h-u-6 object-contain" loading="lazy">
       </div>
       @endif
 
