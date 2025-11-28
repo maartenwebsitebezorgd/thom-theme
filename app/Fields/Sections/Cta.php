@@ -29,7 +29,7 @@ class Cta
                 'heading_tag' => 'h3',
             ]))
             ->addFields(StyleSettings::create('style_settings', defaults: [
-                'theme' => 'light-accent',
+                'theme' => 'acccent-light',
                 'padding_top' => 'pt-section-small',
                 'padding_bottom' => 'pb-section-small',
             ]))

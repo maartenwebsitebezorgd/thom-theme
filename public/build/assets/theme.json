@@ -1267,6 +1267,11 @@
           "name": "Accent (600)",
           "slug": "accent-600",
           "color": "#2c6f8e"
+        },
+        {
+          "name": "Accent (900)",
+          "slug": "accent-900",
+          "color": "#274152"
         }
       ]
     },

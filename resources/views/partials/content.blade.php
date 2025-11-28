@@ -72,8 +72,14 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
         </h2>
 
         @if($showExcerpt && (has_excerpt() || get_the_content()))
+          @php
+          $excerptWordCount = function_exists('get_field') ? get_field('excerpt_word_count', 'option') : 20;
+          $excerptWordCount = $excerptWordCount ?: 20;
+          $excerptMoreText = function_exists('get_field') ? get_field('excerpt_more_text', 'option') : '...';
+          $excerptMoreText = $excerptMoreText !== null ? $excerptMoreText : '...';
+          @endphp
           <p class="u-text-style-main u-margin-bottom-text">
-            {{ wp_trim_words(get_the_excerpt(), 20) }}
+            {{ wp_trim_words(get_the_excerpt(), $excerptWordCount, $excerptMoreText) }}
           </p>
         @endif
       </div>

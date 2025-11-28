@@ -77,6 +77,20 @@ class ThemeOptions
                 'instructions' => 'Upload logo for use on dark backgrounds (typically white/light colored logo)',
                 'return_format' => 'array'
             ])
+            ->addNumber('excerpt_word_count', [
+                'label' => 'Excerpt Word Count',
+                'instructions' => 'Number of words to show in post/case excerpts before trimming',
+                'default_value' => 20,
+                'min' => 5,
+                'max' => 100,
+                'step' => 1,
+            ])
+            ->addText('excerpt_more_text', [
+                'label' => 'Excerpt "More" Text',
+                'instructions' => 'Text to show after trimmed excerpts (use "..." for ellipsis). Leave empty for no suffix.',
+                'default_value' => '...',
+                'placeholder' => '...',
+            ])
             ->addImage('site_favicon', [
                 'label' => 'Site Favicon (Deprecated)',
                 'instructions' => 'This field is deprecated. Use the new Favicons & SEO tab below.',
