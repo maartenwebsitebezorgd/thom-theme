@@ -73,43 +73,43 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
 
         @if($showExcerpt && (has_excerpt() || get_the_content()))
           @php
-          $excerptWordCount = function_exists('get_field') ? get_field('excerpt_word_count', 'option') : 20;
-          $excerptWordCount = $excerptWordCount ?: 20;
-          $excerptMoreText = function_exists('get_field') ? get_field('excerpt_more_text', 'option') : '...';
-          $excerptMoreText = $excerptMoreText !== null ? $excerptMoreText : '...';
-          @endphp
-          <p class="u-text-style-main u-margin-bottom-text">
-            {{ wp_trim_words(get_the_excerpt(), $excerptWordCount, $excerptMoreText) }}
-          </p>
-        @endif
-      </div>
-
-      <div class="article-simple-content-bottom flex flex-nowrap items-center justify-between px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border)]">
-        @if($showCategory && $category)
-          <div class="category-wrapper flex flex-row flex-wrap gap-u-2 items-center">
-            <span class="u-text-style-small text-[var(--theme-text)]/60" aria-label="Category">
-              {{ $category }}
-            </span>
-          </div>
-        @endif
-
-        @if($makeCardClickable)
-          <span class="underline-offset-2 u-text-style-small underline" aria-hidden="true">
-            Lees meer
-          </span>
-        @else
-          <a
-            href="{{ get_permalink() }}"
-            class="underline-offset-2 u-text-style-small underline">
-            Lees meer
-          </a>
-        @endif
-      </div>
+          $excerptWordCount = function_exists(' get_field') ? get_field('excerpt_word_count', 'option' ) : 20;
+    $excerptWordCount=$excerptWordCount ?: 20;
+    $excerptMoreText=function_exists('get_field') ? get_field('excerpt_more_text', 'option' ) : '...' ;
+    $excerptMoreText=$excerptMoreText !==null ? $excerptMoreText : '...' ;
+    @endphp
+    <p class="u-text-style-main u-margin-bottom-text">
+    {{ wp_trim_words(get_the_excerpt(), $excerptWordCount, $excerptMoreText) }}
+    </p>
+    @endif
     </div>
 
-  @if($makeCardClickable)
+    <div class="article-simple-content-bottom flex flex-nowrap items-center justify-between px-u-4 pt-u-4 pb-u-4 border-t border-[var(--theme-border)]">
+      @if($showCategory && $category)
+      <div class="category-wrapper flex flex-row flex-wrap gap-u-2 items-center">
+        <span class="u-text-style-small text-[var(--theme-text)]/60" aria-label="Category">
+          {{ $category }}
+        </span>
+      </div>
+      @endif
+
+      @if($makeCardClickable)
+      <span class="underline-offset-2 u-text-style-small underline" aria-hidden="true">
+        Lees meer
+      </span>
+      @else
+      <a
+        href="{{ get_permalink() }}"
+        class="underline-offset-2 u-text-style-small underline">
+        Lees meer
+      </a>
+      @endif
+    </div>
+    </div>
+
+    @if($makeCardClickable)
     </a>
-  @else
+    @else
     </div>
-  @endif
-</article>
+    @endif
+  </article>
