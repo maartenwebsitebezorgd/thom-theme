@@ -40,13 +40,17 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
 
   // Generate unique ID for aria-labelledby
   $uniqueId = uniqid('article-');
+
+  // Build article classes using get_post_class()
+  $articleClasses = get_post_class('article-simple-wrap w-full h-full flex flex-col overflow-hidden group ' . $partialClasses);
+  $articleClassString = is_array($articleClasses) ? implode(' ', $articleClasses) : $articleClasses;
   @endphp
 
   <article
-    @php(post_class('article-simple-wrap w-full h-full flex flex-col overflow-hidden group ' . $partialClasses))
-  data-theme="{{ $cardTheme }}"
-  role="article"
-  aria-labelledby="{{ $uniqueId }}-title">
+    class="{{ $articleClassString }}"
+    data-theme="{{ $cardTheme }}"
+    role="article"
+    aria-labelledby="{{ $uniqueId }}-title">
 
   @if($makeCardClickable)
     <a
@@ -73,11 +77,11 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
 
         @if($showExcerpt && (has_excerpt() || get_the_content()))
           @php
-          $excerptWordCount = function_exists(' get_field') ? get_field('excerpt_word_count', 'option' ) : 20;
-    $excerptWordCount=$excerptWordCount ?: 20;
-    $excerptMoreText=function_exists('get_field') ? get_field('excerpt_more_text', 'option' ) : '...' ;
-    $excerptMoreText=$excerptMoreText !==null ? $excerptMoreText : '...' ;
-    @endphp
+            $excerptWordCount = function_exists('get_field') ? get_field('excerpt_word_count', 'option') : 20;
+            $excerptWordCount = $excerptWordCount ?: 20;
+            $excerptMoreText = function_exists('get_field') ? get_field('excerpt_more_text', 'option') : '...';
+            $excerptMoreText = $excerptMoreText !== null ? $excerptMoreText : '...';
+          @endphp
     <p class="u-text-style-main u-margin-bottom-text">
     {{ wp_trim_words(get_the_excerpt(), $excerptWordCount, $excerptMoreText) }}
     </p>
