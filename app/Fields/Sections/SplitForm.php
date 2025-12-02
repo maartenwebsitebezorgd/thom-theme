@@ -63,7 +63,7 @@ class SplitForm
             ->addFields(StyleSettings::create(
                 'style_settings',
                 [
-                    'theme' => 'accent',
+                    'theme' => 'accent-light',
                 ]
             ))
             ->addSelect('content_layout', [
