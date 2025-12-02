@@ -30,9 +30,11 @@ class BenefitCard
                 'label' => 'Heading',
                 'required' => 1,
             ])
-            ->addTextarea('text', [
+            ->addWysiwyg('text', [
                 'label' => 'Text',
-                'rows' => 4,
+                'tabs' => 'visual',
+                'toolbar' => 'basic',
+                'media_upload' => 0,
             ])
             ->addLink('link', [
                 'label' => 'Link',

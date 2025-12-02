@@ -35,7 +35,7 @@ $text = $card['text'] ?? '';
       @endif
 
       @if ($text)
-      <p class="card-text {{ $textStyle }} u-margin-bottom-text">{{ $text }}</p>
+      <div class="card-text {{ $textStyle }} u-margin-bottom-text prose">{!! $text !!}</div>
       @endif
     </div>
   </div>
