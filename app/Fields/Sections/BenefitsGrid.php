@@ -46,6 +46,18 @@ class BenefitsGrid
                 'default_value' => 'auto',
                 'wrapper' => ['width' => '100'],
             ])
+            ->addSelect('card_heading_text_style', [
+                'label' => 'Card Heading Text Style',
+                'choices' => Choices::headingTextStyle(),
+                'default_value' => 'u-text-style-h5',
+                'wrapper' => ['width' => '50'],
+            ])
+            ->addSelect('card_text_style', [
+                'label' => 'Card Text Style',
+                'choices' => Choices::paragraphTextStyle(),
+                'default_value' => 'u-text-style-small',
+                'wrapper' => ['width' => '50'],
+            ])
             ->addSelect('grid_columns_desktop', [
                 'label' => 'Grid Columns (Desktop)',
                 'choices' => Choices::gridColumnsDesktop(),

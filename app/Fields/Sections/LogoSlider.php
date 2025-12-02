@@ -24,11 +24,43 @@ class LogoSlider
                 'alignment' => 'text-center',
                 'heading_text_style' => 'u-text-style-h6',
             ]))
-            ->addTrueFalse('use_latest_cases', [
-                'label' => 'Use Latest Cases',
-                'instructions' => 'Show logos from latest cases automatically',
+            ->addSelect('logo_source', [
+                'label' => 'Logo Source',
+                'instructions' => 'Choose where to get logos from',
+                'choices' => [
+                    'logos' => 'Logo Library',
+                    'cases' => 'Cases',
+                ],
+                'default_value' => 'logos',
+                'ui' => 1,
+            ])
+            ->addTrueFalse('use_latest', [
+                'label' => 'Use Latest',
+                'instructions' => 'Show logos automatically from latest entries',
                 'default_value' => 1,
                 'ui' => 1,
+            ])
+            ->addPostObject('selected_logos', [
+                'label' => 'Select Logos',
+                'instructions' => 'Choose specific logos to display',
+                'post_type' => ['logo'],
+                'multiple' => 1,
+                'return_format' => 'id',
+                'ui' => 1,
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'logo_source',
+                            'operator' => '==',
+                            'value' => 'logos',
+                        ],
+                        [
+                            'field' => 'use_latest',
+                            'operator' => '!=',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
             ])
             ->addPostObject('selected_cases', [
                 'label' => 'Select Cases',
@@ -40,15 +72,20 @@ class LogoSlider
                 'conditional_logic' => [
                     [
                         [
-                            'field' => 'use_latest_cases',
+                            'field' => 'logo_source',
+                            'operator' => '==',
+                            'value' => 'cases',
+                        ],
+                        [
+                            'field' => 'use_latest',
                             'operator' => '!=',
                             'value' => '1',
                         ],
                     ],
                 ],
             ])
-            ->addRange('number_of_cases', [
-                'label' => 'Number of Cases',
+            ->addRange('number_of_items', [
+                'label' => 'Number of Items',
                 'min' => 3,
                 'max' => 20,
                 'step' => 1,
@@ -56,7 +93,7 @@ class LogoSlider
                 'conditional_logic' => [
                     [
                         [
-                            'field' => 'use_latest_cases',
+                            'field' => 'use_latest',
                             'operator' => '==',
                             'value' => '1',
                         ],

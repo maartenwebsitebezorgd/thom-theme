@@ -13,6 +13,7 @@ use App\Fields\TaxonomyFields;
 use App\Filters\ArchiveSearch;
 use App\Helpers\MenuItemFields;
 use App\PostTypes\Cases;
+use App\PostTypes\Logos;
 use App\PostTypes\Team;
 use App\PostTypes\Videos;
 use Illuminate\Support\Facades\Vite;
@@ -25,6 +26,7 @@ new TaxonomyFields();
 
 // Initialize Post Types
 new Cases();
+new Logos();
 new Team();
 new Videos();
 

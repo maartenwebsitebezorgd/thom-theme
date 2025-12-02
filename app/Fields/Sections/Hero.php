@@ -24,7 +24,10 @@ class Hero
                 'display' => 'block'
             ])
             ->addFields(Background::create('background_block'))
-            ->addFields(Visual::create('visual_block'))
+            ->addFields(Visual::create('visual_block', [
+                'aspect_ratio' => 'aspect-[21/9]',
+                'full_width'  => 1,
+            ]))
             ->addFields(ContentWrapper::create('content_block', [
                 'heading_tag' => 'h1',
                 'heading_text_style' => 'u-text-style-h1',
@@ -39,7 +42,7 @@ class Hero
                     'left' => 'Left',
                     'right' => 'Right',
                 ],
-                'default_value' => 'center',
+                'default_value' => 'left',
                 'wrapper' => ['width' => '33'],
             ])
             ->addSelect('vertical_position', [
