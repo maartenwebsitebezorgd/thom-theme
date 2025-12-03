@@ -18,32 +18,32 @@ $clipPath = get_field('clip_path', 'option') ?? 'diagonal-left';
 
 // Priority 1: Check for page featured image (for regular pages and posts page)
 if (is_page() || is_home()) {
-    $pageId = is_home() ? get_option('page_for_posts') : get_the_ID();
-    if ($pageId && has_post_thumbnail($pageId)) {
-        $thumbnailId = get_post_thumbnail_id($pageId);
-        $visualImage = [
-            'ID' => $thumbnailId,
-            'id' => $thumbnailId,
-            'url' => wp_get_attachment_image_url($thumbnailId, 'full'),
-            'alt' => get_post_meta($thumbnailId, '_wp_attachment_image_alt', true),
-        ];
-        $enableVisual = true;
-    }
+$pageId = is_home() ? get_option('page_for_posts') : get_the_ID();
+if ($pageId && has_post_thumbnail($pageId)) {
+$thumbnailId = get_post_thumbnail_id($pageId);
+$visualImage = [
+'ID' => $thumbnailId,
+'id' => $thumbnailId,
+'url' => wp_get_attachment_image_url($thumbnailId, 'full'),
+'alt' => get_post_meta($thumbnailId, '_wp_attachment_image_alt', true),
+];
+$enableVisual = true;
+}
 }
 
 // Priority 2: Check for category image on archive pages
 if (!$visualImage && (is_category() || is_tax('case_category'))) {
-    $term = get_queried_object();
-    $categoryImage = get_field('category_image', $term);
-    if ($categoryImage) {
-        $visualImage = $categoryImage;
-        $enableVisual = true;
-    }
+$term = get_queried_object();
+$categoryImage = get_field('category_image', $term);
+if ($categoryImage) {
+$visualImage = $categoryImage;
+$enableVisual = true;
+}
 }
 
 // Priority 3: Fallback to theme options visual image
 if (!$visualImage) {
-    $visualImage = get_field('visual_image', 'option');
+$visualImage = get_field('visual_image', 'option');
 }
 
 // Determine the title and description based on the page type
@@ -81,7 +81,7 @@ $visualFirst = $contentLayout === 'visual-left';
 @endphp
 
 <section data-theme="{{ $theme }}" class="page-header u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container max-w-container-main">
     @if($visualBlock)
     {{-- Split Layout with Visual --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">

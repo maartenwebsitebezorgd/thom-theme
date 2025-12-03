@@ -66,7 +66,7 @@ $isReverse = $headerLayout === 'split-reverse';
 
   @if($showBreadcrumbs)
   <nav data-theme="dark" class="u-section pt-section-small pb-u-3 pt-u-3" aria-label="Breadcrumb">
-    <div class="u-container">
+    <div class="u-container max-w-container-main">
       <ol class="breadcrumb flex flex-row gap-u-2 items-center u-text-style-small u-text-trim-off" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="{{ home_url('/') }}" itemprop="item" class="hover:underline">
@@ -92,7 +92,7 @@ $isReverse = $headerLayout === 'split-reverse';
   @endif
 
   <header data-theme="{{ $headerTheme }}" class="u-section pt-section-main pb-section-main">
-    <div class="u-container">
+    <div class="u-container max-w-container-main">
       @if($isSplitLayout && $headerImage)
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-u-8 items-center {{ $isReverse ? 'lg:flex-row-reverse' : '' }}">
         <div class="{{ $isReverse ? 'lg:order-2' : 'lg:order-1' }}">
@@ -131,7 +131,7 @@ $isReverse = $headerLayout === 'split-reverse';
   </header>
 
   <section data-theme="{{ $contentTheme }}" class="e-content u-section pt-section-main pb-section-main" itemprop="articleBody">
-    <div class="u-container">
+    <div class="u-container max-w-container-main">
       <div class="prose prose-lg {{ $contentMaxWidth }} mx-auto">
         @php
         the_content();
@@ -142,7 +142,7 @@ $isReverse = $headerLayout === 'split-reverse';
 
   @if($showRelatedPosts && $relatedPosts && count($relatedPosts) > 0)
   <section data-theme="{{ $relatedPostsTheme }}" class="related-posts u-section pt-section-main pb-section-main">
-    <div class="u-container">
+    <div class="u-container max-w-container-main">
       <h2 class="u-text-style-h3 mb-u-8 text-center">Related Posts</h2>
 
       <div class="grid {{ $relatedPostsColumns }} gap-u-6">
@@ -171,7 +171,7 @@ $isReverse = $headerLayout === 'split-reverse';
 
   @if($showPostNavigation && get_the_post_navigation())
   <footer data-theme="light" class="u-section pt-section-small pb-section-small border-t">
-    <div class="u-container">
+    <div class="u-container max-w-container-main">
       <nav class="post-navigation flex justify-between gap-u-4" aria-label="Post navigation">
         @if($prevPost = get_previous_post())
         <a href="{{ get_permalink($prevPost) }}" rel="prev" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors">

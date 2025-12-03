@@ -12,10 +12,11 @@ $textAlignment = get_sub_field('text_alignment') ?? 'text-center';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 @endphp
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container {{ $containerSize }}">
     <div class="stacked-content_layout flex flex-col {{ $contentMaxWidth }} mx-auto {{ $gapSize }}">
 
       {{-- Content Block (Centered) --}}

@@ -13,6 +13,7 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 // Card styling (section level)
 $cardTheme = get_sub_field('card_theme') ?? 'inherit';
 $cardHeadingTextStyle = get_sub_field('card_heading_text_style') ?? 'u-text-style-h5';
@@ -21,7 +22,7 @@ $cardTextStyle = get_sub_field('card_text_style') ?? 'u-text-style-small';
 @endphp
 
 <section data-theme="{{ $theme }}" class="benefits-grid u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container {{ $containerSize }}">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
     @if ($contentBlock)

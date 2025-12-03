@@ -16,6 +16,7 @@ $wrapperMaxWidth = get_sub_field('wrapper_max_width') ?? 'max-w-full';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
 // Determine column order using flexbox order classes
 $imageOrder = $contentLayout === 'member-left' ? 'order-1' : 'order-2';
@@ -38,7 +39,7 @@ $phone = get_field('phone', $teamMemberId);
 @endphp
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container {{ $containerSize }}">
     <div data-theme="{{ $contentWrapTheme }}" class="team-contact-cta_content-wrap {{ $wrapperMaxWidth }} mx-auto p-u-5 border border-main overflow-hidden">
       <div class="team-contact-cta_layout flex flex-wrap {{ $gapSize }} {{ $verticalAlignment }}">
 

@@ -167,6 +167,11 @@
   --max-width-70ch: 70ch;
   --max-width-80ch: 80ch;
 
+  --max-width-container-tiny: 48rem;
+  --max-width-container-small: 54rem;
+  --max-width-container-medium: 64rem;
+  --max-width-container-main: var(--max-width-main);
+
   /* Spacing Main - 1.5 scale ratio */
   --spacing-u-1: clamp(0.25rem, 0.2216rem + 0.1263vw, 0.313rem);
   --spacing-u-2: clamp(0.375rem, 0.3324rem + 0.1895vw, 0.469rem);

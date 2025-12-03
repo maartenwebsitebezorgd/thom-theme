@@ -55,6 +55,16 @@ class Choices
         ];
     }
 
+    public static function containerSize()
+    {
+        return [
+            'max-w-container-tiny' => 'Tiny',
+            'max-w-container-small' => 'Small',
+            'max-w-container-medium' => 'Medium',
+            'max-w-container-main' => 'Main',
+        ];
+    }
+
     public static function buttonStyle()
     {
         return [

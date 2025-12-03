@@ -11,7 +11,6 @@
 
   .u-container {
     z-index: 1;
-    max-width: var(--max-width-main);
     width: calc(100% - var(--site--margin) * 2);
     flex: 1;
     margin-left: auto;

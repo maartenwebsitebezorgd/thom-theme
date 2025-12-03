@@ -18,6 +18,7 @@ $styleSettings = get_sub_field('style_settings');
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-small';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-small';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
 // Map separator to display character
 $separatorMap = [
@@ -144,7 +145,7 @@ $schema = [
 
 @if(!empty($breadcrumbs))
 <section data-theme="{{ $theme }}" class="breadcrumb u-section {{ $paddingTop }} {{ $paddingBottom }}">
-    <div class="u-container">
+    <div class="u-container {{ $containerSize }}">
         <nav aria-label="Breadcrumb" class="flex {{ $textAlignment }}">
             <ol class="flex items-center gap-u-3 flex-wrap {{ $textStyle }}" itemscope itemtype="https://schema.org/BreadcrumbList">
                 @foreach($breadcrumbs as $index => $crumb)

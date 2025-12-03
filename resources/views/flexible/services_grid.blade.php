@@ -36,10 +36,11 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 @endphp
 
 <section data-theme="{{ $theme }}" class="services-grid u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container {{ $containerSize }}">
 
     {{-- Section Content (Heading, Paragraph, Buttons) --}}
     @if ($contentBlock)

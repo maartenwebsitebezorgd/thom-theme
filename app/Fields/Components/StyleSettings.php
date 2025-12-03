@@ -37,6 +37,12 @@ class StyleSettings
                 'default_value' => $defaults['theme'],
                 'wrapper' => ['width' => '100'],
             ])
+            ->addSelect('container_size', [
+                'label' => 'Container Size',
+                'choices' => Choices::containerSize(),
+                'default_value' => $defaults['container_size'] ?? 'max-w-container-main',
+                'wrapper' => ['width' => '100'],
+            ])
             ->addSelect('padding_top', [
                 'label' => 'Padding Top',
                 'choices' => Choices::paddingTop(),

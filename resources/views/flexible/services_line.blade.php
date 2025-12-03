@@ -7,6 +7,7 @@ $selectedServices = get_sub_field('selected_services');
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 // Card styling (section level)
 $cardTheme = get_sub_field('card_theme') ?? 'inherit';
 
@@ -57,7 +58,7 @@ $processedHeading = str_replace($linkText, $anchorTag, $headingText);
 @endphp
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
-    <div class="u-container">
+    <div class="u-container {{ $containerSize }}">
         <div class="service-line_layout">
             <div class="service-line_main-wrap flex flex-wrap flex-row gap-u-4 justify-between">
                 <div class="service-line_heading-wrap flex flex-row gap-u-1 shrink-0 items-center u-text-style-main">

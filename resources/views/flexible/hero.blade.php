@@ -13,6 +13,7 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-6';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
 //image settings
 $visualFullWidth = $visualBlock['full_width'] ?? false;
@@ -46,7 +47,7 @@ $hasBackground = !empty($backgroundBlock['image']) || !empty($backgroundBlock['v
   @endif
 
   {{-- Hero Content --}}
-  <div class="u-container relative z-10 theme-bg">
+  <div class="u-container {{ $containerSize }} relative z-10 theme-bg">
     <div class="split-content_layout grid grid-cols-1 lg:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlign }}">
       {{-- Content Column --}}
       <div class="content-column flex {{ $verticalAlign }}">

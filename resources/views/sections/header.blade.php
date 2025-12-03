@@ -27,7 +27,7 @@ default => 'button button--primary button--small',
 @endphp
 
 <header class="navigation navigation--{{ $headerTheme }} sticky top-0 z-50 w-full isolate">
-  <nav aria-label="Global" class="mx-auto flex u-container items-center gap-u-6 justify-between py-u-3 min-h-[2.75rem]">
+  <nav aria-label="Global" class="mx-auto flex u-container max-w-container-main items-center gap-u-6 justify-between py-u-3 min-h-[2.75rem]">
 
     {{-- Logo Section --}}
     <div class="flex">
@@ -47,24 +47,23 @@ default => 'button button--primary button--small',
 
         // Fallback to the other logo if selected one doesn't exist
         if (!$selectedLogo && $isLightHeader && $logoForDarkBg) {
-            $selectedLogo = $logoForDarkBg;
+        $selectedLogo = $logoForDarkBg;
         } elseif (!$selectedLogo && !$isLightHeader && $logoForLightBg) {
-            $selectedLogo = $logoForLightBg;
+        $selectedLogo = $logoForLightBg;
         }
         @endphp
 
         @if($selectedLogo)
-          <img
-            src="{{ $selectedLogo['url'] }}"
-            alt="{{ $selectedLogo['alt'] ?: get_bloginfo('name') }}"
-            class="h-12 w-auto"
-          />
+        <img
+          src="{{ $selectedLogo['url'] }}"
+          alt="{{ $selectedLogo['alt'] ?: get_bloginfo('name') }}"
+          class="h-12 w-auto" />
         @elseif(has_custom_logo())
-          {!! get_custom_logo() !!}
+        {!! get_custom_logo() !!}
         @else
-          <span class="u-text-style-h6">
-            {{ get_bloginfo('name') }}
-          </span>
+        <span class="u-text-style-h6">
+          {{ get_bloginfo('name') }}
+        </span>
         @endif
       </a>
     </div>
@@ -137,17 +136,16 @@ default => 'button button--primary button--small',
               <span class="sr-only">{{ get_bloginfo('name') }}</span>
 
               @if($selectedLogo)
-                <img
-                  src="{{ $selectedLogo['url'] }}"
-                  alt="{{ $selectedLogo['alt'] ?: get_bloginfo('name') }}"
-                  class="h-8 w-auto"
-                />
+              <img
+                src="{{ $selectedLogo['url'] }}"
+                alt="{{ $selectedLogo['alt'] ?: get_bloginfo('name') }}"
+                class="h-8 w-auto" />
               @elseif(has_custom_logo())
-                {!! get_custom_logo() !!}
+              {!! get_custom_logo() !!}
               @else
-                <span class="text-xl font-bold text-[var(--theme-text)]">
-                  {{ get_bloginfo('name') }}
-                </span>
+              <span class="text-xl font-bold text-[var(--theme-text)]">
+                {{ get_bloginfo('name') }}
+              </span>
               @endif
             </a>
 

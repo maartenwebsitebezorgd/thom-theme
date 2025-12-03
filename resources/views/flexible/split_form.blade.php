@@ -28,6 +28,7 @@ $columnWidth = get_sub_field('column_width') ?? '1:1';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
 // Determine column order using CSS order classes
 $contentOrder = $contentLayout === 'form-right' ? 'order-1' : 'order-2';
@@ -50,7 +51,7 @@ if ($columnWidth === '1:2') {
 @endphp
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container {{ $containerSize }}">
     <div class="split-form_layout grid {{ $gridCols }} {{ $gapSize }} {{ $verticalAlignment }}">
 
       {{-- Content Column --}}

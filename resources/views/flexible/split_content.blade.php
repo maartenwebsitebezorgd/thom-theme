@@ -12,6 +12,7 @@ $gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
 $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
+$containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
 // Determine column order
 $visualFirst = $contentLayout === 'visual-left';
@@ -21,7 +22,7 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 @endphp
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
-  <div class="u-container">
+  <div class="u-container {{ $containerSize }}">
     <div class="split-content_layout grid md:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
 
       @if ($visualFirst)
