@@ -56,48 +56,18 @@ $uniqueId = uniqid('team-card-');
 @endphp
 
 @if($layout === 'overlay')
-{{-- Overlay Layout: Image covering with content overlaid --}}
-@if($makeCardClickable && $permalink)
-<a
-    href="{{ $permalink }}"
-    class="team-card team-card--overlay group block relative overflow-hidden {{ $imageAspectRatio }} {{ $partialClasses }}"
-    data-theme="{{ $cardTheme }}"
-    aria-labelledby="{{ $uniqueId }}-name">
-    {{-- Background Image --}}
-    @if(!empty($headshot))
-    <div class="absolute inset-0 team-card-image-zoom">
-        <img
-            src="{{ $headshot['sizes']['card'] ?? $headshot['url'] }}"
-            srcset="{{ $headshot['sizes']['card'] ?? $headshot['url'] }} 600w,
-                                {{ $headshot['sizes']['medium_large'] ?? $headshot['url'] }} 768w,
-                                {{ $headshot['url'] }} 1200w"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            alt="{{ $headshot['alt'] ?? $name }}"
-            class="w-full h-full object-cover"
-            loading="lazy" />
-    </div>
-    @endif
-
-    {{-- Gradient Overlay --}}
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-
-    {{-- Content Overlay --}}
-    <div class="absolute inset-0 flex flex-col justify-end p-u-4">
-        <h3 id="{{ $uniqueId }}-name" class="u-text-style-h5 text-white u-margin-trim mb-u-3">
-            {{ $name }}
-        </h3>
-        @if($jobTitle)
-        <p class="u-text-style-small text-white/90">
-            {{ $jobTitle }}
-        </p>
-        @endif
-    </div>
-</a>
-@else
+{{-- ============================================
+     OVERLAY LAYOUT
+     - Full-bleed image with content overlaid at bottom
+     - Dark gradient overlay for text readability
+     - makeCardClickable option: When true, only the NAME (h3) becomes a clickable link to team member detail page
+     - Contact info (email, phone, socials) is ALWAYS independently clickable when enabled, regardless of makeCardClickable setting
+     ============================================ --}}
 <div
     class="team-card team-card--overlay group relative overflow-hidden {{ $imageAspectRatio }} {{ $partialClasses }}"
     data-theme="{{ $cardTheme }}">
-    {{-- Background Image --}}
+
+    {{-- Background Image: Full cover image --}}
     @if(!empty($headshot))
     <div class="absolute inset-0 team-card-image-zoom">
         <img
@@ -112,33 +82,52 @@ $uniqueId = uniqid('team-card-');
     </div>
     @endif
 
-    {{-- Gradient Overlay --}}
+    {{-- Gradient Overlay: Ensures text readability --}}
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-    {{-- Content Overlay --}}
+    {{-- Content Overlay: Team member information positioned at bottom --}}
     <div class="absolute inset-0 flex flex-col justify-end p-u-4">
-        <h3 id="{{ $uniqueId }}-name" class="u-text-style-h5 text-white u-margin-trim mb-u-2">
+
+        {{-- Team Member Name: Conditionally clickable based on makeCardClickable --}}
+        @if($makeCardClickable && $permalink)
+        {{-- makeCardClickable = true: Name links to team member detail page --}}
+        <a href="{{ $permalink }}" class="block mb-u-3" aria-labelledby="{{ $uniqueId }}-name">
+            <h3 id="{{ $uniqueId }}-name" class="u-text-style-h5 text-white u-margin-trim">
+                {{ $name }}
+            </h3>
+        </a>
+        @else
+        {{-- makeCardClickable = false: Name is plain text --}}
+        <h3 id="{{ $uniqueId }}-name" class="u-text-style-h5 text-white u-margin-trim mb-u-3">
             {{ $name }}
         </h3>
+        @endif
+
+        {{-- Job Title --}}
         @if($jobTitle)
-        <p class="u-text-style-small text-white/90">
+        <p class="u-text-style-small text-white/90 mb-u-4">
             {{ $jobTitle }}
         </p>
         @endif
 
-        {{-- Contact Info (shown on hover) --}}
+        {{-- Contact Information: ALWAYS clickable when enabled (independent of makeCardClickable) --}}
         @if($showEmail || $showPhone || $showSocials)
-        <div class="mt-u-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+        <div class="space-y-3">
+            {{-- Email: Direct mailto link --}}
             @if($showEmail && $email)
-            <a href="mailto:{{ $email }}" class="block text-white/90 hover:text-white u-text-style-small mb-u-2">
+            <a href="mailto:{{ $email }}" class="block text-white/90 hover:text-white u-text-style-small">
                 {{ $email }}
             </a>
             @endif
+
+            {{-- Phone: Direct tel link --}}
             @if($showPhone && $phone)
-            <a href="tel:{{ $phone }}" class="block text-white/90 hover:text-white u-text-style-small mb-u-2">
+            <a href="tel:{{ $phone }}" class="block text-white/90 hover:text-white u-text-style-small">
                 {{ $phone }}
             </a>
             @endif
+
+            {{-- Social Links: External platform links --}}
             @if($showSocials && !empty($socialLinks))
             <div class="flex gap-u-2 mt-u-2">
                 @foreach($socialLinks as $social)
@@ -159,10 +148,14 @@ $uniqueId = uniqid('team-card-');
         @endif
     </div>
 </div>
-@endif
 
 @else
-{{-- Standard Layout: Image on top, content below --}}
+{{-- ============================================
+     STANDARD LAYOUT
+     - Traditional card layout: Image on top, content below
+     - makeCardClickable option: When true, entire card becomes clickable link
+     - Contact info is embedded within the card structure
+     ============================================ --}}
 @if($makeCardClickable && $permalink)
 <a
     href="{{ $permalink }}"
@@ -190,14 +183,14 @@ $uniqueId = uniqid('team-card-');
             {{ $name }}
         </h3>
         @if($jobTitle)
-        <p class="u-text-style-small text-[var(--theme-text)] mb-u-3">
+        <p class="u-text-style-small text-[var(--theme-text)] mb-u-4">
             {{ $jobTitle }}
         </p>
         @endif
 
         {{-- Contact Info --}}
         @if($showEmail || $showPhone || $showSocials)
-        <div class="space-y-1">
+        <div class="space-y-3">
             @if($showEmail && $email)
             <p class="u-text-style-small text-[var(--theme-text)]">
                 <a href="mailto:{{ $email }}" class="text-[var(--theme-accent)] hover:underline">
