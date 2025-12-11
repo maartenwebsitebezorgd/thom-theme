@@ -28,6 +28,18 @@ $socialLinks = $member['social_links'] ?? [];
 $permalink = $member['permalink'] ?? get_permalink($member['ID'] ?? null);
 }
 
+// Normalize social links data (handle old text format vs new select format)
+if (!empty($socialLinks) && is_array($socialLinks)) {
+    $socialLinks = array_map(function($social) {
+        // Ensure platform exists and is accessible
+        if (is_array($social)) {
+            return $social;
+        }
+        // Handle case where social link is a string or malformed
+        return ['platform' => 'website', 'url' => ''];
+    }, $socialLinks);
+}
+
 // Get settings from parent scope or use defaults
 $layout = $layout ?? 'standard'; // 'standard' or 'overlay'
 $sectionTheme = $sectionTheme ?? 'inherit';
