@@ -69,7 +69,7 @@ $uniqueId = uniqid('team-card-');
 
 @if($layout === 'overlay')
 {{-- ============================================
-     OVERLAY LAYOUT
+     OVERLAY LAYOUT CHANGELOG
      - Full-bleed image with content overlaid at bottom
      - Dark gradient overlay for text readability
      - makeCardClickable option: When true, only the NAME (h3) becomes a clickable link to team member detail page
