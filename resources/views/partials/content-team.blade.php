@@ -86,7 +86,7 @@ $uniqueId = uniqid('team-card-');
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
     {{-- Content Overlay: Team member information positioned at bottom --}}
-    <div class="absolute inset-0 flex flex-col justify-end p-u-4">
+    <div class="absolute inset-0 flex flex-col justify-end p-u-5">
 
         {{-- Team Member Name: Conditionally clickable based on makeCardClickable --}}
         @if($makeCardClickable && $permalink)

@@ -73,9 +73,9 @@ class ServicesLine
             ->endRepeater()
             ->addRepeater('cards', [
                 'label' => 'Service Cards',
-                'instructions' => 'Add up to 4 service line cards',
+                'instructions' => 'Add up to 5 service line cards',
                 'min' => 1,
-                'max' => 4,
+                'max' => 5,
                 'layout' => 'block',
                 'button_label' => 'Add Service Card',
                 'conditional_logic' => [

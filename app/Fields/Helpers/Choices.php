@@ -199,4 +199,20 @@ class Choices
             'mb-u-8' => 'Extra Large',
         ];
     }
+
+    public static function socialPlatforms()
+    {
+        return [
+            'linkedin' => 'LinkedIn',
+            'twitter' => 'Twitter / X',
+            'facebook' => 'Facebook',
+            'instagram' => 'Instagram',
+            'github' => 'GitHub',
+            'dribbble' => 'Dribbble',
+            'behance' => 'Behance',
+            'youtube' => 'YouTube',
+            'tiktok' => 'TikTok',
+            'website' => 'Website',
+        ];
+    }
 }

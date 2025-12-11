@@ -23,7 +23,7 @@ class MultiSlider
                 'display' => 'block'
             ])
             ->addFields(ContentWrapper::create('content_block', defaults: [
-                'margin_bottom' => 'mb-u-6',
+                'margin_bottom' => 'mb-u-3',
                 'heading_text_style' => 'u-text-style-h3',
                 'heading_tag' => 'h2',
             ]))

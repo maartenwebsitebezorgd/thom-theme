@@ -31,20 +31,6 @@ class StackedContent
                 'clip_path' => '',
             ]))
             ->addFields(StyleSettings::create('style_settings'))
-            ->addSelect('content_max_width', [
-                'label' => 'Content Max Width',
-                'instructions' => 'Maximum width for the centered content block',
-                'choices' => [
-                    'max-w-full' => 'Full Width',
-                    'max-w-7xl' => 'Extra Large (1280px)',
-                    'max-w-6xl' => 'Large (1152px)',
-                    'max-w-5xl' => 'Medium (1024px)',
-                    'max-w-4xl' => 'Small (896px)',
-                    'max-w-3xl' => 'Extra Small (768px)',
-                    'max-w-2xl' => 'Tiny (672px)',
-                ],
-                'default_value' => 'max-w-full',
-            ])
             ->addSelect('gap_size', [
                 'label' => 'Gap Between Content and Visual',
                 'choices' => Choices::spacing(),

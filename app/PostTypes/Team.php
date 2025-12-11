@@ -2,6 +2,7 @@
 
 namespace App\PostTypes;
 
+use App\Fields\Helpers\Choices;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
 class Team
@@ -49,6 +50,12 @@ class Team
                 'return_format' => 'array',
                 'preview_size' => 'thumbnail',
             ])
+            ->addText('first_name', [
+                'label' => 'First Name',
+            ])
+            ->addText('last_name', [
+                'label' => 'Last Name',
+            ])
             ->addText('job_title', [
                 'label' => 'Job Title',
                 'instructions' => 'e.g., CEO, Developer, Designer',
@@ -65,9 +72,11 @@ class Team
                 'button_label' => 'Add Social Link',
                 'layout' => 'table',
             ])
-                ->addText('platform', [
+                ->addSelect('platform', [
                     'label' => 'Platform',
-                    'instructions' => 'e.g., LinkedIn, Twitter, GitHub',
+                    'choices' => Choices::socialPlatforms(),
+                    'default_value' => 'linkedin',
+                    'ui' => 1,
                 ])
                 ->addUrl('url', [
                     'label' => 'URL',
