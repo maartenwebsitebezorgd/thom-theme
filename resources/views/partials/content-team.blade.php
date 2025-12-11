@@ -143,14 +143,16 @@ $uniqueId = uniqid('team-card-');
             @if($showSocials && !empty($socialLinks))
             <div class="flex gap-u-2 mt-u-2">
                 @foreach($socialLinks as $social)
+                @if(is_array($social) && !empty($social['url']))
                 <a
                     href="{{ $social['url'] }}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-white/90 hover:text-white transition-colors"
-                    aria-label="{{ $social['platform'] }}">
-                    <x-social-icon :platform="$social['platform']" class="w-5 h-5" />
+                    aria-label="{{ $social['platform'] ?? 'Social Media' }}">
+                    <x-social-icon :platform="$social['platform'] ?? 'website'" class="w-5 h-5" />
                 </a>
+                @endif
                 @endforeach
             </div>
             @endif
@@ -218,14 +220,16 @@ $uniqueId = uniqid('team-card-');
             @if($showSocials && !empty($socialLinks))
             <div class="flex gap-u-2 mt-u-2">
                 @foreach($socialLinks as $social)
+                @if(is_array($social) && !empty($social['url']))
                 <a
                     href="{{ $social['url'] }}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-[var(--theme-accent)] hover:text-[var(--theme-heading)] transition-colors"
-                    aria-label="{{ $social['platform'] }}">
-                    <x-social-icon :platform="$social['platform']" class="w-5 h-5" />
+                    aria-label="{{ $social['platform'] ?? 'Social Media' }}">
+                    <x-social-icon :platform="$social['platform'] ?? 'website'" class="w-5 h-5" />
                 </a>
+                @endif
                 @endforeach
             </div>
             @endif
@@ -283,14 +287,16 @@ $uniqueId = uniqid('team-card-');
             @if($showSocials && !empty($socialLinks))
             <div class="flex gap-u-2 mt-u-2">
                 @foreach($socialLinks as $social)
+                @if(is_array($social) && !empty($social['url']))
                 <a
                     href="{{ $social['url'] }}"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-[var(--theme-accent)] hover:text-[var(--theme-heading)] transition-colors"
-                    aria-label="{{ $social['platform'] }}">
-                    <x-social-icon :platform="$social['platform']" class="w-5 h-5" />
+                    aria-label="{{ $social['platform'] ?? 'Social Media' }}">
+                    <x-social-icon :platform="$social['platform'] ?? 'website'" class="w-5 h-5" />
                 </a>
+                @endif
                 @endforeach
             </div>
             @endif
