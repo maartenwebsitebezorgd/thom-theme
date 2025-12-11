@@ -55,5 +55,10 @@ rsync -avz --delete \
 # scp -r ./app "${SSH_HOST}:${REMOTE_PATH}/"
 # scp -r ./resources/views "${SSH_HOST}:${REMOTE_PATH}/resources/"
 
+# Step 4: Clear Blade cache on server
+echo -e "${YELLOW}🧹 Clearing Blade cache on server...${NC}"
+ssh "${SSH_HOST}" "rm -rf /home/customer/www/annejans100.sg-host.com/public_html/wp-content/cache/acorn/framework/views/*"
+echo -e "${GREEN}✅ Cache cleared${NC}"
+
 echo -e "${GREEN}✅ Deployment complete!${NC}"
 echo "🌐 Visit: https://annejans100.sg-host.com"
