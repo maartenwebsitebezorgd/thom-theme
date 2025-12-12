@@ -33,11 +33,18 @@ if (!empty($socialLinks) && is_array($socialLinks)) {
     $socialLinks = array_map(function($social) {
         // Ensure platform exists and is accessible
         if (is_array($social)) {
-            return $social;
+            // Make sure both 'platform' and 'url' keys exist
+            return [
+                'platform' => $social['platform'] ?? 'website',
+                'url' => $social['url'] ?? '',
+            ];
         }
         // Handle case where social link is a string or malformed
         return ['platform' => 'website', 'url' => ''];
     }, $socialLinks);
+} else {
+    // If socialLinks is not an array at all, set it to empty array
+    $socialLinks = [];
 }
 
 // Get settings from parent scope or use defaults
