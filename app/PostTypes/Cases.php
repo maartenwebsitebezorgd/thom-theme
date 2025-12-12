@@ -100,7 +100,6 @@ class Cases
                 'instructions' => 'Upload the company/client logo (displayed on case cards)',
                 'return_format' => 'array',
                 'preview_size' => 'medium',
-                'required' => 1,
             ])
             ->addText('client_name', [
                 'label' => 'Client Name',
