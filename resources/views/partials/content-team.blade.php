@@ -29,22 +29,27 @@ $permalink = $member['permalink'] ?? get_permalink($member['ID'] ?? null);
 }
 
 // Normalize social links data (handle old text format vs new select format)
-// ACF returns false when repeater is empty, so we need to handle that
-if ($socialLinks === false || $socialLinks === null || !is_array($socialLinks)) {
-$socialLinks = [];
-} elseif (!empty($socialLinks)) {
-$socialLinks = array_map(function($social) {
-// Ensure platform exists and is accessible
-if (is_array($social)) {
-// Make sure both 'platform' and 'url' keys exist
-return [
-'platform' => $social['platform'] ?? 'website',
-'url' => $social['url'] ?? '',
-];
-}
-// Handle case where social link is a string or malformed
-return ['platform' => 'website', 'url' => ''];
-}, $socialLinks);
+// ACF returns false when repeater is empty, or empty string, so we need to handle all cases
+if ($socialLinks === false || $socialLinks === null || $socialLinks === '' || !is_array($socialLinks)) {
+    // Not a valid array, set to empty
+    $socialLinks = [];
+} elseif (is_array($socialLinks) && !empty($socialLinks)) {
+    // Valid array with items, normalize each item
+    $socialLinks = array_map(function($social) {
+        // Ensure platform exists and is accessible
+        if (is_array($social)) {
+            // Make sure both 'platform' and 'url' keys exist
+            return [
+                'platform' => $social['platform'] ?? 'website',
+                'url' => $social['url'] ?? '',
+            ];
+        }
+        // Handle case where social link is a string or malformed
+        return ['platform' => 'website', 'url' => ''];
+    }, $socialLinks);
+} else {
+    // Edge case: empty array or other falsy value
+    $socialLinks = [];
 }
 
 // Get settings from parent scope or use defaults

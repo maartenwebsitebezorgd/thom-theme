@@ -53,8 +53,11 @@ class DropdownWalker extends Walker_Nav_Menu
                 $output .= '</a>';
             }
         } else {
-            // Dropdown items
-            $output .= '<div class="group relative flex items-center gap-x-u-3 rounded-lg p-u-2 text-sm/6 hover:bg-[var(--theme-text)]/5">';
+            // Second level and deeper - Dropdown items (with icons)
+            // Add ml-u-2 indent for depth 2+
+            $indent_class = ($depth >= 2) ? 'ml-u-4' : '';
+
+            $output .= '<div class="' . $indent_class . ' group relative flex items-center gap-x-u-3 rounded-lg p-u-2 text-sm/6 hover:bg-[var(--theme-text)]/5">';
 
             // Icon - use custom icon or default
             $output .= '<div class="flex size-u-6 flex-none items-center justify-center rounded-lg bg-[var(--theme-text)]/5 group-hover:bg-[var(--theme-text)]/10">';
@@ -72,7 +75,7 @@ class DropdownWalker extends Walker_Nav_Menu
             $output .= '</div>';
 
             $output .= '<div class="flex-auto">';
-            $output .= '<a href="' . esc_url($item->url) . '" class="block font-medium text-[var(--theme-text)]">';
+            $output .= '<a href="' . esc_url($item->url) . '" class="block font-bold text-[var(--theme-text)]">';
             $output .= esc_html($item->title);
             $output .= '<span class="absolute inset-0"></span>';
             $output .= '</a>';

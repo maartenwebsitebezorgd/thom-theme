@@ -83,7 +83,7 @@ default => 'button button--primary button--small',
     </div>
 
     {{-- Desktop Navigation with Dropdowns using el-popover-group --}}
-    <el-popover-group class="hidden lg:flex lg:gap-x-6">
+    <el-popover-group class="hidden lg:flex lg:gap-x-4">
       @if (has_nav_menu('primary_navigation'))
       {!! wp_nav_menu([
       'theme_location' => 'primary_navigation',
