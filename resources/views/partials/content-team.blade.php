@@ -31,20 +31,20 @@ $permalink = $member['permalink'] ?? get_permalink($member['ID'] ?? null);
 // Normalize social links data (handle old text format vs new select format)
 // ACF returns false when repeater is empty, so we need to handle that
 if ($socialLinks === false || $socialLinks === null || !is_array($socialLinks)) {
-    $socialLinks = [];
+$socialLinks = [];
 } elseif (!empty($socialLinks)) {
-    $socialLinks = array_map(function($social) {
-        // Ensure platform exists and is accessible
-        if (is_array($social)) {
-            // Make sure both 'platform' and 'url' keys exist
-            return [
-                'platform' => $social['platform'] ?? 'website',
-                'url' => $social['url'] ?? '',
-            ];
-        }
-        // Handle case where social link is a string or malformed
-        return ['platform' => 'website', 'url' => ''];
-    }, $socialLinks);
+$socialLinks = array_map(function($social) {
+// Ensure platform exists and is accessible
+if (is_array($social)) {
+// Make sure both 'platform' and 'url' keys exist
+return [
+'platform' => $social['platform'] ?? 'website',
+'url' => $social['url'] ?? '',
+];
+}
+// Handle case where social link is a string or malformed
+return ['platform' => 'website', 'url' => ''];
+}, $socialLinks);
 }
 
 // Get settings from parent scope or use defaults
@@ -124,7 +124,7 @@ $uniqueId = uniqid('team-card-');
 
         {{-- Job Title --}}
         @if($jobTitle)
-        <p class="u-text-style-small text-white/90 mb-u-4">
+        <p class="u-text-style-small text-white/80 mb-u-4">
             {{ $jobTitle }}
         </p>
         @endif

@@ -1,8 +1,8 @@
 @php
 /**
- * Team Grid Section
- * Displays team members in a responsive grid layout
- */
+* Team Grid Section
+* Displays team members in a responsive grid layout
+*/
 
 // Get field values
 $contentBlock = get_sub_field('content_block');
@@ -31,46 +31,46 @@ $containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
 // Get team members
 if ($useAllTeam) {
-    $teamPosts = get_posts([
-        'post_type' => 'team',
-        'posts_per_page' => $numberOfTeam,
-        'orderby' => 'menu_order',
-        'order' => 'ASC',
-    ]);
+$teamPosts = get_posts([
+'post_type' => 'team',
+'posts_per_page' => $numberOfTeam,
+'orderby' => 'menu_order',
+'order' => 'ASC',
+]);
 } else {
-    $teamPosts = [];
-    if ($selectedTeam) {
-        foreach ($selectedTeam as $teamId) {
-            $post = get_post($teamId);
-            if ($post) {
-                $teamPosts[] = $post;
-            }
-        }
-    }
+$teamPosts = [];
+if ($selectedTeam) {
+foreach ($selectedTeam as $teamId) {
+$post = get_post($teamId);
+if ($post) {
+$teamPosts[] = $post;
+}
+}
+}
 }
 
 // Build team members array
 $teamMembers = [];
 
 foreach ($teamPosts as $post) {
-    // Get ACF fields
-    $headshot = get_field('headshot', $post->ID);
-    $jobTitle = get_field('job_title', $post->ID);
-    $email = get_field('email', $post->ID);
-    $phone = get_field('phone', $post->ID);
-    $socialLinks = get_field('social_links', $post->ID);
+// Get ACF fields
+$headshot = get_field('headshot', $post->ID);
+$jobTitle = get_field('job_title', $post->ID);
+$email = get_field('email', $post->ID);
+$phone = get_field('phone', $post->ID);
+$socialLinks = get_field('social_links', $post->ID);
 
-    $teamMembers[] = [
-        'ID' => $post->ID,
-        'name' => $post->post_title,
-        'post_title' => $post->post_title,
-        'job_title' => $jobTitle,
-        'headshot' => $headshot,
-        'email' => $email,
-        'phone' => $phone,
-        'social_links' => $socialLinks,
-        'permalink' => get_permalink($post->ID),
-    ];
+$teamMembers[] = [
+'ID' => $post->ID,
+'name' => $post->post_title,
+'post_title' => $post->post_title,
+'job_title' => $jobTitle,
+'headshot' => $headshot,
+'email' => $email,
+'phone' => $phone,
+'social_links' => $socialLinks,
+'permalink' => get_permalink($post->ID),
+];
 }
 @endphp
 
@@ -79,31 +79,31 @@ foreach ($teamPosts as $post) {
 
         {{-- Section Content (Heading, Paragraph, Buttons) --}}
         @if ($contentBlock)
-            <div class="mb-u-6">
-                <x-content-wrapper :content="$contentBlock" />
-            </div>
+        <div class="mb-u-6">
+            <x-content-wrapper :content="$contentBlock" />
+        </div>
         @endif
 
         {{-- Team Grid --}}
         @if ($teamMembers)
-            <div class="team-grid-wrapper">
-                <div class="grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
-                    @foreach ($teamMembers as $member)
-                        <div>
-                            @include('partials.content-team', [
-                                'member' => $member,
-                                'layout' => $cardLayout,
-                                'imageAspectRatio' => $imageAspectRatio,
-                                'showEmail' => $showEmail,
-                                'showPhone' => $showPhone,
-                                'showSocials' => $showSocials,
-                                'makeCardClickable' => $makeCardsClickable,
-                                'sectionTheme' => $theme,
-                            ])
-                        </div>
-                    @endforeach
+        <div class="team-grid-wrapper">
+            <div class="grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
+                @foreach ($teamMembers as $member)
+                <div>
+                    @include('partials.content-team', [
+                    'member' => $member,
+                    'layout' => $cardLayout,
+                    'imageAspectRatio' => $imageAspectRatio,
+                    'showEmail' => $showEmail,
+                    'showPhone' => $showPhone,
+                    'showSocials' => $showSocials,
+                    'makeCardClickable' => $makeCardsClickable,
+                    'sectionTheme' => $theme,
+                    ])
                 </div>
+                @endforeach
             </div>
+        </div>
         @endif
 
     </div>

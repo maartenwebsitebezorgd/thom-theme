@@ -82,14 +82,14 @@ class TeamGrid
             ->addTrueFalse('show_email', [
                 'label' => 'Show Email',
                 'instructions' => 'Display team member email addresses',
-                'default_value' => 0,
+                'default_value' => 1,
                 'ui' => 1,
                 'wrapper' => ['width' => '33.33'],
             ])
             ->addTrueFalse('show_phone', [
                 'label' => 'Show Phone',
                 'instructions' => 'Display team member phone numbers',
-                'default_value' => 0,
+                'default_value' => 1,
                 'ui' => 1,
                 'wrapper' => ['width' => '33.33'],
             ])
