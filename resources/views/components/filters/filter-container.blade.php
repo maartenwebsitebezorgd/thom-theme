@@ -9,7 +9,7 @@ $hasFilters = !empty($filters);
 @endphp
 
 @if($hasFilters)
-<section data-theme="{{ $theme }}" class="u-section filter-section pt-section-small pb-section-small">
+<section data-theme="{{ $theme }}" class="u-section filter-section pt-section-tiny pb-section-tiny">
   <div class="u-container max-w-container-main">
     <div class="filters-wrapper flex flex-col gap-u-4">
       @foreach($filters as $filterType)

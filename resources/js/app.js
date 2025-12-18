@@ -7,3 +7,6 @@ import '@tailwindplus/elements';
 import './components/navigation.js';
 import './components/swiper.js';
 import './components/logo-slider.js';
+
+// Import archive filters
+import './filters.js';

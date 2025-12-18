@@ -1,5 +1,5 @@
 @props([
-  'placeholder' => 'Search...',
+  'placeholder' => 'Zoeken...',
 ])
 
 <div class="search-field-filter" data-filter-type="search">

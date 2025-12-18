@@ -79,10 +79,13 @@
     "src": "resources/fonts/HelveticaNeueUltraLightItalic.otf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-Cg-RyPGQ.js",
+    "file": "assets/app-D8zN50yS.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "resources/js/filters.js"
+    ]
   },
   "resources/js/editor.js": {
     "file": "assets/editor-CfU4GbSP.js",
@@ -91,7 +94,7 @@
     "isEntry": true
   },
   "resources/js/filters.js": {
-    "file": "assets/filters-Dtg4EdrI.js",
+    "file": "assets/filters-D6cpBvp9.js",
     "name": "filters",
     "src": "resources/js/filters.js",
     "isEntry": true

@@ -30,7 +30,7 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
 @endif
 
 {{-- Posts Grid --}}
-<section data-theme="{{ $sectionTheme }}" class="pt-section-main pb-section-main">
+<section data-theme="{{ $sectionTheme }}" class="pt-section-small pb-section-small">
   <div class="u-container max-w-container-main">
     <div class="posts-grid">
       @if (! have_posts())

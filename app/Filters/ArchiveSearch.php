@@ -32,6 +32,15 @@ class ArchiveSearch
             $taxonomy = sanitize_text_field($_POST['taxonomy'] ?? '');
             $termId = intval($_POST['term_id'] ?? 0);
 
+            // Parse multiple category IDs from JSON array
+            $categoryIds = [];
+            if (isset($_POST['category_ids']) && !empty($_POST['category_ids'])) {
+                $categoryIdsRaw = json_decode(stripslashes($_POST['category_ids']), true);
+                if (is_array($categoryIdsRaw)) {
+                    $categoryIds = array_map('intval', array_filter($categoryIdsRaw));
+                }
+            }
+
         // Build query args
         $args = [
             'post_type' => $postType,
@@ -42,7 +51,20 @@ class ArchiveSearch
         ];
 
         // Add taxonomy filter if provided
-        if ($taxonomy && $termId) {
+        // Priority: category_ids from filter badges, then taxonomy/term_id from URL
+        if (!empty($categoryIds)) {
+            // Determine taxonomy based on post type
+            $filterTaxonomy = $postType === 'case' ? 'case_category' : 'category';
+
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => $filterTaxonomy,
+                    'field' => 'term_id',
+                    'terms' => $categoryIds,
+                    'operator' => 'IN', // Posts must be in ANY of the selected categories
+                ],
+            ];
+        } elseif ($taxonomy && $termId) {
             $args['tax_query'] = [
                 [
                     'taxonomy' => $taxonomy,

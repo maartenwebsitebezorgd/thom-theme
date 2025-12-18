@@ -30,26 +30,36 @@ $allUrl = is_tax('case_category') || is_post_type_archive('case')
 @endphp
 
 @if(!empty($categories))
-<div class="category-badges-filter">
+<div class="category-badges-filter" data-filter-type="category">
   <div class="badges-scroll-container overflow-x-auto scrollbar-hide">
     <div class="badges-wrapper flex gap-u-2">
       {{-- All Badge --}}
-      <x-ui.badge
-        :href="$allUrl"
-        :variant="$currentCategoryId === null ? 'active' : 'outline'"
+      <button
+        type="button"
+        class="badge {{ $currentCategoryId === null ? 'badge-active' : 'badge-outline' }}"
+        data-category-id=""
+        data-category-slug=""
+        data-category-name="All"
+        data-filter-action="category"
+        aria-label="{{ __('Show all', 'sage') }}"
       >
-        {{ __('All', 'sage') }}
-      </x-ui.badge>
+        {{ __('Alle', 'sage') }}
+      </button>
 
       {{-- Category Badges --}}
       @foreach($categories as $category)
-        <x-ui.badge
-          :href="get_term_link($category)"
-          :variant="$currentCategoryId === $category->term_id ? 'active' : 'outline'"
+        <button
+          type="button"
+          class="badge {{ $currentCategoryId === $category->term_id ? 'badge-active' : 'badge-outline' }}"
+          data-category-id="{{ $category->term_id }}"
+          data-category-name="{{ esc_attr($category->name) }}"
+          data-category-slug="{{ $category->slug }}"
+          data-filter-action="category"
+          aria-label="{{ sprintf(__('Filter by %s', 'sage'), $category->name) }}"
         >
           {{ $category->name }}
           <span class="opacity-70 ml-u-1">({{ $category->count }})</span>
-        </x-ui.badge>
+        </button>
       @endforeach
     </div>
   </div>
