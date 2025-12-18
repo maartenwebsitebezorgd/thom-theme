@@ -49,20 +49,9 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
       </div>
 
       {{-- Pagination --}}
-      @if (function_exists('wp_pagenavi'))
       <div class="mt-section-main">
-        {!! wp_pagenavi() !!}
+        @include('partials.pagination')
       </div>
-      @else
-      <div class="mt-section-main flex justify-between gap-u-4">
-        <div>
-          {!! get_previous_posts_link(__('&larr; Newer Cases', 'sage')) !!}
-        </div>
-        <div>
-          {!! get_next_posts_link(__('Older Cases &rarr;', 'sage')) !!}
-        </div>
-      </div>
-      @endif
       @endif
     </div>
 </section>

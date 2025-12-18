@@ -18,6 +18,7 @@ class ArchiveFilters {
       categorySlugs: [], // Array for multiple category slugs
       postType: this.getPostType(),
       taxonomy: this.getTaxonomy(),
+      page: 1, // Current page for pagination
     };
 
     // Initialize from URL on page load
@@ -56,6 +57,16 @@ class ArchiveFilters {
     if (this.postsGrid) {
       this.postsGrid.classList.add('filterable-grid');
     }
+
+    // Delegate pagination click events (since pagination is dynamically loaded)
+    document.addEventListener('click', (e) => {
+      // Check if clicked element or its parent is a pagination link
+      const paginationLink = e.target.closest('nav[aria-label="Pagination"] a');
+      if (paginationLink) {
+        e.preventDefault();
+        this.handlePaginationClick(paginationLink);
+      }
+    });
   }
 
   initFromUrl() {
@@ -97,6 +108,7 @@ class ArchiveFilters {
 
     // Update state
     this.state.search = query;
+    this.state.page = 1; // Reset to page 1 on search
 
     // Show loading state
     this.setLoadingState(true);
@@ -130,6 +142,9 @@ class ArchiveFilters {
       }
     }
 
+    // Reset to page 1 when changing filters
+    this.state.page = 1;
+
     // Update UI
     this.updateActiveCategoryButtons();
 
@@ -137,6 +152,22 @@ class ArchiveFilters {
     this.setLoadingState(true, 'grid');
 
     // Perform filter
+    this.performFilter();
+  }
+
+  handlePaginationClick(link) {
+    // Extract page number from URL
+    const url = new URL(link.href);
+    const pageParam = url.searchParams.get('paged') || url.pathname.match(/\/page\/(\d+)/);
+    const page = pageParam ? (Array.isArray(pageParam) ? parseInt(pageParam[1]) : parseInt(pageParam)) : 1;
+
+    // Update state
+    this.state.page = page;
+
+    // Show loading state
+    this.setLoadingState(true, 'grid');
+
+    // Perform filter with new page
     this.performFilter();
   }
 
@@ -177,7 +208,7 @@ class ArchiveFilters {
       formData.append('search', this.state.search);
       formData.append('post_type', this.state.postType);
       formData.append('category_ids', JSON.stringify(this.state.categoryIds)); // Send as JSON array
-      formData.append('paged', 1); // Reset to page 1 on filter
+      formData.append('paged', this.state.page); // Current page number
 
       // Add taxonomy info if available
       if (this.state.taxonomy) {

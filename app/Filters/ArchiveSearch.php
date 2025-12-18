@@ -108,19 +108,22 @@ class ArchiveSearch
 
             echo '</div>';
 
-            // Pagination
+            // Pagination - use our custom pagination partial
             if ($query->max_num_pages > 1) {
-                echo '<div class="mt-section-main flex justify-between gap-u-4">';
+                // Temporarily set global $wp_query for pagination to work
+                global $wp_query;
+                $original_query = $wp_query;
+                $wp_query = $query;
 
-                if (get_previous_posts_link('', $query->max_num_pages)) {
-                    echo '<div>' . get_previous_posts_link(__('&larr; Newer Posts', 'sage')) . '</div>';
-                }
+                // Set the current page for pagination
+                set_query_var('paged', $paged);
 
-                if (get_next_posts_link('', $query->max_num_pages)) {
-                    echo '<div>' . get_next_posts_link(__('Older Posts &rarr;', 'sage'), $query->max_num_pages) . '</div>';
-                }
-
+                echo '<div class="mt-section-main">';
+                echo \Roots\view('partials.pagination')->render();
                 echo '</div>';
+
+                // Restore original query
+                $wp_query = $original_query;
             }
         } else {
             echo '<div class="u-max-width-70ch mx-auto text-center">';
