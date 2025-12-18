@@ -29,22 +29,22 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
 <x-filters.filter-container :filters="$activeFilters" :theme="$filterTheme" />
 @endif
 
-{{-- Posts Grid --}}
+{{-- Cases Grid --}}
 <section data-theme="{{ $sectionTheme }}" class="pt-section-main pb-section-main">
   <div class="u-container max-w-container-main">
-    <div class="posts-grid">
+    <div class="cases-grid">
       @if (! have_posts())
       <div class="u-max-width-70ch mx-auto text-center">
         <p class="u-text-style-medium mb-u-6">
-          {!! __('Sorry, no posts were found.', 'sage') !!}
+          {!! __('Sorry, no cases were found.', 'sage') !!}
         </p>
         {!! get_search_form(false) !!}
       </div>
       @else
-      {{-- Posts Grid --}}
+      {{-- Cases Grid --}}
       <div class="grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
         @while(have_posts()) @php(the_post())
-        @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+        @include('partials.content-case')
         @endwhile
       </div>
 
@@ -56,10 +56,10 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
       @else
       <div class="mt-section-main flex justify-between gap-u-4">
         <div>
-          {!! get_previous_posts_link(__('&larr; Newer Posts', 'sage')) !!}
+          {!! get_previous_posts_link(__('&larr; Newer Cases', 'sage')) !!}
         </div>
         <div>
-          {!! get_next_posts_link(__('Older Posts &rarr;', 'sage')) !!}
+          {!! get_next_posts_link(__('Older Cases &rarr;', 'sage')) !!}
         </div>
       </div>
       @endif

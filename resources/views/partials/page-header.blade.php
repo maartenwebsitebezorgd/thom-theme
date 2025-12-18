@@ -1,6 +1,6 @@
 @php
 // Get settings from ACF options with fallbacks
-$theme = get_field('header_theme', 'option') ?? 'grey';
+$theme = get_field('archive_header_theme', 'option') ?? 'grey';
 $alignment = get_field('header_alignment', 'option') ?? 'text-center';
 $paddingTop = get_field('header_padding_top', 'option') ?? 'pt-section-small';
 $paddingBottom = get_field('header_padding_bottom', 'option') ?? 'pb-section-small';

@@ -1,11 +1,48 @@
 @php
-// Get ACF fields from post
+// Get ACF fields from case
 $detailHeading = get_field('detail_heading');
 $mainImage = get_field('main_image');
 $introduction = get_field('introduction');
-$readTime = get_field('read_time');
-$relatedPosts = get_field('related_posts');
-$teamMemberAuthorId = get_field('team_member_author');
+$teamMembers = get_field('team_members');
+$relatedCases = get_field('related_cases');
+$clientName = get_field('client_name');
+$logo = get_field('logo');
+
+// Auto-select related cases if none are manually selected
+if (!$relatedCases || empty($relatedCases)) {
+$current_post_id = get_the_ID();
+$categories = get_the_terms($current_post_id, 'case_category');
+
+// Try to get cases from the same category
+if ($categories && !is_wp_error($categories)) {
+$category_ids = array_map(function($cat) { return $cat->term_id; }, $categories);
+
+$relatedCases = get_posts([
+'post_type' => 'case',
+'posts_per_page' => 3,
+'post__not_in' => [$current_post_id],
+'tax_query' => [
+[
+'taxonomy' => 'case_category',
+'field' => 'term_id',
+'terms' => $category_ids,
+],
+],
+'orderby' => 'rand',
+]);
+}
+
+// If still no cases, get 3 latest cases
+if (empty($relatedCases)) {
+$relatedCases = get_posts([
+'post_type' => 'case',
+'posts_per_page' => 3,
+'post__not_in' => [$current_post_id],
+'orderby' => 'date',
+'order' => 'DESC',
+]);
+}
+}
 
 // Get Theme Options settings
 $headerTheme = get_field('single_header_theme', 'option') ?: 'grey';
@@ -22,13 +59,12 @@ $showBreadcrumbs = get_field('show_breadcrumbs', 'option') ?? true;
 $showCategories = get_field('show_categories', 'option') ?? true;
 $showAuthor = get_field('show_author', 'option') ?? true;
 $showDate = get_field('show_date', 'option') ?? true;
-$showReadTime = get_field('show_read_time', 'option') ?? true;
 $showFeaturedImage = get_field('show_featured_image', 'option') ?? true;
-$showRelatedPosts = get_field('show_related_posts', 'option') ?? true;
+$showRelatedCases = get_field('show_related_posts', 'option') ?? true;
 $showPostNavigation = get_field('show_post_navigation', 'option') ?? true;
-$relatedPostsTheme = get_field('related_posts_theme', 'option') ?: 'grey';
-$relatedPostsCount = get_field('related_posts_count', 'option') ?: 3;
-$relatedPostsColumns = get_field('related_posts_columns', 'option') ?: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+$relatedCasesTheme = get_field('related_posts_theme', 'option') ?: 'grey';
+$relatedCasesCount = get_field('related_posts_count', 'option') ?: 3;
+$relatedCasesColumns = get_field('related_posts_columns', 'option') ?: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
 // Title and image
 $title = $detailHeading ?: get_the_title();
@@ -47,26 +83,20 @@ $headerImage = [
 }
 }
 
-$categories = get_the_category();
+$categories = get_the_terms(get_the_ID(), 'case_category');
+$categories = !empty($categories) && !is_wp_error($categories) ? $categories : [];
 
-// Auto-calculate read time if not set
-if (!$readTime) {
-$content = get_post_field('post_content', get_the_ID());
-$wordCount = str_word_count(strip_tags($content));
-$readTime = max(1, ceil($wordCount / 200));
-}
-
-$blogUrl = get_option('page_for_posts') ? get_permalink(get_option('page_for_posts')) : home_url('/blog');
+$casesUrl = get_post_type_archive_link('case');
 
 // Determine if split layout
 $isSplitLayout = in_array($headerLayout, ['split', 'split-reverse']);
 $isReverse = $headerLayout === 'split-reverse';
 @endphp
 
-<article {!! post_class('h-entry') !!} itemscope itemtype="https://schema.org/BlogPosting">
+<article {!! post_class('h-entry') !!} itemscope itemtype="https://schema.org/CreativeWork">
 
   @if($showBreadcrumbs)
-  <nav data-theme="dark" class="u-section pt-section-small pb-u-3 pt-u-3" aria-label="Breadcrumb">
+  <nav data-theme="dark" class="u-section pt-u-3 pb-u-3" aria-label="Breadcrumb">
     <div class="u-container max-w-container-main">
       <ol class="breadcrumb flex flex-row gap-u-2 items-center u-text-style-small u-text-trim-off" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -77,8 +107,8 @@ $isReverse = $headerLayout === 'split-reverse';
         </li>
         <li aria-hidden="true">/</li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="{{ $blogUrl }}" itemprop="item" class="hover:underline">
-            <span itemprop="name">Blog</span>
+          <a href="{{ $casesUrl }}" itemprop="item" class="hover:underline">
+            <span itemprop="name">Cases</span>
           </a>
           <meta itemprop="position" content="2" />
         </li>
@@ -97,8 +127,8 @@ $isReverse = $headerLayout === 'split-reverse';
       @if($isSplitLayout && $headerImage)
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-u-8 items-center {{ $isReverse ? 'lg:flex-row-reverse' : '' }}">
         <div class="{{ $isReverse ? 'lg:order-2' : 'lg:order-1' }}">
-          <div class="post-header_content u-margin-trim {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerMaxWidth }}">
-            @include('partials.content-single-header-content')
+          <div class="case-header_content u-margin-trim {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerMaxWidth }}">
+            @include('partials.content-single-case-header-content')
           </div>
         </div>
 
@@ -112,14 +142,14 @@ $isReverse = $headerLayout === 'split-reverse';
         </div>
       </div>
       @else
-      <div class="post-header_content-wrapper">
-        <div class="post-header_content u-margin-trim {{ $headerMaxWidth }} {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerAlignment }}">
-          @include('partials.content-single-header-content')
+      <div class="case-header_content-wrapper">
+        <div class="case-header_content u-margin-trim {{ $headerMaxWidth }} {{ $headerAlignment === 'text-center' ? 'mx-auto' : '' }} {{ $headerAlignment }}">
+          @include('partials.content-single-case-header-content')
         </div>
       </div>
 
       @if($headerImage)
-      <div class="post-header_visual-wrap mt-u-8">
+      <div class="case-header_visual-wrap mt-u-8">
         <x-visual :visual="[
             'media_type' => 'image',
             'image' => $headerImage,
@@ -131,7 +161,7 @@ $isReverse = $headerLayout === 'split-reverse';
     </div>
   </header>
 
-  <section data-theme="{{ $contentTheme }}" class="e-content u-section pt-section-main pb-section-main" itemprop="articleBody">
+  <section data-theme="{{ $contentTheme }}" class="e-content u-section pt-section-main pb-section-main" itemprop="text">
     <div class="u-container max-w-container-main">
       <div class="prose prose-lg {{ $contentMaxWidth }} mx-auto">
         @php
@@ -141,52 +171,59 @@ $isReverse = $headerLayout === 'split-reverse';
     </div>
   </section>
 
-  @if($showRelatedPosts && $relatedPosts && count($relatedPosts) > 0)
-  <section data-theme="{{ $relatedPostsTheme }}" class="related-posts u-section pt-section-main pb-section-main">
+  @if($showRelatedCases && $relatedCases && count($relatedCases) > 0)
+  <section data-theme="{{ $relatedCasesTheme }}" class="related-cases u-section pt-section-main pb-section-main">
     <div class="u-container max-w-container-main">
-      <h2 class="u-text-style-h3 mb-u-8 text-center">Related Posts</h2>
+      <h2 class="u-text-style-h3 mb-u-6 text-center">Ook interessant</h2>
 
-      <div class="grid {{ $relatedPostsColumns }} gap-u-6">
-        @foreach(array_slice($relatedPosts, 0, $relatedPostsCount) as $relatedPost)
+      <div class="grid {{ $relatedCasesColumns }} gap-u-6">
+        @foreach(array_slice($relatedCases, 0, $relatedCasesCount) as $relatedCase)
         @php
         global $post;
-        $post = $relatedPost;
+        $post = $relatedCase;
         setup_postdata($post);
 
-        $sectionTheme = $relatedPostsTheme;
+        $sectionTheme = $relatedCasesTheme;
         $cardTheme = 'light';
-        $imageAspectRatio = 'aspect-[3/2]'; // aspect ratio
+        $imageAspectRatio = 'aspect-[3/2]';
         $showExcerpt = true;
         $showCategory = true;
         $makeCardClickable = true;
         @endphp
 
-        @include('partials.content')
+        @include('partials.content-case')
         @endforeach
 
-        @php(wp_reset_postdata())
+        @php
+        wp_reset_postdata();
+        @endphp
       </div>
     </div>
   </section>
   @endif
 
-  @if($showPostNavigation && get_the_post_navigation())
+  @if($showPostNavigation)
   <footer data-theme="light" class="u-section pt-section-small pb-section-small border-t">
     <div class="u-container max-w-container-main">
-      <nav class="post-navigation flex justify-between gap-u-4" aria-label="Post navigation">
-        @if($prevPost = get_previous_post())
-        <a href="{{ get_permalink($prevPost) }}" rel="prev" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors">
-          <span class="u-text-style-small text-gray-600 block mb-u-2">← Previous Post</span>
-          <span class="u-text-style-main font-medium">{{ get_the_title($prevPost) }}</span>
+      <nav class="case-navigation flex justify-between gap-u-4" aria-label="Case navigation">
+        @php
+        $prevCase = get_previous_post();
+        $nextCase = get_next_post();
+        @endphp
+
+        @if($prevCase)
+        <a href="{{ get_permalink($prevCase) }}" rel="prev" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors">
+          <span class="u-text-style-small text-gray-600 block mb-u-2">← Vorige Case</span>
+          <span class="u-text-style-main font-medium">{{ get_the_title($prevCase) }}</span>
         </a>
         @else
         <div class="flex-1"></div>
         @endif
 
-        @if($nextPost = get_next_post())
-        <a href="{{ get_permalink($nextPost) }}" rel="next" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors text-right">
-          <span class="u-text-style-small text-gray-600 block mb-u-2">Next Post →</span>
-          <span class="u-text-style-main font-medium">{{ get_the_title($nextPost) }}</span>
+        @if($nextCase)
+        <a href="{{ get_permalink($nextCase) }}" rel="next" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors text-right">
+          <span class="u-text-style-small text-gray-600 block mb-u-2">Volgende Case →</span>
+          <span class="u-text-style-main font-medium">{{ get_the_title($nextCase) }}</span>
         </a>
         @else
         <div class="flex-1"></div>

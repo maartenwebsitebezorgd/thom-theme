@@ -11,6 +11,8 @@ class Cases
         add_action('init', [$this, 'registerPostType']);
         add_action('init', [$this, 'registerTaxonomies']);
         add_action('acf/init', [$this, 'addFields']);
+        add_filter('manage_case_posts_columns', [$this, 'addTeamMembersColumn']);
+        add_action('manage_case_posts_custom_column', [$this, 'displayTeamMembersColumn'], 10, 2);
     }
 
     public function registerPostType()
@@ -30,11 +32,11 @@ class Cases
                 'not_found_in_trash' => 'No cases found in trash',
             ],
             'public' => true,
-            'has_archive' => true,
+            'has_archive' => 'cases',
             'menu_icon' => 'dashicons-portfolio',
             'supports' => ['title', 'editor', 'thumbnail', 'excerpt'],
             'show_in_rest' => true,
-            'rewrite' => ['slug' => 'cases'],
+            'rewrite' => ['slug' => 'case'], // Singular for individual cases
             'taxonomies' => ['case_category', 'case_tag'],
         ]);
     }
@@ -62,7 +64,7 @@ class Cases
             'show_admin_column' => true,
             'query_var' => true,
             'show_in_rest' => true,
-            'rewrite' => ['slug' => 'case-category'],
+            'rewrite' => ['slug' => 'cases'],
         ]);
 
         // Register Case Tags
@@ -84,7 +86,7 @@ class Cases
             'show_admin_column' => true,
             'query_var' => true,
             'show_in_rest' => true,
-            'rewrite' => ['slug' => 'case-tag'],
+            'rewrite' => ['slug' => 'cases/tag'],
         ]);
     }
 
@@ -142,5 +144,45 @@ class Cases
             ]);
 
         acf_add_local_field_group($cases->build());
+    }
+
+    /**
+     * Add Team Members column to admin list
+     */
+    public function addTeamMembersColumn($columns)
+    {
+        // Remove default author column
+        unset($columns['author']);
+
+        // Add team members column after title
+        $new_columns = [];
+        foreach ($columns as $key => $value) {
+            $new_columns[$key] = $value;
+            if ($key === 'title') {
+                $new_columns['team_members'] = 'Team Members';
+            }
+        }
+
+        return $new_columns;
+    }
+
+    /**
+     * Display Team Members in admin list
+     */
+    public function displayTeamMembersColumn($column, $post_id)
+    {
+        if ($column === 'team_members') {
+            $team_members = get_field('team_members', $post_id);
+
+            if ($team_members && is_array($team_members)) {
+                $names = array_map(function($member) {
+                    return esc_html(get_the_title($member->ID));
+                }, $team_members);
+
+                echo implode(', ', $names);
+            } else {
+                echo '—';
+            }
+        }
     }
 }

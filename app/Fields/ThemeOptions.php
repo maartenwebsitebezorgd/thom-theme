@@ -418,9 +418,9 @@ class ThemeOptions
         $archiveSettings = new FieldsBuilder('archive_settings');
         $archiveSettings
             ->addTab('page_header', ['label' => 'Page Header Settings'])
-            ->addSelect('header_theme', [
-                'label' => 'Header Theme',
-                'instructions' => 'Default theme for page headers on archive pages',
+            ->addSelect('archive_header_theme', [
+                'label' => 'Page Header Background Theme',
+                'instructions' => 'Default background theme for page headers on archive pages',
                 'choices' => Choices::theme(),
                 'default_value' => 'grey',
                 'wrapper' => ['width' => '50'],

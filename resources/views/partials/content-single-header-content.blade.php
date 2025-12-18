@@ -39,9 +39,19 @@
 
   @if($showAuthor)
   <span class="author-meta">
-    <span>{{ __('By', 'sage') }}</span>
-    <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" class="p-author h-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
-      <span itemprop="name">{{ get_the_author() }}</span>
+    <span>{{ __('Door', 'sage') }}</span>
+    @php
+    // Use team member author if available, otherwise fall back to WordPress user
+    if (isset($teamMemberAuthorId) && $teamMemberAuthorId) {
+    $authorName = get_the_title($teamMemberAuthorId);
+    $authorUrl = get_permalink($teamMemberAuthorId);
+    } else {
+    $authorName = get_the_author();
+    $authorUrl = get_author_posts_url(get_the_author_meta('ID'));
+    }
+    @endphp
+    <a href="{{ $authorUrl }}" class="p-author h-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
+      <span itemprop="name">{{ $authorName }}</span>
     </a>
   </span>
   @endif
@@ -52,7 +62,7 @@
 
   @if($showReadTime && $readTime)
   <span class="read-time">
-    {{ $readTime }} {{ $readTime === 1 ? __('minute read', 'sage') : __('minutes read', 'sage') }}
+    {{ $readTime }} {{ $readTime === 1 ? __('min leestijd', 'sage') : __('min leestijd', 'sage') }}
   </span>
   @endif
 </div>

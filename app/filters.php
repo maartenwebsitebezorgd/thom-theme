@@ -65,3 +65,67 @@ add_filter('acf/format_value/type=image', function ($value) {
     }
     return $value;
 }, 10, 1);
+
+/**
+ * Customize blog category and tag base URLs.
+ * Change 'blog' to 'artikel' (or any other slug) to update all blog URLs.
+ *
+ * Examples with current 'artikel' slug:
+ * - Single posts: yoursite.com/artikel/post-name/
+ * - Categories: yoursite.com/artikelen/web-development/
+ * - Tags: yoursite.com/artikelen/tag/design/
+ */
+add_filter('category_rewrite_rules', function ($rules) {
+    $blog_slug = 'artikelen';
+    $new_rules = [];
+
+    foreach ($rules as $key => $value) {
+        // Replace the default category base with our custom slug
+        $new_key = str_replace('category/', $blog_slug . '/', $key);
+        $new_rules[$new_key] = $value;
+    }
+
+    return $new_rules;
+});
+
+add_filter('tag_rewrite_rules', function ($rules) {
+    $blog_slug = 'artikelen';
+    $new_rules = [];
+
+    foreach ($rules as $key => $value) {
+        // Replace the default tag base with our custom slug
+        $new_key = str_replace('tag/', $blog_slug . '/tag/', $key);
+        $new_rules[$new_key] = $value;
+    }
+
+    return $new_rules;
+});
+
+// Add custom rewrite rule for single posts with /artikel/ prefix
+add_action('init', function () {
+    global $wp_rewrite;
+
+    $blog_slug = 'artikelen';
+    $post_slug = 'artikel'; // Singular for single posts
+
+    // Set category and tag base
+    $wp_rewrite->category_base = $blog_slug;
+    $wp_rewrite->tag_base = $blog_slug . '/tag';
+
+    // Add rewrite rule for single posts with custom prefix
+    add_rewrite_rule(
+        '^' . $post_slug . '/([^/]+)/?$',
+        'index.php?name=$matches[1]',
+        'top'
+    );
+}, 5);
+
+// Modify post permalinks to include /artikel/ prefix
+add_filter('post_link', function ($permalink, $post) {
+    if ($post->post_type === 'post' && $post->post_status === 'publish') {
+        $post_slug = 'artikel';
+        // Replace the site URL with site URL + /artikel/
+        $permalink = home_url($post_slug . '/' . $post->post_name . '/');
+    }
+    return $permalink;
+}, 10, 2);

@@ -148,13 +148,34 @@ class MobileWalker extends Walker_Nav_Menu
                 $output .= '</a>';
             }
         } else {
-            // Sub-menu items
-            $class_names = 'block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-medium transition-colors duration-200 ' .
-                ($current ? 'text-[var(--theme-accent)] hover:bg-[var(--theme-text)]/5' : 'text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5');
+            // Sub-menu items with icons
+            // Add indent for depth 2+
+            $indent_class = ($depth >= 2) ? 'ml-6' : '';
+
+            $output .= '<div class="' . $indent_class . ' flex items-center gap-x-3 rounded-lg py-2 pr-3 pl-3 hover:bg-[var(--theme-text)]/5">';
+
+            // Icon - use custom icon or default
+            $output .= '<div class="flex size-5 flex-none items-center justify-center rounded-lg bg-[var(--theme-text)]/5">';
+            $output .= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-4 text-[var(--theme-text)]/60">';
+
+            // Use custom icon path if available, otherwise use default
+            if (!empty($item->icon)) {
+                $output .= '<path ' . $item->icon . ' />';
+            } else {
+                // Default icon
+                $output .= '<path d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z" stroke-linecap="round" stroke-linejoin="round" />';
+            }
+
+            $output .= '</svg>';
+            $output .= '</div>';
+
+            $class_names = 'text-sm/7 font-medium transition-colors duration-200 ' .
+                ($current ? 'text-[var(--theme-accent)]' : 'text-[var(--theme-text)]');
 
             $output .= '<a href="' . esc_url($item->url) . '" class="' . $class_names . '">';
             $output .= esc_html($item->title);
             $output .= '</a>';
+            $output .= '</div>';
         }
     }
 
