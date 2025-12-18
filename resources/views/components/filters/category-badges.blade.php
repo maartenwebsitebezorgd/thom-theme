@@ -52,12 +52,12 @@ $allUrl = is_tax('case_category') || is_post_type_archive('case')
           type="button"
           class="badge {{ $currentCategoryId === $category->term_id ? 'badge-active' : 'badge-outline' }}"
           data-category-id="{{ $category->term_id }}"
-          data-category-name="{{ esc_attr($category->name) }}"
+          data-category-name="{{ $category->name }}"
           data-category-slug="{{ $category->slug }}"
           data-filter-action="category"
           aria-label="{{ sprintf(__('Filter by %s', 'sage'), $category->name) }}"
         >
-          {{ $category->name }}
+          {!! $category->name !!}
           <span class="opacity-70 ml-u-1">({{ $category->count }})</span>
         </button>
       @endforeach

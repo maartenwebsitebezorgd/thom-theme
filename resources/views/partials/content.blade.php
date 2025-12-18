@@ -92,7 +92,7 @@ $partialClasses = $partialClasses ?? ''; // Accept custom classes from parent
       @if($showCategory && $category)
       <div class="category-wrapper flex flex-row flex-wrap gap-u-2 items-center">
         <span class="u-text-style-small text-[var(--theme-text)]/60" aria-label="Category">
-          {{ $category }}
+          {!! $category !!}
         </span>
       </div>
       @endif
