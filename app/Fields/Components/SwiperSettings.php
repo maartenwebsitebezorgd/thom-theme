@@ -118,6 +118,18 @@ class SwiperSettings
                     'ui' => 1,
                     'wrapper' => ['width' => '33'],
                 ])
+                ->addSelect('overflow', [
+                    'label' => 'Overflow',
+                    'instructions' => 'Controls how content that overflows the slider container is handled',
+                    'choices' => [
+                        'clip' => 'Clip (default - cuts off overflow)',
+                        'visible' => 'Visible (allows overflow)',
+                        'hidden' => 'Hidden (hides overflow)',
+                        'auto' => 'Auto (browser decides)',
+                    ],
+                    'default_value' => 'clip',
+                    'wrapper' => ['width' => '33'],
+                ])
             ->endGroup();
 
         return $swiperSettings;

@@ -60,6 +60,9 @@ $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 $containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
+
+// Swiper overflow setting
+$overflow = $swiperSettings['overflow'] ?? 'clip';
 @endphp
 
 <section data-theme="{{ $theme }}" class="blogs-slider overflow-clip u-section {{ $paddingTop }} {{ $paddingBottom }}">
@@ -72,7 +75,7 @@ $containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
         {{-- Swiper Slider --}}
         @if ($articles)
-        <x-swiper :settings="$swiperSettings" classes="group/blog-slider">
+        <x-swiper :settings="$swiperSettings" classes="overflow-{{ $overflow }} group/blog-slider">
             @foreach ($articles as $articleItem)
             <div class="swiper-slide">
                 <x-article-simple

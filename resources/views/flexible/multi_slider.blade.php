@@ -40,9 +40,12 @@ $theme = $styleSettings['theme'] ?? 'inherit';
 $paddingTop = $styleSettings['padding_top'] ?? 'pt-section-main';
 $paddingBottom = $styleSettings['padding_bottom'] ?? 'pb-section-main';
 $containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
+
+// Swiper overflow setting
+$overflow = $swiperSettings['overflow'] ?? 'clip';
 @endphp
 
-<section data-theme="{{ $theme }}" class="multi-slider overflow-clip u-section {{ $paddingTop }} {{ $paddingBottom }}">
+<section data-theme="{{ $theme }}" class="multi-slider u-section {{ $paddingTop }} {{ $paddingBottom }}">
     <div class="u-container {{ $containerSize }}">
 
         {{-- Section Content (Heading, Paragraph, Buttons) --}}
@@ -52,7 +55,7 @@ $containerSize = $styleSettings['container_size'] ?? 'max-w-container-main';
 
         {{-- Swiper Slider --}}
         @if (!empty($posts))
-        <x-swiper :settings="$swiperSettings" classes="">
+        <x-swiper :settings="$swiperSettings" classes="overflow-{{ $overflow }}">
             @foreach ($posts as $postItem)
             @php
             // Setup global post data for WordPress functions
