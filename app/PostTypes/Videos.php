@@ -31,7 +31,7 @@ class Videos
             'public' => true,
             'has_archive' => true,
             'menu_icon' => 'dashicons-video-alt3',
-            'supports' => ['title', 'editor', 'thumbnail'],
+            'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
             'show_in_rest' => true,
             'rewrite' => ['slug' => 'videos'],
         ]);

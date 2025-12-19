@@ -16,14 +16,16 @@ $shouldStretch = get_field('stretch_to_content', 'option') ?? true;
 $priorityLoading = get_field('priority_loading', 'option') ?? true;
 $clipPath = get_field('clip_path', 'option') ?? 'diagonal-left';
 
-// Priority 1: Check for page featured image (for regular pages, posts page, cases archive, and whitepapers archive)
-if (is_page() || is_home() || is_post_type_archive('case') || is_post_type_archive('whitepaper')) {
+// Priority 1: Check for page featured image (for regular pages, posts page, cases archive, whitepapers archive, and videos archive)
+if (is_page() || is_home() || is_post_type_archive('case') || is_post_type_archive('whitepaper') || is_post_type_archive('video')) {
     if (is_home()) {
         $pageId = get_option('page_for_posts');
     } elseif (is_post_type_archive('case')) {
         $pageId = get_field('page_for_cases', 'option');
     } elseif (is_post_type_archive('whitepaper')) {
         $pageId = get_field('page_for_whitepapers', 'option');
+    } elseif (is_post_type_archive('video')) {
+        $pageId = get_field('page_for_videos', 'option');
     } else {
         $pageId = get_the_ID();
     }
@@ -83,6 +85,18 @@ if (is_home()) {
     } else {
         // Fallback to default title
         $pageTitle = __('Whitepapers', 'sage');
+        $pageDescription = null;
+    }
+} elseif (is_post_type_archive('video')) {
+    // Get title and description from videos archive page
+    $videosPageId = get_field('page_for_videos', 'option');
+
+    if ($videosPageId) {
+        $pageTitle = get_the_title($videosPageId);
+        $pageDescription = get_the_excerpt($videosPageId);
+    } else {
+        // Fallback to default title
+        $pageTitle = __('Videos', 'sage');
         $pageDescription = null;
     }
 } elseif (is_archive()) {

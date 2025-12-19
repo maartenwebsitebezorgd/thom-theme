@@ -8,6 +8,12 @@ $relatedCases = get_field('related_cases');
 $clientName = get_field('client_name');
 $logo = get_field('logo');
 
+// Get first team member as author
+$teamMemberAuthorId = null;
+if ($teamMembers && is_array($teamMembers) && count($teamMembers) > 0) {
+    $teamMemberAuthorId = $teamMembers[0]->ID;
+}
+
 // Auto-select related cases if none are manually selected
 if (!$relatedCases || empty($relatedCases)) {
 $current_post_id = get_the_ID();
@@ -170,6 +176,16 @@ $isReverse = $headerLayout === 'split-reverse';
       </div>
     </div>
   </section>
+
+  {{-- Author Section --}}
+  @if($teamMemberAuthorId)
+  @include('partials.author-card', [
+  'teamMemberAuthorId' => $teamMemberAuthorId,
+  'contentTheme' => $contentTheme,
+  'contentMaxWidth' => $contentMaxWidth,
+  ])
+  @endif
+
 
   {{-- Split Form Section from Theme Options --}}
   @php
