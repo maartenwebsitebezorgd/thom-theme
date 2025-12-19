@@ -232,7 +232,7 @@ $isReverse = $headerLayout === 'split-reverse';
       <nav class="post-navigation flex justify-between gap-u-4" aria-label="Post navigation">
         @if($prevPost = get_previous_post())
         <a href="{{ get_permalink($prevPost) }}" rel="prev" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors">
-          <span class="u-text-style-small text-gray-600 block mb-u-2">← Previous Post</span>
+          <span class="u-text-style-small text-gray-600 block mb-u-2">← Vorige Post</span>
           <span class="u-text-style-main font-medium">{{ get_the_title($prevPost) }}</span>
         </a>
         @else
@@ -241,7 +241,7 @@ $isReverse = $headerLayout === 'split-reverse';
 
         @if($nextPost = get_next_post())
         <a href="{{ get_permalink($nextPost) }}" rel="next" class="flex-1 p-u-4 border rounded hover:bg-gray-50 transition-colors text-right">
-          <span class="u-text-style-small text-gray-600 block mb-u-2">Next Post →</span>
+          <span class="u-text-style-small text-gray-600 block mb-u-2">Volgende Post →</span>
           <span class="u-text-style-main font-medium">{{ get_the_title($nextPost) }}</span>
         </a>
         @else

@@ -55,8 +55,8 @@ $formColSpan = '';
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container {{ $containerSize }}">
     @if($showBackground)
-    <div class="split-form_background-wrap absolute inset-0 z-0 flex items-end overflow-clip">
-      <div class="split-form_background-image w-1/6 max-h -mb-4  aspect-square  pointer-events-none opacity-20">
+    <div class="split-form_background-wrap absolute inset-0 z-0 overflow-clip hidden lg:flex items-end ">
+      <div class="split-form_background-image w-1/6 max-h-1/2 -mb-4 flex items-start justify-end aspect-square pointer-events-none opacity-20">
         <svg width="100%" height="100%" viewBox="0 0 182 179" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M168 91.4211C166.585 95.2271 165.928 99.8649 170.629 101.68C176.163 103.797 178.311 100.016 180.762 94.8995C181.192 93.9669 181.571 93.0595 182 92.1521L172.12 82.0195C170.224 86.1532 168.733 89.4551 168 91.4463V91.4211Z" fill="currentColor"></path>
           <path d="M138.256 167.994C139.419 173.111 139.292 180.295 147.354 178.505C154.404 176.942 151.801 170.591 150.993 166.079C145.661 136.916 144.321 108.107 157.69 80.4312C159.105 77.4821 160.57 74.5583 162.011 71.6345L152.13 61.502C134.188 95.025 129.791 130.489 138.256 168.02V167.994Z" fill="currentColor"></path>
@@ -81,9 +81,9 @@ $formColSpan = '';
         </div>
 
         @if ($showContactPerson && $contactPersonId)
-        <div class="contact-person-card mt-u-6 flex flex-col gap-u-4 items-start">
+        <div class="contact-person-card mt-u-5 flex flex-col gap-u-4 items-start">
           @if ($headshot)
-          <div class="contact-photo shrink-0 aspect-square w-full overflow-hidden">
+          <div class="contact-photo shrink-0 aspect-square w-full max-w-48 overflow-hidden">
             <img
               src="{{ $headshot['sizes']['auto'] ?? $headshot['url'] }}"
               alt="{{ $headshot['alt'] ?: $contactName }}"
