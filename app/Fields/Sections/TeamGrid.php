@@ -46,6 +46,22 @@ class TeamGrid
                     ],
                 ],
             ])
+            ->addTrueFalse('show_unlimited', [
+                'label' => 'Show All (Unlimited)',
+                'instructions' => 'Display all team members without limit',
+                'default_value' => 0,
+                'ui' => 1,
+                'wrapper' => ['width' => '50'],
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'use_all_team',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->addRange('number_of_team', [
                 'label' => 'Number of Team Members',
                 'instructions' => 'How many team members to display',
@@ -53,11 +69,17 @@ class TeamGrid
                 'max' => 12,
                 'step' => 1,
                 'default_value' => 4,
+                'wrapper' => ['width' => '50'],
                 'conditional_logic' => [
                     [
                         [
                             'field' => 'use_all_team',
                             'operator' => '==',
+                            'value' => '1',
+                        ],
+                        [
+                            'field' => 'show_unlimited',
+                            'operator' => '!=',
                             'value' => '1',
                         ],
                     ],

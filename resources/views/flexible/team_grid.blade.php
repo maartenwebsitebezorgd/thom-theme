@@ -8,7 +8,8 @@
 $contentBlock = get_sub_field('content_block');
 $useAllTeam = get_sub_field('use_all_team');
 $selectedTeam = get_sub_field('selected_team');
-$numberOfTeam = get_sub_field('number_of_team') ?? 4;
+$showUnlimited = get_sub_field('show_unlimited');
+$numberOfTeam = $showUnlimited ? -1 : (get_sub_field('number_of_team') ?? 4);
 $cardLayout = get_sub_field('card_layout') ?? 'standard';
 $imageAspectRatio = get_sub_field('image_aspect_ratio') ?? 'aspect-[4/5]';
 $showEmail = get_sub_field('show_email');

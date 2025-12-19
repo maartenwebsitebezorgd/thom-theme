@@ -6,7 +6,7 @@
   <a href="{{ get_term_link($category) }}"
     rel="category tag"
     class="u-text-style-small bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors">
-    {{ $category->name }}
+    {!! $category->name !!}
   </a>
   @endforeach
 </div>

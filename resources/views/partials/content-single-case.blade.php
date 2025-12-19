@@ -114,7 +114,7 @@ $isReverse = $headerLayout === 'split-reverse';
         </li>
         <li aria-hidden="true">/</li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" class="opacity-70">{{ get_the_title() }}</span>
+          <span itemprop="name" class="opacity-70">{!! get_the_title() !!}</span>
           <meta itemprop="position" content="3" />
         </li>
       </ol>
