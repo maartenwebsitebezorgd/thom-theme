@@ -16,12 +16,14 @@ $shouldStretch = get_field('stretch_to_content', 'option') ?? true;
 $priorityLoading = get_field('priority_loading', 'option') ?? true;
 $clipPath = get_field('clip_path', 'option') ?? 'diagonal-left';
 
-// Priority 1: Check for page featured image (for regular pages, posts page, and cases archive)
-if (is_page() || is_home() || is_post_type_archive('case')) {
+// Priority 1: Check for page featured image (for regular pages, posts page, cases archive, and whitepapers archive)
+if (is_page() || is_home() || is_post_type_archive('case') || is_post_type_archive('whitepaper')) {
     if (is_home()) {
         $pageId = get_option('page_for_posts');
     } elseif (is_post_type_archive('case')) {
         $pageId = get_field('page_for_cases', 'option');
+    } elseif (is_post_type_archive('whitepaper')) {
+        $pageId = get_field('page_for_whitepapers', 'option');
     } else {
         $pageId = get_the_ID();
     }
@@ -55,9 +57,9 @@ $visualImage = get_field('visual_image', 'option');
 
 // Determine the title and description based on the page type
 if (is_home()) {
-    $pageTitle = __('Blog', 'sage');
-    // Get excerpt from the posts page
+    // Get title and description from the posts page
     $postsPageId = get_option('page_for_posts');
+    $pageTitle = $postsPageId ? get_the_title($postsPageId) : __('Blog', 'sage');
     $pageDescription = $postsPageId ? get_the_excerpt($postsPageId) : null;
 } elseif (is_post_type_archive('case')) {
     // Get title and description from cases archive page
@@ -69,6 +71,18 @@ if (is_home()) {
     } else {
         // Fallback to default title
         $pageTitle = __('Cases', 'sage');
+        $pageDescription = null;
+    }
+} elseif (is_post_type_archive('whitepaper')) {
+    // Get title and description from whitepapers archive page
+    $whitepapersPageId = get_field('page_for_whitepapers', 'option');
+
+    if ($whitepapersPageId) {
+        $pageTitle = get_the_title($whitepapersPageId);
+        $pageDescription = get_the_excerpt($whitepapersPageId);
+    } else {
+        // Fallback to default title
+        $pageTitle = __('Whitepapers', 'sage');
         $pageDescription = null;
     }
 } elseif (is_archive()) {

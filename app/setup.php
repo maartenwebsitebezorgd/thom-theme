@@ -16,6 +16,7 @@ use App\PostTypes\Cases;
 use App\PostTypes\Logos;
 use App\PostTypes\Team;
 use App\PostTypes\Videos;
+use App\PostTypes\Whitepapers;
 use Illuminate\Support\Facades\Vite;
 
 // Initialize ACF Fields
@@ -29,6 +30,7 @@ new Cases();
 new Logos();
 new Team();
 new Videos();
+new Whitepapers();
 
 // Initialize Filters
 new ArchiveSearch();

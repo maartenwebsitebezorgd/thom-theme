@@ -11,6 +11,8 @@
 $icon = $card['icon'] ?? null;
 $heading = $card['heading'] ?? '';
 $text = $card['text'] ?? '';
+$link = $card['link'] ?? null;
+$makeCardClickable = $card['make_card_clickable'] ?? false;
 
 // Auto theme: Use opposite of section theme (light <-> dark)
   if ($cardTheme === 'auto') {
@@ -31,7 +33,7 @@ $text = $card['text'] ?? '';
   };
   @endphp
 
-  <div class="card w-full p-u-5 {{ $classes }}" data-theme="{{ $cardTheme }}">
+  <div class="card w-full p-u-5 flex flex-col gap-u-4 {{ $classes }}" data-theme="{{ $cardTheme }}">
     <div class="card_content-top content-wrapper u-margin-trim">
       @if ($icon)
       <div class="card-icon mb-u-5 text-">
@@ -45,6 +47,18 @@ $text = $card['text'] ?? '';
 
       @if ($text)
       <div class="card-text prose {{ $proseSize }}">{!! $text !!}</div>
+      @endif
+    </div>
+    <div class="card_content-bottom mt-auto flex flex-items-end">
+      @if($link && !empty($link['url']))
+      <a
+        href="{{ $link['url'] }}"
+        @if($link['target']) target="{{ $link['target'] }}" @endif
+        class="button button--icon-only ml-auto ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
       @endif
     </div>
   </div>

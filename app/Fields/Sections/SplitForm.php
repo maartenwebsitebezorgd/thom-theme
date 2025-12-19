@@ -96,6 +96,12 @@ class SplitForm
                     '2:1' => '66/33 (Form Narrow)',
                 ],
                 'default_value' => '1:1'
+            ])
+            ->addTrueFalse('show_background', [
+                'label' => 'Show Background Decoration',
+                'instructions' => 'Display decorative background SVG',
+                'default_value' => 1,
+                'ui' => 1,
             ]);
     }
 

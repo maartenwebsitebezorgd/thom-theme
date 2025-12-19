@@ -58,6 +58,12 @@ class ThemeOptions
                 'menu_title' => 'Archive & Blog',
                 'parent_slug' => 'theme-settings',
             ]);
+
+            acf_add_options_sub_page([
+                'page_title' => 'Team Single Settings',
+                'menu_title' => 'Team Single',
+                'parent_slug' => 'theme-settings',
+            ]);
         }
     }
 
@@ -94,6 +100,14 @@ class ThemeOptions
             ->addPostObject('page_for_cases', [
                 'label' => 'Cases Archive Page',
                 'instructions' => 'Select a page to use for the cases archive. Featured image and excerpt from this page will be displayed on the cases archive.',
+                'post_type' => ['page'],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'return_format' => 'id',
+            ])
+            ->addPostObject('page_for_whitepapers', [
+                'label' => 'Whitepapers Archive Page',
+                'instructions' => 'Select a page to use for the whitepapers archive. Featured image and excerpt from this page will be displayed on the whitepapers archive.',
                 'post_type' => ['page'],
                 'allow_null' => 1,
                 'multiple' => 0,
@@ -907,12 +921,36 @@ class ThemeOptions
             ])
             ->setLocation('options_page', '==', 'acf-options-archive-blog');
 
+        // Team Single Settings
+        $teamSettings = new FieldsBuilder('team_single_settings');
+        $teamSettings
+            ->addTab('team_single', ['label' => 'Team Single'])
+            ->addMessage('team_single_intro', '<h3>Team Member Single Page</h3><p>Configure the layout and display settings for individual team member pages.</p>')
+            ->addSelect('team_single_image_aspect_ratio', [
+                'label' => 'Headshot Image Aspect Ratio',
+                'instructions' => 'Choose the aspect ratio for team member headshot images',
+                'choices' => [
+                    'aspect-auto' => 'Original Dimensions (maintains image aspect ratio)',
+                    'aspect-square' => 'Square (1:1)',
+                    'aspect-[4/5]' => 'Portrait (4:5)',
+                    'aspect-[3/4]' => 'Portrait (3:4)',
+                    'aspect-[2/3]' => 'Portrait (2:3)',
+                    'aspect-[5/4]' => 'Landscape (5:4)',
+                    'aspect-[4/3]' => 'Landscape (4:3)',
+                    'aspect-[16/9]' => 'Landscape (16:9)',
+                ],
+                'default_value' => 'aspect-auto',
+                'ui' => 1,
+            ])
+            ->setLocation('options_page', '==', 'acf-options-team-single');
+
         // Register all field groups
         acf_add_local_field_group($generalSettings->build());
         acf_add_local_field_group($headerSettings->build());
         acf_add_local_field_group($footerSettings->build());
         acf_add_local_field_group($socialSettings->build());
         acf_add_local_field_group($archiveSettings->build());
+        acf_add_local_field_group($teamSettings->build());
     }
 
     /**
@@ -1023,6 +1061,12 @@ class ThemeOptions
                         <div class="theme-option-card-icon">📰</div>
                         <h2 class="theme-option-card-title">Archive & Blog</h2>
                         <p class="theme-option-card-description">Configure archive layouts, blog settings, and single post templates.</p>
+                    </a>
+
+                    <a href="<?php echo admin_url('admin.php?page=acf-options-team-single'); ?>" class="theme-option-card">
+                        <div class="theme-option-card-icon">👥</div>
+                        <h2 class="theme-option-card-title">Team Single</h2>
+                        <p class="theme-option-card-description">Configure layout and display settings for team member pages.</p>
                     </a>
                 </div>
             </div>
