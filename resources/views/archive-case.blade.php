@@ -43,9 +43,14 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
       @else
       {{-- Cases Grid --}}
       <div class="grid {{ $gridColumnsMobile }} md:{{ $gridColumnsTablet }} lg:{{ $gridColumnsDesktop }} {{ $gapSize }}">
-        @while(have_posts()) @php(the_post())
-        @include('partials.content-case')
-        @endwhile
+        @php
+        while (have_posts()) {
+            the_post();
+        @endphp
+            @include('partials.content-case')
+        @php
+        }
+        @endphp
       </div>
 
       {{-- Pagination --}}
@@ -55,4 +60,25 @@ $makeCardClickable = get_field('make_card_clickable', 'option') ?? true;
       @endif
     </div>
 </section>
+
+{{-- Flexible Content Blocks from Cases Archive Page --}}
+@php
+$casesPageId = get_field('page_for_cases', 'option');
+
+if ($casesPageId && have_rows('content_blocks', $casesPageId)) {
+    while (have_rows('content_blocks', $casesPageId)) {
+        the_row();
+        $layout = get_row_layout();
+
+        // Try to include the flexible content block
+        $flexibleView = 'flexible.' . $layout;
+        if (view()->exists($flexibleView)) {
+            echo view($flexibleView)->render();
+        } elseif (view()->exists('flexible.default')) {
+            echo view('flexible.default')->render();
+        }
+    }
+}
+@endphp
+
 @endsection

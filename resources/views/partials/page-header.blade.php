@@ -16,19 +16,26 @@ $shouldStretch = get_field('stretch_to_content', 'option') ?? true;
 $priorityLoading = get_field('priority_loading', 'option') ?? true;
 $clipPath = get_field('clip_path', 'option') ?? 'diagonal-left';
 
-// Priority 1: Check for page featured image (for regular pages and posts page)
-if (is_page() || is_home()) {
-$pageId = is_home() ? get_option('page_for_posts') : get_the_ID();
-if ($pageId && has_post_thumbnail($pageId)) {
-$thumbnailId = get_post_thumbnail_id($pageId);
-$visualImage = [
-'ID' => $thumbnailId,
-'id' => $thumbnailId,
-'url' => wp_get_attachment_image_url($thumbnailId, 'full'),
-'alt' => get_post_meta($thumbnailId, '_wp_attachment_image_alt', true),
-];
-$enableVisual = true;
-}
+// Priority 1: Check for page featured image (for regular pages, posts page, and cases archive)
+if (is_page() || is_home() || is_post_type_archive('case')) {
+    if (is_home()) {
+        $pageId = get_option('page_for_posts');
+    } elseif (is_post_type_archive('case')) {
+        $pageId = get_field('page_for_cases', 'option');
+    } else {
+        $pageId = get_the_ID();
+    }
+
+    if ($pageId && has_post_thumbnail($pageId)) {
+        $thumbnailId = get_post_thumbnail_id($pageId);
+        $visualImage = [
+            'ID' => $thumbnailId,
+            'id' => $thumbnailId,
+            'url' => wp_get_attachment_image_url($thumbnailId, 'full'),
+            'alt' => get_post_meta($thumbnailId, '_wp_attachment_image_alt', true),
+        ];
+        $enableVisual = true;
+    }
 }
 
 // Priority 2: Check for category image on archive pages
@@ -48,22 +55,34 @@ $visualImage = get_field('visual_image', 'option');
 
 // Determine the title and description based on the page type
 if (is_home()) {
-$pageTitle = __('Blog', 'sage');
-// Get excerpt from the posts page
-$postsPageId = get_option('page_for_posts');
-$pageDescription = $postsPageId ? get_the_excerpt($postsPageId) : null;
+    $pageTitle = __('Blog', 'sage');
+    // Get excerpt from the posts page
+    $postsPageId = get_option('page_for_posts');
+    $pageDescription = $postsPageId ? get_the_excerpt($postsPageId) : null;
+} elseif (is_post_type_archive('case')) {
+    // Get title and description from cases archive page
+    $casesPageId = get_field('page_for_cases', 'option');
+
+    if ($casesPageId) {
+        $pageTitle = get_the_title($casesPageId);
+        $pageDescription = get_the_excerpt($casesPageId);
+    } else {
+        // Fallback to default title
+        $pageTitle = __('Cases', 'sage');
+        $pageDescription = null;
+    }
 } elseif (is_archive()) {
-$pageTitle = get_the_archive_title();
-$pageDescription = get_the_archive_description();
+    $pageTitle = get_the_archive_title();
+    $pageDescription = get_the_archive_description();
 } elseif (is_search()) {
-$pageTitle = sprintf(__('Search Results for "%s"', 'sage'), get_search_query());
-$pageDescription = null;
+    $pageTitle = sprintf(__('Search Results for "%s"', 'sage'), get_search_query());
+    $pageDescription = null;
 } elseif (is_404()) {
-$pageTitle = __('Not Found', 'sage');
-$pageDescription = null;
+    $pageTitle = __('Not Found', 'sage');
+    $pageDescription = null;
 } else {
-$pageTitle = $title ?? get_the_title();
-$pageDescription = get_the_excerpt();
+    $pageTitle = $title ?? get_the_title();
+    $pageDescription = get_the_excerpt();
 }
 
 // Build visual block if enabled

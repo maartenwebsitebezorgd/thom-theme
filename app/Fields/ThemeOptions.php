@@ -91,6 +91,14 @@ class ThemeOptions
                 'default_value' => '...',
                 'placeholder' => '...',
             ])
+            ->addPostObject('page_for_cases', [
+                'label' => 'Cases Archive Page',
+                'instructions' => 'Select a page to use for the cases archive. Featured image and excerpt from this page will be displayed on the cases archive.',
+                'post_type' => ['page'],
+                'allow_null' => 1,
+                'multiple' => 0,
+                'return_format' => 'id',
+            ])
             ->addImage('site_favicon', [
                 'label' => 'Site Favicon (Deprecated)',
                 'instructions' => 'This field is deprecated. Use the new Favicons & SEO tab below.',
