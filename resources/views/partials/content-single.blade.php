@@ -141,10 +141,56 @@ $isReverse = $headerLayout === 'split-reverse';
     </div>
   </section>
 
+  {{-- Split Form Section from Theme Options --}}
+  @php
+  $formHeading = get_field('single_form_heading', 'option');
+  $formParagraph = get_field('single_form_paragraph', 'option');
+  $formGravityFormId = get_field('single_form_gravity_form', 'option');
+
+  if ($formGravityFormId) {
+  // Build content block structure matching ContentWrapper component
+  $contentBlock = [
+  'heading' => $formHeading,
+  'heading_tag' => 'h2',
+  'heading_text_style' => 'u-text-style-h2',
+  'paragraph' => $formParagraph,
+  'paragraph_text_style' => 'u-text-style-main',
+  'alignment' => 'text-left',
+  'margin_bottom' => 'mb-0',
+  ];
+
+  // Build style settings with default values
+  $styleSettings = [
+  'theme' => 'accent-light',
+  'padding_top' => 'pt-section-main',
+  'padding_bottom' => 'pb-section-main',
+  'container_size' => 'max-w-container-main',
+  ];
+
+  // Set view data
+  $splitFormData = [
+  'contentBlock' => $contentBlock,
+  'showContactPerson' => false,
+  'contactPersonId' => null,
+  'gravityFormId' => $formGravityFormId,
+  'formTitle' => false,
+  'formDescription' => false,
+  'styleSettings' => $styleSettings,
+  'contentLayout' => 'form-right',
+  'verticalAlignment' => 'items-top',
+  'gapSize' => 'gap-u-8',
+  'columnWidth' => '1:1',
+  ];
+
+  // Render the split_form template
+  echo view('flexible.split_form', $splitFormData)->render();
+  }
+  @endphp
+
   @if($showRelatedPosts && $relatedPosts && count($relatedPosts) > 0)
   <section data-theme="{{ $relatedPostsTheme }}" class="related-posts u-section pt-section-main pb-section-main">
     <div class="u-container max-w-container-main">
-      <h2 class="u-text-style-h3 mb-u-8 text-center">Related Posts</h2>
+      <h2 class="u-text-style-h3 mb-u-6 text-center">Ook interessant</h2>
 
       <div class="grid {{ $relatedPostsColumns }} gap-u-6">
         @foreach(array_slice($relatedPosts, 0, $relatedPostsCount) as $relatedPost)

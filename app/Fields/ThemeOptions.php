@@ -887,6 +887,24 @@ class ThemeOptions
                     ],
                 ],
             ])
+            ->addMessage('split_form_heading', '<h3>Split Form Section</h3><p>Configure the form section that appears after the content on single blog posts.</p>')
+            ->addText('single_form_heading', [
+                'label' => 'Form Heading',
+                'instructions' => 'Heading text for the form section',
+                'default_value' => 'Blijf op de hoogte met onze nieuwsbrief',
+            ])
+            ->addTextarea('single_form_paragraph', [
+                'label' => 'Form Paragraph',
+                'instructions' => 'Paragraph text for the form section',
+                'rows' => 3,
+                'default_value' => 'Abonneer je op onze nieuwsbrief en blijf op de hoogte van wat er om ons heen gebeurt.',
+            ])
+            ->addSelect('single_form_gravity_form', [
+                'label' => 'Gravity Form',
+                'instructions' => 'Select which Gravity Form to display',
+                'choices' => $this->getGravityFormsChoices(),
+                'allow_null' => 1,
+            ])
             ->setLocation('options_page', '==', 'acf-options-archive-blog');
 
         // Register all field groups
@@ -897,24 +915,43 @@ class ThemeOptions
         acf_add_local_field_group($archiveSettings->build());
     }
 
+    /**
+     * Get all Gravity Forms for ACF select field
+     */
+    private function getGravityFormsChoices()
+    {
+        $forms = [];
+
+        if (class_exists('GFAPI')) {
+            $gravity_forms = \GFAPI::get_forms();
+            foreach ($gravity_forms as $form) {
+                $forms[$form['id']] = $form['title'];
+            }
+        }
+
+        return $forms;
+    }
+
     public function renderOverviewPage()
     {
         $screen = get_current_screen();
 
         // Only show on the main theme options page
         if ($screen && $screen->id === 'toplevel_page_theme-settings') {
-            ?>
+?>
             <style>
                 .theme-options-overview {
                     max-width: 1200px;
                     margin: 2rem 0;
                 }
+
                 .theme-options-grid {
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                     gap: 1.5rem;
                     margin-top: 2rem;
                 }
+
                 .theme-option-card {
                     background: #fff;
                     border: 1px solid #dcdcde;
@@ -926,21 +963,25 @@ class ThemeOptions
                     flex-direction: column;
                     gap: 0.75rem;
                 }
+
                 .theme-option-card:hover {
                     border-color: #2271b1;
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
                     transform: translateY(-2px);
                 }
+
                 .theme-option-card-icon {
                     font-size: 2rem;
                     line-height: 1;
                 }
+
                 .theme-option-card-title {
                     font-size: 1.125rem;
                     font-weight: 600;
                     color: #1d2327;
                     margin: 0;
                 }
+
                 .theme-option-card-description {
                     font-size: 0.875rem;
                     color: #646970;
@@ -985,7 +1026,7 @@ class ThemeOptions
                     </a>
                 </div>
             </div>
-            <?php
+<?php
         }
     }
 }

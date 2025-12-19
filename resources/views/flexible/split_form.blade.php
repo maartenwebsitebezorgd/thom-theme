@@ -1,11 +1,12 @@
 @php
-$contentBlock = get_sub_field('content_block');
-$showContactPerson = get_sub_field('show_contact_person') ?? false;
-$contactPersonId = get_sub_field('contact_person');
-$gravityFormId = get_sub_field('gravity_form');
-$formTitle = get_sub_field('form_title') ?? false;
-$formDescription = get_sub_field('form_description') ?? false;
-$styleSettings = get_sub_field('style_settings');
+// Allow variables to be passed in or read from ACF
+$contentBlock = $contentBlock ?? get_sub_field('content_block');
+$showContactPerson = $showContactPerson ?? (get_sub_field('show_contact_person') ?? false);
+$contactPersonId = $contactPersonId ?? get_sub_field('contact_person');
+$gravityFormId = $gravityFormId ?? get_sub_field('gravity_form');
+$formTitle = $formTitle ?? (get_sub_field('form_title') ?? false);
+$formDescription = $formDescription ?? (get_sub_field('form_description') ?? false);
+$styleSettings = $styleSettings ?? get_sub_field('style_settings');
 
 // Get contact person data
 $contactName = '';
@@ -19,10 +20,10 @@ $headshot = get_field('headshot', $contactPersonId);
 }
 
 // Layout settings
-$contentLayout = get_sub_field('content_layout') ?? 'form-right';
-$verticalAlignment = get_sub_field('vertical_alignment') ?? 'items-center';
-$gapSize = get_sub_field('gap_size') ?? 'gap-u-8';
-$columnWidth = get_sub_field('column_width') ?? '1:1';
+$contentLayout = $contentLayout ?? (get_sub_field('content_layout') ?? 'form-right');
+$verticalAlignment = $verticalAlignment ?? (get_sub_field('vertical_alignment') ?? 'items-center');
+$gapSize = $gapSize ?? (get_sub_field('gap_size') ?? 'gap-u-8');
+$columnWidth = $columnWidth ?? (get_sub_field('column_width') ?? '1:1');
 
 // Style settings
 $theme = $styleSettings['theme'] ?? 'inherit';
