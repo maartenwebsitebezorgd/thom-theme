@@ -378,6 +378,27 @@ class ThemeOptions
                     ],
                 ],
             ])
+            ->addTab('language_switcher', ['label' => 'Language Switcher'])
+            ->addTrueFalse('show_belgium_link', [
+                'label' => 'Show Belgium Language Link',
+                'instructions' => 'Display a link to the Belgian website version',
+                'default_value' => 0,
+                'ui' => 1,
+            ])
+            ->addUrl('belgium_url', [
+                'label' => 'Belgium Website URL',
+                'instructions' => 'Full URL to the Belgian website',
+                'placeholder' => 'https://example.be',
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_belgium_link',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->setLocation('options_page', '==', 'acf-options-header');
 
         // Footer Settings
@@ -386,6 +407,12 @@ class ThemeOptions
             ->addTab('content', ['label' => 'Footer Content'])
             ->addWysiwyg('footer_text', [
                 'label' => 'Footer Text',
+                'toolbar' => 'basic',
+                'media_upload' => 0
+            ])
+            ->addWysiwyg('footer_contact', [
+                'label' => 'Contact Column',
+                'instructions' => 'Rich text content for the contact column (replaces footer menu 4)',
                 'toolbar' => 'basic',
                 'media_upload' => 0
             ])

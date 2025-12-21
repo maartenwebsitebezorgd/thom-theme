@@ -5,10 +5,11 @@ $logoLight = get_field('logo_light', 'option');
 $logoDark = get_field('logo_dark', 'option');
 $copyrightText = get_field('copyright_text', 'option');
 $descriptionText = get_field('footer_text', 'option');
+$footerContact = get_field('footer_contact', 'option');
 @endphp
 
 <footer data-theme="grey" class="u-section pt-section-main pb-section-small">
-  <div class="u-container">
+  <div class="u-container max-w-se">
     <div class="xl:grid xl:grid-cols-3 xl:gap-8">
       <div class="space-y-8">
         <a href="{{ home_url('/') }}" class="-m-1.5 p-1.5">
@@ -80,8 +81,17 @@ $descriptionText = get_field('footer_text', 'option');
           </ul>
         </div>
         @endforeach
+        @if($footerContact)
+        <div class="">
+          <h3 class="u-text-style-small text-balance !font-bold text-[var(--theme-text)]">Contact</h3>
+          <div class="mt-6 text-style-small prose prose-p:text-sm text-[var(--theme-text)]/70">
+            {!! $footerContact !!}
+          </div>
+        </div>
+        @endif
       </div>
       @endif
+
     </div>
     <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
       @php

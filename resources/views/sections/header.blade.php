@@ -111,7 +111,23 @@ default => 'button button--primary button--small',
 
     {{-- CTA Section --}}
     @if($showDesktopCta)
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-u-3 items-center ">
+      @php
+      $showBelgiumLink = get_field('show_belgium_link', 'option');
+      $belgiumUrl = get_field('belgium_url', 'option');
+      @endphp
+
+      @if($showBelgiumLink && $belgiumUrl)
+      {{-- Belgium Language Switcher --}}
+      <a href="{{ $belgiumUrl }}"
+        class="flex items-center gap-2 px-3 py-3 rounded text-sm text-[var(--theme-text)]/70 hover:text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5 transition-colors"
+        target="_blank" rel="noopener noreferrer">
+        <span class="u-text-style-small leading-none">🇧🇪</span>
+        <span class="u-text-style-small font-medium leading-none">Belgique</span>
+      </a>
+      @endif
+
+      {{-- Desktop CTA Button --}}
       <a href="{{ $desktopCtaUrl }}"
         class="{{ $desktopCtaClasses }}"
         @if($desktopCtaNewTab) target="_blank" rel="noopener noreferrer" @endif>
@@ -164,7 +180,7 @@ default => 'button button--primary button--small',
           {{-- Mobile Navigation with Accordion --}}
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10 dark:divide-white/10">
-              <div class="space-y-2 py-6">
+              <div class="space-y-1 py-6">
                 @if (has_nav_menu('primary_navigation'))
                 {!! wp_nav_menu([
                 'theme_location' => 'primary_navigation',
@@ -182,7 +198,17 @@ default => 'button button--primary button--small',
               </div>
 
               @if($showMobileCta)
-              <div class="py-6">
+              <div class="py-6 flex flex-col gap-u-4">
+                @if($showBelgiumLink && $belgiumUrl)
+                {{-- Belgium Language Switcher --}}
+                <a href="{{ $belgiumUrl }}"
+                  class="flex items-center gap-2 rounded text-sm text-[var(--theme-text)]/70 hover:text-[var(--theme-text)] transition-colors"
+                  target="_blank" rel="noopener noreferrer">
+                  <span class="u-text-style-small leading-none">🇧🇪</span>
+                  <span class="u-text-style-small font-medium leading-none">Belgique</span>
+                </a>
+                @endif
+                {{-- Mobile CTA Button --}}
                 <a href="{{ $mobileCtaUrl }}"
                   class="button button--primary button--small"
                   @if($mobileCtaNewTab) target="_blank" rel="noopener noreferrer" @endif>
