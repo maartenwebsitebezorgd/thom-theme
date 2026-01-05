@@ -84,15 +84,29 @@ $uniqueId = uniqid('team-card-');
      OVERLAY LAYOUT CHANGELOG
      - Full-bleed image with content overlaid at bottom
      - Dark gradient overlay for text readability
-     - makeCardClickable option: When true, only the NAME (h3) becomes a clickable link to team member detail page
+     - Image is always clickable (links to team member detail page)
+     - makeCardClickable option: When true, the NAME (h3) also becomes a clickable link to team member detail page
      - Contact info (email, phone, socials) is ALWAYS independently clickable when enabled, regardless of makeCardClickable setting
      ============================================ --}}
 <div
     class="team-card team-card--overlay group relative overflow-hidden {{ $imageAspectRatio }} {{ $partialClasses }}"
     data-theme="{{ $cardTheme }}">
 
-    {{-- Background Image: Full cover image --}}
+    {{-- Background Image: Full cover image (clickable) --}}
     @if(!empty($headshot))
+    @if($permalink)
+    <a href="{{ $permalink }}" class="absolute inset-0 team-card-image-zoom" aria-label="View {{ $name }}'s profile">
+        <img
+            src="{{ $headshot['sizes']['card'] ?? $headshot['url'] }}"
+            srcset="{{ $headshot['sizes']['card'] ?? $headshot['url'] }} 600w,
+                                {{ $headshot['sizes']['medium_large'] ?? $headshot['url'] }} 768w,
+                                {{ $headshot['url'] }} 1200w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            alt="{{ $headshot['alt'] ?? $name }}"
+            class="w-full h-full object-cover"
+            loading="lazy" />
+    </a>
+    @else
     <div class="absolute inset-0 team-card-image-zoom">
         <img
             src="{{ $headshot['sizes']['card'] ?? $headshot['url'] }}"
@@ -105,17 +119,18 @@ $uniqueId = uniqid('team-card-');
             loading="lazy" />
     </div>
     @endif
+    @endif
 
     {{-- Gradient Overlay: Ensures text readability --}}
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
 
-    {{-- Content Overlay: Team member information positioned at bottom --}}
-    <div class="absolute inset-0 flex flex-col justify-end p-u-5">
+    {{-- Content Overlay: Team member information positioned at bottom (pointer-events-none, but children can be clickable) --}}
+    <div class="absolute inset-0 flex flex-col justify-end p-u-5 pointer-events-none">
 
         {{-- Team Member Name: Conditionally clickable based on makeCardClickable --}}
         @if($makeCardClickable && $permalink)
         {{-- makeCardClickable = true: Name links to team member detail page --}}
-        <a href="{{ $permalink }}" class="block mb-u-3" aria-labelledby="{{ $uniqueId }}-name">
+        <a href="{{ $permalink }}" class="block mb-u-3 pointer-events-auto" aria-labelledby="{{ $uniqueId }}-name">
             <h3 id="{{ $uniqueId }}-name" class="u-text-style-h5 text-white u-margin-trim">
                 {{ $name }}
             </h3>
@@ -139,14 +154,14 @@ $uniqueId = uniqid('team-card-');
         <div class="space-y-3">
             {{-- Email: Direct mailto link --}}
             @if($showEmail && $email)
-            <a href="mailto:{{ $email }}" class="block text-white/90 hover:text-white u-text-style-small">
+            <a href="mailto:{{ $email }}" class="block text-white/90 hover:text-white u-text-style-small pointer-events-auto">
                 {{ $email }}
             </a>
             @endif
 
             {{-- Phone: Direct tel link --}}
             @if($showPhone && $phone)
-            <a href="tel:{{ $phone }}" class="block text-white/90 hover:text-white u-text-style-small">
+            <a href="tel:{{ $phone }}" class="block text-white/90 hover:text-white u-text-style-small pointer-events-auto">
                 {{ $phone }}
             </a>
             @endif
@@ -160,7 +175,7 @@ $uniqueId = uniqid('team-card-');
                     href="{{ $social['url'] }}"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-white/90 hover:text-white transition-colors"
+                    class="text-white/90 hover:text-white transition-colors pointer-events-auto"
                     aria-label="{{ $social['platform'] ?? 'Social Media' }}">
                     <x-social-icon :platform="$social['platform'] ?? 'website'" class="w-5 h-5" />
                 </a>
@@ -255,6 +270,19 @@ $uniqueId = uniqid('team-card-');
     data-theme="{{ $cardTheme }}">
     {{-- Image --}}
     @if(!empty($headshot))
+    @if($permalink)
+    <a href="{{ $permalink }}" class="block relative overflow-hidden {{ $imageAspectRatio }} mb-u-4" aria-label="View {{ $name }}'s profile">
+        <img
+            src="{{ $headshot['sizes']['card'] ?? $headshot['url'] }}"
+            srcset="{{ $headshot['sizes']['card'] ?? $headshot['url'] }} 600w,
+                                {{ $headshot['sizes']['medium_large'] ?? $headshot['url'] }} 768w,
+                                {{ $headshot['url'] }} 1200w"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            alt="{{ $headshot['alt'] ?? $name }}"
+            class="w-full h-full object-cover team-card-image-zoom"
+            loading="lazy" />
+    </a>
+    @else
     <div class="relative overflow-hidden {{ $imageAspectRatio }} mb-u-4">
         <img
             src="{{ $headshot['sizes']['card'] ?? $headshot['url'] }}"
@@ -266,6 +294,7 @@ $uniqueId = uniqid('team-card-');
             class="w-full h-full object-cover team-card-image-zoom"
             loading="lazy" />
     </div>
+    @endif
     @endif
 
     {{-- Content --}}

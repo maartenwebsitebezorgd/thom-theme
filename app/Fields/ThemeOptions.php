@@ -399,6 +399,21 @@ class ThemeOptions
                     ],
                 ],
             ])
+            ->addText('belgium_text', [
+                'label' => 'Belgium Link Text',
+                'instructions' => 'Text to display for the Belgium language link',
+                'default_value' => 'Belgique',
+                'placeholder' => 'Belgique',
+                'conditional_logic' => [
+                    [
+                        [
+                            'field' => 'show_belgium_link',
+                            'operator' => '==',
+                            'value' => '1',
+                        ],
+                    ],
+                ],
+            ])
             ->setLocation('options_page', '==', 'acf-options-header');
 
         // Footer Settings

@@ -115,6 +115,7 @@ default => 'button button--primary button--small',
       @php
       $showBelgiumLink = get_field('show_belgium_link', 'option');
       $belgiumUrl = get_field('belgium_url', 'option');
+      $belgiumText = get_field('belgium_text', 'option') ?: 'Belgique';
       @endphp
 
       @if($showBelgiumLink && $belgiumUrl)
@@ -123,7 +124,7 @@ default => 'button button--primary button--small',
         class="flex items-center gap-2 px-3 py-3 rounded text-sm text-[var(--theme-text)]/70 hover:text-[var(--theme-text)] hover:bg-[var(--theme-text)]/5 transition-colors"
         target="_blank" rel="noopener noreferrer">
         <span class="u-text-style-small leading-none">🇧🇪</span>
-        <span class="u-text-style-small font-medium leading-none">Belgique</span>
+        <span class="u-text-style-small font-medium leading-none">{{ $belgiumText }}</span>
       </a>
       @endif
 

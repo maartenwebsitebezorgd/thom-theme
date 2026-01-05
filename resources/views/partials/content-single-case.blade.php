@@ -8,10 +8,12 @@ $relatedCases = get_field('related_cases');
 $clientName = get_field('client_name');
 $logo = get_field('logo');
 
-// Get first team member as author
-$teamMemberAuthorId = null;
+// Get all team members as authors
+$teamMemberAuthors = [];
 if ($teamMembers && is_array($teamMembers) && count($teamMembers) > 0) {
-    $teamMemberAuthorId = $teamMembers[0]->ID;
+    foreach ($teamMembers as $member) {
+        $teamMemberAuthors[] = $member->ID;
+    }
 }
 
 // Auto-select related cases if none are manually selected
@@ -178,9 +180,9 @@ $isReverse = $headerLayout === 'split-reverse';
   </section>
 
   {{-- Author Section --}}
-  @if($teamMemberAuthorId)
+  @if(!empty($teamMemberAuthors))
   @include('partials.author-card', [
-  'teamMemberAuthorId' => $teamMemberAuthorId,
+  'teamMemberAuthors' => $teamMemberAuthors,
   'contentTheme' => $contentTheme,
   'contentMaxWidth' => $contentMaxWidth,
   ])

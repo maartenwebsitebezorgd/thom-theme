@@ -78,7 +78,7 @@ $isReverse = $headerLayout === 'split-reverse';
         <li aria-hidden="true">/</li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="{{ $blogUrl }}" itemprop="item" class="hover:underline">
-            <span itemprop="name">Blog</span>
+            <span itemprop="name">Artikelen</span>
           </a>
           <meta itemprop="position" content="2" />
         </li>
@@ -143,11 +143,11 @@ $isReverse = $headerLayout === 'split-reverse';
 
   {{-- Author Section --}}
   @if($teamMemberAuthorId)
-    @include('partials.author-card', [
-      'teamMemberAuthorId' => $teamMemberAuthorId,
-      'contentTheme' => $contentTheme,
-      'contentMaxWidth' => $contentMaxWidth,
-    ])
+  @include('partials.author-card', [
+  'teamMemberAuthorId' => $teamMemberAuthorId,
+  'contentTheme' => $contentTheme,
+  'contentMaxWidth' => $contentMaxWidth,
+  ])
   @endif
 
   {{-- Split Form Section from Theme Options --}}
