@@ -4,7 +4,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-JN0iP0hl.css",
+    "file": "assets/app-D2giXv-Y.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -79,7 +79,7 @@
     "src": "resources/fonts/HelveticaNeueUltraLightItalic.otf"
   },
   "resources/js/app.js": {
-    "file": "assets/app-D8zN50yS.js",
+    "file": "assets/app-Q3Effn6H.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -94,7 +94,7 @@
     "isEntry": true
   },
   "resources/js/filters.js": {
-    "file": "assets/filters-D6cpBvp9.js",
+    "file": "assets/filters-wXzHPC13.js",
     "name": "filters",
     "src": "resources/js/filters.js",
     "isEntry": true

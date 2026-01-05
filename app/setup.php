@@ -334,17 +334,23 @@ add_action('wp_head', function () {
     echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 }, 1);
 
-/**
- * Optimize WordPress oEmbed.
- * Note: Only removes oEmbed discovery links, but keeps YouTube/Vimeo embeds working
- */
-add_action('init', function () {
-    // Remove oEmbed discovery links (for other sites embedding YOUR content)
-    remove_action('wp_head', 'wp_oembed_add_discovery_links');
-    // Remove oEmbed REST API route (for other sites embedding YOUR content)
-    remove_action('rest_api_init', 'wp_oembed_register_route');
-    // Note: We DO NOT disable embed_oembed_discover to keep YouTube/Vimeo embeds working
-});
+// /**
+//  * Optimize WordPress oEmbed.
+//  * Note: Only removes oEmbed discovery links, but keeps YouTube/Vimeo embeds working
+//  */
+// add_action('init', function () {
+//     // Remove oEmbed discovery links (for other sites embedding YOUR content)
+//     remove_action('wp_head', 'wp_oembed_add_discovery_links');
+//     // Remove oEmbed REST API route (for other sites embedding YOUR content)
+//     remove_action('rest_api_init', 'wp_oembed_register_route');
+//     // Note: We DO NOT disable embed_oembed_discover to keep YouTube/Vimeo embeds working
+
+//     // Ensure WordPress autoembed is enabled (converts URLs to embeds)
+//     global $wp_embed;
+//     if ($wp_embed) {
+//         add_filter('the_content', [$wp_embed, 'autoembed'], 8);
+//     }
+// });
 
 /**
  * Add custom excerpt length.
@@ -359,4 +365,3 @@ add_filter('excerpt_length', function () {
 add_filter('excerpt_more', function () {
     return '&hellip;';
 });
-
