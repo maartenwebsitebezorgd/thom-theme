@@ -28,12 +28,12 @@ jobs:
       - name: Deploy to SiteGround via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_NEW_SERVER }}
+          username: ${{ secrets.FTP_NEW_USERNAME }}
+          password: ${{ secrets.FTP_NEW_PASSWORD }}
           port: 21
           local-dir: ./
-          server-dir: /annejans100.sg-host.com/public_html/wp-content/themes/thom/
+          server-dir: /thehouseofmarketing.nl/public_html/wp-content/themes/thom/
           exclude: |
             **/.git*
             **/.git*/**
