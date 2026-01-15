@@ -24,7 +24,7 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <container class="u-container {{ $containerSize }}">
     <div data-theme="light" class="cta_content-wrap p-u-5 border border-main overflow-hidden">
-      <div class="cta_layout grid grid-cols-[repeat(auto-fit,minmax(28rem,1fr))] {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
+      <div class="cta_layout grid grid-cols-[repeat(auto-fit,minmax(min(100%,28rem),1fr))] {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
 
         @if ($visualFirst)
         {{-- Visual Left Layout --}}
