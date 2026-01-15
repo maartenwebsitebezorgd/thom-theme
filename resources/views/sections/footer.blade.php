@@ -84,7 +84,7 @@ $footerContact = get_field('footer_contact', 'option');
         @if($footerContact)
         <div class="">
           <h3 class="u-text-style-small text-balance !font-bold text-[var(--theme-text)]">Contact</h3>
-          <div class="mt-6 text-style-small prose prose-p:text-sm text-[var(--theme-text)]/70">
+          <div class="mt-6 u-text-style-small prose prose-p:text-xs md:prose-p:text-small text-[var(--theme-text)]/70">
             {!! $footerContact !!}
           </div>
         </div>
