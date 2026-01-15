@@ -21,11 +21,11 @@ class PostFields
             ->setLocation('post_type', '==', 'post')
             ->addTab('Author', ['placement' => 'left'])
             ->addPostObject('team_member_author', [
-                'label' => 'Team Member Author',
-                'instructions' => 'Link a team member as the author of this post (optional)',
+                'label' => 'Team Member Authors',
+                'instructions' => 'Link one or more team members as authors of this post (optional)',
                 'post_type' => ['team'],
                 'return_format' => 'id',
-                'multiple' => 0,
+                'multiple' => 1,
                 'allow_null' => 1,
             ])
             ->addTab('Single Page Settings', ['placement' => 'left'])
@@ -89,11 +89,19 @@ class PostFields
     public function displayTeamMemberColumn($column, $post_id)
     {
         if ($column === 'team_member_author') {
-            $team_member_id = get_field('team_member_author', $post_id);
+            $team_member_ids = get_field('team_member_author', $post_id);
 
-            if ($team_member_id) {
-                $team_member_name = get_the_title($team_member_id);
-                echo esc_html($team_member_name);
+            if ($team_member_ids) {
+                // Handle both single ID and array of IDs for backwards compatibility
+                if (!is_array($team_member_ids)) {
+                    $team_member_ids = [$team_member_ids];
+                }
+
+                $names = array_map(function($id) {
+                    return get_the_title($id);
+                }, $team_member_ids);
+
+                echo esc_html(implode(', ', $names));
             } else {
                 // Fallback to WordPress user if no team member selected
                 $post = get_post($post_id);

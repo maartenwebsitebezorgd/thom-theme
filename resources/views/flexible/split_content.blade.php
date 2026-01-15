@@ -27,7 +27,7 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 
       @if ($visualFirst)
       {{-- Visual Left Layout --}}
-      <div class="visual-column order-first {{ $shouldStretch ? 'flex' : '' }}">
+      <div class="visual-column order-last md:order-first {{ $shouldStretch ? 'flex' : '' }}">
         <x-visual :visual="$visualBlock" class="{{ $shouldStretch ? 'flex-1' : '' }}" />
       </div>
       <div class="content-column flex {{ $verticalAlignment }}">
@@ -35,10 +35,10 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
       </div>
       @else
       {{-- Visual Right Layout --}}
-      <div class="content-column  flex {{ $verticalAlignment }}">
+      <div class="content-column flex {{ $verticalAlignment }}">
         <x-content-wrapper :content="$contentBlock" />
       </div>
-      <div class="visual-column order-first md:order-last  {{ $shouldStretch ? 'flex' : '' }}">
+      <div class="visual-column order-last md:order-last  {{ $shouldStretch ? 'flex' : '' }}">
         <x-visual :visual="$visualBlock" class="{{ $shouldStretch ? 'flex-1' : '' }}" />
       </div>
       @endif

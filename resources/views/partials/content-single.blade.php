@@ -5,7 +5,11 @@ $mainImage = get_field('main_image');
 $introduction = get_field('introduction');
 $readTime = get_field('read_time');
 $relatedPosts = get_field('related_posts');
-$teamMemberAuthorId = get_field('team_member_author');
+$teamMemberAuthors = get_field('team_member_author');
+// Ensure it's always an array for consistency
+if ($teamMemberAuthors && !is_array($teamMemberAuthors)) {
+    $teamMemberAuthors = [$teamMemberAuthors];
+}
 
 // Get Theme Options settings
 $headerTheme = get_field('single_header_theme', 'option') ?: 'grey';
@@ -142,9 +146,9 @@ $isReverse = $headerLayout === 'split-reverse';
   </section>
 
   {{-- Author Section --}}
-  @if($teamMemberAuthorId)
+  @if($teamMemberAuthors && count($teamMemberAuthors) > 0)
   @include('partials.author-card', [
-  'teamMemberAuthorId' => $teamMemberAuthorId,
+  'teamMemberAuthors' => $teamMemberAuthors,
   'contentTheme' => $contentTheme,
   'contentMaxWidth' => $contentMaxWidth,
   ])
