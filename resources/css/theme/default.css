@@ -16,7 +16,7 @@
     text-decoration: underline;
   }
 
-  a:where(:not(.wp-element-button)) {
+  a:where(:not(.wp-element-button, .gform_wrapper a)) {
     text-decoration: unset !important;
   }
 
@@ -52,5 +52,4 @@
     display: table;
     margin-bottom: calc(-0.5lh + var(--text-trim-bottom));
   }
-
 }

@@ -133,6 +133,11 @@
   margin-left: 0.25rem;
 }
 
+.gform_wrapper a {
+  color: var(--theme-accent);
+  text-decoration: underline !important;
+}
+
 /* ==========================================================================
      Checkboxes & Radio Buttons
      ========================================================================== */
