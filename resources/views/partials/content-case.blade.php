@@ -3,9 +3,17 @@ $post_id = get_the_ID();
 $thumbnail = get_post_thumbnail_id($post_id);
 $image = $thumbnail ? wp_get_attachment_image_src($thumbnail, 'large') : null;
 
-// Get case categories
-$categories = get_the_terms($post_id, 'case_category');
-$category = !empty($categories) && !is_wp_error($categories) ? $categories[0]->name : null;
+// Get category based on post type
+$currentPostType = get_post_type($post_id);
+if ($currentPostType === 'case') {
+    $categories = get_the_terms($post_id, 'case_category');
+    $category = !empty($categories) && !is_wp_error($categories) ? $categories[0]->name : null;
+} elseif ($currentPostType === 'post') {
+    $categories = get_the_category($post_id);
+    $category = !empty($categories) ? $categories[0]->name : null;
+} else {
+    $category = null;
+}
 
 // Get client name from ACF
 $clientName = function_exists('get_field') ? get_field('client_name', $post_id) : null;

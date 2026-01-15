@@ -23,7 +23,7 @@ $shouldStretch = ($visualBlock['stretch_to_content'] ?? false);
 
 <section data-theme="{{ $theme }}" class="u-section {{ $paddingTop }} {{ $paddingBottom }}">
   <div class="u-container {{ $containerSize }}">
-    <div class="split-content_layout grid md:grid-cols-2 {{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
+    <div class="split-content_layout grid md:grid-cols-2 gap-u-6 md:{{ $gapSize }} {{ $shouldStretch ? 'items-stretch' : $verticalAlignment }}">
 
       @if ($visualFirst)
       {{-- Visual Left Layout --}}
