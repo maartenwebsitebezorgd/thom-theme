@@ -193,4 +193,15 @@ $isReverse = $headerLayout === 'split-reverse';
   </section>
   @endif
 
+  {{-- Flexible Content Sections --}}
+  @if(have_rows('content_blocks'))
+    @while(have_rows('content_blocks'))
+      @php(the_row())
+      @includeFirst([
+        'flexible.' . get_row_layout(),
+        'flexible.default'
+      ])
+    @endwhile
+  @endif
+
 </article>
