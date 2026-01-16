@@ -42,12 +42,12 @@
     <span>{{ __('Door', 'sage') }}</span>
     @php
     // Use team member author if available, otherwise fall back to WordPress user
-    if (isset($teamMemberAuthorId) && $teamMemberAuthorId) {
-    $authorName = get_the_title($teamMemberAuthorId);
-    $authorUrl = get_permalink($teamMemberAuthorId);
+    if (isset($teamMemberAuthors) && is_array($teamMemberAuthors) && count($teamMemberAuthors) > 0) {
+        $authorName = get_the_title($teamMemberAuthors[0]);
+        $authorUrl = get_permalink($teamMemberAuthors[0]);
     } else {
-    $authorName = get_the_author();
-    $authorUrl = get_author_posts_url(get_the_author_meta('ID'));
+        $authorName = get_the_author();
+        $authorUrl = get_author_posts_url(get_the_author_meta('ID'));
     }
     @endphp
     <a href="{{ $authorUrl }}" class="p-author h-card" itemprop="author" itemscope itemtype="https://schema.org/Person">
