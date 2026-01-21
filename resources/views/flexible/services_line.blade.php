@@ -70,7 +70,7 @@ $processedHeading = str_replace($linkText, $anchorTag, $headingText);
                 </div>
 
 
-                <div class="grid grid-cols-2 gap-u-4 md:grid-cols-4 lg:grid-cols-4 flex-1">
+                <div class="grid grid-cols-2 gap-u-4 md:grid-cols-4 lg:grid-cols-4">
                     @foreach ($cards as $cardItem)
                     <x-service-line
                         :card="$cardItem['service_card']"
