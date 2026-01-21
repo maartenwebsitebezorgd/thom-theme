@@ -13,19 +13,19 @@ $cardTheme = get_sub_field('card_theme') ?? 'inherit';
 
 // Get cards based on mode
 if ($useGlobalServices) {
-    $globalServices = get_field('global_services', 'option');
-    $cards = [];
+$globalServices = get_field('global_services', 'option');
+$cards = [];
 
-    if ($globalServices && $selectedServices) {
-        foreach ($selectedServices as $selectedItem) {
-            $serviceIndex = $selectedItem['service'] ?? null;
-            if ($serviceIndex !== null && isset($globalServices[$serviceIndex])) {
-                $cards[] = ['service_card' => $globalServices[$serviceIndex]];
-            }
-        }
-    }
+if ($globalServices && $selectedServices) {
+foreach ($selectedServices as $selectedItem) {
+$serviceIndex = $selectedItem['service'] ?? null;
+if ($serviceIndex !== null && isset($globalServices[$serviceIndex])) {
+$cards[] = ['service_card' => $globalServices[$serviceIndex]];
+}
+}
+}
 } else {
-    $cards = get_sub_field('cards');
+$cards = get_sub_field('cards');
 }
 
 // Heading content
@@ -61,7 +61,7 @@ $processedHeading = str_replace($linkText, $anchorTag, $headingText);
     <div class="u-container {{ $containerSize }}">
         <div class="service-line_layout">
             <div class="service-line_main-wrap flex flex-wrap flex-row gap-u-4 justify-between">
-                <div class="service-line_heading-wrap flex flex-row gap-u-1 shrink-0 items-center u-text-style-main">
+                <div class="service-line_heading-wrap flex flex-row gap-u-1 items-center u-text-style-main">
                     <span class="service-Line_icon-wrap size-u-4 shrink-0 flex flex-col justify-center" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" role="presentation">
                             <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
@@ -70,7 +70,7 @@ $processedHeading = str_replace($linkText, $anchorTag, $headingText);
                 </div>
 
 
-                <div class="flex flex-1 flex-row flex-wrap gap-u-5 md:gap-u-4 xl:gap-u-6 md:justify-end">
+                <div class="grid grid-cols-2 gap-u-4 md:grid-cols-4 lg:grid-cols-4 flex-1">
                     @foreach ($cards as $cardItem)
                     <x-service-line
                         :card="$cardItem['service_card']"
