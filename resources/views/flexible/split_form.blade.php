@@ -3,7 +3,8 @@
 $contentBlock = $contentBlock ?? get_sub_field('content_block');
 $showContactPerson = $showContactPerson ?? (get_sub_field('show_contact_person') ?? false);
 $contactPersonId = $contactPersonId ?? get_sub_field('contact_person');
-$gravityFormId = $gravityFormId ?? get_sub_field('gravity_form');
+// Always read from ACF for flexible content to avoid conflicts with parent templates
+$gravityFormId = get_sub_field('gravity_form');
 $formTitle = $formTitle ?? (get_sub_field('form_title') ?? false);
 $formDescription = $formDescription ?? (get_sub_field('form_description') ?? false);
 $styleSettings = $styleSettings ?? get_sub_field('style_settings');
