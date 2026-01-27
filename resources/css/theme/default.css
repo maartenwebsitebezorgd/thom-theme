@@ -16,7 +16,7 @@
     text-decoration: underline;
   }
 
-  a:where(:not(.wp-element-button, .gform_wrapper a)) {
+  a:where(:not(.wp-element-button, .gform_wrapper a, .prose a)) {
     text-decoration: unset !important;
   }
 
