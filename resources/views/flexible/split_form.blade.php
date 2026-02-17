@@ -3,12 +3,10 @@
 $contentBlock = $contentBlock ?? get_sub_field('content_block');
 $showContactPerson = $showContactPerson ?? (get_sub_field('show_contact_person') ?? false);
 $contactPersonId = $contactPersonId ?? get_sub_field('contact_person');
-// Check if we're in flexible content context - if so, always read from ACF to avoid parent variable conflicts
-// Otherwise use the passed variable (for programmatic calls like from content-single.blade.php)
-if (have_rows('content_blocks') || get_row_layout()) {
+// If gravityFormId is not explicitly set, read from ACF sub field
+// This works for both flexible content and programmatic calls
+if (!isset($gravityFormId)) {
     $gravityFormId = get_sub_field('gravity_form');
-} else {
-    $gravityFormId = $gravityFormId ?? null;
 }
 $formTitle = $formTitle ?? (get_sub_field('form_title') ?? false);
 $formDescription = $formDescription ?? (get_sub_field('form_description') ?? false);
