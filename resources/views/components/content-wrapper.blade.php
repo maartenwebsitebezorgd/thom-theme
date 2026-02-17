@@ -5,7 +5,7 @@
 @php
 // Ensure content is an array
 if (!is_array($content)) {
-    $content = [];
+$content = [];
 }
 
 // Set default values

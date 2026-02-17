@@ -8,7 +8,7 @@ $relatedPosts = get_field('related_posts');
 $teamMemberAuthors = get_field('team_member_author');
 // Ensure it's always an array for consistency
 if ($teamMemberAuthors && !is_array($teamMemberAuthors)) {
-    $teamMemberAuthors = [$teamMemberAuthors];
+$teamMemberAuthors = [$teamMemberAuthors];
 }
 
 // Get Theme Options settings
