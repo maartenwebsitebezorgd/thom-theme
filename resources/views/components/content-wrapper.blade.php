@@ -56,10 +56,12 @@ $alignment = 'mx-auto text-center';
   <div class="mt-u-6 flex flex-wrap gap-4 @if($alignment === 'text-center') justify-center @elseif($alignment === 'text-right') justify-end @else justify-start @endif">
     @foreach ($buttonGroup as $item)
     @php
-    $button = $item['button'];
+    $button = $item['button'] ?? null;
     $style = $item['style'] ?? 'primary';
     @endphp
-    <a href="{{ $button['url'] }}" target="{{ $button['target'] }}" class="button button--{{ $style }}">{{ $button['title'] }}</a>
+    @if ($button && !empty($button['url']))
+    <a href="{{ $button['url'] }}" target="{{ $button['target'] ?? '_self' }}" class="button button--{{ $style }}">{{ $button['title'] ?? 'Button' }}</a>
+    @endif
     @endforeach
   </div>
   @endif
