@@ -11,6 +11,7 @@ use App\Fields\Sections\Cta;
 use App\Fields\Sections\Hero;
 use App\Fields\Sections\ImageGallery;
 use App\Fields\Sections\LogoSlider;
+use App\Fields\Sections\MediaGrid;
 use App\Fields\Sections\MultiSlider;
 use App\Fields\Sections\Quote;
 use App\Fields\Sections\ServicesGrid;
@@ -114,6 +115,7 @@ class Whitepapers
         $flexibleContent = ServicesLine::addToFlexibleContent($flexibleContent);
         $flexibleContent = LogoSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = ImageGallery::addToFlexibleContent($flexibleContent);
+        $flexibleContent = MediaGrid::addToFlexibleContent($flexibleContent);
 
         acf_add_local_field_group($whitepaperFields->build());
     }

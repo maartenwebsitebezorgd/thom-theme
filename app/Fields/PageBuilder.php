@@ -10,6 +10,7 @@ use App\Fields\Sections\Cta;
 use App\Fields\Sections\Hero;
 use App\Fields\Sections\ImageGallery;
 use App\Fields\Sections\LogoSlider;
+use App\Fields\Sections\MediaGrid;
 use App\Fields\Sections\MultiSlider;
 use App\Fields\Sections\Quote;
 use App\Fields\Sections\ServicesGrid;
@@ -57,6 +58,7 @@ class PageBuilder
         $flexibleContent = ServicesLine::addToFlexibleContent($flexibleContent);
         $flexibleContent = LogoSlider::addToFlexibleContent($flexibleContent);
         $flexibleContent = ImageGallery::addToFlexibleContent($flexibleContent);
+        $flexibleContent = MediaGrid::addToFlexibleContent($flexibleContent);
 
         $flexibleContent
                 ->addLayout('call_to_action', [

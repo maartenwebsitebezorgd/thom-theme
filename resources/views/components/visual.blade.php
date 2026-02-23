@@ -17,6 +17,7 @@
   $image = $visual['image'] ?? null;
   $altText = $visual['alt_text'] ?? $image['alt'] ?? '';
   $videoUrl = $visual['video_url'] ?? null;
+  $videoPoster = $visual['poster'] ?? null;
   $caption = $visual['caption'] ?? null;
 
   // Layout settings - props override visual array
@@ -174,6 +175,7 @@
         <video
           class="{{ implode(' ', array_filter($mediaClasses)) }}"
           controls
+          @if($videoPoster) poster="{{ $videoPoster }}" @endif
           @if($lazyLoading && !$priorityLoading) preload="none" @else preload="metadata" @endif
         >
           <source src="{{ $videoUrl }}" type="video/mp4">

@@ -91,6 +91,7 @@ class Choices
     public static function gridColumnsDesktop()
     {
         return [
+            'grid-cols-1' => '1 Column',
             'grid-cols-2' => '2 Columns',
             'grid-cols-3' => '3 Columns',
             'grid-cols-4' => '4 Columns',
