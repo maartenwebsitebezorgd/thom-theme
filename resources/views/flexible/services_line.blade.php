@@ -70,9 +70,9 @@ $processedHeading = str_replace($linkText, $anchorTag, $headingText);
                 </div>
 
 
-                <div class="flex flex-row flex-wrap gap-u-4 md:justify-end">
+                <div class="flex flex-row flex-wrap gap-u-4 lg:justify-end">
                     @foreach ($cards as $cardItem)
-                    <div class="min-w-36 max-w-72 shrink-0">
+                    <div class="shrink-0 width-full md:width-auto lg:width-auto">
                         <x-service-line
                             :card="$cardItem['service_card']"
                             :card-theme="$cardTheme" />
